@@ -22,12 +22,3 @@ try {
     
     echo $dispatcher->dispatch("GET", "/");
 }
-
-//Old dispatcher
-//$controllers_arr = numbersOfControllers();
-//
-//$kontroler = (!empty($_GET['k']) && in_array(ucfirst($_GET['k']) . "Controller.php", $controllers_arr)) ? 'app\\controllers\\' . ucfirst(htmlentities($_GET['k'])) . 'Controller' : 'app\\controllers\\PageController';
-//$method = !empty($_GET['m']) ? htmlentities($_GET['m']) : 'index';
-//
-//$k = new $kontroler;
-//$k->$method();
