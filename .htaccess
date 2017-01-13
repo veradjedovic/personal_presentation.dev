@@ -1,0 +1,25 @@
+RewriteEngine On
+
+RewriteRule ^naslovna$ index.php [NC]
+RewriteRule ^([a-zA-Z0-9_/]*)/([a-zA-Z0-9_]*)$ ./index.php?r=$1&id=$2 [NC]
+
+ErrorDocument 404 http://personal_presentation.dev/
+
+#RewriteRule ^([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)$ ./index.php?k=$1&m=$2 [NC]
+#RewriteRule ^([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([0-9]*)$ ./index.php?k=$1&m=$2&id=$3 [NC]
+
+#<IfModule mod_rewrite.c>
+#    <IfModule mod_negotiation.c>
+#        Options -MultiViews
+#    </IfModule>
+#
+#    RewriteEngine On
+#
+#    # Redirect Trailing Slashes...
+#    RewriteRule ^(.*)/$ /$1 [L,R=301]
+#
+#    # Handle Front Controller...
+#    RewriteCond %{REQUEST_FILENAME} !-d
+#    RewriteCond %{REQUEST_FILENAME} !-f
+#    RewriteRule ^ index.php [L]
+#</IfModule>
