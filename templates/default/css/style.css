@@ -352,7 +352,7 @@ section .modules
 {
   border:7px outset #ccc; 
   margin-bottom:10px;
-  padding-right:15px;
+  padding:15px;
 }
 
 .article_img

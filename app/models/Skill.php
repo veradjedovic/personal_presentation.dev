@@ -23,7 +23,7 @@ class Skill extends Model
               *
               * @var array 
               */
-	public static $columns = array('name', 'status');
+	public static $columns = array('name', 'persentage', 'status');
         
         /**
               *
@@ -35,7 +35,7 @@ class Skill extends Model
                *
                * @var type 
                */
-        public $id, $name, $status;
+        public $id, $name, $persentage, $status;
         
         /**
                 * 
@@ -44,7 +44,8 @@ class Skill extends Model
                 */
         public function GetSkillsVisible()
         {
-            $skills = $this->GetAll('name', 'WHERE status = ' . SKILL_VISIBLE);
+            $fields = "name, persentage";
+            $skills = $this->GetAll($fields, 'WHERE status = ' . SKILL_VISIBLE . ' ORDER BY persentage DESC');
             
             if(!$skills) {
                 

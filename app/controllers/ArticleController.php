@@ -16,9 +16,9 @@ use Exception;
 class ArticleController extends Controller
 {
     /**
-       *
-       * @var string 
-       */
+        *
+        * @var string 
+        */
     public $layout = '';
     
     /**
@@ -44,11 +44,12 @@ class ArticleController extends Controller
     }
 
     /**
-       * Index method
-       */
+        * Index method
+        */
     public function index()
     {
         try {
+            
             $page = $this->page->GetById((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : 1);
             $articles = $this->builder->GetVisibleArticle($page->id);
            
