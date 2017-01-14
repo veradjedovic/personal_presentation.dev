@@ -2,6 +2,12 @@
 
 namespace app\controllers;
 
+use app\models\Page as Page;
+use app\builders\ArticleBuilder as ArticleBuilder;
+use app\exceptions\ArticleNotFoundException as ArticleNotFoundException;
+use app\exceptions\ItemNotFoundException as ItemNotFoundException;
+use Exception;
+
 /**
  * Description of ArticleController
  *
@@ -16,14 +22,48 @@ class ArticleController extends Controller
     public $layout = '';
     
     /**
+        *
+        * @var object 
+        */
+    protected $builder;
+    
+    /**
+        *
+        * @var object 
+        */
+    protected $page;
+
+    
+    /**
+        * Construct
+        */
+    public function __construct() 
+    {
+        $this->page = new Page();
+        $this->builder = new ArticleBuilder();
+    }
+
+    /**
        * Index method
        */
     public function index()
     {
-	$d['name'] = 'V';
-	$d['surname'] = 'Dj';
-
-//        return $d;
-	$this->view('modules/mod_embedded/mod_article/article', ['d'=>$d]);
+        try {
+            $page = $this->page->GetById((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : 1);
+            $articles = $this->builder->GetVisibleArticle($page->id);
+           
+            $this->view('modules/mod_embedded/mod_article/article', ['articles'=>$articles]);
+            
+        } catch (ArticleBuilder $ex) {
+            
+            
+            
+        } catch (ItemNotFoundException $ex) {
+            
+            header('Location: /');
+            
+        } catch (Exception $ex) {
+            
+        }	
     }
 }

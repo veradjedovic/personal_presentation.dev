@@ -347,3 +347,26 @@ section .modules
   padding:10px;
   margin-bottom:10px;
 }
+
+.article_class
+{
+  border:7px outset #ccc; 
+  margin-bottom:10px;
+  padding-right:15px;
+}
+
+.article_img
+{
+  width: 30%; 
+  height:100%;
+  float: left; 
+  margin-right: 25px;
+  position: relative;
+}
+
+.section_of_modules
+{
+  border:7px outset #ccc;
+  padding:15px;
+  margin-bottom:10px;
+}

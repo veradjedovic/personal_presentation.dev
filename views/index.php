@@ -3,9 +3,7 @@
     <?php 
         foreach($data['modulesOfPage'] as $item){
             
-            echo "<section style = 'border:7px outset #ccc; padding:15px; margin-bottom:10px;'>";
             include APP_PATH . "views/modules/mod_embedded/{$item->name}/index.php"; 
-            echo "</section>";
         }
 
     ?>

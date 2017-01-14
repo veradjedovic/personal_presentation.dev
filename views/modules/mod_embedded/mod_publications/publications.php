@@ -1,4 +1,5 @@
- <h1>Izdanja</h1>
+<section class = 'section_of_modules'>
+<h1>Izdanja</h1>
     <?php 
     
         foreach ($data['publications'] as $item) {
@@ -29,4 +30,5 @@
                 echo "<a href='/'>Preuzmi pdf</a></p>";
             }
         }
-
+    ?>
+</section>

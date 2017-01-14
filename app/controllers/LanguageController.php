@@ -49,11 +49,11 @@ class LanguageController extends Controller
             
         } catch (LanguagesNotFoundException $ex) {
             
-            echo "<h1>Poznavanje jezika</h1><p>{$ex->getMessage()}</p>";
+            echo "<section class = 'section_of_modules'><h1>Poznavanje jezika</h1><p>{$ex->getMessage()}</p></section>";
             
         } catch (Exception $ex) {
             
-            echo "<h1>Poznavanje jezika</h1><p>Nema informacija o poznavanju jezika.</p>";
+            echo "<section class = 'section_of_modules'><h1>Poznavanje jezika</h1><p>Nema informacija o poznavanju jezika.</p></section>";
         }
     }
 }

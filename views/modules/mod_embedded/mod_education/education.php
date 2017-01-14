@@ -1,4 +1,5 @@
-    <h1>Obrazovanje</h1>
+<section class = 'section_of_modules'>
+<h1>Obrazovanje</h1>
     <?php 
     
         foreach ($data['education'] as $item) {
@@ -17,3 +18,5 @@
             if($item->description)
             echo "{$item->description}</p>";
         }
+    ?>
+</section>

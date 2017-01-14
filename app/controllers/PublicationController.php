@@ -55,11 +55,11 @@ class PublicationController extends Controller
             
         } catch (PublicationsNotFoundException $ex) {
             
-            echo "<h1>Izdanja</h1><p>{$ex->getMessage()}</p>";
+            echo "<section class = 'section_of_modules'><h1>Izdanja</h1><p>{$ex->getMessage()}</p></section>";
             
         } catch (Exception $ex) {
             
-            echo "<h1>Izdanja</h1><p>Nema ni jednog izdanja.</p>";
+            echo "<section class = 'section_of_modules'><h1>Izdanja</h1><p>Nema ni jednog izdanja.</p></section>";
         }
     }
 }

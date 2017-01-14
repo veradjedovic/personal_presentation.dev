@@ -1,4 +1,5 @@
-    <h1>Projekti</h1>
+<section class = 'section_of_modules'>
+<h1>Projekti</h1>
     <?php 
     
         foreach ($data['projects'] as $item) {
@@ -21,5 +22,6 @@
                 echo $item->description . "</p>";
             }
         }
-
+    ?>
+</section>
 

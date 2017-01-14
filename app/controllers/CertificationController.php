@@ -46,11 +46,11 @@ class CertificationController extends Controller
             
         } catch (CertificationsNotFoundException $ex) {
 
-            echo "<h1>Sertifikati</h1><p>{$ex->getMessage()}</p>";
+            echo "<section class = 'section_of_modules'><h1>Sertifikati</h1><p>{$ex->getMessage()}</p></section>";
             
         } catch (Exception $ex) {
 
-            echo "<h1>Sertifikati</h1><p>Nema sertifikata.</p>";
+            echo "<section class = 'section_of_modules'><h1>Sertifikati</h1><p>Nema sertifikata.</p></section>";
         }
         
 	

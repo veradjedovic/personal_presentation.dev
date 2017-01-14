@@ -1,3 +1,4 @@
+<section class = 'section_of_modules'>
 <h1>Znanja i vestine</h1>
  <hr style='border-top: 1px solid #ccc;' />
  <br />
@@ -13,3 +14,4 @@
  </p>
  <br />
 <div style = "clear: both;"></div>
+</section>

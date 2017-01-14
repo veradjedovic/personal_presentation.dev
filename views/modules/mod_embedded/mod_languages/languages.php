@@ -1,4 +1,5 @@
- <h1>Poznavanje jezika</h1>
+<section class = 'section_of_modules'>
+<h1>Poznavanje jezika</h1>
  <hr style='border-top: 1px solid #ccc;' />
     <?php 
         foreach ($data['languages'] as $item) {
@@ -7,3 +8,5 @@
                 echo "<h3>{$item->name}" . ($item->prof_name ? " - " . $item->prof_name : '') . "</h3>";
             }
         }
+    ?>
+</section>

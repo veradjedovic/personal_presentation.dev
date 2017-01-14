@@ -46,11 +46,11 @@ class EducationController extends Controller
         
         } catch (EducationNotFoundException $ex) {
             
-            echo "<h1>Obrazovanje</h1><p>{$ex->getMessage()}</p>";
+            echo "<section class = 'section_of_modules'><h1>Obrazovanje</h1><p>{$ex->getMessage()}</p></section>";
             
         } catch (Exception $ex) {
             
-            echo "<h1>Obrazovanje</h1><p>Nema informacija.</p>";
+            echo "<section class = 'section_of_modules'><h1>Obrazovanje</h1><p>Nema informacija.</p></section>";
         }
     }
 }

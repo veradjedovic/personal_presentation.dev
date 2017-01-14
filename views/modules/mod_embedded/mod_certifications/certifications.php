@@ -1,4 +1,5 @@
-    <h1>Sertifikati</h1>
+<section class = 'section_of_modules'>
+<h1>Sertifikati</h1>
     <?php 
     
         foreach ($data['certifications'] as $item) {
@@ -20,5 +21,6 @@
             if($item->certif_day || $item->certif_year)
             echo "Starting {$item->certif_day} {$item->certif_year}</p>";                     
         }
-
+    ?>
+</section>
 
