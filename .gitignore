@@ -36,4 +36,4 @@ ftpsync.settings
 .nb-gradle/
 
 /composer.lock
-
+/test.php

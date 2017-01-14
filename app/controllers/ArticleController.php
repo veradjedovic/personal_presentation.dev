@@ -54,9 +54,9 @@ class ArticleController extends Controller
            
             $this->view('modules/mod_embedded/mod_article/article', ['articles'=>$articles]);
             
-        } catch (ArticleBuilder $ex) {
+        } catch (ArticleNotFoundException $ex) {
             
-            
+            echo "<section class = 'section_of_modules'><p>{$ex->getMessage()}</p></section>";
             
         } catch (ItemNotFoundException $ex) {
             
