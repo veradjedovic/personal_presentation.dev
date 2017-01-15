@@ -4,9 +4,23 @@ namespace app\controllers;
 
 abstract class Controller
 {
+        /**
+         *
+         * @var array 
+         */
 	public $data = array();
+        
+        /**
+         *
+         * @var string 
+         */
 	public $view;
-
+        
+        /**
+         * 
+         * @param  string $view
+         * @param array $data
+         */
 	public function view($view = "index", $data = null)
 	{
 		$this->view = $view;

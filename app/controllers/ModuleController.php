@@ -20,9 +20,6 @@ class ModuleController extends Controller
        */
     public function index()
     {
-	$data['name'] = 'Verrr';
-	$data['surname'] = 'Djeddd';
-
-	dd($data);
+        
     }
 }

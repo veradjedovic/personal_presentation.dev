@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use app\models\Certification as Certification;
-use Exception;
+use Exception as Exception;
 use app\exceptions\CertificationsNotFoundException as CertificationsNotFoundException;
 
 /**
@@ -14,28 +14,28 @@ use app\exceptions\CertificationsNotFoundException as CertificationsNotFoundExce
 class CertificationController extends Controller
 {
     /**
-       *
-       * @var string 
-       */
+     *
+     * @var string
+     */
     public $layout = '';
     
     /**
-        *
-        * @var object 
-        */
-    public $certification;
+     *
+     * @var object
+     */
+    protected $certification;
     
     /**
-         * Construct
-         */
+     * Construct
+     */
     public function __construct() 
     {
         $this->certification = new Certification();
     }
     
     /**
-       * Index method
-       */
+     * Index method
+     */
     public function index()
     {
         try{

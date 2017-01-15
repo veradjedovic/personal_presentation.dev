@@ -20,9 +20,6 @@ class PublicationAuthorController extends Controller
        */
     public function index()
     {
-	$data['name'] = 'Veeeeeraaaa';
-	$data['surname'] = 'Djedovic';
-//dd(json_decode(json_encode([$data, 'vera'])));
-	return json_encode([$data, 'vera']);
+        
     }
 }

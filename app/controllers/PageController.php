@@ -8,6 +8,7 @@ use app\builders\ModulePageBuilder as ModulePageBuilder;
 use Exception;
 use app\exceptions\PagesNotFoundException as PagesNotFoundException;
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
+use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use app\models\ModulePage as ModulePage;
 
 /**
@@ -18,33 +19,33 @@ use app\models\ModulePage as ModulePage;
 class PageController extends Controller
 {
         /**
-              *
-              * @var string 
-              */
+         *
+         * @var string
+         */
 	public $layout = 'default';
         
         /**
-              *
-              * @var object 
-              */
+         *
+         * @var object
+         */
         public $page;
         
         /**
-                *
-                * @var object 
-                */
+         *
+         * @var object
+         */
         public $modulePage;
         
         /**
-                *
-                * @var object 
-                */
+         *
+         * @var bject
+         */
         protected $builder;
 
 
         /**
-              *  Constructor
-              */
+         * Construct
+         */
         public function __construct() 
         {
             $this->page = new Page();  
@@ -53,11 +54,12 @@ class PageController extends Controller
         }
 
         /**
-              * Index method
-              */
+         * Index method
+         */
 	public function index()
 	{
-            try {             
+            try {   
+                
 		$pages = $this->page->GetWebPages();
                 $page = $this->page->GetById((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : 1);  
 
@@ -72,6 +74,10 @@ class PageController extends Controller
             } catch (ItemNotFoundException $e) {
                 
                 header('Location: /');
+                
+            } catch (CollectionNotFoundException $e) {
+                
+                echo $e->getMessage();
                 
             } catch (Exception $e) {
                

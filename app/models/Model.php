@@ -4,6 +4,10 @@ namespace app\models;
 
 use app\classes\Database as Database;
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
+use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
+use app\exceptions\InsertNotExecutedException as InsertNotExecutedException;
+use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
+use app\exceptions\DeleteNotExecutedException as DeleteNotExecutedException;
 
 /**
  * Abstract Class Model
@@ -60,13 +64,18 @@ abstract class Model
 	{
 		$db = Database::GetConnection();
 		$res = mysqli_query($db, "select " . $fields . " from " . static::$table . " " . $filter);
-		$ret_val = array();
-
+                $ret_val = array();
+                
+                if(!$res) {
+                    
+                    throw new CollectionNotFoundException('Objects not found.');
+                }                               
+              
 		while($rw = mysqli_fetch_object($res, get_called_class())){
 
 			$ret_val[] = $rw;
 		}
-
+              
 		return $ret_val;
 	}
 
@@ -82,9 +91,17 @@ abstract class Model
 			$fields_arr[$field] = $this->$field;
 		}
 		$field_values_string = "'" . implode("','",$fields_arr) . "'";
-		mysqli_query($db,"insert into " . static::$table . " ({$columns_string}) values ({$field_values_string})");
+                
+                $res = mysqli_query($db,"insert into " . static::$table . " ({$columns_string}) values ({$field_values_string})");
+                
+		if(!$res) {
+                    
+                    throw new InsertNotExecutedException('Item is not inserted.');
+                }
 		// echo "insert into ".static::$table." ({$columns_string}) values ({$field_values_string})";   //proveriti da li ovo treba da se prikazuje
 		$this->id = mysqli_insert_id($db);
+                
+                return $this->id;
 	}
 
         /**
@@ -99,7 +116,13 @@ abstract class Model
 		}
 		$fields_update_string = implode(",",$fields_arr);
 		$id_column = static::$id_column;
-		mysqli_query($db,"update " . static::$table . " set {$fields_update_string} where " . $id_column . " = " . $this->$id_column); 
+                
+                $res = mysqli_query($db,"update " . static::$table . " set {$fields_update_string} where " . $id_column . " = " . $this->$id_column);
+                
+		if(!$res) {
+                    
+                    throw new UpdateNotExecutedException('Item is not updated.');
+                } 
 	}
 
         /**
@@ -110,6 +133,12 @@ abstract class Model
 	public function Delete($id)
 	{
 		$db = Database::GetConnection(); 
-		mysqli_query($db,"delete from " . static::$table . " where " . static::$id_column . " = {$id}"); 
+                
+                $res = mysqli_query($db,"delete from " . static::$table . " where " . static::$id_column . " = {$id}");
+                
+		if(!$res) {
+                    
+                    throw new DeleteNotExecutedException('Item is not deleted.');
+                }
 	}
 }

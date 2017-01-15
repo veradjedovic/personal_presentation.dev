@@ -16,27 +16,27 @@ use Exception;
 class ArticleController extends Controller
 {
     /**
-        *
-        * @var string 
-        */
+     *
+     * @var object
+     */
     public $layout = '';
     
     /**
-        *
-        * @var object 
-        */
+     *
+     * @var object
+     */
     protected $builder;
     
     /**
-        *
-        * @var object 
-        */
+     *
+     * @var object
+     */
     protected $page;
 
     
     /**
-        * Construct
-        */
+     * Construct
+     */
     public function __construct() 
     {
         $this->page = new Page();
@@ -44,8 +44,8 @@ class ArticleController extends Controller
     }
 
     /**
-        * Index method
-        */
+     * Index method
+     */
     public function index()
     {
         try {
@@ -65,6 +65,7 @@ class ArticleController extends Controller
             
         } catch (Exception $ex) {
             
+            echo "<section class = 'section_of_modules'><p>Nema clanaka.</p></section>";
         }	
     }
 }
