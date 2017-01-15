@@ -101,7 +101,7 @@ class ContactController extends Controller
         */
     protected function validateEmail() 
     {
-        if(!$this->validator->Email(htmlentities(trim($_POST['tb_email'])))) {
+        if(!$this->validator->Email($_POST['tb_email'])) {
 
             throw new ValidatorException('Unesite ispravnu email adresu!');
         }          
