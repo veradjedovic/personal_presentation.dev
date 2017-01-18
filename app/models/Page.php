@@ -22,7 +22,7 @@ class Page extends Model
        *
        * @var array 
        */
-    public static $columns = array('name', 'name_controller', 'name_method', 'route', 'template', 'menu', 'footer', 'status', 'created_at', 'updated_at');
+    public static $columns = array('name', 'name_controller', 'name_method', 'route', 'template', 'menu', 'footer', 'icon', 'parent_id', 'status', 'created_at', 'updated_at');
     
     /**
        *
@@ -34,7 +34,7 @@ class Page extends Model
        *
        * @var type 
        */
-    public $id, $name, $name_controller, $name_method, $route, $template, $menu, $footer, $status, $created_at, $updated_at;
+    public $id, $name, $name_controller, $name_method, $route, $template, $menu, $footer, $icon, $parent_id, $status, $created_at, $updated_at;
     
     /**
        * Get web pages with visible status

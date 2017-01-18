@@ -20,6 +20,6 @@ class UserProfileController extends Controller
        */
     public function index()
     {
-        
+        echo 'hello, user profile';
     }
 }

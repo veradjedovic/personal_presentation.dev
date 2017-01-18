@@ -10,5 +10,5 @@ $collector->get('kontakt/{id}', ['app\controllers\PageController','index']);
 $collector->post('kontakt/{id}', ['app\controllers\ContactController','insert']);
 
 //admin routes
-$collector->get('admin', ['app\controllers\AdminController','index']);
-$collector->get('admin/{id}', ['app\controllers\AdminController','index']);
+$collector->get('admin', ['app\controllers\adminControllers\AdminArticleController','index']);
+$collector->get('admin/{id}', ['app\controllers\adminControllers\AdminArticleController','index']);

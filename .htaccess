@@ -1,6 +1,7 @@
 RewriteEngine On
 
 RewriteRule ^naslovna$ index.php [NC]
+RewriteRule ^admin$ views/login.php [NC]
 RewriteRule ^([a-zA-Z0-9_/]*)/([a-zA-Z0-9_]*)$ ./index.php?r=$1&id=$2 [NC]
 
 ErrorDocument 404 http://personal_presentation.dev/

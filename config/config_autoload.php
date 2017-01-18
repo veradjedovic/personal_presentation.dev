@@ -4,7 +4,7 @@ define("Loaded",TRUE);
 
 /**
  * 
- * @param type $name
+ * @param $name
  */
 function aload_controllers($name) {
     $parts = explode('\\', $name);
@@ -14,7 +14,7 @@ function aload_controllers($name) {
 
 /**
  * 
- * @param type $name
+ * @param $name
  */
 function aload_models($name) {
     $parts = explode('\\', $name);
@@ -24,7 +24,7 @@ function aload_models($name) {
 
 /**
  * 
- * @param type $name
+ * @param $name
  */
 function aload_exeptions($name) {
     $parts = explode('\\', $name);
@@ -34,7 +34,7 @@ function aload_exeptions($name) {
 
 /**
  * 
- * @param type $name
+ * @param $name
  */
 function aload_factories($name) {
     $parts = explode('\\', $name);
@@ -44,7 +44,7 @@ function aload_factories($name) {
 
 /**
  * 
- * @param type $name
+ * @param $name
  */
 function aload_modules($name) {
     $parts = explode('\\', $name);
@@ -54,7 +54,7 @@ function aload_modules($name) {
 
 /**
  * 
- * @param type $name
+ * @param $name
  */
 function aload_repositories($name) {
     $parts = explode('\\', $name);
@@ -64,7 +64,7 @@ function aload_repositories($name) {
 
 /**
  * 
- * @param type $name
+ * @param $name
  */
 function aload_builders($name) {
     $parts = explode('\\', $name);
@@ -74,7 +74,7 @@ function aload_builders($name) {
 
 /**
  * 
- * @param type $name
+ * @param $name
  */
 function aload_classes($name) {
     $parts = explode('\\', $name);
@@ -82,6 +82,15 @@ function aload_classes($name) {
     require_once APP_PATH.'app/classes/'.end($parts).'.php'; 
 }
 
+/**
+ * 
+ * @para $name
+ */
+function aload_admin_controllers($name) {
+    $parts = explode('\\', $name);
+    if(file_exists(APP_PATH.'app/controllers/adminControllers/'.end($parts).'.php'))        
+    require_once APP_PATH.'app/controllers/adminControllers/'.end($parts).'.php'; 
+}
 
 spl_autoload_register("aload_controllers");
 spl_autoload_register("aload_models");
@@ -91,3 +100,4 @@ spl_autoload_register("aload_modules");
 spl_autoload_register("aload_repositories");
 spl_autoload_register("aload_builders");
 spl_autoload_register("aload_classes");
+spl_autoload_register("aload_admin_controllers");

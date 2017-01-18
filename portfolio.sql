@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 13, 2017 at 08:10 PM
+-- Generation Time: Jan 17, 2017 at 10:55 PM
 -- Server version: 5.5.53-0ubuntu0.14.04.1
 -- PHP Version: 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1
 
@@ -44,9 +44,9 @@ CREATE TABLE IF NOT EXISTS `articles` (
 --
 
 INSERT INTO `articles` (`id`, `title`, `content`, `image`, `author_id`, `page_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Clanak 1', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '', 1, 1, 1, '2017-01-05 20:54:23', '2017-01-05 20:54:23'),
+(1, 'Clanak 1', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\nLorem ipsum dolor sit amet, auctor eget nisl, pharetra nibh lorem aliquet duis nostra, nulla nullam velit. Morbi ipsum mauris dapibus sodales, sed libero, at erat sed, massa faucibus sodales, aenean lacinia eu malesuada porta volutpat volutpat. Pede feugiat dui, turpis mauris nunc sit tellus, nulla penatibus vestibulum ipsum dolor vestibulum nunc. Ut morbi integer, esse adipisci neque volutpat ut, eget laoreet, magna justo sodales curabitur. Laoreet at, ac blandit euismod. Ligula pellentesque lacus donec vel fermentum. Pede vitae enim, sem sem iaculis vel vel, dolor sed aliquam eu vivamus, sit phasellus vivamus. Atque aliquet turpis gravida, neque dictumst vel cras curabitur. Interdum mi velit, nullam dolor sem viverra placerat eros aliquam, cupiditate erat, mus at orci fusce consectetuer, ante ornare placerat maecenas a egestas. Nonummy sed neque, velit amet egestas pellentesque do arcu auctor, consequat lobortis. Integer dui morbi nullam posuere, dignissim per pellentesque hymenaeos, pellentesque in tempus unde elit wisi, dapibus arcu nunc vivamus tristique sed voluptas. In odio, quis praesent vehicula.', 'http://www.crtanifilmovi.rs/wp-content/uploads/2012/10/plava-princeza-RS.jpg', 1, 1, 1, '2017-01-05 20:54:23', '2017-01-05 20:54:23'),
 (2, 'Clanak 2', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '', 1, 1, 1, '2017-01-01 07:20:08', '2017-01-02 06:07:22'),
-(3, 'Clanak 3', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '', 1, 2, 1, '2017-01-03 00:00:00', '2017-01-03 04:06:23'),
+(3, 'Clanak 3', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'http://www.crtanifilmovi.rs/wp-content/uploads/2012/10/plava-princeza-RS.jpg', 1, 1, 1, '2017-01-03 00:00:00', '2017-01-03 04:06:23'),
 (4, 'Clanak 4', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '', 1, 2, 1, '2017-01-04 04:03:12', '2017-01-04 11:37:49');
 
 -- --------------------------------------------------------
@@ -477,7 +477,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=45 ;
 
 --
 -- Dumping data for table `messages`
@@ -501,7 +501,7 @@ CREATE TABLE IF NOT EXISTS `modules` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `modules`
@@ -514,9 +514,11 @@ INSERT INTO `modules` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUE
 (4, 'mod_education', 1, '2017-01-09 09:17:02', '2017-01-09 09:17:02'),
 (5, 'mod_experience', 1, '2017-01-09 09:17:02', '2017-01-09 09:17:02'),
 (6, 'mod_languages', 1, '2017-01-09 09:17:55', '2017-01-09 09:17:55'),
+(11, 'mod_user', 1, '2017-01-17 22:11:33', '2017-01-17 22:11:33'),
 (8, 'mod_projects', 1, '2017-01-09 09:18:45', '2017-01-09 09:18:45'),
 (9, 'mod_publications', 1, '2017-01-09 09:18:45', '2017-01-09 09:18:45'),
-(10, 'mod_skills', 1, '2017-01-09 09:18:59', '2017-01-09 09:18:59');
+(10, 'mod_skills', 1, '2017-01-09 09:18:59', '2017-01-09 09:18:59'),
+(12, 'mod_user_profile', 1, '2017-01-17 22:11:33', '2017-01-17 22:11:33');
 
 -- --------------------------------------------------------
 
@@ -530,14 +532,14 @@ CREATE TABLE IF NOT EXISTS `module_pages` (
   `module_id` int(10) unsigned NOT NULL,
   `priority` smallint(3) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `module_pages`
 --
 
 INSERT INTO `module_pages` (`id`, `page_id`, `module_id`, `priority`) VALUES
-(1, 1, 1, 1),
+(1, 1, 1, 2),
 (2, 2, 2, 2),
 (3, 2, 4, 1),
 (4, 2, 5, 3),
@@ -545,7 +547,8 @@ INSERT INTO `module_pages` (`id`, `page_id`, `module_id`, `priority`) VALUES
 (6, 2, 8, 4),
 (7, 2, 9, 5),
 (8, 3, 10, 1),
-(9, 4, 3, 1);
+(9, 4, 3, 1),
+(10, 1, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -562,6 +565,8 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `template` varchar(170) COLLATE utf8_unicode_ci NOT NULL,
   `menu` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
   `footer` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
+  `icon` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `parent_id` int(10) unsigned NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -572,11 +577,11 @@ CREATE TABLE IF NOT EXISTS `pages` (
 -- Dumping data for table `pages`
 --
 
-INSERT INTO `pages` (`id`, `name`, `name_controller`, `name_method`, `route`, `template`, `menu`, `footer`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Naslovna', 'page', 'index', 'naslovna', 'default', '', '', 1, '2017-01-05 21:16:16', '2017-01-05 21:16:16'),
-(2, 'Aktivnosti', 'page', 'index', 'aktivnosti', 'default', '', '', 1, '2017-01-05 21:16:16', '2017-01-05 21:16:16'),
-(3, 'Znanja i vestine', 'page', 'index', 'vestine', 'default', '', '', 1, '2017-01-05 21:18:15', '2017-01-05 21:18:15'),
-(4, 'Kontakt', 'page', 'index', 'kontakt', 'default', '', '', 1, '2017-01-05 21:18:15', '2017-01-05 21:18:15');
+INSERT INTO `pages` (`id`, `name`, `name_controller`, `name_method`, `route`, `template`, `menu`, `footer`, `icon`, `parent_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Naslovna', 'page', 'index', 'naslovna', 'default', '', '', '', 0, 1, '2017-01-05 21:16:16', '2017-01-05 21:16:16'),
+(2, 'Aktivnosti', 'page', 'index', 'aktivnosti', 'default', '', '', '', 0, 1, '2017-01-05 21:16:16', '2017-01-05 21:16:16'),
+(3, 'Znanja i vestine', 'page', 'index', 'vestine', 'default', '', '', '', 0, 1, '2017-01-05 21:18:15', '2017-01-05 21:18:15'),
+(4, 'Kontakt', 'page', 'index', 'kontakt', 'default', '', '', '', 0, 1, '2017-01-05 21:18:15', '2017-01-05 21:18:15');
 
 -- --------------------------------------------------------
 
@@ -696,6 +701,7 @@ INSERT INTO `publication_authors` (`id`, `author`, `publication_id`, `status`, `
 CREATE TABLE IF NOT EXISTS `skills` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `persentage` tinyint(3) NOT NULL,
   `status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=29 ;
@@ -704,35 +710,35 @@ CREATE TABLE IF NOT EXISTS `skills` (
 -- Dumping data for table `skills`
 --
 
-INSERT INTO `skills` (`id`, `name`, `status`) VALUES
-(1, 'PHP', 1),
-(2, 'MySQL', 1),
-(3, 'Management', 1),
-(4, 'Skating', 1),
-(5, 'Linux', 1),
-(6, 'Microsoft Office', 1),
-(7, 'Customer Service', 1),
-(8, 'Teamwork', 1),
-(9, 'Photoshop', 1),
-(10, 'OOP', 1),
-(11, 'Bootstrap', 1),
-(12, 'Laravel', 1),
-(13, 'Git', 1),
-(14, 'PhpMyAdmin', 1),
-(15, 'Banking', 1),
-(16, 'Portale Fornitori', 1),
-(17, 'SAP', 1),
-(18, 'Retail Banking', 1),
-(19, 'Financial Analysis', 1),
-(20, 'Credit Cards', 1),
-(21, 'Credit Risk', 1),
-(22, 'Credit', 1),
-(23, 'Loans', 1),
-(24, 'Finance', 1),
-(25, 'Comercial Banking', 1),
-(26, 'Branch Banking', 1),
-(27, 'Credit Analysis', 1),
-(28, 'Financial Risk', 1);
+INSERT INTO `skills` (`id`, `name`, `persentage`, `status`) VALUES
+(1, 'PHP', 99, 1),
+(2, 'MySQL', 85, 1),
+(3, 'Management', 78, 1),
+(4, 'Skating', 100, 1),
+(5, 'Linux', 77, 1),
+(6, 'Microsoft Office', 99, 1),
+(7, 'Customer Service', 65, 1),
+(8, 'Teamwork', 70, 1),
+(9, 'Photoshop', 56, 1),
+(10, 'OOP', 66, 1),
+(11, 'Bootstrap', 5, 1),
+(12, 'Laravel', 85, 1),
+(13, 'Git', 77, 1),
+(14, 'PhpMyAdmin', 66, 1),
+(15, 'Banking', 54, 1),
+(16, 'Portale Fornitori', 76, 1),
+(17, 'SAP', 100, 1),
+(18, 'Retail Banking', 56, 1),
+(19, 'Financial Analysis', 68, 1),
+(20, 'Credit Cards', 58, 1),
+(21, 'Credit Risk', 66, 1),
+(22, 'Credit', 80, 1),
+(23, 'Loans', 45, 1),
+(24, 'Finance', 35, 1),
+(25, 'Comercial Banking', 45, 1),
+(26, 'Branch Banking', 46, 1),
+(27, 'Credit Analysis', 57, 1),
+(28, 'Financial Risk', 35, 1);
 
 -- --------------------------------------------------------
 
