@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 17, 2017 at 10:55 PM
--- Server version: 5.5.53-0ubuntu0.14.04.1
+-- Generation Time: Jan 22, 2017 at 09:31 PM
+-- Server version: 5.5.54-0ubuntu0.14.04.1
 -- PHP Version: 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -501,7 +501,7 @@ CREATE TABLE IF NOT EXISTS `modules` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `modules`
@@ -518,7 +518,9 @@ INSERT INTO `modules` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUE
 (8, 'mod_projects', 1, '2017-01-09 09:18:45', '2017-01-09 09:18:45'),
 (9, 'mod_publications', 1, '2017-01-09 09:18:45', '2017-01-09 09:18:45'),
 (10, 'mod_skills', 1, '2017-01-09 09:18:59', '2017-01-09 09:18:59'),
-(12, 'mod_user_profile', 1, '2017-01-17 22:11:33', '2017-01-17 22:11:33');
+(12, 'mod_user_profile', 1, '2017-01-17 22:11:33', '2017-01-17 22:11:33'),
+(13, 'mod_pages', 1, '2017-01-18 19:45:32', '2017-01-18 19:45:32'),
+(14, 'mod_modules', 1, '2017-01-18 20:48:59', '2017-01-18 20:48:59');
 
 -- --------------------------------------------------------
 
@@ -532,7 +534,7 @@ CREATE TABLE IF NOT EXISTS `module_pages` (
   `module_id` int(10) unsigned NOT NULL,
   `priority` smallint(3) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `module_pages`
@@ -548,7 +550,31 @@ INSERT INTO `module_pages` (`id`, `page_id`, `module_id`, `priority`) VALUES
 (7, 2, 9, 5),
 (8, 3, 10, 1),
 (9, 4, 3, 1),
-(10, 1, 12, 1);
+(10, 1, 12, 1),
+(11, 5, 12, 1),
+(12, 6, 11, 2),
+(13, 7, 1, 5),
+(14, 8, 1, 6),
+(15, 9, 2, 7),
+(16, 10, 2, 8),
+(17, 11, 3, 3),
+(18, 12, 3, 4),
+(19, 13, 4, 9),
+(20, 14, 4, 10),
+(21, 15, 5, 11),
+(22, 16, 5, 12),
+(23, 17, 6, 13),
+(24, 18, 6, 14),
+(25, 19, 14, 21),
+(26, 20, 14, 22),
+(27, 21, 13, 23),
+(28, 22, 13, 24),
+(29, 23, 8, 15),
+(30, 24, 8, 16),
+(31, 25, 9, 17),
+(32, 26, 9, 18),
+(33, 27, 10, 19),
+(34, 28, 10, 20);
 
 -- --------------------------------------------------------
 
@@ -571,7 +597,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `pages`
@@ -581,7 +607,31 @@ INSERT INTO `pages` (`id`, `name`, `name_controller`, `name_method`, `route`, `t
 (1, 'Naslovna', 'page', 'index', 'naslovna', 'default', '', '', '', 0, 1, '2017-01-05 21:16:16', '2017-01-05 21:16:16'),
 (2, 'Aktivnosti', 'page', 'index', 'aktivnosti', 'default', '', '', '', 0, 1, '2017-01-05 21:16:16', '2017-01-05 21:16:16'),
 (3, 'Znanja i vestine', 'page', 'index', 'vestine', 'default', '', '', '', 0, 1, '2017-01-05 21:18:15', '2017-01-05 21:18:15'),
-(4, 'Kontakt', 'page', 'index', 'kontakt', 'default', '', '', '', 0, 1, '2017-01-05 21:18:15', '2017-01-05 21:18:15');
+(4, 'Kontakt', 'page', 'index', 'kontakt', 'default', '', '', '', 0, 1, '2017-01-05 21:18:15', '2017-01-05 21:18:15'),
+(5, 'Profile', 'adminProfile', 'index', 'admin-profile', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 15:53:57', '2017-01-19 15:53:57'),
+(6, 'Edit Credential', 'adminUser', 'index', 'admin-user', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 15:58:06', '2017-01-19 15:58:06'),
+(7, 'Articles', 'adminArticle', 'index', 'admin-articles-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-19 16:11:10', '2017-01-19 16:11:10'),
+(8, 'Add New Articles', 'adminArticle', 'insert', 'admin-articles', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 16:11:10', '2017-01-19 16:11:10'),
+(9, 'Certifications', 'adminCertification', 'index', 'admin-certifications-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-19 22:11:00', '2017-01-19 22:11:00'),
+(10, 'Add New Certification', 'adminCertification', 'insert', 'admin-certifications', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 22:13:16', '2017-01-19 22:13:16'),
+(11, 'Messages', 'adminContact', 'index', 'admin-messages-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-19 22:15:22', '2017-01-19 22:15:22'),
+(12, 'New Message', 'adminContact', 'newMessage', 'admin-messages', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 22:19:36', '2017-01-19 22:19:36'),
+(13, 'Education', 'adminEducation', 'index', 'admin-education-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-19 22:22:34', '2017-01-19 22:22:34'),
+(14, 'Add New Education', 'adminEducation', 'insert', 'admin-education', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 22:25:05', '2017-01-19 22:25:05'),
+(15, 'Experience', 'adminExperience', 'index', 'admin-experience-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-19 22:28:47', '2017-01-19 22:28:47'),
+(16, 'Add New Experience', 'adminExperience', 'insert', 'admin-experience', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 22:30:48', '2017-01-19 22:30:48'),
+(17, 'Languages', 'adminLanguage', 'index', 'admin-languages-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-19 23:26:48', '2017-01-19 23:26:48'),
+(18, 'Add New Language', 'adminLanguage', 'insert', 'admin-languages', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 23:28:30', '2017-01-19 23:28:30'),
+(19, 'Modules', 'adminModule', 'index', 'admin-modules-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-20 16:56:34', '2017-01-20 16:56:34'),
+(20, 'Add New Module', 'adminModule', 'insert', 'admin-modules', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-20 16:59:52', '2017-01-20 16:59:52'),
+(21, 'Pages', 'adminPage', 'index', 'admin-pages-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-20 17:03:37', '2017-01-20 17:03:37'),
+(22, 'Add New Page', 'adminPage', 'insert', 'admin-pages', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-20 17:05:39', '2017-01-20 17:05:39'),
+(23, 'Projects', 'adminProject', 'index', 'admin-projects-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-20 17:19:41', '2017-01-20 17:19:41'),
+(24, 'Add New Project', 'adminProject', 'insert', 'admin-projects', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-20 17:19:41', '2017-01-20 17:19:41'),
+(25, 'Publications', 'adminPublication', 'index', 'admin-publications-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-20 17:22:49', '2017-01-20 17:22:49'),
+(26, 'Add New Publication', 'adminPublication', 'insert', 'admin-publications', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-20 17:22:49', '2017-01-20 17:22:49'),
+(27, 'Skills', 'adminSkill', 'index', 'admin-skills-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-20 17:25:03', '2017-01-20 17:25:03'),
+(28, 'Add New Skill', 'adminSkill', 'insert', 'admin-skills', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-20 17:25:03', '2017-01-20 17:25:03');
 
 -- --------------------------------------------------------
 
@@ -618,7 +668,8 @@ INSERT INTO `projects` (`id`, `name`, `project_month`, `project_year`, `project_
 
 CREATE TABLE IF NOT EXISTS `project_members` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `author` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `author_name` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `author_surname` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `project_id` int(10) unsigned NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
@@ -630,10 +681,10 @@ CREATE TABLE IF NOT EXISTS `project_members` (
 -- Dumping data for table `project_members`
 --
 
-INSERT INTO `project_members` (`id`, `author`, `project_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Name1 Surname1', 1, 1, '2017-01-05 20:37:13', '2017-01-05 20:37:13'),
-(2, 'Name1 Surname1', 2, 1, '2017-01-05 20:37:13', '2017-01-05 20:37:13'),
-(3, 'Name2 Surname2', 1, 1, '2017-01-05 20:37:51', '2017-01-05 20:37:51');
+INSERT INTO `project_members` (`id`, `author_name`, `author_surname`, `project_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Name1', 'Surname1', 1, 1, '2017-01-05 20:37:13', '2017-01-05 20:37:13'),
+(2, 'Name1', 'Surname1', 2, 1, '2017-01-05 20:37:13', '2017-01-05 20:37:13'),
+(3, 'Name2', 'Surname2', 1, 1, '2017-01-05 20:37:51', '2017-01-05 20:37:51');
 
 -- --------------------------------------------------------
 
@@ -672,7 +723,8 @@ INSERT INTO `publications` (`id`, `title`, `publisher`, `publ_month`, `publ_year
 
 CREATE TABLE IF NOT EXISTS `publication_authors` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `author` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `author_name` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `author_surname` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `publication_id` int(10) unsigned NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
@@ -684,13 +736,13 @@ CREATE TABLE IF NOT EXISTS `publication_authors` (
 -- Dumping data for table `publication_authors`
 --
 
-INSERT INTO `publication_authors` (`id`, `author`, `publication_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Author1 Surname1', 1, 1, '2017-01-11 12:51:24', '2017-01-11 12:51:24'),
-(2, 'Author2 Surname2', 1, 1, '2017-01-11 12:51:24', '2017-01-11 12:51:24'),
-(3, 'Author3 Surname3', 1, 0, '2017-01-11 12:52:03', '2017-01-11 12:52:03'),
-(4, 'Author4 Surname4', 2, 1, '2017-01-11 12:52:03', '2017-01-11 12:52:03'),
-(5, 'Author5 Surname5', 2, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 'Author6 Surname6', 2, 1, '2017-01-11 12:52:32', '2017-01-11 12:52:32');
+INSERT INTO `publication_authors` (`id`, `author_name`, `author_surname`, `publication_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Author1', 'Surname1', 1, 1, '2017-01-11 12:51:24', '2017-01-11 12:51:24'),
+(2, 'Author2', 'Surname2', 1, 1, '2017-01-11 12:51:24', '2017-01-11 12:51:24'),
+(3, 'Author3', 'Surname3', 1, 0, '2017-01-11 12:52:03', '2017-01-11 12:52:03'),
+(4, 'Author4', 'Surname4', 2, 1, '2017-01-11 12:52:03', '2017-01-11 12:52:03'),
+(5, 'Author5', 'Surname5', 2, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'Author6', 'Surname6', 2, 1, '2017-01-11 12:52:32', '2017-01-11 12:52:32');
 
 -- --------------------------------------------------------
 
