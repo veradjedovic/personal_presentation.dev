@@ -1,2 +1,2 @@
-Publications - list of all publications with edit and delete icon
+Publications - list of all publications
 

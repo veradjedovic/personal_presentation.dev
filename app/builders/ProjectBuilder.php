@@ -41,7 +41,7 @@ class ProjectBuilder
     public function GetVisibleProjects()
     {
         $fields = $this->db . ".name, " . $this->db . ".project_month, " . $this->db . ".project_year, " . $this->db . ".project_url, " . $this->db . ".description,
-              GROUP_CONCAT(project_members.author 
+              GROUP_CONCAT(project_members.author_name, ' ', project_members.author_surname 
               SEPARATOR  ', ' ) as author";
         
         $q = "LEFT JOIN project_members ON " . $this->db . ".id = project_members.project_id

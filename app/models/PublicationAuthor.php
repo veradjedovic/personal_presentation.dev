@@ -19,7 +19,7 @@ class PublicationAuthor extends Model
               *
               * @var array 
               */
-	public static $columns = array('author', 'publication_id', 'status', 'created_at', 'updated_at');
+	public static $columns = array('author_name', 'author_surname', 'publication_id', 'status', 'created_at', 'updated_at');
         
         /**
               *
@@ -31,6 +31,6 @@ class PublicationAuthor extends Model
                *
                * @var type 
                */
-        public $id, $author, $publication_id, $status, $created_at, $updated_at;
+        public $id, $author_name, $author_surname, $publication_id, $status, $created_at, $updated_at;
 
 }

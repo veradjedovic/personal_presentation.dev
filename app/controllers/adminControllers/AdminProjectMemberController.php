@@ -5,11 +5,11 @@ namespace app\controllers\adminControllers;
 use app\controllers\Controller as Controller;
 
 /**
- * Description of AdminPageController
+ * Description of AdminProjectMemberController
  *
  * @author Vera
  */
-class AdminPageController extends Controller
+class AdminProjectMemberController extends Controller
 {
    /**
      *
@@ -22,27 +22,27 @@ class AdminPageController extends Controller
      */
     public function index()
     {
-	$this->view('modules/mod_embedded/mod_pages/admin/index');
+	$this->view('modules/mod_embedded/mod_projects/admin/editProjectMember');
     }
     
     public function insert()
     {
-        $this->view('modules/mod_embedded/mod_pages/admin/addNew');
+        $this->view('modules/mod_embedded/mod_projects/admin/editProjectMember');
     }
     
     public function store()
     {
-        $this->view('modules/mod_embedded/mod_pages/admin/addNew');
+        $this->view('modules/mod_embedded/mod_projects/admin/editProjectMember');
     }
     
     public function show()
     {
-        $this->view('modules/mod_embedded/mod_pages/admin/edit');
+        $this->view('modules/mod_embedded/mod_projects/admin/editProjectMember');
     }
     
     public function update()
     {
-        $this->view('modules/mod_embedded/mod_pages/admin/edit');
+        $this->view('modules/mod_embedded/mod_projects/admin/editProjectMember');
     }
     
     public function destroy()

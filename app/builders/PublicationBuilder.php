@@ -41,7 +41,7 @@ class PublicationBuilder
     public function GetVisiblePublications()
     {
         $fields = $this->db . ".title, " . $this->db . ".publisher, " . $this->db . ".publ_month, " . $this->db . ".publ_year, " . $this->db . ".publ_url, " . $this->db . ".description, " . $this->db . ".document_name,
-              GROUP_CONCAT(publication_authors.author 
+              GROUP_CONCAT(publication_authors.author_name, ' ', publication_authors.author_surname
               SEPARATOR  ', ' ) as author";
         
         $q = "LEFT JOIN publication_authors ON " . $this->db . ".id = publication_authors.publication_id

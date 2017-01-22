@@ -5,11 +5,11 @@ namespace app\controllers\adminControllers;
 use app\controllers\Controller as Controller;
 
 /**
- * Description of AdminArticleController
+ * Description of AdminEducationController
  *
  * @author Vera
  */
-class AdminArticleController extends Controller
+class AdminEducationController extends Controller
 {
    /**
      *
@@ -22,31 +22,31 @@ class AdminArticleController extends Controller
      */
     public function index()
     {
-	$this->view('modules/mod_embedded/mod_article/admin/index');
+	$this->view('modules/mod_embedded/mod_education/admin/index');
     }
     
     public function insert()
     {
-        $this->view('modules/mod_embedded/mod_article/admin/addNew');
+        $this->view('modules/mod_embedded/mod_education/admin/addNew');
     }
     
     public function store()
     {
-        echo 'Article Store method';
+        $this->view('modules/mod_embedded/mod_education/admin/addNew');
     }
     
     public function show()
     {
-        $this->view('modules/mod_embedded/mod_article/admin/edit');
+        $this->view('modules/mod_embedded/mod_education/admin/edit');
     }
     
     public function update()
     {
-        echo 'Article Update method';
+        $this->view('modules/mod_embedded/mod_education/admin/edit');
     }
     
     public function destroy()
     {
-        echo 'Article delete method';
+        echo 'Delete method';
     }
 }

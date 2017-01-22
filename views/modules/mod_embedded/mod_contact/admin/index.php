@@ -1,1 +1,1 @@
-Messages - list of all messages  - with only delete options, maybe it will be better to continue this modul in menu and put it into message link in the top on the page or only new messages up on the top
+Messages - list of all messages
