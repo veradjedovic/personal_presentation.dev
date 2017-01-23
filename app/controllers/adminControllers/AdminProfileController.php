@@ -3,6 +3,9 @@
 namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
+use app\models\ModulePage as ModulePage;
+use app\exceptions\PagesNotFoundException as PagesNotFoundException;
+use Exception as Exception;
 
 /**
  * Description of AdminProfileController
@@ -17,12 +20,43 @@ class AdminProfileController extends Controller
      */
     public $layout = 'admin';
     
-   /**
+    /**
+     *
+     * @var object
+     */
+    protected $modulePage;
+
+    /**
+     * Construct
+     */
+    public function __construct() 
+    {
+        $this->modulePage = new ModulePage();
+    }
+    
+    /**
      * Index method
      */
     public function index()
     {
-	$this->view('modules/mod_embedded/mod_user_profile/admin/index');
+        try {
+            
+            $adminMenu = $this->modulePage->GetAdminPages();
+        
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['adminMenu' => $adminMenu]);
+            
+        } catch (PagesNotFoundException $ex) {
+            
+            $message = $ex->getMessage();
+            
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            
+        } catch (Exception $ex) {
+            
+            $message = 'Linkovi nisu pronadjeni';
+            
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+        }
     }
     
     /**
@@ -30,6 +64,6 @@ class AdminProfileController extends Controller
         */
     public function update()
     {
-        $this->view('modules/mod_embedded/mod_user_profile/admin/index');
+        echo 'Update method';
     }
 }

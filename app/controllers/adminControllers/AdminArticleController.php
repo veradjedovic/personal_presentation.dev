@@ -3,7 +3,9 @@
 namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
-
+use app\models\ModulePage as ModulePage;
+use app\exceptions\PagesNotFoundException as PagesNotFoundException;
+use Exception as Exception;
 /**
  * Description of AdminArticleController
  *
@@ -17,34 +19,115 @@ class AdminArticleController extends Controller
      */
     public $layout = 'admin';
     
-   /**
+    /**
+     *
+     * @var object
+     */
+    protected $modulePage;
+
+
+    /**
+     * Construct
+     */
+    public function __construct() 
+    {
+        $this->modulePage = new ModulePage();
+    }
+    
+    /**
      * Index method
      */
     public function index()
     {
-	$this->view('modules/mod_embedded/mod_article/admin/index');
+        try {
+            
+            $adminMenu = $this->modulePage->GetAdminPages();
+
+            $this->view('modules/mod_embedded/mod_article/admin/index', ['adminMenu' => $adminMenu]);
+        
+        } catch (PagesNotFoundException $ex) {
+            
+            $message = $ex->getMessage();
+            
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            
+        } catch (Exception $ex) {
+            
+            $message = 'Linkovi nisu pronadjeni';
+            
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+        }
     }
     
+    /**
+     * Insert method
+     */
     public function insert()
     {
-        $this->view('modules/mod_embedded/mod_article/admin/addNew');
+        try{
+            
+            $adminMenu = $this->modulePage->GetAdminPages();
+
+            $this->view('modules/mod_embedded/mod_article/admin/addNew', ['adminMenu' => $adminMenu]);
+        
+        } catch (PagesNotFoundException $ex) {
+            
+            $message = $ex->getMessage();
+            
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            
+        } catch (Exception $ex) {
+            
+            $message = 'Linkovi nisu pronadjeni';
+            
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+        }
     }
     
+    /**
+     * Store method
+     */
     public function store()
     {
         echo 'Article Store method';
     }
     
+    /**
+     * Show method
+     */
     public function show()
     {
-        $this->view('modules/mod_embedded/mod_article/admin/edit');
+        try{
+            
+            $adminMenu = $this->modulePage->GetAdminPages();
+
+            $this->view('modules/mod_embedded/mod_article/admin/edit', ['adminMenu' => $adminMenu]);
+        
+        } catch (PagesNotFoundException $ex) {
+            
+            $message = $ex->getMessage();
+            
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            
+        } catch (Exception $ex) {
+            
+            $message = 'Linkovi nisu pronadjeni';
+            
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+        }
     }
     
+    /**
+     * Update method
+     */
     public function update()
     {
         echo 'Article Update method';
     }
     
+    /**
+     * Destroy method
+     */
     public function destroy()
     {
         echo 'Article delete method';

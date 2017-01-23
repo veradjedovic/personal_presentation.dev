@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 22, 2017 at 09:31 PM
+-- Generation Time: Jan 23, 2017 at 05:45 PM
 -- Server version: 5.5.54-0ubuntu0.14.04.1
 -- PHP Version: 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1
 
@@ -608,29 +608,29 @@ INSERT INTO `pages` (`id`, `name`, `name_controller`, `name_method`, `route`, `t
 (2, 'Aktivnosti', 'page', 'index', 'aktivnosti', 'default', '', '', '', 0, 1, '2017-01-05 21:16:16', '2017-01-05 21:16:16'),
 (3, 'Znanja i vestine', 'page', 'index', 'vestine', 'default', '', '', '', 0, 1, '2017-01-05 21:18:15', '2017-01-05 21:18:15'),
 (4, 'Kontakt', 'page', 'index', 'kontakt', 'default', '', '', '', 0, 1, '2017-01-05 21:18:15', '2017-01-05 21:18:15'),
-(5, 'Profile', 'adminProfile', 'index', 'admin-profile', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 15:53:57', '2017-01-19 15:53:57'),
-(6, 'Edit Credential', 'adminUser', 'index', 'admin-user', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 15:58:06', '2017-01-19 15:58:06'),
-(7, 'Articles', 'adminArticle', 'index', 'admin-articles-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-19 16:11:10', '2017-01-19 16:11:10'),
+(5, 'Profile', 'adminProfile', 'index', 'admin', 'admin', '', '', 'icon-user', 0, 3, '2017-01-19 15:53:57', '2017-01-19 15:53:57'),
+(6, 'Edit Credential', 'adminUser', 'index', 'admin-user', 'admin', '', '', 'icon-cloud', 0, 3, '2017-01-19 15:58:06', '2017-01-19 15:58:06'),
+(7, 'Articles', 'adminArticle', 'index', 'admin-articles-list', 'admin', '', '', 'icon-font', 0, 3, '2017-01-19 16:11:10', '2017-01-19 16:11:10'),
 (8, 'Add New Articles', 'adminArticle', 'insert', 'admin-articles', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 16:11:10', '2017-01-19 16:11:10'),
-(9, 'Certifications', 'adminCertification', 'index', 'admin-certifications-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-19 22:11:00', '2017-01-19 22:11:00'),
+(9, 'Certifications', 'adminCertification', 'index', 'admin-certifications-list', 'admin', '', '', 'icon-ok-sign', 0, 3, '2017-01-19 22:11:00', '2017-01-19 22:11:00'),
 (10, 'Add New Certification', 'adminCertification', 'insert', 'admin-certifications', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 22:13:16', '2017-01-19 22:13:16'),
-(11, 'Messages', 'adminContact', 'index', 'admin-messages-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-19 22:15:22', '2017-01-19 22:15:22'),
-(12, 'New Message', 'adminContact', 'newMessage', 'admin-messages', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 22:19:36', '2017-01-19 22:19:36'),
-(13, 'Education', 'adminEducation', 'index', 'admin-education-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-19 22:22:34', '2017-01-19 22:22:34'),
+(11, 'Messages', 'adminContact', 'index', 'admin-messages-list', 'admin', '', '', 'icon-envelope', 0, 3, '2017-01-19 22:15:22', '2017-01-19 22:15:22'),
+(12, 'New Message', 'adminContact', 'newMessage', 'admin-messages', 'admin', '', '', 'icon-comment', 0, 3, '2017-01-19 22:19:36', '2017-01-19 22:19:36'),
+(13, 'Education', 'adminEducation', 'index', 'admin-education-list', 'admin', '', '', 'icon-apple', 0, 3, '2017-01-19 22:22:34', '2017-01-19 22:22:34'),
 (14, 'Add New Education', 'adminEducation', 'insert', 'admin-education', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 22:25:05', '2017-01-19 22:25:05'),
-(15, 'Experience', 'adminExperience', 'index', 'admin-experience-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-19 22:28:47', '2017-01-19 22:28:47'),
+(15, 'Experience', 'adminExperience', 'index', 'admin-experience-list', 'admin', '', '', 'icon-briefcase', 0, 3, '2017-01-19 22:28:47', '2017-01-19 22:28:47'),
 (16, 'Add New Experience', 'adminExperience', 'insert', 'admin-experience', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 22:30:48', '2017-01-19 22:30:48'),
-(17, 'Languages', 'adminLanguage', 'index', 'admin-languages-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-19 23:26:48', '2017-01-19 23:26:48'),
+(17, 'Languages', 'adminLanguage', 'index', 'admin-languages-list', 'admin', '', '', 'icon-globe', 0, 3, '2017-01-19 23:26:48', '2017-01-19 23:26:48'),
 (18, 'Add New Language', 'adminLanguage', 'insert', 'admin-languages', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 23:28:30', '2017-01-19 23:28:30'),
-(19, 'Modules', 'adminModule', 'index', 'admin-modules-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-20 16:56:34', '2017-01-20 16:56:34'),
+(19, 'Modules', 'adminModule', 'index', 'admin-modules-list', 'admin', '', '', 'icon-th-list', 0, 3, '2017-01-20 16:56:34', '2017-01-20 16:56:34'),
 (20, 'Add New Module', 'adminModule', 'insert', 'admin-modules', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-20 16:59:52', '2017-01-20 16:59:52'),
-(21, 'Pages', 'adminPage', 'index', 'admin-pages-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-20 17:03:37', '2017-01-20 17:03:37'),
+(21, 'Pages', 'adminPage', 'index', 'admin-pages-list', 'admin', '', '', 'icon-file', 0, 3, '2017-01-20 17:03:37', '2017-01-20 17:03:37'),
 (22, 'Add New Page', 'adminPage', 'insert', 'admin-pages', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-20 17:05:39', '2017-01-20 17:05:39'),
-(23, 'Projects', 'adminProject', 'index', 'admin-projects-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-20 17:19:41', '2017-01-20 17:19:41'),
+(23, 'Projects', 'adminProject', 'index', 'admin-projects-list', 'admin', '', '', 'icon-folder-open', 0, 3, '2017-01-20 17:19:41', '2017-01-20 17:19:41'),
 (24, 'Add New Project', 'adminProject', 'insert', 'admin-projects', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-20 17:19:41', '2017-01-20 17:19:41'),
-(25, 'Publications', 'adminPublication', 'index', 'admin-publications-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-20 17:22:49', '2017-01-20 17:22:49'),
+(25, 'Publications', 'adminPublication', 'index', 'admin-publications-list', 'admin', '', '', 'icon-book', 0, 3, '2017-01-20 17:22:49', '2017-01-20 17:22:49'),
 (26, 'Add New Publication', 'adminPublication', 'insert', 'admin-publications', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-20 17:22:49', '2017-01-20 17:22:49'),
-(27, 'Skills', 'adminSkill', 'index', 'admin-skills-list', 'admin', '', '', 'icon-table', 0, 3, '2017-01-20 17:25:03', '2017-01-20 17:25:03'),
+(27, 'Skills', 'adminSkill', 'index', 'admin-skills-list', 'admin', '', '', 'icon-wrench', 0, 3, '2017-01-20 17:25:03', '2017-01-20 17:25:03'),
 (28, 'Add New Skill', 'adminSkill', 'insert', 'admin-skills', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-20 17:25:03', '2017-01-20 17:25:03');
 
 -- --------------------------------------------------------

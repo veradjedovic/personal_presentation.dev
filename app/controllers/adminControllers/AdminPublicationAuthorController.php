@@ -3,6 +3,9 @@
 namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
+use app\models\ModulePage as ModulePage;
+use app\exceptions\PagesNotFoundException as PagesNotFoundException;
+use Exception as Exception;
 
 /**
  * Description of AdminPublicationAuthorController
@@ -17,34 +20,115 @@ class AdminPublicationAuthorController extends Controller
      */
     public $layout = 'admin';
     
+    /**
+     *
+     * @var object
+     */
+    protected $modulePage;
+
+
+    /**
+     * Construct
+     */
+    public function __construct() 
+    {
+        $this->modulePage = new ModulePage();
+    }
+    
    /**
      * Index method
      */
     public function index()
     {
-	$this->view('modules/mod_embedded/mod_publications/admin/editPublicationAuthor');
+        try {
+            
+            $adminMenu = $this->modulePage->GetAdminPages();
+
+            $this->view('modules/mod_embedded/mod_publications/admin/editPublicationAuthor', ['adminMenu' => $adminMenu]);
+        
+        } catch (PagesNotFoundException $ex) {
+            
+            $message = $ex->getMessage();
+            
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            
+        } catch (Exception $ex) {
+            
+            $message = 'Linkovi nisu pronadjeni';
+            
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+        }
     }
     
+    /**
+     * Insert method
+     */
     public function insert()
     {
-        $this->view('modules/mod_embedded/mod_publications/admin/editPublicationAuthor');
+        try {
+            
+            $adminMenu = $this->modulePage->GetAdminPages();
+
+            $this->view('modules/mod_embedded/mod_publications/admin/editPublicationAuthor', ['adminMenu' => $adminMenu]);
+
+        } catch (PagesNotFoundException $ex) {
+            
+            $message = $ex->getMessage();
+            
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            
+        } catch (Exception $ex) {
+            
+            $message = 'Linkovi nisu pronadjeni';
+            
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+        }
     }
     
+    /**
+     * Store method
+     */
     public function store()
     {
-        $this->view('modules/mod_embedded/mod_publications/admin/editPublicationAuthor');
+        echo 'Store method';
     }
     
+    /**
+     * Show method
+     */
     public function show()
     {
-        $this->view('modules/mod_embedded/mod_publications/admin/editPublicationAuthor');
+        try {
+            
+            $adminMenu = $this->modulePage->GetAdminPages();
+
+            $this->view('modules/mod_embedded/mod_publications/admin/editPublicationAuthor', ['adminMenu' => $adminMenu]);
+        
+        } catch (PagesNotFoundException $ex) {
+            
+            $message = $ex->getMessage();
+            
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            
+        } catch (Exception $ex) {
+            
+            $message = 'Linkovi nisu pronadjeni';
+            
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+        }
     }
     
+    /**
+     * Update method
+     */
     public function update()
     {
-        $this->view('modules/mod_embedded/mod_publications/admin/editPublicationAuthor');
+        echo 'Update method';
     }
     
+    /**
+     * Destroy method
+     */
     public function destroy()
     {
         echo 'Delete method';
