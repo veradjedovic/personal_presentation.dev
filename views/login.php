@@ -17,9 +17,9 @@
         <![endif]-->
     <!-- GLOBAL STYLES -->
      <!-- PAGE LEVEL STYLES -->
-     <link rel="stylesheet" href="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/css/login.css" />
-    <link rel="stylesheet" href="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/magic/magic.css" />
+     <link rel="stylesheet" href="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="<?php echo SITE_ROOT; ?>/templates/admin/assets/css/login.css" />
+    <link rel="stylesheet" href="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/magic/magic.css" />
      <!-- END PAGE LEVEL STYLES -->
    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -35,7 +35,7 @@
    <!-- PAGE CONTENT --> 
     <div class="container">
     <div class="text-center">
-        <img src="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/img/logo.png" id="logoimg" alt=" Logo" />
+        <img src="<?php echo SITE_ROOT; ?>/templates/admin/assets/img/logo.png" id="logoimg" alt=" Logo" />
     </div>
     <div class="tab-content">
         <div id="login" class="tab-pane active">
@@ -83,9 +83,9 @@
 	  <!--END PAGE CONTENT -->     
 	      
       <!-- PAGE LEVEL SCRIPTS -->
-      <script src="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/jquery-2.0.3.min.js"></script>
-      <script src="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-   <script src="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/js/login.js"></script>
+      <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/jquery-2.0.3.min.js"></script>
+      <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+   <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/js/login.js"></script>
       <!--END PAGE LEVEL SCRIPTS -->
 
 </body>

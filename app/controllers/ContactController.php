@@ -59,58 +59,21 @@ class ContactController extends Controller
     {
         try {
             
-            return $this->validateInputFields();
+            $this->contact->InsertData();
+            
+            return json_encode(['message' => 'Poruka je uspesno poslata']);
                   
         } catch (ValidatorException $ex) {
             
-            return json_encode($ex->getMessage());
+            return json_encode(['message' => $ex->getMessage()]);
             
         } catch (InsertNotExecutedException $ex) {
             
-            return json_encode($ex->getMessage());
+            return json_encode(['message' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            return json_encode('Neispravan email');
+            return json_encode(['message' => 'Neispravan email']);
         }
-    }
-    
-    /**
-     * 
-     * @return json object
-     */
-    protected function validateInputFields() 
-    {      
-        if(!empty(trim($_POST['tb_subject'])) && !empty(trim($_POST['tb_email'])) && !empty(trim($_POST['tb_message'])) && isset($_POST['btn_submit'])) {       
-
-            $this->contact->subject = htmlentities(trim($_POST['tb_subject']));
-            $this->contact->email_from = trim($_POST['tb_email']);
-            
-            $this->validateEmail($this->contact->email_from);
-            
-            $this->contact->content = htmlentities(trim($_POST['tb_message']));
-            $this->contact->status = MESSAGE_VISIBLE;
-            $this->contact->created_at = date('Y-m-d H:i:s');
-            $this->contact->Insert();  
-
-            return json_encode('Poruka je uspesno poslata');
-
-        } else {
-
-            return json_encode('Morate popuniti sva polja');
-        }
-    }
-    
-    /**
-     * 
-     * @throws ValidatorException
-     */
-    protected function validateEmail($email) 
-    {
-        if(!$this->validator->Email($email)) {
-
-            throw new ValidatorException('Unesite ispravnu email adresu!');
-        }          
-
     }
 }

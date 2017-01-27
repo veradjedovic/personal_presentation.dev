@@ -106,5 +106,5 @@ $collector->patch('admin-profile/{id}', ['app\controllers\adminControllers\Admin
 
 //admin-user routes
 $collector->get('admin-user', ['app\controllers\adminControllers\AdminUserController','index']);
-$collector->patch('admin-user/{id}', ['app\controllers\adminControllers\AdminUserController','update']);
+$collector->any('admin-user/{id}', ['app\controllers\adminControllers\AdminUserController','update']);
 

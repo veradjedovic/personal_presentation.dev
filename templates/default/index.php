@@ -3,13 +3,13 @@
 
 <head>
   <title>Personal presentation</title>
-  <base href="/<?php echo SITE_ROOT; ?>" />
+  <base href="<?php echo SITE_ROOT; ?>" />
   <meta name="description" content="website description" />
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" type="text/css" href="templates/default/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo SITE_ROOT; ?>/templates/default/css/style.css" />
   <!-- modernizr enables HTML5 elements and feature detects -->
-  <script type="text/javascript" src="templates/default/js/modernizr-1.5.min.js"></script>
+  <script type="text/javascript" src="<?php echo SITE_ROOT; ?>/templates/default/js/modernizr-1.5.min.js"></script>
 </head>
 <body>
   <div id="main">		

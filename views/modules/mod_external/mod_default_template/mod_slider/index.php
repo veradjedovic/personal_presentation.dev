@@ -16,5 +16,5 @@
 </div><!--close slideshow_container-->  
 
 <!-- javascript at the bottom for fast page loading -->
-<script type="text/javascript" src="templates/default/js/jquery.min.js"></script>
-<script type="text/javascript" src="templates/default/js/image_slide.js"></script>
+<script type="text/javascript" src="<?php echo SITE_ROOT; ?>/templates/default/js/jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo SITE_ROOT; ?>/templates/default/js/image_slide.js"></script>

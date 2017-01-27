@@ -17,13 +17,13 @@
         <![endif]-->
     <!-- GLOBAL STYLES -->
   <!-- GLOBAL STYLES -->
-    <link rel="stylesheet" href="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/Font-Awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/Font-Awesome/css/font-awesome.css" />
     <!--END GLOBAL STYLES -->
 
      <!-- PAGE LEVEL STYLES -->
-    <link rel="stylesheet" href="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/css/error.css" />
-    <link rel="stylesheet" href="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/magic/magic.css" />   
+    <link rel="stylesheet" href="<?php echo SITE_ROOT; ?>/templates/admin/assets/css/error.css" />
+    <link rel="stylesheet" href="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/magic/magic.css" />   
       <!--END PAGE LEVEL STYLES -->
    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

@@ -4,7 +4,12 @@ namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
 use app\models\ModulePage as ModulePage;
+use app\models\User as User;
+use app\classes\Session as Session;
+use app\classes\Validator as Validator;
 use app\exceptions\PagesNotFoundException as PagesNotFoundException;
+use app\exceptions\ValidatorException as ValidatorException;
+use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
 use Exception as Exception;
 
 
@@ -26,6 +31,24 @@ class AdminUserController extends Controller
      * @var object
      */
     protected $modulePage;
+    
+    /**
+     *
+     * @var object
+     */
+    protected $user;
+    
+    /**
+     *
+     * @var object
+     */
+    protected $validator;
+    
+    /**
+     *
+     * @var object
+     */
+    protected $session;
 
 
     /**
@@ -34,6 +57,9 @@ class AdminUserController extends Controller
     public function __construct() 
     {
         $this->modulePage = new ModulePage();
+        $this->user = new User();
+        $this->validator = new Validator();
+        $this->session = new Session();
     }
     
     /**
@@ -44,20 +70,18 @@ class AdminUserController extends Controller
         try {
 
             $adminMenu = $this->modulePage->GetAdminPages();
-
-            $this->view('modules/mod_embedded/mod_user/admin/index', ['adminMenu' => $adminMenu]);
+            
+            $user = $this->user->GetById(1);
+            
+            $this->view('modules/mod_embedded/mod_user/admin/index', ['adminMenu' => $adminMenu, 'user' => $user]);
             
         } catch (PagesNotFoundException $ex) {
             
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            $message = 'Linkovi nisu pronadjeni';
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => 'Linkovi nisu pronadjeni']);
         }
     }
     
@@ -66,6 +90,27 @@ class AdminUserController extends Controller
      */
     public function update()
     {
-        echo 'Update method';
-    }
+        try {   
+
+            $this->user->UpdateUser();
+
+            return json_encode(['message' => 'Successful update']);
+        
+        } catch (ValidatorException $ex) {
+
+            return json_encode(['message' => $ex->getMessage()]);
+            
+        } catch (UpdateNotExecutedException $ex) {
+
+            return json_encode(['message' => $ex->getMessage()]);
+            
+        } catch (PagesNotFoundException $ex) {
+              
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $ex->getMessage()]);
+            
+        } catch (Exception $ex) {
+
+            return json_encode(['message' => 'Neispravni podaci']);
+        }      
+    }  
 }

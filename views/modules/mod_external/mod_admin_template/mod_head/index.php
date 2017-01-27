@@ -2,7 +2,7 @@
    
      <meta charset="UTF-8" />
     <title>BCORE Admin Dashboard Template | Blank Page</title>
-    <base href="/<?php echo SITE_ROOT; ?>" />
+    <base href="<?php echo SITE_ROOT; ?>" />
      <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -11,11 +11,11 @@
         <![endif]-->
     <!-- GLOBAL STYLES -->
     <!-- GLOBAL STYLES -->
-    <link rel="stylesheet" href="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/css/main.css" />
-    <link rel="stylesheet" href="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/css/theme.css" />
-    <link rel="stylesheet" href="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/css/MoneAdmin.css" />
-    <link rel="stylesheet" href="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/Font-Awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="<?php echo SITE_ROOT; ?>/templates/admin/assets/css/main.css" />
+    <link rel="stylesheet" href="<?php echo SITE_ROOT; ?>/templates/admin/assets/css/theme.css" />
+    <link rel="stylesheet" href="<?php echo SITE_ROOT; ?>/templates/admin/assets/css/MoneAdmin.css" />
+    <link rel="stylesheet" href="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/Font-Awesome/css/font-awesome.css" />
     <!--END GLOBAL STYLES -->
 
     <!-- PAGE LEVEL STYLES -->

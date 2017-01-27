@@ -8,7 +8,7 @@
                 <header class="navbar-header">
 
                     <a href="index.html" class="navbar-brand">
-                    <img src="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/img/logo.png" alt="" /></a>
+                    <img src="<?php echo SITE_ROOT; ?>/templates/admin/assets/img/logo.png" alt="" /></a>
                 </header>
                 <!-- END LOGO SECTION -->
                 <ul class="nav navbar-top-links navbar-right">

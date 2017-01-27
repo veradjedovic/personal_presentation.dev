@@ -1,7 +1,7 @@
 <div id="left">
             <div class="media user-media well-small">
                 <a class="user-link" href="#">
-                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="http://<?php echo SITE_ROOT; ?>/templates/admin/assets/img/user.gif" />
+                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="<?php echo SITE_ROOT; ?>/templates/admin/assets/img/user.gif" />
                 </a>
                 <br />
                 <div class="media-body">

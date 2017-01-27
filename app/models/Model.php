@@ -123,6 +123,8 @@ abstract class Model
                     
                     throw new UpdateNotExecutedException('Item is not updated.');
                 } 
+                
+                return $res;
 	}
 
         /**

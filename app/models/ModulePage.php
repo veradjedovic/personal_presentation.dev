@@ -13,27 +13,27 @@ use app\exceptions\PagesNotFoundException as PagesNotFoundException;
 class ModulePage extends Model
 {
     /**
-       *
-       * @var string
-       */
+     *
+     * @var string
+     */
     public static $table = 'module_pages';
     
     /**
-       *
-       * @var array 
-       */
+     *
+     * @var array
+     */
     public static $columns = array('page_id', 'module_id', 'priority');
     
     /**
-       *
-       * @var string  
-       */
+     *
+     * @var string
+     */
     public static $id_column = 'id';
     
     /**
-       *
-       * @var type 
-       */
+     *
+     * @var type 
+     */
     public $id, $page_id, $module_id, $priority;  
     
     /**
@@ -56,7 +56,7 @@ class ModulePage extends Model
         if(!$pages) {
 
                 throw new PagesNotFoundException('Nije pronadjena ni jedna stranica u admin delu.');
-            }
+        }
         
         return $pages;
     } 
