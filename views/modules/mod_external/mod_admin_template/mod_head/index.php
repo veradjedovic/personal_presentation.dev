@@ -1,6 +1,6 @@
 <head>
    
-     <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
     <title>BCORE Admin Dashboard Template | Blank Page</title>
     <base href="<?php echo SITE_ROOT; ?>" />
      <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -19,6 +19,8 @@
     <!--END GLOBAL STYLES -->
 
     <!-- PAGE LEVEL STYLES -->
+    <link rel="stylesheet" href="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/validationengine/css/validationEngine.jquery.css" />
+    <link rel="stylesheet" href="<?php echo SITE_ROOT; ?>/templates/admin/assets/css/bootstrap-fileupload.min.css" />
     <!-- END PAGE LEVEL  STYLES -->
        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

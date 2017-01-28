@@ -5,11 +5,11 @@ namespace app\controllers\adminControllers;
 use app\controllers\Controller as Controller;
 use app\models\ModulePage as ModulePage;
 use app\models\User as User;
-use app\classes\Session as Session;
 use app\classes\Validator as Validator;
 use app\exceptions\PagesNotFoundException as PagesNotFoundException;
 use app\exceptions\ValidatorException as ValidatorException;
 use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
+use app\exceptions\ItemNotFoundException as ItemNotFoundException;
 use Exception as Exception;
 
 
@@ -43,12 +43,6 @@ class AdminUserController extends Controller
      * @var object
      */
     protected $validator;
-    
-    /**
-     *
-     * @var object
-     */
-    protected $session;
 
 
     /**
@@ -59,7 +53,6 @@ class AdminUserController extends Controller
         $this->modulePage = new ModulePage();
         $this->user = new User();
         $this->validator = new Validator();
-        $this->session = new Session();
     }
     
     /**
@@ -74,6 +67,10 @@ class AdminUserController extends Controller
             $user = $this->user->GetById(1);
             
             $this->view('modules/mod_embedded/mod_user/admin/index', ['adminMenu' => $adminMenu, 'user' => $user]);
+            
+        } catch (ItemNotFoundException $ex) {
+
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $ex->getMessage()]);
             
         } catch (PagesNotFoundException $ex) {
             
@@ -97,6 +94,10 @@ class AdminUserController extends Controller
             return json_encode(['message' => 'Successful update']);
         
         } catch (ValidatorException $ex) {
+
+            return json_encode(['message' => $ex->getMessage()]);
+            
+        } catch (ItemNotFoundException $ex) {
 
             return json_encode(['message' => $ex->getMessage()]);
             

@@ -11,7 +11,7 @@
                                         
                                     </div>
                                 
-                                <div id="collapseOne" class="accordion-body collapse in body">
+                                    <div id="collapseOne" class="accordion-body collapse in body">
                                     
                                     <form action="admin-user/<?php echo $data['user']->id ? $data['user']->id : ''; ?>" method ="post" class="formInsert form-horizontal" id="block-validate">
                                         <input type="hidden" name="_method" value="patch" />
@@ -28,14 +28,14 @@
                                             <label class="control-label col-lg-4">Password</label>
 
                                             <div class="col-lg-4">
-                                                <input type="password" id="password2" name="tb_password" class="form-control" value="<?php echo $data['user']->password ? $data['user']->password : ''; ?>" />
+                                                <input type="password" id="password2" name="tb_password" class="form-control" placeholder="Enter your password" />
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Confirm Password</label>
 
                                             <div class="col-lg-4">
-                                                <input type="password" id="confirm_password2" name="tb_confirm_password" class="form-control" value="<?php echo $data['user']->password ? $data['user']->password : ''; ?>" />
+                                                <input type="password" id="confirm_password2" name="tb_confirm_password" class="form-control" placeholder="Confirm your password" />
                                             </div>
                                         </div> 
                                         
@@ -58,7 +58,7 @@
     $('#submit').click(function(e){
        
         e.preventDefault();      
-        $("#message").html("").removeClass("alert alert-success alert-dismissable");
+        $("#message").html("").removeClass("alert alert-success alert-danger alert-dismissable");
         
         $.ajax({
             
@@ -69,7 +69,12 @@
             
             success: function(response) {
 
-                $("#message").append(response.message ).addClass( "alert alert-success alert-dismissable" );
+                if(response.message == 'Successful update'){
+                    
+                    $("#message").append(response.message ).addClass( "alert alert-success alert-dismissable" );
+                } else {
+                    $("#message").append(response.message ).addClass( "alert alert-danger alert-dismissable" );
+                }
                 console.log(response.message);
             }
         });       

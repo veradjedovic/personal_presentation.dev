@@ -20,3 +20,7 @@
       $(function () { Notifications(); });
     </script>     
 <!--END PAGE LEVEL SCRIPTS -->
+
+<!-- PAGE LEVEL SCRIPTS NOTIFICATIONS FILEUPLOAD -->
+<script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/jasny/js/bootstrap-fileupload.js"></script>
+<!--END PAGE LEVEL SCRIPTS -->

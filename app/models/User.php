@@ -64,7 +64,7 @@ class User extends Model
             
             $user = $this->GetById($this->validator->Numeric($_GET['id']));                      
             $user->email = $this->validator->Email($_POST['tb_email']);
-            $user->password = $this->validator->Password($_POST['tb_password'], $_POST['tb_confirm_password']);
+            $user->password = md5($this->validator->Password($_POST['tb_password'], $_POST['tb_confirm_password']));
             $user->Update(); 
         }
 }

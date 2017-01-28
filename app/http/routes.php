@@ -102,7 +102,7 @@ $collector->delete('admin-skills/{id}', ['app\controllers\adminControllers\Admin
 
 //admin-profile routes
 $collector->get('admin', ['app\controllers\adminControllers\AdminProfileController','index']);
-$collector->patch('admin-profile/{id}', ['app\controllers\adminControllers\AdminProfileController','update']);
+$collector->any('admin-profile/{id}', ['app\controllers\adminControllers\AdminProfileController','update']);
 
 //admin-user routes
 $collector->get('admin-user', ['app\controllers\adminControllers\AdminUserController','index']);
