@@ -3,8 +3,7 @@
 namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
-use app\models\ModulePage as ModulePage;
-use app\exceptions\PagesNotFoundException as PagesNotFoundException;
+use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use Exception as Exception;
 
 /**
@@ -24,7 +23,7 @@ class AdminProjectMemberController extends Controller
      *
      * @var object
      */
-    protected $modulePage;
+    protected $menuModule;
 
 
     /**
@@ -32,7 +31,7 @@ class AdminProjectMemberController extends Controller
      */
     public function __construct() 
     {
-        $this->modulePage = new ModulePage();
+        $this->menuModule = new AdminMenuController();
     }
     
    /**
@@ -41,22 +40,12 @@ class AdminProjectMemberController extends Controller
     public function index()
     {
         try {
-            
-            $adminMenu = $this->modulePage->GetAdminPages();
 
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMember', ['adminMenu' => $adminMenu]);
+            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMember');
         
-        } catch (PagesNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
-            
         } catch (Exception $ex) {
             
-            $message = 'Linkovi nisu pronadjeni';
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMember', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -66,22 +55,12 @@ class AdminProjectMemberController extends Controller
     public function insert()
     {
         try {
-            
-            $adminMenu = $this->modulePage->GetAdminPages();
 
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMember', ['adminMenu' => $adminMenu]);
+            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMember');
         
-        } catch (PagesNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
-            
         } catch (Exception $ex) {
             
-            $message = 'Linkovi nisu pronadjeni';
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMember', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -99,22 +78,12 @@ class AdminProjectMemberController extends Controller
     public function show()
     {
         try {
-            
-            $adminMenu = $this->modulePage->GetAdminPages();
 
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMember', ['adminMenu' => $adminMenu]);
+            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMember');
         
-        } catch (PagesNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
-            
         } catch (Exception $ex) {
             
-            $message = 'Linkovi nisu pronadjeni';
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMember', ['messageException' => 'Nema podataka']);
         }
     }
     

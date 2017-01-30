@@ -10,6 +10,10 @@
                                     <!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>-->                                      
                                 </div>
                                 
+                                <?php 
+                                    if(isset($data['userProfile'])) {
+                                ?>
+                                
                                 <div id="collapse2" class="body collapse in">
                                     
                                     <form class="form-horizontal">
@@ -99,6 +103,14 @@
                                         </div>
                                     </form>
                                 </div>
+                                
+                                <?php
+                                
+                                    }
+                                    
+                                    echo isset($data['messageException']) ? $data['messageException'] : ''; 
+                                ?>
+                                
                             </div>
                         </div>
 </div>    

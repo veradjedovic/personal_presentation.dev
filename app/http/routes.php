@@ -108,3 +108,6 @@ $collector->any('admin-profile/{id}', ['app\controllers\adminControllers\AdminPr
 $collector->get('admin-user', ['app\controllers\adminControllers\AdminUserController','index']);
 $collector->any('admin-user/{id}', ['app\controllers\adminControllers\AdminUserController','update']);
 
+//test
+$collector->get('menu', ['app\controllers\adminControllers\AdminMenuController','index']);
+

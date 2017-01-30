@@ -3,8 +3,7 @@
 namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
-use app\models\ModulePage as ModulePage;
-use app\exceptions\PagesNotFoundException as PagesNotFoundException;
+use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use Exception as Exception;
 /**
  * Description of AdminArticleController
@@ -23,7 +22,7 @@ class AdminArticleController extends Controller
      *
      * @var object
      */
-    protected $modulePage;
+    protected $menuModule;
 
 
     /**
@@ -31,7 +30,7 @@ class AdminArticleController extends Controller
      */
     public function __construct() 
     {
-        $this->modulePage = new ModulePage();
+        $this->menuModule = new AdminMenuController();
     }
     
     /**
@@ -40,22 +39,14 @@ class AdminArticleController extends Controller
     public function index()
     {
         try {
-            
-            $adminMenu = $this->modulePage->GetAdminPages();
 
-            $this->view('modules/mod_embedded/mod_article/admin/index', ['adminMenu' => $adminMenu]);
+            $this->view('modules/mod_embedded/mod_article/admin/index');
         
-        } catch (PagesNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
-            
         } catch (Exception $ex) {
             
-            $message = 'Linkovi nisu pronadjeni';
+            $message = 'Nema padataka';
             
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_article/admin/index', ['messageException' => $message]);
         }
     }
     
@@ -65,22 +56,14 @@ class AdminArticleController extends Controller
     public function insert()
     {
         try{
-            
-            $adminMenu = $this->modulePage->GetAdminPages();
 
-            $this->view('modules/mod_embedded/mod_article/admin/addNew', ['adminMenu' => $adminMenu]);
+            $this->view('modules/mod_embedded/mod_article/admin/addNew');
         
-        } catch (PagesNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
-            
         } catch (Exception $ex) {
             
-            $message = 'Linkovi nisu pronadjeni';
+            $message = 'Nema podataka';
             
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_article/admin/addNew', ['messageException' => $message]);
         }
     }
     
@@ -98,22 +81,14 @@ class AdminArticleController extends Controller
     public function show()
     {
         try{
-            
-            $adminMenu = $this->modulePage->GetAdminPages();
 
-            $this->view('modules/mod_embedded/mod_article/admin/edit', ['adminMenu' => $adminMenu]);
+            $this->view('modules/mod_embedded/mod_article/admin/edit');
         
-        } catch (PagesNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
-            
         } catch (Exception $ex) {
             
-            $message = 'Linkovi nisu pronadjeni';
+            $message = 'Nema podataka';
             
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_article/admin/edit', ['messageException' => $message]);
         }
     }
     

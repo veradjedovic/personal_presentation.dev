@@ -3,8 +3,7 @@
 namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
-use app\models\ModulePage as ModulePage;
-use app\exceptions\PagesNotFoundException as PagesNotFoundException;
+use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use Exception as Exception;
 
 /**
@@ -24,7 +23,7 @@ class AdminCertificationController extends Controller
      *
      * @var object
      */
-    protected $modulePage;
+    protected $menuModule;
 
 
     /**
@@ -32,7 +31,7 @@ class AdminCertificationController extends Controller
      */
     public function __construct() 
     {
-        $this->modulePage = new ModulePage();
+        $this->menuModule = new AdminMenuController();
     }
     
     /**
@@ -42,21 +41,11 @@ class AdminCertificationController extends Controller
     {
         try{
             
-            $adminMenu = $this->modulePage->GetAdminPages();
-            
-            $this->view('modules/mod_embedded/mod_certifications/admin/index', ['adminMenu' => $adminMenu]);
+            $this->view('modules/mod_embedded/mod_certifications/admin/index');
         
-        } catch (PagesNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
-            
         } catch (Exception $ex) {
             
-            $message = 'Linkovi nisu pronadjeni';
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_certifications/admin/index', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -67,21 +56,11 @@ class AdminCertificationController extends Controller
     {
         try{
             
-            $adminMenu = $this->modulePage->GetAdminPages();
-            
-            $this->view('modules/mod_embedded/mod_certifications/admin/addNew', ['adminMenu' => $adminMenu]);
+            $this->view('modules/mod_embedded/mod_certifications/admin/addNew');
         
-        } catch (PagesNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
-            
         } catch (Exception $ex) {
-            
-            $message = 'Linkovi nisu pronadjeni';
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+
+            $this->view('modules/mod_embedded/mod_certifications/admin/addNew', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -100,21 +79,11 @@ class AdminCertificationController extends Controller
     {
         try{
             
-            $adminMenu = $this->modulePage->GetAdminPages();
-            
-            $this->view('modules/mod_embedded/mod_certifications/admin/edit', ['adminMenu' => $adminMenu]);
+            $this->view('modules/mod_embedded/mod_certifications/admin/edit');
         
-        } catch (PagesNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
-            
         } catch (Exception $ex) {
             
-            $message = 'Linkovi nisu pronadjeni';
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_certifications/admin/edit', ['messageException' => 'Nema podataka']);
         }
     }
     

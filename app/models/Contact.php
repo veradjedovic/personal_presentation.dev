@@ -5,6 +5,7 @@ namespace app\models;
 use app\models\Model as Model;
 use app\classes\Validator as Validator;
 use app\exceptions\ValidatorException as ValidatorException;
+use app\exceptions\ContactNotFoundException as ContactNotFoundException;
 
 /**
  * Class Contact
@@ -65,9 +66,26 @@ class Contact extends Model
         $this->subject = $this->validator->Required($_POST['tb_subject']);
         $this->email_from = $this->validator->Email($_POST['tb_email']);     
         $this->content = $this->validator->Required($_POST['tb_message']);
-        $this->status = MESSAGE_VISIBLE;
+        $this->status = MESSAGE_UNREAD;
         $this->created_at = date('Y-m-d H:i:s');
         $this->Insert();     
+    }
+    
+    /**
+     * 
+     * @return array
+     * @throws ContactNotFoundException
+     */
+    public function GetVisibleMessage()
+    {
+        $messages = $this->GetAll('*', ' WHERE status =' . MESSAGE_UNREAD . ' OR status =' . MESSAGE_READ . ' ORDER BY created_at DESC');
+//        $messages=null;
+        if(!$messages) {
+            
+            throw new ContactNotFoundException('No messages');
+        }
+        
+        return $messages;
     }
     
 }

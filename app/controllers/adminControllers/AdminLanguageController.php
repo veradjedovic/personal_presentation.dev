@@ -3,8 +3,7 @@
 namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
-use app\models\ModulePage as ModulePage;
-use app\exceptions\PagesNotFoundException as PagesNotFoundException;
+use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use Exception as Exception;
 
 /**
@@ -24,7 +23,7 @@ class AdminLanguageController extends Controller
      *
      * @var object
      */
-    protected $modulePage;
+    protected $menuModule;
 
 
     /**
@@ -32,7 +31,7 @@ class AdminLanguageController extends Controller
      */
     public function __construct() 
     {
-        $this->modulePage = new ModulePage();
+        $this->menuModule = new AdminMenuController();
     }
     
    /**
@@ -42,21 +41,11 @@ class AdminLanguageController extends Controller
     {
         try {
             
-            $adminMenu = $this->modulePage->GetAdminPages();
-
-            $this->view('modules/mod_embedded/mod_languages/admin/index', ['adminMenu' => $adminMenu]);
+            $this->view('modules/mod_embedded/mod_languages/admin/index');
         
-        } catch (PagesNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
-            
         } catch (Exception $ex) {
             
-            $message = 'Linkovi nisu pronadjeni';
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_languages/admin/index', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -66,22 +55,12 @@ class AdminLanguageController extends Controller
     public function insert()
     {
         try {
-            
-            $adminMenu = $this->modulePage->GetAdminPages();
 
-            $this->view('modules/mod_embedded/mod_languages/admin/addNew', ['adminMenu' => $adminMenu]);
+            $this->view('modules/mod_embedded/mod_languages/admin/addNew');
         
-        } catch (PagesNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
-            
         } catch (Exception $ex) {
             
-            $message = 'Linkovi nisu pronadjeni';
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_languages/admin/addNew', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -98,23 +77,13 @@ class AdminLanguageController extends Controller
      */
     public function show()
     {
-        try{
-            
-            $adminMenu = $this->modulePage->GetAdminPages();
+        try {
 
-            $this->view('modules/mod_embedded/mod_languages/admin/edit', ['adminMenu' => $adminMenu]);
+            $this->view('modules/mod_embedded/mod_languages/admin/edit');
         
-        } catch (PagesNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
-            
         } catch (Exception $ex) {
-            
-            $message = 'Linkovi nisu pronadjeni';
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+                    
+            $this->view('modules/mod_embedded/mod_languages/admin/edit', ['messageException' => 'Nema podataka']);
         }
     }
     

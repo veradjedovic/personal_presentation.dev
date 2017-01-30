@@ -3,8 +3,10 @@
 namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
-use app\models\ModulePage as ModulePage;
-use app\exceptions\PagesNotFoundException as PagesNotFoundException;
+use app\models\Contact as Contact;
+use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
+use app\exceptions\ContactNotFoundException as ContactNotFoundException;
+use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use Exception as Exception;
 
 /**
@@ -19,20 +21,27 @@ class AdminContactController extends Controller
      * @var string 
      */
     public $layout = 'admin';
+
+    /**
+     *
+     * @var object
+     */
+    protected $contact;
     
     /**
      *
      * @var object
      */
-    protected $modulePage;
+    protected $menuModule;
 
-    
+
     /**
      * Construct
      */
     public function __construct()
     {
-        $this->modulePage = new ModulePage();
+        $this->contact = new Contact();
+        $this->menuModule = new AdminMenuController();
     }
 
     /**
@@ -41,22 +50,28 @@ class AdminContactController extends Controller
     public function index()
     {
         try{
-            
-            $adminMenu = $this->modulePage->GetAdminPages();
-            
-            $this->view('modules/mod_embedded/mod_contact/admin/index', ['adminMenu' => $adminMenu]);
+
+            $messages = $this->contact->GetVisibleMessage();
         
-        } catch (PagesNotFoundException $ex) {
+            $this->view('modules/mod_embedded/mod_contact/admin/index', ['messages' => $messages]);
+        
+        } catch (ContactNotFoundException $ex) {
             
             $message = $ex->getMessage();
             
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_contact/admin/index', ['messageException' => $message]);
+            
+        } catch (CollectionNotFoundException $ex) {
+            
+            $message = $ex->getMessage();
+            
+            $this->view('modules/mod_embedded/mod_contact/admin/index', ['messageException' => $message]);
             
         } catch (Exception $ex) {
             
             $message = 'Linkovi nisu pronadjeni';
             
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_contact/admin/index', ['messageException' => $message]);
         }
     }
     
@@ -67,21 +82,13 @@ class AdminContactController extends Controller
     {
         try{
             
-            $adminMenu = $this->modulePage->GetAdminPages();
-            
-            $this->view('modules/mod_embedded/mod_contact/admin/newMessage', ['adminMenu' => $adminMenu]);
+            $this->view('modules/mod_embedded/mod_contact/admin/newMessage');
         
-        } catch (PagesNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
-            
         } catch (Exception $ex) {
             
             $message = 'Linkovi nisu pronadjeni';
             
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_contact/admin/newMessage', ['messageException' => $message]);
         }
     }
     
@@ -100,21 +107,13 @@ class AdminContactController extends Controller
     {
         try{
             
-            $adminMenu = $this->modulePage->GetAdminPages();
-            
-            $this->view('modules/mod_embedded/mod_contact/admin/show', ['adminMenu' => $adminMenu]);
+            $this->view('modules/mod_embedded/mod_contact/admin/show');
         
-        } catch (PagesNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
-            
         } catch (Exception $ex) {
             
             $message = 'Linkovi nisu pronadjeni';
             
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_contact/admin/show', ['messageException' => $message]);
         }
     }
     

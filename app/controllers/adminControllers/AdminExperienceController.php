@@ -3,8 +3,7 @@
 namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
-use app\models\ModulePage as ModulePage;
-use app\exceptions\PagesNotFoundException as PagesNotFoundException;
+use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use Exception as Exception;
 
 /**
@@ -24,7 +23,7 @@ class AdminExperienceController extends Controller
      *
      * @var object
      */
-    protected $modulePage;
+    protected $menuModule;  
 
 
     /**
@@ -32,7 +31,7 @@ class AdminExperienceController extends Controller
      */
     public function __construct() 
     {
-        $this->modulePage = new ModulePage();
+        $this->menuModule = new AdminMenuController();
     }
     
    /**
@@ -40,23 +39,13 @@ class AdminExperienceController extends Controller
      */
     public function index()
     {
-        try{
-        
-            $adminMenu = $this->modulePage->GetAdminPages();
+        try {
             
-            $this->view('modules/mod_embedded/mod_experience/admin/index', ['adminMenu' => $adminMenu]);
-            
-        } catch (PagesNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_experience/admin/index');
             
         } catch (Exception $ex) {
             
-            $message = 'Linkovi nisu pronadjeni';
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_experience/admin/index', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -65,23 +54,13 @@ class AdminExperienceController extends Controller
      */
     public function insert()
     {
-        try{
+        try {
+
+            $this->view('modules/mod_embedded/mod_experience/admin/addNew');
         
-            $adminMenu = $this->modulePage->GetAdminPages();
-            
-            $this->view('modules/mod_embedded/mod_experience/admin/addNew', ['adminMenu' => $adminMenu]);
-        
-        } catch (PagesNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
-            
         } catch (Exception $ex) {
             
-            $message = 'Linkovi nisu pronadjeni';
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_experience/admin/addNew', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -98,23 +77,14 @@ class AdminExperienceController extends Controller
      */
     public function show()
     {
-        try{
+        try {
+            
+            $this->view('modules/mod_embedded/mod_experience/admin/edit');
         
-            $adminMenu = $this->modulePage->GetAdminPages();
+        } catch (Exception $ex) {           
             
-            $this->view('modules/mod_embedded/mod_experience/admin/edit', ['adminMenu' => $adminMenu]);
-        
-        } catch (PagesNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
-            
-        } catch (Exception $ex) {
-            
-            $message = 'Linkovi nisu pronadjeni';
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $message]);
+            $this->view('modules/mod_embedded/mod_experience/admin/edit', ['messageException' => 'Nema podataka']);
+
         }
     }
     

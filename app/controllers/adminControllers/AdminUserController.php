@@ -3,10 +3,9 @@
 namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
-use app\models\ModulePage as ModulePage;
 use app\models\User as User;
+use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use app\classes\Validator as Validator;
-use app\exceptions\PagesNotFoundException as PagesNotFoundException;
 use app\exceptions\ValidatorException as ValidatorException;
 use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
@@ -30,12 +29,6 @@ class AdminUserController extends Controller
      *
      * @var object
      */
-    protected $modulePage;
-    
-    /**
-     *
-     * @var object
-     */
     protected $user;
     
     /**
@@ -43,6 +36,12 @@ class AdminUserController extends Controller
      * @var object
      */
     protected $validator;
+    
+    /**
+     *
+     * @var object
+     */
+    protected $menuModule;
 
 
     /**
@@ -50,9 +49,9 @@ class AdminUserController extends Controller
      */
     public function __construct() 
     {
-        $this->modulePage = new ModulePage();
         $this->user = new User();
         $this->validator = new Validator();
+        $this->menuModule = new AdminMenuController();
     }
     
     /**
@@ -61,24 +60,18 @@ class AdminUserController extends Controller
     public function index()
     {
         try {
-
-            $adminMenu = $this->modulePage->GetAdminPages();
             
             $user = $this->user->GetById(1);
             
-            $this->view('modules/mod_embedded/mod_user/admin/index', ['adminMenu' => $adminMenu, 'user' => $user]);
+            $this->view('modules/mod_embedded/mod_user/admin/index', ['user' => $user]);
             
         } catch (ItemNotFoundException $ex) {
 
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $ex->getMessage()]);
-            
-        } catch (PagesNotFoundException $ex) {
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/mod_user/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => 'Linkovi nisu pronadjeni']);
+            $this->view('modules/mod_embedded/mod_user/admin/index', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -104,10 +97,6 @@ class AdminUserController extends Controller
         } catch (UpdateNotExecutedException $ex) {
 
             return json_encode(['message' => $ex->getMessage()]);
-            
-        } catch (PagesNotFoundException $ex) {
-              
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['message' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
 

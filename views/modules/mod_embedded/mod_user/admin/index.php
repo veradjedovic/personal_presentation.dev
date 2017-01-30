@@ -11,6 +11,10 @@
                                         
                                     </div>
                                 
+                                    <?php 
+                                        if(isset($data['user'])) {
+                                    ?>
+
                                     <div id="collapseOne" class="accordion-body collapse in body">
                                     
                                     <form action="admin-user/<?php echo $data['user']->id ? $data['user']->id : ''; ?>" method ="post" class="formInsert form-horizontal" id="block-validate">
@@ -45,6 +49,15 @@
 
                                     </form>
                                 </div>
+                                    
+                                    <?php
+                                    
+                                        }
+                                        
+                                        echo isset($data['messageException']) ? $data['messageException'] : '';  
+                                    
+                                    ?>
+                                    
                             </div>
                         </div>
 </div>

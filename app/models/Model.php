@@ -65,7 +65,7 @@ abstract class Model
 		$db = Database::GetConnection();
 		$res = mysqli_query($db, "select " . $fields . " from " . static::$table . " " . $filter);
                 $ret_val = array();
-                
+//                $res = null;
                 if(!$res) {
                     
                     throw new CollectionNotFoundException('Objects not found.');
@@ -75,7 +75,12 @@ abstract class Model
 
 			$ret_val[] = $rw;
 		}
-              
+//              $ret_val=null;
+                if(!$ret_val) {
+                    
+                    throw new CollectionNotFoundException('Collection not found.');
+                }  
+                
 		return $ret_val;
 	}
 
