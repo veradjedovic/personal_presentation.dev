@@ -7,6 +7,8 @@ use app\models\Contact as Contact;
 use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use app\exceptions\ContactNotFoundException as ContactNotFoundException;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
+use app\exceptions\ItemNotFoundException as ItemNotFoundException;
+use app\exceptions\DeleteNotExecutedException as DeleteNotExecutedException;
 use Exception as Exception;
 
 /**
@@ -86,9 +88,7 @@ class AdminContactController extends Controller
         
         } catch (Exception $ex) {
             
-            $message = 'Linkovi nisu pronadjeni';
-            
-            $this->view('modules/mod_embedded/mod_contact/admin/newMessage', ['messageException' => $message]);
+            $this->view('modules/mod_embedded/mod_contact/admin/newMessage', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -106,15 +106,24 @@ class AdminContactController extends Controller
     public function show()
     {
         try{
-            
-            $this->view('modules/mod_embedded/mod_contact/admin/show');
+
+            $message = $this->contact->SetStatusRead((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+
+            $this->view('modules/mod_embedded/mod_contact/admin/show' , ['messageOne' => $message]);
         
+        } catch (ItemNotFoundException $ex) {
+
+            $this->view('modules/mod_embedded/mod_contact/admin/show', ['messageException' => $ex->getMessage()]);
+            
         } catch (Exception $ex) {
             
-            $message = 'Linkovi nisu pronadjeni';
-            
-            $this->view('modules/mod_embedded/mod_contact/admin/show', ['messageException' => $message]);
+            $this->view('modules/mod_embedded/mod_contact/admin/show', ['messageException' => 'Nema podataka']);
         }
+    }
+    
+    public function sendEmailFromAdmin() 
+    {
+        dd($_POST);
     }
     
     /**
@@ -122,6 +131,22 @@ class AdminContactController extends Controller
      */
     public function destroy()
     {
-        echo 'Delete message';
+        
+        try {
+            
+            $this->contact->Delete((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            
+            return json_encode(['message' => 'Message deleted', 'id' => $_GET['id'], 'error'=> false]);
+            
+        } catch (DeleteNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Message is not deleted', 'error'=> true]);
+        }
+
+
     }
 }

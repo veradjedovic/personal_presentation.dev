@@ -25,12 +25,13 @@ $collector->get('admin-certifications/{id}', ['app\controllers\adminControllers\
 $collector->patch('admin-certifications/{id}', ['app\controllers\adminControllers\AdminCertificationController','update']);
 $collector->delete('admin-certifications/{id}', ['app\controllers\adminControllers\AdminCertificationController','destroy']);
 
-//admin-certifications routes
+//admin-contact routes
 $collector->get('admin-messages-list', ['app\controllers\adminControllers\AdminContactController','index']);
 $collector->get('admin-messages', ['app\controllers\adminControllers\AdminContactController','newMessage']);
 $collector->post('admin-messages', ['app\controllers\adminControllers\AdminContactController','sendEmail']);
 $collector->get('admin-messages/{id}', ['app\controllers\adminControllers\AdminContactController','show']);
-$collector->delete('admin-messages/{id}', ['app\controllers\adminControllers\AdminContactController','destroy']);
+$collector->any('admin-messages-send', ['app\controllers\adminControllers\AdminContactController','sendEmailFromAdmin']);
+$collector->any('admin-messages-delete/{id}', ['app\controllers\adminControllers\AdminContactController','destroy']);
 
 //admin-education routes
 $collector->get('admin-education-list', ['app\controllers\adminControllers\AdminEducationController','index']);

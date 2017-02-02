@@ -88,4 +88,18 @@ class Contact extends Model
         return $messages;
     }
     
+    /**
+     * 
+     * @param type $id
+     * @return type
+     */
+    public function SetStatusRead($id)
+    {
+        $message = $this->GetById($id);     
+        $message->status = MESSAGE_READ;
+        $message->Update();
+
+        return $message;
+    }
+    
 }

@@ -22,5 +22,20 @@
 <!--END PAGE LEVEL SCRIPTS -->
 
 <!-- PAGE LEVEL SCRIPTS NOTIFICATIONS FILEUPLOAD -->
-<script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/jasny/js/bootstrap-fileupload.js"></script>
+    <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/jasny/js/bootstrap-fileupload.js"></script>
+<!--END PAGE LEVEL SCRIPTS -->
+
+<!-- PAGE LEVEL SCRIPTS DATATABLES -->
+    <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script>
+         $(document).ready(function () {
+             $('#dataTables-example').dataTable();
+         });
+    </script>
+<!-- END PAGE LEVEL SCRIPTS -->   
+     
+<!-- PAGE LEVEL SCRIPTS -->
+    <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/gritter/js/jquery.gritter.js"></script>
+    <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/js/moreNoti.js"></script>
 <!--END PAGE LEVEL SCRIPTS -->

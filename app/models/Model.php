@@ -17,33 +17,39 @@ use app\exceptions\DeleteNotExecutedException as DeleteNotExecutedException;
 abstract class Model 
 {
         /**
-              *
-              * @var string 
-              */
+         *
+         * @var string
+         */
 	public static $table = '';
         
         /**
-              *
-              * @var array 
-              */
+         *
+         * @var array
+         */
 	public static $columns = array();
         
         /**
-              *
-              * @var string 
-              */
+         *
+         * @var string
+         */
 	public static $id_column = '';
 
         /**
-              * 
-              * GetById method
-              * @param type $id
-              * @return type
-              */
+         * 
+         * @param int $id
+         * @return object
+         * @throws ItemNotFoundException
+         */
 	public function GetById($id)
 	{
 		$db = Database::GetConnection();
 		$res = mysqli_query($db, "select * from " . static::$table . " where " . static::$id_column . " = {$id}");
+                
+                if(!$res) {
+                    
+                    throw new ItemNotFoundException('Not found');
+                }
+                
                 $item = mysqli_fetch_object($res, get_called_class());
                 
                 if(!$item) {
@@ -55,11 +61,12 @@ abstract class Model
 	}
 
         /**
-              * 
-              * GetAll method
-              * @param type $filter
-              * @return type
-              */
+         * 
+         * @param string $fields
+         * @param string $filter
+         * @return array
+         * @throws CollectionNotFoundException
+         */
 	public function GetAll($fields = "*", $filter = "")
 	{
 		$db = Database::GetConnection();
@@ -85,8 +92,10 @@ abstract class Model
 	}
 
         /**
-              * Insert method
-              */
+         * 
+         * @return int
+         * @throws InsertNotExecutedException
+         */
 	public function Insert()
 	{
 		$db = Database::GetConnection();
@@ -110,8 +119,10 @@ abstract class Model
 	}
 
         /**
-              * Update method
-              */
+         * 
+         * @return type
+         * @throws UpdateNotExecutedException
+         */
 	public function Update()
 	{
 		$db = Database::GetConnection();
@@ -133,10 +144,11 @@ abstract class Model
 	}
 
         /**
-              * 
-              * Delete method
-              * @param type $id
-              */
+         * 
+         * @param int $id
+         * @return boolean
+         * @throws DeleteNotExecutedException
+         */
 	public function Delete($id)
 	{
 		$db = Database::GetConnection(); 
@@ -147,5 +159,7 @@ abstract class Model
                     
                     throw new DeleteNotExecutedException('Item is not deleted.');
                 }
+                
+                return $res;
 	}
 }

@@ -21,6 +21,9 @@
     <!-- PAGE LEVEL STYLES -->
     <link rel="stylesheet" href="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/validationengine/css/validationEngine.jquery.css" />
     <link rel="stylesheet" href="<?php echo SITE_ROOT; ?>/templates/admin/assets/css/bootstrap-fileupload.min.css" />
+    <link href="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/social-buttons/social-buttons.css" />   
+    <link href="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
     <!-- END PAGE LEVEL  STYLES -->
        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
