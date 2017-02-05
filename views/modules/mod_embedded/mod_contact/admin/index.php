@@ -18,7 +18,7 @@
                                             <th>Date</th>
                                             <th>From</th>
                                             <th>Subject</th>                                            
-                                            <th>Status</th>
+                                            <th><i class="icon-circle"></i> Unread</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>                                                                   
@@ -36,9 +36,11 @@
                                             <td><?php echo ($message->email_from) ? $message->email_from : '' ?></td> 
                                             <td><?php echo ($message->subject) ? $message->subject : '' ?></td>                                                          
                                             <td class="">
-                                                <a href="admin-messages/<?php echo ($message->id) ? $message->id : 1; ?>">
-                                                <?php echo ($message->status == MESSAGE_READ) ? '<button class="btn">Read</button>' : '<button class="btn btn-success">Unead</button>' ?>
-                                                </a>
+                                                <center>
+                                                    <a href="admin-messages/<?php echo ($message->id) ? $message->id : 1; ?>">
+                                                    <?php echo ($message->status == MESSAGE_READ) ? '<i class="icon-circle-blank"></i>' : '<i class="icon-circle"></i>' ?>
+                                                    </a>
+                                                </center>
                                             </td>
                                             <td class="">
                                                 <form class="formInsert" action="admin-messages-delete/<?php echo ($message->id) ? $message->id : 1; ?>" method="post" >

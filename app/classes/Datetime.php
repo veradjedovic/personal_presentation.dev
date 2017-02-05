@@ -50,4 +50,28 @@ class Datetime
     {
         return $this->yearEnd;
     }
+    
+    /**
+     * 
+     * @return array
+     */
+    public function getDays()
+    {
+        $days = array('Monthday', 'Thusday', 'Wendersday', 'Thursday', 'Friday', 'Saturday', 'Sandy');
+        
+        return $days;
+    }
+    
+    /**
+     * 
+     * @return array
+     */
+    public function getMonth() 
+    {
+        $month = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+        
+        return $month;
+    }
+    
+    
 }

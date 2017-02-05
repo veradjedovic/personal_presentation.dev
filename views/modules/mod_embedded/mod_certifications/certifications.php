@@ -18,8 +18,8 @@
             if($item->certif_url)
             echo "{$item->certif_url}<br />";
             
-            if($item->certif_day || $item->certif_year)
-            echo "Starting {$item->certif_day} {$item->certif_year}</p>";                     
+            if($item->certif_month || $item->certif_year)
+            echo "Starting {$item->certif_month} {$item->certif_year}</p>";                     
         }
     ?>
 </section>

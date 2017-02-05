@@ -4,6 +4,12 @@ namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
 use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
+use app\models\Certification as Certification;
+use app\classes\Datetime as Datetime;
+use app\exceptions\ItemNotFoundException as ItemNotFoundException;
+use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
+use app\exceptions\ValidatorException as ValidatorException;
+use app\exceptions\InsertNotExecutedException as InsertNotExecutedException;
 use Exception as Exception;
 
 /**
@@ -24,6 +30,18 @@ class AdminCertificationController extends Controller
      * @var object
      */
     protected $menuModule;
+    
+    /**
+     *
+     * @var object
+     */
+    protected $certification;
+    
+    /**
+     *
+     * @var object
+     */
+    protected $datetime;
 
 
     /**
@@ -32,6 +50,8 @@ class AdminCertificationController extends Controller
     public function __construct() 
     {
         $this->menuModule = new AdminMenuController();
+        $this->certification = new Certification();
+        $this->datetime = new Datetime(date("Y")-60, date("Y"));
     }
     
     /**
@@ -41,7 +61,9 @@ class AdminCertificationController extends Controller
     {
         try{
             
-            $this->view('modules/mod_embedded/mod_certifications/admin/index');
+            $certification = $this->certification->GetAll('*', 'where status = ' . CERTIF_VISIBLE . ' or status = ' . CERTIF_NOT_VISIBLE . ' ORDER BY certif_year DESC');
+
+            $this->view('modules/mod_embedded/mod_certifications/admin/index', ['certification' => $certification]);
         
         } catch (Exception $ex) {
             
@@ -56,7 +78,11 @@ class AdminCertificationController extends Controller
     {
         try{
             
-            $this->view('modules/mod_embedded/mod_certifications/admin/addNew');
+            $months = $this->datetime->getMonth();
+            $year_begin = $this->datetime->getYearBegin();
+            $year_end = $this->datetime->getYearEnd();
+            
+            $this->view('modules/mod_embedded/mod_certifications/admin/addNew', ['months' => $months, 'year_begin' => $year_begin, 'year_end' => $year_end]);
         
         } catch (Exception $ex) {
 
@@ -69,7 +95,24 @@ class AdminCertificationController extends Controller
      */
     public function store()
     {
-        echo 'Certif store';
+        try {
+            
+            $this->certification->InsertCertification();
+            
+            return json_encode(['message' => 'Successful inserted', 'error'=> false]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (InsertNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Not inserted', 'error'=> true]);
+        }
     }
     
     /**
@@ -79,11 +122,20 @@ class AdminCertificationController extends Controller
     {
         try{
             
-            $this->view('modules/mod_embedded/mod_certifications/admin/edit');
+            $certification = $this->certification->GetById((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $months = $this->datetime->getMonth();
+            $year_begin = $this->datetime->getYearBegin();
+            $year_end = $this->datetime->getYearEnd();
+            
+            $this->view('modules/mod_embedded/mod_certifications/admin/edit', ['certification' => $certification, 'months' => $months, 'year_begin' => $year_begin, 'year_end' => $year_end]);
         
+        } catch (ItemNotFoundException $ex) {
+            
+            $this->view('modules/mod_embedded/mod_certifications/admin/edit', ['messageException' => $ex->getMessage()]);
+            
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_certifications/admin/edit', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/mod_certifications/admin/edit', ['messageException' => 'Certification not found']);
         }
     }
     
@@ -92,14 +144,108 @@ class AdminCertificationController extends Controller
      */
     public function update()
     {
-        echo 'Certif update';
+        try {
+            
+            $this->certification->UpdateCertification((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            
+            return json_encode(['message' => 'Successful update', 'error' => false]);
+            
+        } catch (ItemNotFoundException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (UpdateNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Not found', 'error'=> true]);
+        }
     }
     
     /**
+     * 
+     * Method UpdateStatusVisible
+     * @return json
+     */
+    public function updateStatusVisible()
+    {
+        try {
+            
+            $item = $this->certification->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            
+            return json_encode(['message' => 'Status updated', 'id' => $item->id, 'error'=> false]);
+            
+        } catch (ItemNotFoundException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (UpdateNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Certification not found', 'error'=> true]);
+        }
+    }
+    
+    /**
+     * 
+     * Method UpdateStatusNotVisible
+     * @return json
+     */
+    public function updateStatusNotVisible()
+    {
+        try {
+            
+            $item = $this->certification->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            
+            return json_encode(['message' => 'Status updated', 'id' => $item->id, 'error'=> false]);
+            
+        } catch (ItemNotFoundException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (UpdateNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Certification not found', 'error'=> true]);
+        }
+    }
+    
+    /**
+     * 
      * Destroy method
+     * @return json
      */
     public function destroy()
     {
-        echo 'Certification delete method';
+        try {
+            
+            $item = $this->certification->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            
+            return json_encode(['message' => 'Certification deleted', 'id' => $item->id, 'error'=> false]);
+            
+        } catch (ItemNotFoundException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (UpdateNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Certification not found', 'error'=> true]);
+        }
     }
 }

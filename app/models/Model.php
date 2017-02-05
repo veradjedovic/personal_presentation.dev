@@ -107,7 +107,7 @@ abstract class Model
 		$field_values_string = "'" . implode("','",$fields_arr) . "'";
                 
                 $res = mysqli_query($db,"insert into " . static::$table . " ({$columns_string}) values ({$field_values_string})");
-                
+//                $res=null;
 		if(!$res) {
                     
                     throw new InsertNotExecutedException('Item is not inserted.');
@@ -134,7 +134,7 @@ abstract class Model
 		$id_column = static::$id_column;
                 
                 $res = mysqli_query($db,"update " . static::$table . " set {$fields_update_string} where " . $id_column . " = " . $this->$id_column);
-                
+//                $res=null;
 		if(!$res) {
                     
                     throw new UpdateNotExecutedException('Item is not updated.');

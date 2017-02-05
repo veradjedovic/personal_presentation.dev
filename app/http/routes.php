@@ -22,8 +22,10 @@ $collector->get('admin-certifications-list', ['app\controllers\adminControllers\
 $collector->get('admin-certifications', ['app\controllers\adminControllers\AdminCertificationController','insert']);
 $collector->post('admin-certifications', ['app\controllers\adminControllers\AdminCertificationController','store']);
 $collector->get('admin-certifications/{id}', ['app\controllers\adminControllers\AdminCertificationController','show']);
-$collector->patch('admin-certifications/{id}', ['app\controllers\adminControllers\AdminCertificationController','update']);
-$collector->delete('admin-certifications/{id}', ['app\controllers\adminControllers\AdminCertificationController','destroy']);
+$collector->any('admin-certifications-update/{id}', ['app\controllers\adminControllers\AdminCertificationController','update']);
+$collector->any('admin-certifications-delete/{id}', ['app\controllers\adminControllers\AdminCertificationController','destroy']);
+$collector->any('admin-certifications-visible/{id}', ['app\controllers\adminControllers\AdminCertificationController','updateStatusVisible']);
+$collector->any('admin-certifications-unvisible/{id}', ['app\controllers\adminControllers\AdminCertificationController','updateStatusNotVisible']);
 
 //admin-contact routes
 $collector->get('admin-messages-list', ['app\controllers\adminControllers\AdminContactController','index']);
