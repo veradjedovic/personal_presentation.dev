@@ -40,8 +40,8 @@ $collector->get('admin-education-list', ['app\controllers\adminControllers\Admin
 $collector->get('admin-education', ['app\controllers\adminControllers\AdminEducationController','insert']);
 $collector->post('admin-education', ['app\controllers\adminControllers\AdminEducationController','store']);
 $collector->get('admin-education/{id}', ['app\controllers\adminControllers\AdminEducationController','show']);
-$collector->patch('admin-education/{id}', ['app\controllers\adminControllers\AdminEducationController','update']);
-$collector->delete('admin-education/{id}', ['app\controllers\adminControllers\AdminEducationController','destroy']);
+$collector->any('admin-education-update/{id}', ['app\controllers\adminControllers\AdminEducationController','update']);
+$collector->any('admin-education-delete/{id}', ['app\controllers\adminControllers\AdminEducationController','destroy']);
 
 //admin-experience routes
 $collector->get('admin-experience-list', ['app\controllers\adminControllers\AdminExperienceController','index']);

@@ -20,14 +20,14 @@
                                         <input type="hidden" name="_method" value="patch" />
                                                    
                                         <div class="form-group">
-                                            <label class="control-label col-lg-4">Name</label>
+                                            <label class="control-label col-lg-4">Name *</label>
                                             <div class="col-lg-4">
                                                 <input type="text" class="validate[required] form-control" name="tb_name" id="req" value="<?php echo $data['certification']->name ? $data['certification']->name : '' ?>">
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label class="control-label col-lg-4">Authority</label>
+                                            <label class="control-label col-lg-4">Authority *</label>
                                             <div class="col-lg-4">
                                                 <input type="text" class="validate[required] form-control" name="tb_authority" id="req" value="<?php echo $data['certification']->authority ? $data['certification']->authority : '' ?>">
                                             </div>
@@ -48,7 +48,7 @@
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label class="control-label col-lg-4">Month From</label>
+                                            <label class="control-label col-lg-4">Month From *</label>
                                             <div class="col-lg-4">
                                                 <select name="tb_month" id="sport" class="validate[required] form-control">
                                                     
@@ -70,7 +70,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="control-label col-lg-4">Year From</label>
+                                            <label class="control-label col-lg-4">Year From *</label>
                                             <div class="col-lg-4">
                                                 <select name="tb_year" id="sport" class="validate[required] form-control">
                                                 <?php 

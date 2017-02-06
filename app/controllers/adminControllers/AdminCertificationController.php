@@ -10,6 +10,7 @@ use app\exceptions\ItemNotFoundException as ItemNotFoundException;
 use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
 use app\exceptions\ValidatorException as ValidatorException;
 use app\exceptions\InsertNotExecutedException as InsertNotExecutedException;
+use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use Exception as Exception;
 
 /**
@@ -65,6 +66,10 @@ class AdminCertificationController extends Controller
 
             $this->view('modules/mod_embedded/mod_certifications/admin/index', ['certification' => $certification]);
         
+        } catch (CollectionNotFoundException $ex) {
+            
+            $this->view('modules/mod_embedded/mod_certifications/admin/index', ['messageException' => $ex->getMessage()]);
+            
         } catch (Exception $ex) {
             
             $this->view('modules/mod_embedded/mod_certifications/admin/index', ['messageException' => 'Nema podataka']);

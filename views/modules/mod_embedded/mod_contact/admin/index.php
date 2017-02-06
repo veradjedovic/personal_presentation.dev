@@ -42,10 +42,12 @@
                                                     </a>
                                                 </center>
                                             </td>
-                                            <td class="">
-                                                <form class="formInsert" action="admin-messages-delete/<?php echo ($message->id) ? $message->id : 1; ?>" method="post" >
-                                                    <input type="submit" class="submit btn btn-danger" value="Delete" />
-                                                </form>
+                                            <td>
+                                                <center>
+                                                    <a class="insert" href="admin-messages-delete/<?php echo ($message->id) ? $message->id : 1; ?>">
+                                                        <i class="submit icon-trash"></i>
+                                                    </a>
+                                                </center>
                                             </td>
                                         </tr>
                                         
@@ -69,37 +71,37 @@
 
 <script type="text/javascript">
 
-var submitBtn = $('.submit');
-this.submitBtn.click(function(e)
-{       
-        e.preventDefault();      
-        $("#message").html("").removeClass("alert alert-success alert-danger alert-dismissable");
-        var formDelete = $('.formInsert');
-        
-        $.ajax({
-            
-            url: $('.formInsert').attr('action'),      
-            type: $('.formInsert').attr('method'),         
-            data: $('.formInsert').serialize(),       
-            dataType: 'json',
-       
-            success: function(response) {
-                
-                console.log(response);             
-                if(response.error == false){
-                    
-                    $("#message").html(response.message ).addClass( "alert alert-success alert-dismissable" );
-                    //$("#row"+response.id).remove(); ovo ispod je bezbednije, ali moze i ovako
-                    $('tbody > tr#row'+response.id).remove();
-                } else {
-                    $("#message").append(response.message ).addClass( "alert alert-danger alert-dismissable" );
-                }       
-            },
-            
-            error: function() {
-                console.log('Greska');
-            }
-        });       
-    });
+//var submitBtn = $('.submit');
+//this.submitBtn.click(function(e)
+//{       
+//        e.preventDefault();      
+//        $("#message").html("").removeClass("alert alert-success alert-danger alert-dismissable");
+//        var formDelete = $('.formInsert');
+//        
+//        $.ajax({
+//            
+//            url: $('.formInsert').attr('action'),      
+//            type: $('.formInsert').attr('method'),         
+//            data: $('.formInsert').serialize(),       
+//            dataType: 'json',
+//       
+//            success: function(response) {
+//                
+//                console.log(response);             
+//                if(response.error == false){
+//                    
+//                    $("#message").html(response.message ).addClass( "alert alert-success alert-dismissable" );
+//                    //$("#row"+response.id).remove(); ovo ispod je bezbednije, ali moze i ovako
+//                    $('tbody > tr#row'+response.id).remove();
+//                } else {
+//                    $("#message").append(response.message ).addClass( "alert alert-danger alert-dismissable" );
+//                }       
+//            },
+//            
+//            error: function() {
+//                console.log('Greska');
+//            }
+//        });       
+//    });
     
 </script>

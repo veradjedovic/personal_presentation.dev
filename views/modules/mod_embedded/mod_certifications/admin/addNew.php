@@ -14,14 +14,14 @@
                                     <form class="formInsert form-horizontal" id="popup-validation" action="admin-certifications/" method="post">                        
                                                    
                                         <div class="form-group">
-                                            <label class="control-label col-lg-4">Name</label>
+                                            <label class="control-label col-lg-4">Name *</label>
                                             <div class="col-lg-4">
                                                 <input type="text" class="validate[required] form-control" name="tb_name" id="req" placeholder="Enter a name of certification..." />
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label class="control-label col-lg-4">Authority</label>
+                                            <label class="control-label col-lg-4">Authority *</label>
                                             <div class="col-lg-4">
                                                 <input type="text" class="validate[required] form-control" name="tb_authority" id="req" placeholder="Enter a authority..." />
                                             </div>
@@ -42,7 +42,7 @@
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label class="control-label col-lg-4">Month From</label>
+                                            <label class="control-label col-lg-4">Month From *</label>
                                             <div class="col-lg-4">
                                                 <select name="tb_month" id="sport" class="validate[required] form-control">
                                                     
@@ -64,7 +64,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="control-label col-lg-4">Year From</label>
+                                            <label class="control-label col-lg-4">Year From *</label>
                                             <div class="col-lg-4">
                                                 <select name="tb_year" id="sport" class="validate[required] form-control">
                                                 <?php 

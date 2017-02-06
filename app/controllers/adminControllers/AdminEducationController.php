@@ -4,6 +4,13 @@ namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
 use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
+use app\models\Education as Education;
+use app\classes\Datetime as Datetime;
+use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
+use app\exceptions\ItemNotFoundException as ItemNotFoundException;
+use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
+use app\exceptions\ValidatorException as ValidatorException;
+use app\exceptions\InsertNotExecutedException as InsertNotExecutedException;
 use Exception as Exception;
 
 /**
@@ -24,6 +31,19 @@ class AdminEducationController extends Controller
      * @var object
      */
     protected $menuModule;
+    
+    /**
+     *
+     * @var object
+     */
+    protected $education;
+    
+    /**
+     *
+     * @var object
+     */
+    protected $datetime;
+
 
     /**
      * Construct
@@ -31,6 +51,8 @@ class AdminEducationController extends Controller
     public function __construct() 
     {
         $this->menuModule = new AdminMenuController();
+        $this->education = new Education();
+        $this->datetime = new Datetime(date('Y')-50, date('Y'));
     }
     
     /**
@@ -40,8 +62,14 @@ class AdminEducationController extends Controller
     {
         try {
 
-            $this->view('modules/mod_embedded/mod_education/admin/index');
+            $education = $this->education->GetAll('*', 'where status = ' . EDUCATION_VISIBLE . ' or status = ' . EDUCATION_NOT_VISIBLE . ' ORDER BY year_from DESC');
+            
+            $this->view('modules/mod_embedded/mod_education/admin/index', ['education' => $education]);
         
+        } catch (CollectionNotFoundException $ex) {
+            
+            $this->view('modules/mod_embedded/mod_education/admin/index', ['messageException' => $ex->getMessage()]);
+            
         } catch (Exception $ex) {
             
             $this->view('modules/mod_embedded/mod_education/admin/index', ['messageException' => 'Nema podataka']);
@@ -54,8 +82,11 @@ class AdminEducationController extends Controller
     public function insert()
     {
         try {
+            
+            $year_begin = $this->datetime->getYearBegin();
+            $year_end = $this->datetime->getYearEnd();
 
-            $this->view('modules/mod_embedded/mod_education/admin/addNew');
+            $this->view('modules/mod_embedded/mod_education/admin/addNew', ['year_begin' => $year_begin, 'year_end' => $year_end]);
         
         } catch (Exception $ex) {
             
@@ -68,7 +99,24 @@ class AdminEducationController extends Controller
      */
     public function store()
     {
-        echo 'Store method';
+        try {
+            
+            $this->education->InsertEducation();
+            
+            return json_encode(['message' => 'Education successful inserted', 'error'=> false]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (InsertNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Not inserted', 'error'=> true]);
+        }
     }
     
     /**
@@ -78,9 +126,17 @@ class AdminEducationController extends Controller
     {
         try {
 
-            $this->view('modules/mod_embedded/mod_education/admin/edit');
+            $education = $this->education->GetById(isset($_GET['id']) && is_numeric($_GET['id']) ? $_GET['id'] : '');
+            $year_begin = $this->datetime->getYearBegin();
+            $year_end = $this->datetime->getYearEnd();
+            
+            $this->view('modules/mod_embedded/mod_education/admin/edit', ['education' => $education, 'year_begin' => $year_begin, 'year_end' => $year_end]);
         
-        } catch (Exception $ex) {
+        } catch (ItemNotFoundException $ex) {
+            
+            $this->view('modules/mod_embedded/mod_education/admin/edit', ['messageException' => $ex->getMessage()]);
+            
+        }catch (Exception $ex) {
             
             $this->view('modules/mod_embedded/mod_education/admin/edit', ['messageException' => 'Nema podataka']);
         }
@@ -91,7 +147,29 @@ class AdminEducationController extends Controller
      */
     public function update()
     {
-        echo 'Update method';
+        try {
+            
+            $this->education->UpdateEducation(isset($_GET['id']) && is_numeric($_GET['id']) ? $_GET['id'] : '');
+            
+            return json_encode(['message' => 'Education successful update', 'error' => false]);
+            
+        } catch (ItemNotFoundException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (UpdateNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        }  catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Not found', 'error'=> true]);
+        }
+        
     }
     
     /**

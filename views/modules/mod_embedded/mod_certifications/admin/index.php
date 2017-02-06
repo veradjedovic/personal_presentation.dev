@@ -38,7 +38,7 @@
                                             <td><?php echo ($certification->name) ? $certification->name : '' ?></td> 
                                             <td><?php echo ($certification->authority) ? $certification->authority : '' ?></td> 
                                             <td><?php echo ($certification->licence_number) ? $certification->licence_number : '' ?></td>
-                                            <td class="" id="ceil<?php echo ($certification->id) ? $certification->id : 1; ?>">
+                                            <td class="">
                                                 <center>
                                                     <?php echo ($certification->status == CERTIF_VISIBLE) ? '<i class="icon-check-sign"></i>' : '<i class="icon-minus-sign-alt"></i>' ?>
                                                 </center>
