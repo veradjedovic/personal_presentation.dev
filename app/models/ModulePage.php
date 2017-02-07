@@ -46,9 +46,9 @@ class ModulePage extends Model
         $fields = "pages.name, pages.route, pages.icon";
         $query = "LEFT JOIN pages ON " . static::$table . ".page_id = pages.id
                     LEFT JOIN modules ON " . static::$table . ".module_id = modules.id
-                    WHERE modules.status =1
-                    AND pages.status =3
-                    AND pages.parent_id =0
+                    WHERE modules.status = " . MODULE_VISIBLE . "
+                    AND pages.status = " . ADMIN_VISIBLE . "
+                    AND pages.parent_id = 0
                     ORDER BY " . static::$table . ".priority";
         
         $pages = $this->GetAll($fields, $query);

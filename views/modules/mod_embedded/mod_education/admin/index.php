@@ -42,7 +42,7 @@
                                             <td><?php echo ($item->description) ? (strlen($item->description) > 40 ? substr($item->description, 0, 40). "..." : $item->description) : '' ?></td>
                                             <td class="">
                                                 <center>
-                                                    <?php echo ($item->status == CERTIF_VISIBLE) ? '<i class="icon-check-sign"></i>' : '<i class="icon-minus-sign-alt"></i>' ?>
+                                                    <?php echo ($item->status == EDUCATION_VISIBLE) ? '<i class="icon-check-sign"></i>' : '<i class="icon-minus-sign-alt"></i>' ?>
                                                 </center>
                                             </td>
                                             <td class="">

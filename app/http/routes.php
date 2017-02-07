@@ -48,8 +48,8 @@ $collector->get('admin-experience-list', ['app\controllers\adminControllers\Admi
 $collector->get('admin-experience', ['app\controllers\adminControllers\AdminExperienceController','insert']);
 $collector->post('admin-experience', ['app\controllers\adminControllers\AdminExperienceController','store']);
 $collector->get('admin-experience/{id}', ['app\controllers\adminControllers\AdminExperienceController','show']);
-$collector->patch('admin-experience/{id}', ['app\controllers\adminControllers\AdminExperienceController','update']);
-$collector->delete('admin-experience/{id}', ['app\controllers\adminControllers\AdminExperienceController','destroy']);
+$collector->any('admin-experience-update/{id}', ['app\controllers\adminControllers\AdminExperienceController','update']);
+$collector->any('admin-experience-delete/{id}', ['app\controllers\adminControllers\AdminExperienceController','destroy']);
 
 //admin-languages routes
 $collector->get('admin-languages-list', ['app\controllers\adminControllers\AdminLanguageController','index']);
