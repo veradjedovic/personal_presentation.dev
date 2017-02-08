@@ -56,8 +56,8 @@ $collector->get('admin-languages-list', ['app\controllers\adminControllers\Admin
 $collector->get('admin-languages', ['app\controllers\adminControllers\AdminLanguageController','insert']);
 $collector->post('admin-languages', ['app\controllers\adminControllers\AdminLanguageController','store']);
 $collector->get('admin-languages/{id}', ['app\controllers\adminControllers\AdminLanguageController','show']);
-$collector->patch('admin-languages/{id}', ['app\controllers\adminControllers\AdminLanguageController','update']);
-$collector->delete('admin-languages/{id}', ['app\controllers\adminControllers\AdminLanguageController','destroy']);
+$collector->any('admin-languages-update/{id}', ['app\controllers\adminControllers\AdminLanguageController','update']);
+$collector->any('admin-languages-delete/{id}', ['app\controllers\adminControllers\AdminLanguageController','destroy']);
 
 //admin-modules routes
 $collector->get('admin-modules-list', ['app\controllers\adminControllers\AdminModuleController','index']);

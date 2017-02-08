@@ -4,6 +4,13 @@ namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
 use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
+use app\models\Language as Language;
+use app\models\LanguageProficiency as LanguageProficiency;
+use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
+use app\exceptions\ItemNotFoundException as ItemNotFoundException;
+use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
+use app\exceptions\InsertNotExecutedException as InsertNotExecutedException;
+use app\exceptions\ValidatorException as ValidatorException;
 use Exception as Exception;
 
 /**
@@ -24,6 +31,18 @@ class AdminLanguageController extends Controller
      * @var object
      */
     protected $menuModule;
+    
+    /**
+     *
+     * @var object
+     */
+    protected $language;
+    
+    /**
+     *
+     * @var object
+     */
+    protected $proficiency;
 
 
     /**
@@ -32,17 +51,25 @@ class AdminLanguageController extends Controller
     public function __construct() 
     {
         $this->menuModule = new AdminMenuController();
+        $this->language = new Language();
+        $this->proficiency = new LanguageProficiency();
     }
     
-   /**
+    /**
      * Index method
      */
     public function index()
     {
         try {
             
-            $this->view('modules/mod_embedded/mod_languages/admin/index');
+            $languages = $this->language->GetAllLanguages();
+            
+            $this->view('modules/mod_embedded/mod_languages/admin/index', ['languages' => $languages]);
         
+        } catch (CollectionNotFoundException $ex) {
+            
+            $this->view('modules/mod_embedded/mod_experience/admin/index', ['messageException' => $ex->getMessage()]);
+            
         } catch (Exception $ex) {
             
             $this->view('modules/mod_embedded/mod_languages/admin/index', ['messageException' => 'Nema podataka']);
@@ -56,7 +83,9 @@ class AdminLanguageController extends Controller
     {
         try {
 
-            $this->view('modules/mod_embedded/mod_languages/admin/addNew');
+            $proficiences = $this->proficiency->GetAll();
+            
+            $this->view('modules/mod_embedded/mod_languages/admin/addNew', ['proficiences' => $proficiences]);
         
         } catch (Exception $ex) {
             
@@ -69,7 +98,24 @@ class AdminLanguageController extends Controller
      */
     public function store()
     {
-        echo 'Store method';
+        try {
+            
+            $this->language->InsertLanguage();
+            
+            return json_encode(['message' => 'Language successful insert', 'error' => false]);
+            
+        } catch (InsertNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        }  catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Not found', 'error'=> true]);
+        }
     }
     
     /**
@@ -79,8 +125,19 @@ class AdminLanguageController extends Controller
     {
         try {
 
-            $this->view('modules/mod_embedded/mod_languages/admin/edit');
+            $language = $this->language->GetById(isset($_GET['id']) && is_numeric($_GET['id']) ? $_GET['id'] : '');
+            $proficiences = $this->proficiency->GetAll();
+            
+            $this->view('modules/mod_embedded/mod_languages/admin/edit', ['language' => $language, 'proficiences' => $proficiences]);
         
+        } catch (ItemNotFoundException $ex) {
+                    
+            $this->view('modules/mod_embedded/mod_languages/admin/edit', ['messageException' => $ex->getMessage()]);
+            
+        } catch (CollectionNotFoundException $ex) {
+                    
+            $this->view('modules/mod_embedded/mod_languages/admin/edit', ['messageException' => $ex->getMessage()]);
+            
         } catch (Exception $ex) {
                     
             $this->view('modules/mod_embedded/mod_languages/admin/edit', ['messageException' => 'Nema podataka']);
@@ -92,7 +149,28 @@ class AdminLanguageController extends Controller
      */
     public function update()
     {
-        echo 'Update method';
+        try {
+            
+            $this->language->UpdateLanguage(isset($_GET['id']) && is_numeric($_GET['id']) ? $_GET['id'] : '');
+
+            return json_encode(['message' => 'Language successful update', 'error' => false]);
+            
+        } catch (ItemNotFoundException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (UpdateNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        }  catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Not found', 'error'=> true]);
+        }
     }
     
     /**

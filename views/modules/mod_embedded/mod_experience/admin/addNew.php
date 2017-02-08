@@ -13,7 +13,6 @@
                                 <div id="collapse2" class="body collapse in">
                                     
                                     <form class="formInsert form-horizontal" id="popup-validation" action="admin-experience/" method="post">                        
-                                        <input type="hidden" name="_method" value="patch" />
                                                    
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Title *</label>
@@ -158,13 +157,7 @@
                                             <input id="submit" type="submit" name="btn_submit" value="Add New Experience" class="btn btn-primary btn-lg " />
                                         </div>
                                     </form>
-                                </div>
-                                
-                                <?php                                
-                                    
-                                    echo isset($data['messageException']) ? $data['messageException'] : '';
-                                ?>
-                                
+                                </div>                               
                             </div>
                         </div>
 </div>    

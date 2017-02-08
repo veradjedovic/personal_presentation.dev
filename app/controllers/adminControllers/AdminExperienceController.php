@@ -113,12 +113,8 @@ class AdminExperienceController extends Controller
 
             $this->experience->InsertExperience();
             
-            return json_encode(['message' => 'Experience successful inserted', 'error' => false]);
+            return json_encode(['message' => 'Experience successful insert', 'error' => false]);
         
-        } catch (ItemNotFoundException $ex) {
-            
-            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
-            
         } catch (InsertNotExecutedException $ex) {
             
             return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
