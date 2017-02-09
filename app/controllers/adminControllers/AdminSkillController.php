@@ -4,6 +4,13 @@ namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
 use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
+use app\models\Skill as Skill;
+use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
+use app\exceptions\SkillsNotFoundException as SkillsNotFoundException;
+use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
+use app\exceptions\ItemNotFoundException as ItemNotFoundException;
+use app\exceptions\ValidatorException as ValidatorException;
+use app\exceptions\InsertNotExecutedException as InsertNotExecutedException;
 use Exception as Exception;
 
 /**
@@ -24,6 +31,12 @@ class AdminSkillController extends Controller
      * @var object
      */
     protected $menuModule;
+    
+    /**
+     *
+     * @var object
+     */
+    protected $skill;
 
 
     /**
@@ -32,6 +45,7 @@ class AdminSkillController extends Controller
     public function __construct() 
     {
         $this->menuModule = new AdminMenuController();
+        $this->skill = new Skill();
     }
     
    /**
@@ -40,9 +54,19 @@ class AdminSkillController extends Controller
     public function index()
     {
         try {
+            
+            $skills = $this->skill->GetAllSkills();
 
-            $this->view('modules/mod_embedded/mod_skills/admin/index');
+            $this->view('modules/mod_embedded/mod_skills/admin/index', ['skills' => $skills]);
         
+        } catch (SkillsNotFoundException $ex) {
+
+            $this->view('modules/mod_embedded/mod_skills/admin/index', ['messageException' => $ex->getMessage()]);
+            
+        } catch (CollectionNotFoundException $ex) {
+
+            $this->view('modules/mod_embedded/mod_skills/admin/index', ['messageException' => $ex->getMessage()]);
+            
         } catch (Exception $ex) {
 
             $this->view('modules/mod_embedded/mod_skills/admin/index', ['messageException' => 'Nema podataka']);
@@ -69,7 +93,24 @@ class AdminSkillController extends Controller
      */
     public function store()
     {
-        echo 'Store method';
+        try {
+            
+            $this->skill->InsertSkill();
+            
+            return json_encode(['message' => 'Skill successful insert', 'error' => false]);
+            
+        } catch (InsertNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        }  catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Not found', 'error'=> true]);
+        }
     }
     
     /**
@@ -78,8 +119,10 @@ class AdminSkillController extends Controller
     public function show()
     {
         try {
+            
+            $skill = $this->skill->GetById(isset($_GET['id']) && is_numeric($_GET['id']) ? $_GET['id'] : '');
 
-            $this->view('modules/mod_embedded/mod_skills/admin/edit');
+            $this->view('modules/mod_embedded/mod_skills/admin/edit', ['skill' => $skill]);
         
         } catch (Exception $ex) {
 
@@ -92,7 +135,28 @@ class AdminSkillController extends Controller
      */
     public function update()
     {
-        echo 'Update method';
+        try {
+            
+            $this->skill->UpdateSkill(isset($_GET['id']) && is_numeric($_GET['id']) ? $_GET['id'] : '');
+
+            return json_encode(['message' => 'Skill successful update', 'error' => false]);
+            
+        } catch (ItemNotFoundException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (UpdateNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        }  catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Not found', 'error'=> true]);
+        }
     }
     
     /**

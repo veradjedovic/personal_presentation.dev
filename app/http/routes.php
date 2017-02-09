@@ -100,8 +100,8 @@ $collector->get('admin-skills-list', ['app\controllers\adminControllers\AdminSki
 $collector->get('admin-skills', ['app\controllers\adminControllers\AdminSkillController','insert']);
 $collector->post('admin-skills', ['app\controllers\adminControllers\AdminSkillController','store']);
 $collector->get('admin-skills/{id}', ['app\controllers\adminControllers\AdminSkillController','show']);
-$collector->patch('admin-skills/{id}', ['app\controllers\adminControllers\AdminSkillController','update']);
-$collector->delete('admin-skills/{id}', ['app\controllers\adminControllers\AdminSkillController','destroy']);
+$collector->any('admin-skills-update/{id}', ['app\controllers\adminControllers\AdminSkillController','update']);
+$collector->any('admin-skills-delete/{id}', ['app\controllers\adminControllers\AdminSkillController','destroy']);
 
 //admin-profile routes
 $collector->get('admin', ['app\controllers\adminControllers\AdminProfileController','index']);
