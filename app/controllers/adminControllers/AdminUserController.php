@@ -3,6 +3,7 @@
 namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
+use app\classes\Session as Session;
 use app\models\User as User;
 use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use app\classes\Validator as Validator;
@@ -60,8 +61,8 @@ class AdminUserController extends Controller
     public function index()
     {
         try {
-            
-            $user = $this->user->GetById(1);
+
+            $user = $this->user->GetById(Session::get('id') ? Session::get('id') : '');
             
             $this->view('modules/mod_embedded/mod_user/admin/index', ['user' => $user]);
             

@@ -44,7 +44,7 @@
                                         </div>
 
                                         <div style="text-align:center" class="form-actions no-margin-bottom">
-                                            <input id="submit" type="submit" name="btn_submit" value="Update" class="btn btn-primary btn-lg " />
+                                            <input id="submit" type="submit" name="btn_submit" value="Add New Skill" class="btn btn-primary btn-lg " />
                                         </div>
                                     </form>
                                 </div>                               

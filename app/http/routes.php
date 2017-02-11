@@ -111,6 +111,11 @@ $collector->any('admin-profile/{id}', ['app\controllers\adminControllers\AdminPr
 $collector->get('admin-user', ['app\controllers\adminControllers\AdminUserController','index']);
 $collector->any('admin-user/{id}', ['app\controllers\adminControllers\AdminUserController','update']);
 
+//Authentification
+$collector->get('login', ['app\controllers\AuthController','getlogin']);
+$collector->post('login', ['app\controllers\AuthController','postlogin']);
+$collector->get('logout', ['app\controllers\AuthController','getlogout']);
+
 //test
 $collector->get('menu', ['app\controllers\adminControllers\AdminMenuController','index']);
 

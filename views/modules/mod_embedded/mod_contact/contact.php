@@ -40,9 +40,7 @@
                 $(".message").append('<p>' + response.message + '</p>');
                 console.log(response.message);
             }
-        });
-        
-        
+        });      
     });
     
 </script>

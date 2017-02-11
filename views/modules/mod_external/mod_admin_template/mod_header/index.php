@@ -236,7 +236,7 @@
                             <li><a href="#"><i class="icon-gear"></i> Settings </a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="login.html"><i class="icon-signout"></i> Logout </a>
+                            <li><a href="<?php echo SITE_ROOT; ?>/logout/"><i class="icon-signout"></i> Logout </a>
                             </li>
                         </ul>
 

@@ -8,40 +8,57 @@ namespace app\classes;
  * @author Vera
  */
 class Session
-{
+{     
         /**
-         * 
-         * @param string $kay
-         * @param string $default
-         * @return string
+         * Start method
          */
-	public static function GetKey($key, $default = null)
-	{
+        public static function start()
+        {
 		if(!isset($_SESSION)){
-
+                    
 			session_start();
-		}	
-		if(!$_SESSION[$key]){
-
-			return $default;
-
-		} else {
-
-			return $_SESSION[$key];
 		}
 	}
-
+        
+        /**
+         * Stop method
+         */
+	public static function stop()
+        {
+		self::start();
+                
+		foreach($_SESSION as $k=>$v){
+                    
+			unset($_SESSION[$k]);
+		}
+		session_destroy();
+	}
+        
         /**
          * 
          * @param string $key
-         * @param string $value
+         * @param string/boolean/int $default
+         * @return string/boolean/int
          */
-	public static function SetKey($key, $value)
-	{
-		if(!isset($_SESSION)){
-
-			session_start();
-		}
-		$_SESSION[$key] = $value;
+	public static function get($key,$default=null)
+        {
+		self::start();
+                
+		if(isset($_SESSION[$key]))
+			return $_SESSION[$key];
+		else
+			return $default;
+	}
+        
+        /**
+         * 
+         * @param string $key
+         * @param string/int/boolean $value
+         */
+	public static function set($key,$value)
+        {
+		self::start();
+                
+		$_SESSION[$key]=$value;
 	}
 }

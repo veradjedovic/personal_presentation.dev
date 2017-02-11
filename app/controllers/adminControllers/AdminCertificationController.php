@@ -184,7 +184,7 @@ class AdminCertificationController extends Controller
             
             $item = $this->certification->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
             
-            return json_encode(['message' => 'Status updated', 'id' => $item->id, 'error'=> false]);
+            return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
         } catch (ItemNotFoundException $ex) {
             
@@ -211,7 +211,7 @@ class AdminCertificationController extends Controller
             
             $item = $this->certification->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
             
-            return json_encode(['message' => 'Status updated', 'id' => $item->id, 'error'=> false]);
+            return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
         } catch (ItemNotFoundException $ex) {
             

@@ -1,5 +1,3 @@
-﻿<?php require_once "../config/index.php"; ?>
-
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -34,18 +32,24 @@
 
    <!-- PAGE CONTENT --> 
     <div class="container">
+        
+    <div id ="message" class="success">                  
+        <!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>-->                                      
+    </div>     
+        
     <div class="text-center">
         <img src="<?php echo SITE_ROOT; ?>/templates/admin/assets/img/logo.png" id="logoimg" alt=" Logo" />
     </div>
+    
     <div class="tab-content">
         <div id="login" class="tab-pane active">
-            <form action="/admin/" class="form-signin">
+            <form action="<?php echo SITE_ROOT; ?>/login/" class="formInsert form-signin" method="post">
                 <p class="text-muted text-center btn-block btn btn-primary btn-rect">
-                    Enter your username and password
+                    Enter your email and password
                 </p>
-                <input type="text" placeholder="Username" class="form-control" />
-                <input type="password" placeholder="Password" class="form-control" />
-                <button class="btn text-muted text-center btn-danger" type="submit">Sign in</button>
+                <input name="tb_email" type="text" placeholder="Email" class="form-control" />
+                <input name="tb_password" type="password" placeholder="Password" class="form-control" />
+                <button class="submit btn text-muted text-center btn-danger" type="submit">Sign in</button>
             </form>
         </div>
         <div id="forgot" class="tab-pane">
@@ -83,11 +87,43 @@
 	  <!--END PAGE CONTENT -->     
 	      
       <!-- PAGE LEVEL SCRIPTS -->
-      <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/jquery-2.0.3.min.js"></script>
-      <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-   <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/js/login.js"></script>
+    <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/jquery-2.0.3.min.js"></script>
+    <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/js/login.js"></script>
       <!--END PAGE LEVEL SCRIPTS -->
 
+    <script type="text/javascript">
+//        
+//      $('.submit').click(function(e){
+//       
+//        e.preventDefault();      
+//        $(".message").html("");
+//        
+//        $.ajax({
+//            
+//            url: $('.formInsert').attr('action'),      
+//            type: $('.formInsert').attr('method'),         
+//            data: $('.formInsert').serialize(),       
+//            dataType: 'json',
+//            
+//            success: function(response) {
+//                
+//                console.log(response); 
+//                
+//                if(response.error == false){
+//                    if (response.redirect) {
+//                        // data.redirect contains the string URL to redirect to
+//                        window.location.href = response.redirect;
+//                    }
+//                } else {
+//                    $("#message").html(response.message ).addClass( "alert alert-danger alert-dismissable" );
+//                }     
+//            }
+//        });        
+//    });
+//    
+    </script>
+      
 </body>
     <!-- END BODY -->
 </html>

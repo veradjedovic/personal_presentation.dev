@@ -6,6 +6,11 @@
 require_once __DIR__  . '/config_const.php';
 
 /**
+ * Constants of users module.
+ */
+require_once __DIR__ . '/config_mod_user.php';
+
+/**
  * Constants of language module.
  */
 require_once __DIR__ . '/config_mod_language.php';

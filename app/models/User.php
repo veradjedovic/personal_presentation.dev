@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\classes\Session as Session;
 use app\classes\Validator as Validator;
 use app\exceptions\ValidatorException as ValidatorException;
 
@@ -22,7 +23,7 @@ class User extends Model
          *
          * @var array
          */
-	public static $columns = array('email', 'password', 'token');
+	public static $columns = array('email', 'password', 'token', 'status');
         
         /**
          *
@@ -34,7 +35,7 @@ class User extends Model
          *
          * @var type 
          */
-        public $id, $email, $password, $token;
+        public $id, $email, $password, $token, $status;
         
         /**
          *
@@ -42,7 +43,7 @@ class User extends Model
          */
         protected $validator;
 
-        
+
         /**
          * Construct
          */
@@ -66,5 +67,66 @@ class User extends Model
             $user->email = $this->validator->Email($_POST['tb_email']);
             $user->password = md5($this->validator->Password($_POST['tb_password'], $_POST['tb_confirm_password']));
             $user->Update(); 
+        }
+        
+        /**
+         * SetSessions method
+         */
+        public function setSessions()
+        {
+            Session::set("status",$this->status);
+            Session::set("id",$this->id);
+            Session::set("token",$this->token);
+        }
+
+        /**
+         * Logout method
+         */
+        public function logout()
+        {
+            Session::stop();
+            header("location:" . SITE_ROOT . "/login/");
+        }
+
+        /**
+         * 
+         * @throws ValidatorException
+         */
+        public function userLogin() 
+        {
+           if(!isset($_POST['tb_email']) && !isset($_POST['tb_password'])){
+            
+                throw new ValidatorException("Credentials doesn't exists");
+            }
+
+            $email= $this->validator->Email($_POST['tb_email']);
+            $password = md5($this->validator->Required($_POST['tb_password']));
+
+            $admin = $this->login($email, $password);
+            
+            if(!$admin){
+                   
+                throw new ValidatorException('Invalid access!');
+            } 
+
+            header("location:" . SITE_ROOT . "/admin/");
+        }
+        
+        /**
+         * 
+         * @param string $username
+         * @param string $password
+         * @return boolean
+         */
+        protected function login($email, $password)
+        {
+            $admins=$this->getAll("*", "WHERE email='{$email}' and password='{$password}' LIMIT 1");
+
+            if(count($admins)==1){
+                    $admins[0]->setSessions();
+                    return $admins[0];
+            } else {
+                    return false;
+            }
         }
 }

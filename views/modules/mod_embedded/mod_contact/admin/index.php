@@ -44,8 +44,8 @@
                                             </td>
                                             <td>
                                                 <center>
-                                                    <a class="insert" href="admin-messages-delete/<?php echo ($message->id) ? $message->id : 1; ?>">
-                                                        <i class="submit icon-trash"></i>
+                                                    <a href="" class="deleteBtn" data-id="<?=($message->id) ? $message->id : 1?>" >
+                                                        <i class="icon-trash"></i>
                                                     </a>
                                                 </center>
                                             </td>
@@ -71,7 +71,43 @@
 
 <script type="text/javascript">
 
-//var submitBtn = $('.submit');
+
+
+$('.deleteBtn').click(function(e){
+    
+    e.preventDefault();
+    $("#message").html("").removeClass("alert alert-success alert-danger alert-dismissable");
+    
+    var id =  $(this).attr('data-id');
+    //var value = $(this).val();
+    
+    $.ajax({
+            
+            url: 'admin-messages-delete/'+id,      
+            type: 'POST',        
+            dataType: 'json',
+       
+            success: function(response) {
+                
+                console.log(response);             
+                if(response.error == false){
+                    
+                    $("#message").html(response.message ).addClass( "alert alert-success alert-dismissable" );
+                    //$("#row"+response.id).remove(); ovo ispod je bezbednije, ali moze i ovako
+                    $('tbody > tr#row'+response.id).remove();
+                } else {
+                    $("#message").html(response.message ).addClass( "alert alert-danger alert-dismissable" );
+                }       
+            },
+            
+            error: function() {
+                console.log('Greska');
+            }
+        });      
+   
+});
+
+
 //this.submitBtn.click(function(e)
 //{       
 //        e.preventDefault();      
@@ -94,7 +130,7 @@
 //                    //$("#row"+response.id).remove(); ovo ispod je bezbednije, ali moze i ovako
 //                    $('tbody > tr#row'+response.id).remove();
 //                } else {
-//                    $("#message").append(response.message ).addClass( "alert alert-danger alert-dismissable" );
+//                    $("#message").html(response.message ).addClass( "alert alert-danger alert-dismissable" );
 //                }       
 //            },
 //            
