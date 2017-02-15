@@ -5,7 +5,7 @@
             echo "<article class = 'article_class'>";
             
             if($item->image)
-            echo "<img src = '{$item->image}' class = 'article_img' />";
+            echo "<img src = 'resources/images/img_for_articles/{$item->image}' class = 'article_img' />";
             
             if($item->title)
             echo "<h3>{$item->title} - <small>" . date('d\. m\. Y', strtotime($item->updated_at)) . "</small></h3>";

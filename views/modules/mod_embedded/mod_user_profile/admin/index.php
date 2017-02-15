@@ -16,16 +16,16 @@
                                 
                                 <div id="collapse2" class="body collapse in">
                                     
-                                    <form class="form-horizontal">
+                                    <form class="formUpload form-horizontal" action="admin-profile-picture/<?php echo $data['userProfile']->id ? $data['userProfile']->id : ''; ?>" method="post">
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Pre Defined Image</label>
                                             <div class="col-lg-8">
                                                 <div class="fileupload fileupload-new" data-provides="fileupload">
-                                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 200px;"><img src="<?php echo $data['userProfile']->image ? SITE_ROOT . '/resources/images/img_profile/' . $data['userProfile']->image : SITE_ROOT .'/templates/admin/assets/img/demoBig.jpg'; ?>" alt="" /></div>
-                                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 200px; line-height: 20px;"></div>
+                                                    <div id="prewAvatar" class="fileupload-new thumbnail" style="width: 200px; height: 200px;"><img src="<?php echo $data['userProfile']->image ? SITE_ROOT . '/resources/images/img_profile/' . $data['userProfile']->image : SITE_ROOT .'/templates/admin/assets/img/demoBig.jpg'; ?>" alt="" /></div>
+                                                    <div id="uploadProfImage" class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 200px; line-height: 20px;"></div>
                                                     <div>
-                                                        <span class="btn btn-file btn-primary"><span class="fileupload-new">Upload image</span><span class="fileupload-exists">Change</span><input type="file" /></span>
-                                                        <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                                        <span class="btn btn-file btn-primary"><span class="fileupload-new">Upload image</span><span class="fileupload-exists">Change</span><input id="fUpload" name="f_upload" type="file" /></span>
+                                                        <a id="removeAvatar" href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -135,15 +135,48 @@
             
             success: function(response) {
 
-                if(response.message == 'Successful update'){
+                if(response.error == false){
                     
-                    $("#message").append(response.message ).addClass( "alert alert-success alert-dismissable" );
+                    $("#message").html(response.message).addClass( "alert alert-success alert-dismissable" );
                 } else {
-                    $("#message").append(response.message ).addClass( "alert alert-danger alert-dismissable" );
+                    $("#message").html(response.message).addClass( "alert alert-danger alert-dismissable" );
                 }
                 console.log(response.message);
             }
         });       
+    });
+    
+    $("body").on("change", "#fUpload", function(){
+
+        $("#message").html("").removeClass("alert alert-success alert-danger alert-dismissable");
+        var file = this.files[0];
+        
+        $.ajax({
+            
+            url: $('.formUpload').attr('action'),      
+            type: $('.formUpload').attr('method'),         
+            data: new FormData($('form')[0]),
+            cache: false,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            
+            success: function(response) {
+
+                if(response.error == false){
+                    
+                    $("#message").html(response.message).addClass( "alert alert-success alert-dismissable" );
+                } else {
+                    $("#message").html(response.message).addClass( "alert alert-danger alert-dismissable" );
+                }
+                console.log(response);
+            }
+        });       
+    });
+    
+    $("body").on("click", "#removeAvatar", function(){
+        
+        $("#prewAvatar").html("<img src='<?php echo SITE_ROOT . '/templates/admin/assets/img/demoBig.jpg'; ?>' alt='' />");
     });
     
 </script>

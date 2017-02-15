@@ -14,8 +14,8 @@ $collector->get('admin-articles-list', ['app\controllers\adminControllers\AdminA
 $collector->get('admin-articles', ['app\controllers\adminControllers\AdminArticleController','insert']);
 $collector->post('admin-articles', ['app\controllers\adminControllers\AdminArticleController','store']);
 $collector->get('admin-articles/{id}', ['app\controllers\adminControllers\AdminArticleController','show']);
-$collector->patch('admin-articles/{id}', ['app\controllers\adminControllers\AdminArticleController','update']);
-$collector->delete('admin-articles/{id}', ['app\controllers\adminControllers\AdminArticleController','destroy']);
+$collector->any('admin-articles-update/{id}', ['app\controllers\adminControllers\AdminArticleController','update']);
+$collector->any('admin-articles-delete/{id}', ['app\controllers\adminControllers\AdminArticleController','destroy']);
 
 //admin-certifications routes
 $collector->get('admin-certifications-list', ['app\controllers\adminControllers\AdminCertificationController','index']);
@@ -106,6 +106,7 @@ $collector->any('admin-skills-delete/{id}', ['app\controllers\adminControllers\A
 //admin-profile routes
 $collector->get('admin', ['app\controllers\adminControllers\AdminProfileController','index']);
 $collector->any('admin-profile/{id}', ['app\controllers\adminControllers\AdminProfileController','update']);
+$collector->any('admin-profile-picture/{id}', ['app\controllers\adminControllers\AdminProfileController','updateProfilePicture']);
 
 //admin-user routes
 $collector->get('admin-user', ['app\controllers\adminControllers\AdminUserController','index']);

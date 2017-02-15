@@ -7,9 +7,10 @@ use app\models\UserProfile as UserProfile;
 use app\models\Country as Country;
 use app\models\Industry as Industry;
 use app\exceptions\ValidatorException as ValidatorException;
-use app\exceptions\UpdateNotExecutedExceptionas as UpdateNotExecutedException;
+use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
+use app\exceptions\FileUploadException as FileUploadException;
 use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use Exception as Exception;
 
@@ -100,23 +101,59 @@ class AdminProfileController extends Controller
             
             $this->userProfile->UpdateUser();
             
-            return json_encode(['message' => 'Successful update']);
+            return json_encode(['message' => 'Successful update', 'error' => false]);
             
         } catch (ValidatorException $ex) {
             
-            return json_encode(['message' => $ex->getMessage()]);
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
             
         } catch (ItemNotFoundException $ex) {
             
-            return json_encode(['message' => $ex->getMessage()]);
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
             
         } catch (UpdateNotExecutedException $ex) {
 
-            return json_encode(['message' => $ex->getMessage()]);
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
             
         } catch (Exception $ex) {
             
-            return json_encode(['message' => 'Nepostojeci podaci!']);
+            return json_encode(['message' => 'Nepostojeci podaci!', 'error' => true]);
         }
+    }
+    
+    /**
+     * 
+     * UpdateProfilePicture method
+     * @return json
+     */
+    public function updateProfilePicture()
+    {
+        try {
+            
+            $this->userProfile->UploadProfilePicture((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            
+            return json_encode(['message' => 'Successful edit profile picture', 'error' => false, 'data' => $_FILES]);
+            
+        } catch (ItemNotFoundException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
+            
+        } catch (FileUploadException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
+            
+        } catch (UpdateNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Nepostojeci podaci!', 'error' => true]);
+        }
+        
     }
 }
