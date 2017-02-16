@@ -4,9 +4,16 @@ namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
 use app\models\Article as Article;
+use app\models\Page as Page;
 use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use app\exceptions\ArticleNotFoundException as ArticleNotFoundException;
+use app\exceptions\ItemNotFoundException as ItemNotFoundException;
+use app\exceptions\PagesNotFoundException as PagesNotFoundException;
+use app\exceptions\ValidatorException as ValidatorException;
+use app\exceptions\FileUploadException as FileUploadException;
+use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
+use app\exceptions\InsertNotExecutedException as InsertNotExecutedException;
 use Exception as Exception;
 /**
  * Description of AdminArticleController
@@ -32,6 +39,12 @@ class AdminArticleController extends Controller
      * @var object
      */
     protected $article;
+    
+    /**
+     *
+     * @var object
+     */
+    protected $page;
 
 
     /**
@@ -41,6 +54,7 @@ class AdminArticleController extends Controller
     {
         $this->menuModule = new AdminMenuController();
         $this->article = new Article();
+        $this->page = new Page();
     }
     
     /**
@@ -75,7 +89,9 @@ class AdminArticleController extends Controller
     {
         try{
 
-            $this->view('modules/mod_embedded/mod_article/admin/addNew');
+            $pages = $this->page->GetWebPagesVisibleAndNotVisible();
+            
+            $this->view('modules/mod_embedded/mod_article/admin/addNew', ['pages' => $pages]);
         
         } catch (Exception $ex) {
             
@@ -86,11 +102,30 @@ class AdminArticleController extends Controller
     }
     
     /**
+     * 
      * Store method
+     * @return json
      */
     public function store()
     {
-        echo 'Article Store method';
+        try {
+            
+            $this->article->InsertArticle();
+            
+            return json_encode(['message' => 'Successful inserted', 'error' => false]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
+            
+        } catch (InsertNotExecutedException $ex) {
+
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => "Error is happend, data  aren't inserted!", 'error' => true]);
+        }
     }
     
     /**
@@ -99,9 +134,24 @@ class AdminArticleController extends Controller
     public function show()
     {
         try{
+            
+            $article = $this->article->GetById((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $pages = $this->page->GetWebPagesVisibleAndNotVisible();
 
-            $this->view('modules/mod_embedded/mod_article/admin/edit');
+            $this->view('modules/mod_embedded/mod_article/admin/edit', ['article' => $article, 'pages' => $pages]);
         
+        } catch (ItemNotFoundException $ex) {           
+            
+            $this->view('modules/mod_embedded/mod_experience/admin/edit', ['messageException' => $ex->getMessage()]);
+
+        } catch (PagesNotFoundException $ex) {           
+            
+            $this->view('modules/mod_embedded/mod_experience/admin/edit', ['messageException' => $ex->getMessage()]);
+
+        } catch (CollectionNotFoundException $ex) {           
+            
+            $this->view('modules/mod_embedded/mod_experience/admin/edit', ['messageException' => $ex->getMessage()]);
+
         } catch (Exception $ex) {
             
             $message = 'Nema podataka';
@@ -111,11 +161,34 @@ class AdminArticleController extends Controller
     }
     
     /**
+     * 
      * Update method
+     * @return json
      */
     public function update()
     {
-        echo 'Article Update method';
+        try {
+            
+            $this->article->UpdateArticle((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            
+            return json_encode(['message' => 'Successful update', 'error' => false]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
+            
+        } catch (ItemNotFoundException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
+            
+        } catch (UpdateNotExecutedException $ex) {
+
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Data not found!', 'error' => true]);
+        }
     }
     
     /**
@@ -124,5 +197,40 @@ class AdminArticleController extends Controller
     public function destroy()
     {
         echo 'Article delete method';
+    }
+    
+    /**
+     * 
+     * UploadArticlePicture method
+     * @return json
+     */
+    public function uploadArticlePicture() 
+    {
+        try {
+            
+            $this->article->UpdateArticlePicture((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            
+            return json_encode(['message' => 'Successful edit article picture', 'error' => false]);
+            
+        } catch (ItemNotFoundException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
+            
+        } catch (FileUploadException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
+            
+        } catch (UpdateNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Data not found!', 'error' => true]);
+        }
     }
 }

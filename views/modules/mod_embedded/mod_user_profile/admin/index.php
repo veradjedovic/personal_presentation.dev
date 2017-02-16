@@ -149,13 +149,12 @@
     $("body").on("change", "#fUpload", function(){
 
         $("#message").html("").removeClass("alert alert-success alert-danger alert-dismissable");
-        var file = this.files[0];
         
         $.ajax({
             
             url: $('.formUpload').attr('action'),      
             type: $('.formUpload').attr('method'),         
-            data: new FormData($('form')[0]),
+            data: new FormData($('.formUpload')[0]),
             cache: false,
             processData: false,
             contentType: false,

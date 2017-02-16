@@ -152,7 +152,7 @@ class AdminExperienceController extends Controller
             
             $this->view('modules/mod_embedded/mod_experience/admin/edit', ['messageException' => $ex->getMessage()]);
 
-        }catch (Exception $ex) {           
+        } catch (Exception $ex) {           
             
             $this->view('modules/mod_embedded/mod_experience/admin/edit', ['messageException' => 'Nema podataka']);
 
@@ -182,7 +182,7 @@ class AdminExperienceController extends Controller
             
             return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
             
-        }  catch (Exception $ex) {
+        } catch (Exception $ex) {
             
             return json_encode(['message' => 'Not found', 'error'=> true]);
         }

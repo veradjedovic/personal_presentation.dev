@@ -95,7 +95,7 @@ class UserProfile extends Model
                 
                 if($_FILES['f_upload']['size'] <= 0) {
                     
-                    throw new FileUploadException('This action is not allowed, the size of picture is ' . $_FILES['f_upload']['size']);                   
+                    throw new FileUploadException('The picture is too large');                   
                 }
                 
                 if(($_FILES['f_upload']['type'] != "image/jpeg") && ($_FILES['f_upload']['type'] != "image/jpg") && ($_FILES['f_upload']['type'] != "image/JPG") && ($_FILES['f_upload']['type'] != "image/png")) {

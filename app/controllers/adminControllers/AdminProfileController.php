@@ -77,16 +77,12 @@ class AdminProfileController extends Controller
             $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['userProfile' => $userProfile, 'country' =>$country, 'industry' => $industry]);
             
         } catch (CollectionNotFoundException $ex) {
-            
-            $message = $ex->getMessage();
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['messageException' => $message]);
+
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            $message = 'Linkovi nisu pronadjeni';
-            
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['messageException' => $message]);
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['messageException' => 'Linkovi nisu pronadjeni']);
         }
     }
     
@@ -117,7 +113,7 @@ class AdminProfileController extends Controller
             
         } catch (Exception $ex) {
             
-            return json_encode(['message' => 'Nepostojeci podaci!', 'error' => true]);
+            return json_encode(['message' => 'Data not found!', 'error' => true]);
         }
     }
     
@@ -132,7 +128,7 @@ class AdminProfileController extends Controller
             
             $this->userProfile->UploadProfilePicture((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
             
-            return json_encode(['message' => 'Successful edit profile picture', 'error' => false, 'data' => $_FILES]);
+            return json_encode(['message' => 'Successful edit profile picture', 'error' => false]);
             
         } catch (ItemNotFoundException $ex) {
             
@@ -152,7 +148,7 @@ class AdminProfileController extends Controller
             
         } catch (Exception $ex) {
             
-            return json_encode(['message' => 'Nepostojeci podaci!', 'error' => true]);
+            return json_encode(['message' => 'Data not found!', 'error' => true]);
         }
         
     }

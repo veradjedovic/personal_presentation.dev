@@ -39,3 +39,16 @@
     <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/gritter/js/jquery.gritter.js"></script>
     <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/js/moreNoti.js"></script>
 <!--END PAGE LEVEL SCRIPTS -->
+
+<!-- PAGE LEVEL SCRIPTS FORMEDITORS -->
+    <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/wysihtml5/lib/js/wysihtml5-0.3.0.min.js"></script>
+    <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/bootstrap-wysihtml5-hack.js"></script>
+    <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/CLEditor1_4_3/jquery.cleditor.min.js"></script>
+    <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/pagedown/Markdown.Converter.js"></script>
+    <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/pagedown/Markdown.Sanitizer.js"></script>
+    <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/plugins/Markdown.Editor-hack.js"></script>
+    <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/js/editorInit.js"></script>
+    <script>
+        $(function () { formWysiwyg(); });
+    </script>
+<!--END PAGE LEVEL SCRIPTS -->

@@ -36,7 +36,7 @@
                                         ?> 
                                         <!--moze i ovako, kada je id u pitanju-->
                                         <tr id="row<?php echo ($item->id) ? $item->id : 1; ?>" class="odd gradeX">
-                                            <td class=""><?php echo ($item->updated_at) ? date('d\.m\.Y h\:i') : '' ?></td>
+                                            <td class=""><?php echo ($item->updated_at) ? date('d\.m\.Y', strtotime($item->updated_at)) : '' ?></td>
                                             <td class=""><?php echo ($item->title) ? $item->title : '' ?></td>
                                             <td><?php echo ($item->author_name) ? $item->author_name : '' ?> <?php echo ($item->author_surname) ? $item->author_surname : '' ?></td> 
                                             <td><?php echo ($item->content) ? (strlen($item->content) > 70 ? substr($item->content, 0, 70). "..." : $item->content) : '' ?></td> 

@@ -16,6 +16,7 @@ $collector->post('admin-articles', ['app\controllers\adminControllers\AdminArtic
 $collector->get('admin-articles/{id}', ['app\controllers\adminControllers\AdminArticleController','show']);
 $collector->any('admin-articles-update/{id}', ['app\controllers\adminControllers\AdminArticleController','update']);
 $collector->any('admin-articles-delete/{id}', ['app\controllers\adminControllers\AdminArticleController','destroy']);
+$collector->any('admin-articles-picture/{id}', ['app\controllers\adminControllers\AdminArticleController','uploadArticlePicture']);
 
 //admin-certifications routes
 $collector->get('admin-certifications-list', ['app\controllers\adminControllers\AdminCertificationController','index']);

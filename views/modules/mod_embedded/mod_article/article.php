@@ -11,7 +11,7 @@
             echo "<h3>{$item->title} - <small>" . date('d\. m\. Y', strtotime($item->updated_at)) . "</small></h3>";
             
             if($item->content)
-            echo "<p>" . (strlen($item->content)>500) ? substr($item->content,0,500) . "..." : $item->content . "</p>";
+            echo "<p>" . htmlspecialchars_decode((strlen($item->content)>500) ? (substr($item->content,0,500) . '...') : $item->content) . "</p>";
                          
             echo "<br /><br /><p><small><a class ='button_small' href = '/'>Procitaj vise...</a></small><div style = 'clear:both'></div></p>";
             echo "<div style = 'clear:both'></div>";
