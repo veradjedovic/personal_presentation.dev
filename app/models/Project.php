@@ -2,6 +2,9 @@
 
 namespace app\models;
 
+use app\classes\Validator as Validator;
+use app\exceptions\ValidatorException as ValidatorException;
+
 /**
  * Description of Project
  *
@@ -34,6 +37,21 @@ class Project extends Model
         public $id, $name, $project_month, $project_year, $project_url, $description, $status, $created_at, $updated_at;
         
         /**
+         *
+         * @var object
+         */
+        protected $validator;
+        
+        
+        /**
+         * Construct
+         */
+        public function __construct() 
+        {
+            $this->validator = new Validator();
+        }
+
+        /**
          * 
          * @return array
          * @throws ProjectsNotFoundException
@@ -57,5 +75,28 @@ class Project extends Model
             }
 
             return $projects;
+        }
+        
+        /**
+         * 
+         * @param int $id
+         * @throws ValidatorException
+         */
+        public function UpdateProject($id)
+        {
+            if(!isset($_POST['tb_name']) && !isset($_POST['tb_url']) && !isset($_POST['ta_description']) && !isset($_POST['btn_submit'])) {
+                
+                throw new ValidatorException('Data are not exist');
+            }
+   
+            $item = $this->GetById($id);
+            $item->name = $this->validator->Required($_POST['tb_name']);
+            $item->project_url = $this->validator->TestInput($_POST['tb_url']);
+            $item->description = $this->validator->TestInput($_POST['ta_description']);
+            $item->project_year = $this->validator->Required(isset($_POST['tb_year']) ? $_POST['tb_year'] : date('Y'));
+            $item->project_month = $this->validator->Required(isset($_POST['tb_month']) ? $_POST['tb_month'] : 'January');
+            $item->status = isset($_POST['tb_status']) ? PROJECT_VISIBLE : PROJECT_NOT_VISIBLE;
+            $item->updated_at = date('Y-m-d H:i:s');
+            $item->Update();
         }
 }

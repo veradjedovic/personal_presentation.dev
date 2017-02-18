@@ -142,15 +142,15 @@ class AdminArticleController extends Controller
         
         } catch (ItemNotFoundException $ex) {           
             
-            $this->view('modules/mod_embedded/mod_experience/admin/edit', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/mod_article/admin/edit', ['messageException' => $ex->getMessage()]);
 
         } catch (PagesNotFoundException $ex) {           
             
-            $this->view('modules/mod_embedded/mod_experience/admin/edit', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/mod_article/admin/edit', ['messageException' => $ex->getMessage()]);
 
         } catch (CollectionNotFoundException $ex) {           
             
-            $this->view('modules/mod_embedded/mod_experience/admin/edit', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/mod_article/admin/edit', ['messageException' => $ex->getMessage()]);
 
         } catch (Exception $ex) {
             

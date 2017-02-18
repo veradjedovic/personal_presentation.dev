@@ -4,9 +4,14 @@ namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
 use app\models\Project as Project;
+use app\classes\Datetime as Datetime;
 use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use app\exceptions\ProjectsNotFoundException as ProjectsNotFoundException;
+use app\exceptions\ValidatorException as ValidatorException;
+use app\exceptions\ItemNotFoundException as ItemNotFoundException;
+use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
+use app\exceptions\InsertNotExecutedException as InsertNotExecutedException;
 use Exception as Exception;
 
 /**
@@ -33,6 +38,12 @@ class AdminProjectController extends Controller
      * @var object
      */
     protected $project;
+    
+    /**
+     *
+     * @var object
+     */
+    protected $datetime;
 
 
     /**
@@ -42,6 +53,7 @@ class AdminProjectController extends Controller
     {
         $this->menuModule = new AdminMenuController();
         $this->project = new Project();
+        $this->datetime = new Datetime(date('Y')-50, date('Y'));
     }
     
    /**
@@ -98,9 +110,18 @@ class AdminProjectController extends Controller
     public function show()
     {
         try {
+            
+            $project = $this->project->GetById((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $year_begin = $this->datetime->getYearBegin();
+            $year_end = $this->datetime->getYearEnd();
+            $months = $this->datetime->getMonth();
 
-            $this->view('modules/mod_embedded/mod_projects/admin/edit');
+            $this->view('modules/mod_embedded/mod_projects/admin/edit', ['project' => $project, 'year_begin' => $year_begin, 'year_end' => $year_end, 'months' => $months]);
         
+        }  catch (ItemNotFoundException $ex) {           
+            
+            $this->view('modules/mod_embedded/mod_projects/admin/edit', ['messageException' => $ex->getMessage()]);
+
         } catch (Exception $ex) {
             
             $this->view('modules/mod_embedded/mod_projects/admin/edit', ['messageException' => 'Nema podataka']);
@@ -112,7 +133,28 @@ class AdminProjectController extends Controller
      */
     public function update()
     {
-        echo 'Update method';
+        try {
+            
+            $this->project->UpdateProject((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            
+            return json_encode(['message' => 'Project successful update', 'error' => false]);
+            
+        } catch (ItemNotFoundException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (UpdateNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Not found', 'error'=> true]);
+        }
     }
     
     /**
