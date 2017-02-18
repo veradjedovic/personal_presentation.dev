@@ -5,6 +5,7 @@ namespace app\models;
 use app\exceptions\ValidatorException as ValidatorException;
 use app\classes\Validator as Validator;
 use app\exceptions\FileUploadException as FileUploadException;
+use app\exceptions\ProfileNotFoundException as ProfileNotFoundException;
 
 /**
  * Description of UserProfile
@@ -51,6 +52,24 @@ class UserProfile extends Model
          * @var type 
          */
         public $id, $name, $surname, $address, $city, $user_id, $country_id, $profess_headline, $industry_id, $image, $created_at, $updated_at;
+        
+        /**
+         * 
+         * @param int $id
+         * @return object
+         * @throws ProfileNotFoundException
+         */
+        public function GetUserProfile($id) 
+        {
+            $item = $this->GetAll('*', 'WHERE user_id =' . $id . ' limit 1')[0];
+            
+            if(!$item) {
+                
+                throw new ProfileNotFoundException('Profile not found');
+            }
+            
+            return $item;
+        }
         
         /**
          * 

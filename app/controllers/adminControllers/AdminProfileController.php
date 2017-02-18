@@ -6,12 +6,14 @@ use app\controllers\Controller as Controller;
 use app\models\UserProfile as UserProfile;
 use app\models\Country as Country;
 use app\models\Industry as Industry;
+use app\classes\Session as Session;
 use app\exceptions\ValidatorException as ValidatorException;
 use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
 use app\exceptions\FileUploadException as FileUploadException;
 use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
+use app\exceptions\ProfileNotFoundException as ProfileNotFoundException;
 use Exception as Exception;
 
 /**
@@ -70,11 +72,15 @@ class AdminProfileController extends Controller
     {
         try {
 
-            $userProfile = $this->userProfile->GetAll('*', 'limit 1')[0];
+            $userProfile = $this->userProfile->GetUserProfile(Session::get('id') ? Session::get('id') : '');
             $country = $this->country->GetAll();
             $industry = $this->industry->GetAll();
 
             $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['userProfile' => $userProfile, 'country' =>$country, 'industry' => $industry]);
+            
+        } catch (ProfileNotFoundException $ex) {
+
+            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (CollectionNotFoundException $ex) {
 

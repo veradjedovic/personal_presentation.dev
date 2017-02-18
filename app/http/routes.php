@@ -81,10 +81,11 @@ $collector->get('admin-projects-list', ['app\controllers\adminControllers\AdminP
 $collector->get('admin-projects', ['app\controllers\adminControllers\AdminProjectController','insert']);
 $collector->post('admin-projects', ['app\controllers\adminControllers\AdminProjectController','store']);
 $collector->get('admin-projects/{id}', ['app\controllers\adminControllers\AdminProjectController','show']);
-$collector->patch('admin-projects/{id}', ['app\controllers\adminControllers\AdminProjectController','update']);
-$collector->delete('admin-projects/{id}', ['app\controllers\adminControllers\AdminProjectController','destroy']);
+$collector->any('admin-projects-update/{id}', ['app\controllers\adminControllers\AdminProjectController','update']);
+$collector->any('admin-projects-delete/{id}', ['app\controllers\adminControllers\AdminProjectController','destroy']);
 
 //admin-project-members routes
+$collector->any('admin-projects-members-list/{id}', ['app\controllers\adminControllers\AdminProjectMemberController','index']);
 
 //admin-publications routes
 $collector->get('admin-publications-list', ['app\controllers\adminControllers\AdminPublicationController','index']);

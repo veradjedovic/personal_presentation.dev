@@ -3,6 +3,7 @@
 namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
+use app\models\ProjectMember as ProjectMember;
 use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use Exception as Exception;
 
@@ -24,6 +25,12 @@ class AdminProjectMemberController extends Controller
      * @var object
      */
     protected $menuModule;
+    
+    /**
+     *
+     * @var object
+     */
+    protected $project_member;
 
 
     /**
@@ -32,6 +39,7 @@ class AdminProjectMemberController extends Controller
     public function __construct() 
     {
         $this->menuModule = new AdminMenuController();
+        $this->project_member = new ProjectMember();
     }
     
    /**
@@ -41,7 +49,7 @@ class AdminProjectMemberController extends Controller
     {
         try {
 
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMember');
+            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers');
         
         } catch (Exception $ex) {
             
@@ -56,7 +64,7 @@ class AdminProjectMemberController extends Controller
     {
         try {
 
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMember');
+            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers');
         
         } catch (Exception $ex) {
             
@@ -79,11 +87,11 @@ class AdminProjectMemberController extends Controller
     {
         try {
 
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMember');
+            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers');
         
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMember', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers', ['messageException' => 'Nema podataka']);
         }
     }
     

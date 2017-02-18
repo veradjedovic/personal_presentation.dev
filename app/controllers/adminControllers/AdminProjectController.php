@@ -3,7 +3,10 @@
 namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
+use app\models\Project as Project;
 use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
+use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
+use app\exceptions\ProjectsNotFoundException as ProjectsNotFoundException;
 use Exception as Exception;
 
 /**
@@ -24,6 +27,12 @@ class AdminProjectController extends Controller
      * @var object
      */
     protected $menuModule;
+    
+    /**
+     *
+     * @var object
+     */
+    protected $project;
 
 
     /**
@@ -32,6 +41,7 @@ class AdminProjectController extends Controller
     public function __construct() 
     {
         $this->menuModule = new AdminMenuController();
+        $this->project = new Project();
     }
     
    /**
@@ -40,9 +50,19 @@ class AdminProjectController extends Controller
     public function index()
     {
         try {
+            
+            $projects = $this->project->GetAllProjects();
 
-            $this->view('modules/mod_embedded/mod_projects/admin/index');
+            $this->view('modules/mod_embedded/mod_projects/admin/index', ['projects' => $projects]);
         
+        } catch (ProjectsNotFoundException $ex) {
+            
+            $this->view('modules/mod_embedded/mod_projects/admin/index', ['messageException' => $ex->getMessage()]);
+            
+        } catch (CollectionNotFoundException $ex) {
+            
+            $this->view('modules/mod_embedded/mod_projects/admin/index', ['messageException' => $ex->getMessage()]);
+            
         } catch (Exception $ex) {
             
             $this->view('modules/mod_embedded/mod_projects/admin/index', ['messageException' => 'Nema podataka']);

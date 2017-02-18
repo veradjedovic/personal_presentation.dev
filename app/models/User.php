@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\classes\Session as Session;
+use app\models\UserProfile as UserProfile;
 use app\classes\Validator as Validator;
 use app\exceptions\ValidatorException as ValidatorException;
 
@@ -42,6 +43,12 @@ class User extends Model
          * @var object
          */
         protected $validator;
+        
+        /**
+         *
+         * @var object
+         */
+        protected $userProfile;
 
 
         /**
@@ -50,6 +57,7 @@ class User extends Model
         public function __construct() 
         {
             $this->validator = new Validator();
+            $this->userProfile = new UserProfile();
         }
         
         /**
@@ -77,6 +85,9 @@ class User extends Model
             Session::set("status",$this->status);
             Session::set("id",$this->id);
             Session::set("token",$this->token);
+            Session::set("name",$this->userProfile->GetUserProfile($this->id)->name);
+            Session::set("surname",$this->userProfile->GetUserProfile($this->id)->surname);
+            Session::set("image",$this->userProfile->GetUserProfile($this->id)->image);
         }
 
         /**

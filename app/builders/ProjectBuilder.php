@@ -13,21 +13,21 @@ use app\exceptions\ProjectsNotFoundException as ProjectsNotFoundException;
 class ProjectBuilder 
 {   
     /**
-        *
-        * @var string 
-        */
+     *
+     * @var string
+     */
     public $db; 
     
     /**
-        *
-        * @var object 
-        */
+     *
+     * @var object
+     */
     protected $project;
 
 
     /**
-        * Construct
-        */
+     * Construct
+     */
     public function __construct() 
     {
         $this->db = Project::$table;
@@ -35,9 +35,10 @@ class ProjectBuilder
     }
     
     /**
-        * 
-        * @return string
-        */
+     * 
+     * @return array
+     * @throws ProjectsNotFoundException
+     */
     public function GetVisibleProjects()
     {
         $fields = $this->db . ".name, " . $this->db . ".project_month, " . $this->db . ".project_year, " . $this->db . ".project_url, " . $this->db . ".description,
