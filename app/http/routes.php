@@ -85,7 +85,9 @@ $collector->any('admin-projects-update/{id}', ['app\controllers\adminControllers
 $collector->any('admin-projects-delete/{id}', ['app\controllers\adminControllers\AdminProjectController','destroy']);
 
 //admin-project-members routes
-$collector->any('admin-projects-members-list/{id}', ['app\controllers\adminControllers\AdminProjectMemberController','index']);
+$collector->get('admin-projects-members-list/{id}', ['app\controllers\adminControllers\AdminProjectMemberController','index']);
+$collector->post('admin-projects-members-insert/{id}', ['app\controllers\adminControllers\AdminProjectMemberController','store']);
+$collector->any('admin-projects-members-delete/{id}', ['app\controllers\adminControllers\AdminProjectMemberController','destroy']);
 
 //admin-publications routes
 $collector->get('admin-publications-list', ['app\controllers\adminControllers\AdminPublicationController','index']);
