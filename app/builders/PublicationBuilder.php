@@ -46,7 +46,7 @@ class PublicationBuilder
         
         $q = "LEFT JOIN publication_authors ON " . $this->db . ".id = publication_authors.publication_id
               WHERE " . $this->db . ".status = " . PUBL_VISIBLE . " AND publication_authors.status = " . PUBL_AUTHOR_VISIBLE . "            
-              GROUP BY " . $this->db . ".title
+              GROUP BY " . $this->db . ".id
               ORDER BY " . $this->db . ".publ_year DESC";
     
         $publications = $this->publication->GetAll($fields, $q);

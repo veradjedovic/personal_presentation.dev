@@ -27,7 +27,7 @@
             }
             
             if($item->document_name){
-                echo "<a href='/'>Preuzmi pdf</a></p>";
+                echo "<a href='/' download>Preuzmi pdf</a></p>";
             }
         }
     ?>

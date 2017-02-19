@@ -4,6 +4,8 @@ namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
 use app\models\Project as Project;
+use app\models\ProjectMember as ProjectMember;
+use app\classes\Session as Session;
 use app\classes\Datetime as Datetime;
 use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
@@ -44,7 +46,12 @@ class AdminProjectController extends Controller
      * @var object
      */
     protected $datetime;
-
+    
+    /**
+     *
+     * @var object
+     */
+    protected $projectMember;
 
     /**
      * Construct
@@ -53,6 +60,7 @@ class AdminProjectController extends Controller
     {
         $this->menuModule = new AdminMenuController();
         $this->project = new Project();
+        $this->projectMember = new ProjectMember();
         $this->datetime = new Datetime(date('Y')-50, date('Y'));
     }
     
@@ -88,7 +96,11 @@ class AdminProjectController extends Controller
     {
         try {
 
-            $this->view('modules/mod_embedded/mod_projects/admin/addNew');
+            $year_begin = $this->datetime->getYearBegin();
+            $year_end = $this->datetime->getYearEnd();
+            $months = $this->datetime->getMonth();
+            
+            $this->view('modules/mod_embedded/mod_projects/admin/addNew', ['year_begin' => $year_begin, 'year_end' => $year_end, 'months' => $months]);
         
         } catch (Exception $ex) {
             
@@ -101,7 +113,25 @@ class AdminProjectController extends Controller
      */
     public function store()
     {
-        echo 'Store method';
+        try {
+
+            $project_id = $this->project->InsertProject();
+            $this->projectMember->InsertProjectMember((Session::get('name') ? Session::get('name') : ''), (Session::get('surname') ? Session::get('surname') : ''), $project_id);
+            
+            return json_encode(['message' => 'Project successful insert', 'error' => false]);
+        
+        } catch (InsertNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        }  catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Not inserted', 'error'=> true]);
+        }
     }
     
     /**

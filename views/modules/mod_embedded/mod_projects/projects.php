@@ -14,6 +14,10 @@
                 echo "<p>Clanovi tima: " . $item->author . "<br />";
             }
             
+            if($item->project_url){
+                echo "Url projekta: <a href='" . $item->project_url . "' target='_blank'>" . $item->project_url . "</a><br />";
+            }
+            
             if($item->project_month || $item->project_year){
                 echo ($item->project_month ? $item->project_month : '') . " " . ($item->project_year ? $item->project_year : '') . "<br />";  
             }

@@ -47,7 +47,7 @@ class ProjectBuilder
         
         $q = "LEFT JOIN project_members ON " . $this->db . ".id = project_members.project_id
               WHERE " . $this->db . ".status = " . PROJECT_VISIBLE . " AND project_members.status = " . PROJECT_MEMBER_VISIBLE . "            
-              GROUP BY " . $this->db . ".name
+              GROUP BY " . $this->db . ".id
               ORDER BY " . $this->db . ".project_year DESC";
         
         $projects = $this->project->GetAll($fields, $q);

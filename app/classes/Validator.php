@@ -122,9 +122,25 @@ class Validator
         }
         else {
             
-            throw new ValidatorException("Please Check You've Entered Or Confirmed Your Password!");
+            throw new ValidatorException("Please, Check You've Entered Or Confirmed Your Password!");
         }
 
         return $password;
+    }
+    
+    /**
+     * 
+     * @param string $url
+     * @return string
+     * @throws ValidatorException
+     */
+    public function Url($url) 
+    {
+        if (!filter_var($url, FILTER_VALIDATE_URL)) {
+            
+            throw new ValidatorException("Enter a valid url!");
+        }
+        
+        return $url;
     }
 }
