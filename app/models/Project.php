@@ -71,7 +71,7 @@ class Project extends Model
 
             if(!$projects) {
 
-                throw new ProjectsNotFoundException('Nije pronadjen ni jedan projekat.');
+                throw new ProjectsNotFoundException('Projects not found.');
             }
 
             return $projects;
@@ -91,7 +91,7 @@ class Project extends Model
    
             $item = $this->GetById($id);
             $item->name = $this->validator->Required($_POST['tb_name']);
-            $item->project_url = !empty(trim($_POST['tb_url']))? $this->validator->Url($_POST['tb_url']) : '';
+            $item->project_url = !empty(trim($_POST['tb_url'])) ? $this->validator->Url($_POST['tb_url']) : '';
             $item->description = $this->validator->TestInput($_POST['ta_description']);
             $item->project_year = $this->validator->Required(isset($_POST['tb_year']) ? $_POST['tb_year'] : date('Y'));
             $item->project_month = $this->validator->Required(isset($_POST['tb_month']) ? $_POST['tb_month'] : 'January');

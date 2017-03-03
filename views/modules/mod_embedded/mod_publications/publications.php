@@ -27,7 +27,7 @@
             }
             
             if($item->document_name){
-                echo "<a href='/' download>Preuzmi pdf</a></p>";
+                echo "<a href='" . SITE_ROOT . "/resources/documents/publications_pdf/" . $item->document_name . "' download>Preuzmi pdf</a></p>";
             }
         }
     ?>

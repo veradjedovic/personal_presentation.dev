@@ -36,6 +36,7 @@ ftpsync.settings
 .nb-gradle/
 
 /resources/images/
+/resources/documents/
 
 /composer.lock
 /test.php

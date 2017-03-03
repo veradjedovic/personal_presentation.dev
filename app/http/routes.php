@@ -94,10 +94,14 @@ $collector->get('admin-publications-list', ['app\controllers\adminControllers\Ad
 $collector->get('admin-publications', ['app\controllers\adminControllers\AdminPublicationController','insert']);
 $collector->post('admin-publications', ['app\controllers\adminControllers\AdminPublicationController','store']);
 $collector->get('admin-publications/{id}', ['app\controllers\adminControllers\AdminPublicationController','show']);
-$collector->patch('admin-publications/{id}', ['app\controllers\adminControllers\AdminPublicationController','update']);
-$collector->delete('admin-publications/{id}', ['app\controllers\adminControllers\AdminPublicationController','destroy']);
+$collector->any('admin-publications-update/{id}', ['app\controllers\adminControllers\AdminPublicationController','update']);
+$collector->any('admin-publications-delete/{id}', ['app\controllers\adminControllers\AdminPublicationController','destroy']);
+$collector->any('admin-publications-picture/{id}', ['app\controllers\adminControllers\AdminPublicationController','uploadPublicationPdf']);
 
 //admin-publication-authors routes
+$collector->get('admin-publications-authors-list/{id}', ['app\controllers\adminControllers\AdminPublicationAuthorController','index']);
+$collector->post('admin-publications-authors-insert/{id}', ['app\controllers\adminControllers\AdminPublicationAuthorController','store']);
+$collector->any('admin-publications-authors-delete/{id}', ['app\controllers\adminControllers\AdminPublicationAuthorController','destroy']);
 
 //admin-skills routes
 $collector->get('admin-skills-list', ['app\controllers\adminControllers\AdminSkillController','index']);
