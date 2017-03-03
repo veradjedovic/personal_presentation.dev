@@ -17,7 +17,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Member Name</th>
-                                                    <th>Member Surnname</th>
+                                                    <th>Member Surname</th>
                                                     <th>Add New</th>
                                                 </tr>
                                             </thead>                                                                   

@@ -3,7 +3,6 @@
 namespace app\models;
 
 use app\classes\Validator as Validator;
-use app\exceptions\ValidatorException as ValidatorException;
 use app\exceptions\ProjectMembersNotFoundException as ProjectMembersNotFoundException;
 
 /**
@@ -44,8 +43,6 @@ class ProjectMember extends Model
         protected $validator;
 
 
-
-
         /**
          * Construct
          */
@@ -78,7 +75,7 @@ class ProjectMember extends Model
          * @param string $name
          * @param string $surname
          * @param int $id
-         * @throws ValidatorException
+         * @return int
          */
         public function InsertProjectMember($name='', $surname='', $id='') 
         {

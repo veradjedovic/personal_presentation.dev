@@ -15,51 +15,51 @@ use app\exceptions\FileUploadException as FileUploadException;
  */
 class Publication extends Model
 {
-    /**
-     *
-     * @var string
-     */
-    public static $table = 'publications';
-    
-    /**
-     *
-     * @var array
-     */
-    public static $columns = array('title', 'publisher', 'publ_month', 'publ_year', 'description', 'publ_url', 'document_name', 'status', 'created_at', 'updated_at');
-    
-    /**
-     *
-     * @var string
-     */
-    public static $id_column = 'id';
-    
-    /**
-     *
-     * @var type 
-     */
-    public $id, $title, $publisher, $publ_month, $publ_year, $description, $publ_url, $document_name, $status, $created_at, $updated_at;
+        /**
+         *
+         * @var string
+         */
+        public static $table = 'publications';
 
-    /**
-     *
-     * @var object
-     */
-    protected $validator;
+        /**
+         *
+         * @var array
+         */
+        public static $columns = array('title', 'publisher', 'publ_month', 'publ_year', 'description', 'publ_url', 'document_name', 'status', 'created_at', 'updated_at');
 
-    
-    /**
-     * Construct
-     */
-    public function __construct() 
-    {
-        $this->validator = new Validator();
-    }
+        /**
+         *
+         * @var string
+         */
+        public static $id_column = 'id';
 
-    /**
-     * 
-     * @return array
-     * @throws PublicationsNotFoundException
-     */
-    public function GetAllPublications()
+        /**
+         *
+         * @var type 
+         */
+        public $id, $title, $publisher, $publ_month, $publ_year, $description, $publ_url, $document_name, $status, $created_at, $updated_at;
+
+        /**
+         *
+         * @var object
+         */
+        protected $validator;
+
+
+        /**
+         * Construct
+         */
+        public function __construct() 
+        {
+            $this->validator = new Validator();
+        }
+
+        /**
+         * 
+         * @return array
+         * @throws PublicationsNotFoundException
+         */
+        public function GetAllPublications()
         {
             $fields = static::$table . ".id, " .static::$table . ".title, "  .static::$table . ".publisher, " . static::$table . ".publ_month, " . static::$table . ".publ_year, " . static::$table . ".publ_url, " . static::$table . ".description, " . static::$table . ".document_name, " . static::$table . ".status,
                   GROUP_CONCAT(publication_authors.author_name, ' ', publication_authors.author_surname
@@ -83,12 +83,39 @@ class Publication extends Model
     
         /**
          * 
+         * @return int
+         * @throws ValidatorException
+         */
+        public function InsertPublication() 
+        {
+            if(!isset($_POST['tb_title']) && !isset($_POST['tb_publisher']) && !isset($_POST['tb_url']) && !isset($_POST['ta_description'])) {
+                
+                throw new ValidatorException('Data are not exist');
+            }
+
+            $this->title = $this->validator->Required($_POST['tb_title']);
+            $this->publisher = $this->validator->Required($_POST['tb_publisher']);
+            $this->publ_url = !empty(trim($_POST['tb_url'])) ? $this->validator->Url($_POST['tb_url']) : '';
+            $this->description = $this->validator->TestInput($_POST['ta_description']);
+            $this->publ_year = $this->validator->Required(isset($_POST['tb_year']) ? $_POST['tb_year'] : date('Y'));
+            $this->publ_month = $this->validator->Required(isset($_POST['tb_month']) ? $_POST['tb_month'] : 'January');
+            $this->status = isset($_POST['tb_status']) ? PUBL_VISIBLE : PUBL_NOT_VISIBLE;
+            $this->created_at = date('Y-m-d H:i:s');
+            $this->updated_at = date('Y-m-d H:i:s');
+            $this->document_name = $this->validator->TestInput($this->UploadPdf());
+            $publ_id = $this->Insert();
+            
+            return $publ_id;
+        }
+        
+        /**
+         * 
          * @param int $id
          * @throws ValidatorException
          */
         public function UpdatePublication($id) 
         {
-            if(!isset($_POST['tb_title']) && !isset($_POST['tb_publisher']) && !isset($_POST['tb_url']) && !isset($_POST['ta_description']) && !isset($_POST['btn_submit'])) {
+            if(!isset($_POST['tb_title']) && !isset($_POST['tb_publisher']) && !isset($_POST['tb_url']) && !isset($_POST['ta_description'])) {
                 
                 throw new ValidatorException('Data are not exist');
             }
@@ -117,7 +144,7 @@ class Publication extends Model
                 throw new FileUploadException("File doesn't exists");   
             }
             
-            if($_FILES==[]){
+            if($_FILES==[] || ($_FILES['f_upload']['size'] == false && $_FILES['f_upload']['type'] == false && $_FILES['f_upload']['error'] == true && $_FILES['f_upload']['name'] == false && $_FILES['f_upload']['tmp_name'] == false)){
                 
                 $pdf = '';
                 
@@ -140,8 +167,7 @@ class Publication extends Model
 
                 $pdf = uniqid() . $_FILES['f_upload']['name'];
                 $pdf = str_replace(' ', '_', $pdf);
-                $pdf = str_replace('-', '_', $pdf);
-                $pdf = str_replace("'", '_', $pdf);
+                $pdf = $this->validator->TestInput($pdf);
                 move_uploaded_file($_FILES['f_upload']['tmp_name'], APP_PATH. 'resources/documents/publications_pdf/' . $pdf);                
             }
             
@@ -154,9 +180,8 @@ class Publication extends Model
          */
         public function UpdatePublicationPdf($id) 
         {
-            $pdf = $this->UploadPdf();
             $item = $this->GetById($this->validator->Numeric($id));
-            $item->document_name = $this->validator->TestInput($pdf);
+            $item->document_name = $this->UploadPdf();
             $item->Update();
         }
 }

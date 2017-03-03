@@ -78,6 +78,7 @@ class Validator
     public function TestInput($data) 
     {
         $data = trim($data);
+        $data = str_replace("'", '#', $data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         

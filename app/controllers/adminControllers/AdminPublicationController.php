@@ -4,12 +4,15 @@ namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
 use app\models\Publication as Publication;
+use app\models\PublicationAuthor as PublicationAuthor;
 use app\classes\Datetime as Datetime;
+use app\classes\Session as Session;
 use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use app\exceptions\PublicationsNotFoundException as PublicationsNotFoundException;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
 use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
+use app\exceptions\InsertNotExecutedException as InsertNotExecutedException;
 use app\exceptions\ValidatorException as ValidatorException;
 use app\exceptions\FileUploadException as FileUploadException;
 use Exception as Exception;
@@ -43,6 +46,12 @@ class AdminPublicationController extends Controller
      *
      * @var object
      */
+    protected $publicationAuthor;
+
+    /**
+     *
+     * @var object
+     */
     protected $datetime;
 
 
@@ -53,6 +62,7 @@ class AdminPublicationController extends Controller
     {
         $this->menuModule = new AdminMenuController();
         $this->publication = new Publication();
+        $this->publicationAuthor = new PublicationAuthor();
         $this->datetime = new Datetime(date('Y')-50, date('Y'));
     }
     
@@ -88,7 +98,11 @@ class AdminPublicationController extends Controller
     {
         try {
 
-            $this->view('modules/mod_embedded/mod_publications/admin/addNew');
+            $year_begin = $this->datetime->getYearBegin();
+            $year_end = $this->datetime->getYearEnd();
+            $months = $this->datetime->getMonth();
+            
+            $this->view('modules/mod_embedded/mod_publications/admin/addNew', ['year_begin' => $year_begin, 'year_end' => $year_end, 'months' => $months]);
         
         } catch (Exception $ex) {
             
@@ -97,11 +111,35 @@ class AdminPublicationController extends Controller
     }
     
     /**
+     * 
      * Store method
+     * @return json
      */
     public function store()
     {
-        echo 'Store method';
+        try {
+            
+            $publ_id = $this->publication->InsertPublication();
+            $this->publicationAuthor->InsertPublicationAuthor((Session::get('name') ? Session::get('name') : ''), (Session::get('surname') ? Session::get('surname') : ''), $publ_id);           
+            
+            return json_encode(['message' => 'Successful inserted', 'error' => false]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
+            
+        } catch (FileUploadException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
+            
+        } catch (InsertNotExecutedException $ex) {
+
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => "Error is happend, data  aren't inserted!", 'error' => true]);
+        }
     }
     
     /**
@@ -129,7 +167,9 @@ class AdminPublicationController extends Controller
     }
     
     /**
+     * 
      * Update method
+     * @return json
      */
     public function update()
     {

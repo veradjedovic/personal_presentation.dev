@@ -91,7 +91,7 @@ class Article extends Model
      * 
      * @throws ValidatorException
      */
-    public function InsertArticle() 
+    public function InsertArticle($id) 
     {
         if(!isset($_POST['tb_title']) && !isset($_POST['tb_page']) && !isset($_POST['ta_content'])) {
             
@@ -99,12 +99,13 @@ class Article extends Model
             }       
    
             $this->title = $this->validator->Required($_POST['tb_title']);
+            $this->author_id = $this->validator->Numeric($id);
             $this->page_id = $this->validator->Required($_POST['tb_page']);
             $this->content = $this->validator->Required($_POST['ta_content']);           
             $this->status = isset($_POST['tb_status']) ? ARTICLE_VISIBLE : ARTICLE_NOT_VISIBLE;
             $this->created_at = date('Y-m-d H:i:s');
             $this->updated_at = date('Y-m-d H:i:s');       
-            $this->image = $this->validator->TestInput($this->InsertArticlePicture());
+            $this->image = $this->UploadArticlePicture();
             $this->Insert(); 
     }
     
@@ -134,31 +135,6 @@ class Article extends Model
      * @return string
      * @throws FileUploadException
      */
-    protected function InsertArticlePicture()
-    {
-            if(!isset($_FILES)) {
-                
-                throw new FileUploadException("File doesn't exists");   
-            }
-            
-            if($_FILES == [] || ($_FILES['f_upload']['size'] == false && $_FILES['f_upload']['type'] == false && $_FILES['f_upload']['error'] == true && $_FILES['f_upload']['name'] == false && $_FILES['f_upload']['tmp_name'] == false)){
-                
-                $avatar_img = '';
-                
-            } else {
- 
-                $avatar_img = uniqid() . $_FILES['f_upload']['name'];
-                move_uploaded_file($_FILES['f_upload']['tmp_name'], APP_PATH. 'resources/images/img_for_articles/' . $avatar_img);                
-            }
-            
-            return $avatar_img;
-    }
-    
-    /**
-     * 
-     * @return string
-     * @throws FileUploadException
-     */
     protected function UploadArticlePicture()
     {
             if(!isset($_FILES)) {
@@ -166,7 +142,7 @@ class Article extends Model
                 throw new FileUploadException("File doesn't exists");   
             }
             
-            if($_FILES==[]){
+            if($_FILES==[] || ($_FILES['f_upload']['size'] == false && $_FILES['f_upload']['type'] == false && $_FILES['f_upload']['error'] == true && $_FILES['f_upload']['name'] == false && $_FILES['f_upload']['tmp_name'] == false)){
                 
                 $avatar_img = '';
                 
@@ -188,6 +164,8 @@ class Article extends Model
                 }
 
                 $avatar_img = uniqid() . $_FILES['f_upload']['name'];
+                $avatar_img = str_replace(' ', '_', $avatar_img);
+                $avatar_img = $this->validator->TestInput($avatar_img);
                 move_uploaded_file($_FILES['f_upload']['tmp_name'], APP_PATH. 'resources/images/img_for_articles/' . $avatar_img);                
             }
             
@@ -200,9 +178,8 @@ class Article extends Model
      */
     public function UpdateArticlePicture($id) 
     {
-        $avatar_img_name = $this->UploadArticlePicture();
         $article = $this->GetById($this->validator->Numeric($id));
-        $article->image = $this->validator->TestInput($avatar_img_name);
+        $article->image = $this->UploadArticlePicture();
         $article->Update();
     } 
 }

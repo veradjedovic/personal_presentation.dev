@@ -67,6 +67,10 @@ class AdminProjectMemberController extends Controller
             
             $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers', ['projectMembers' => $projectMembers, 'project_id' => $project->id]);
         
+        } catch (ItemNotFoundException $ex) {
+            
+            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers', ['messageException' => $ex->getMessage()]);
+            
         } catch (ProjectMembersNotFoundException $ex) {
             
             $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers', ['messageException' => $ex->getMessage()]);

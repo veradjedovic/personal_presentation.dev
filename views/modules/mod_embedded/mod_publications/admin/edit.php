@@ -39,14 +39,14 @@
                         <div class="form-group">
                             <label class="control-label col-lg-4">Title *</label>
                             <div class="col-lg-4">
-                                <input type="text" class="validate[required] form-control" name="tb_title" id="req" value="<?php echo $data['publication']->title ? $data['publication']->title : '' ?>" />
+                                <input type="text" class="validate[required] form-control" name="tb_title" id="req" value="<?php echo $data['publication']->title ? str_replace('#', "'",$data['publication']->title) : '' ?>" />
                             </div>
                         </div>
                         
                         <div class="form-group">
                             <label class="control-label col-lg-4">Publisher *</label>
                             <div class="col-lg-4">
-                                <input type="text" class="validate[required] form-control" name="tb_publisher" id="req" value="<?php echo $data['publication']->publisher ? $data['publication']->publisher : '' ?>" />
+                                <input type="text" class="validate[required] form-control" name="tb_publisher" id="req" value="<?php echo $data['publication']->publisher ? str_replace('#', "'",$data['publication']->publisher) : '' ?>" />
                             </div>
                         </div>
                         
@@ -102,7 +102,7 @@
                         <div class="form-group">
                             <label class="control-label col-lg-4">Description</label>
                             <div class="col-lg-4">
-                                <textarea class="form-control" name="ta_description" rows="7"><?php echo $data['publication']->description ? $data['publication']->description : '' ?></textarea>
+                                <textarea class="form-control" name="ta_description" rows="7"><?php echo $data['publication']->description ? str_replace('#', "'",$data['publication']->description) : '' ?></textarea>
                             </div>
                         </div> 
                         
@@ -118,7 +118,7 @@
                         </div>                                      
 
                         <div style="text-align:center" class="form-actions no-margin-bottom">
-                            <input id="submit" type="submit" name="btn_submit" value="Submit" class="btn btn-primary btn-lg " />
+                            <input id="submit" type="submit" name="btn_submit" value="Update" class="btn btn-primary btn-lg " />
                         </div>
                     </form>
                 </div>

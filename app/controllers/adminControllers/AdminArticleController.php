@@ -5,6 +5,7 @@ namespace app\controllers\adminControllers;
 use app\controllers\Controller as Controller;
 use app\models\Article as Article;
 use app\models\Page as Page;
+use app\classes\Session as Session;
 use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use app\exceptions\ArticleNotFoundException as ArticleNotFoundException;
@@ -110,11 +111,15 @@ class AdminArticleController extends Controller
     {
         try {
             
-            $this->article->InsertArticle();
+            $this->article->InsertArticle(Session::get('id') ? Session::get('id') : 0);
             
             return json_encode(['message' => 'Successful inserted', 'error' => false]);
             
         } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
+            
+        } catch (FileUploadException $ex) {
             
             return json_encode(['message' => $ex->getMessage(), 'error' => true]);
             
