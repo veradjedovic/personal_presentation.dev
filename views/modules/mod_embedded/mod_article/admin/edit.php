@@ -21,7 +21,7 @@
                                             <label class="control-label col-lg-4">Image of Article</label>
                                             <div class="col-lg-8">
                                                 <div class="fileupload fileupload-new" data-provides="fileupload">
-                                                    <div id="prewAvatar" class="fileupload-new thumbnail" style="width: 200px; height: 200px;"><img src="<?php echo $data['article']->image ? SITE_ROOT . '/resources/images/img_for_articles/' . $data['article']->image : SITE_ROOT .'/templates/admin/assets/img/demoBig.jpg'; ?>" alt="" /></div>
+                                                    <div id="prewAvatar" class="fileupload-new thumbnail" style="width: 200px; height: 200px;"><img src="<?php echo $data['article']->image ? SITE_ROOT . '/resources/images/img_for_articles/' . str_replace('#', "'", $data['article']->image) : SITE_ROOT .'/templates/admin/assets/img/demoBig.jpg'; ?>" alt="" /></div>
                                                     <div id="uploadProfImage" class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 200px; line-height: 20px;"></div>
                                                     <div>
                                                         <span class="btn btn-file btn-primary"><span class="fileupload-new">Upload image</span><span class="fileupload-exists">Change</span><input id="fUpload" name="f_upload" type="file" /></span>
@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Title</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_title" id="req" value="<?php echo $data['article']->title ? $data['article']->title : '' ?>" />
+                                                <input type="text" class="validate[required] form-control" name="tb_title" id="req" value="<?php echo $data['article']->title ? str_replace( '#', "'", $data['article']->title) : '' ?>" />
                                             </div>
                                         </div>
 
@@ -49,7 +49,7 @@
                                                     <option value="">Chose a page...</option>
                                                 <?php foreach($data['pages'] as $page) { ?>
                                                     
-                                                    <option <?php echo ($data['article']->page_id == $page->id) ? 'selected' : '' ?> value="<?php echo $page->id ? $page->id : 1; ?>"><?php echo $page->name? $page->name : ''; ?> <?php echo ($page->status == WEB_NOT_VISIBLE) ? '(not visible)' : ''; ?></option>
+                                                    <option <?php echo ($data['article']->page_id == $page->id) ? 'selected' : '' ?> value="<?php echo $page->id ? $page->id : 1; ?>"><?php echo $page->name? str_replace('#', "'", $page->name) : ''; ?> <?php echo ($page->status == WEB_NOT_VISIBLE) ? '(not visible)' : ''; ?></option>
 
                                                 <?php } ?>
                                                     
@@ -74,7 +74,7 @@
                                                     <div class="tab-pane fade active in" id="markdown">
                                                         <div class="wmd-panel">
                                                             <div id="wmd-button-bar" class="btn-toolbar"></div>
-                                                            <textarea class="form-control" name="ta_content" rows="10" id="wysihtml5"><?php echo $data['article']->content ? $data['article']->content : ''; ?></textarea>
+                                                            <textarea class="form-control" name="ta_content" rows="10" id="wysihtml5"><?php echo $data['article']->content ? str_replace('#', "'",$data['article']->content) : ''; ?></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="tab-pane fade" id="preview">
