@@ -5,7 +5,7 @@
         foreach ($data['languages'] as $item) {
                       
             if($item->name){
-                echo "<h3>{$item->name}" . ($item->prof_name ? " - " . $item->prof_name : '') . "</h3>";
+                echo "<h3>" . replace($item->name) . ($item->prof_name ? " - " . $item->prof_name : '') . "</h3>";
             }
         }
     ?>

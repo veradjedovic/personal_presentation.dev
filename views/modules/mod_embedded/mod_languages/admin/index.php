@@ -32,7 +32,7 @@
                                         ?> 
                                         <!--moze i ovako, kada je id u pitanju-->
                                         <tr id="row<?php echo ($item->id) ? $item->id : 1; ?>" class="odd gradeX">
-                                            <td><?php echo ($item->name) ? $item->name : '' ?></td> 
+                                            <td><?php echo ($item->name) ? replace($item->name) : '' ?></td> 
                                             <td><?php echo ($item->proficiency) ? $item->proficiency : '' ?></td>
                                             <td class="">
                                                 <center>

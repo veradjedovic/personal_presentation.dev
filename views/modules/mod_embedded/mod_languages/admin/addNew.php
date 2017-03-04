@@ -25,13 +25,13 @@
                                             <label class="control-label col-lg-4">Proficiency *</label>
                                             <div class="col-lg-4">
                                                 <select name="tb_proficiency" id="sport" class="validate[required] form-control">
-                                                    <option value="">Chose a country...</option>
+                                                    <option value="">Choose an option...</option>
                                                 <?php 
                                                 if(isset($data['proficiences']) && isset($data['proficiences'])) {
                                                 
                                                     foreach($data['proficiences'] as $proficiency) { ?>
 
-                                                        <option value="<?php echo $proficiency->id ? $proficiency->id : ''; ?>"><?php echo $proficiency->name ? $proficiency->name : ''; ?></option>
+                                                    <option value="<?php echo $proficiency->id ? $proficiency->id : ''; ?>"><?php echo $proficiency->name ? replace($proficiency->name) : ''; ?></option>
 
                                                     <?php 
                                                     }
