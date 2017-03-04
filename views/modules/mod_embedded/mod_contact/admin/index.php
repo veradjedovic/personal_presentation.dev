@@ -34,7 +34,7 @@
                                         <tr id="row<?php echo ($message->id) ? $message->id : 1; ?>" class="odd gradeX">
                                             <td class=""><?php echo ($message->created_at) ? date('d\.m\.Y h\:i', strtotime($message->created_at)) : '' ?></td>
                                             <td><?php echo ($message->email_from) ? $message->email_from : '' ?></td> 
-                                            <td><?php echo ($message->subject) ? $message->subject : '' ?></td>                                                          
+                                            <td><?php echo ($message->subject) ? replace($message->subject) : '' ?></td>                                                          
                                             <td class="">
                                                 <center>
                                                     <a href="admin-messages/<?php echo ($message->id) ? $message->id : 1; ?>">

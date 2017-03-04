@@ -33,14 +33,14 @@
                                                         <div class="form-group">                                           
                                                             <label class="control-label col-lg-4">Subject:</label>
                                                             <div class="col-lg-4">
-                                                                <input class="form-control" name="tb_subject" placeholder="Enter text" value="<?php echo ($data['messageOne']->subject) ? $data['messageOne']->subject : ''; ?>" />
+                                                                <input class="form-control" name="tb_subject" placeholder="Enter text" value="<?php echo ($data['messageOne']->subject) ? replace($data['messageOne']->subject) : ''; ?>" />
                                                             </div>
                                                         </div>
 
                                                     </div>
                                                     <div class="panel-body"> 
                                                         <br />
-                                                        <p><?php echo ($data['messageOne']->content) ? $data['messageOne']->content : ''; ?></p>
+                                                        <p><?php echo ($data['messageOne']->content) ? replace($data['messageOne']->content) : ''; ?></p>
                                                         <br />
                                                     </div>
                                                 </div>
