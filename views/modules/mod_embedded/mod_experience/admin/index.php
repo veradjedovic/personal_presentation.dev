@@ -39,11 +39,11 @@
                                         <tr id="row<?php echo ($item->id) ? $item->id : 1; ?>" class="odd gradeX">
                                             <td class=""><?php echo ($item->month_from) ? $item->month_from : '' ?> <?php echo ($item->year_from) ? $item->year_from : '' ?></td>
                                             <td class=""><?php echo ($item->month_to) ? $item->month_to : '' ?> <?php echo ($item->year_to) ? $item->year_to : 'I currently working here' ?></td>
-                                            <td><?php echo ($item->title) ? $item->title : '' ?></td> 
-                                            <td><?php echo ($item->company) ? $item->company : '' ?></td> 
-                                            <td><?php echo ($item->city) ? $item->city : '' ?></td>
+                                            <td><?php echo ($item->title) ? replace($item->title) : '' ?></td> 
+                                            <td><?php echo ($item->company) ? replace($item->company) : '' ?></td> 
+                                            <td><?php echo ($item->city) ? replace($item->city) : '' ?></td>
                                             <td><?php echo ($item->country) ? $item->country : '' ?>(<?php echo ($item->country_code) ? $item->country_code : '' ?>)</td>
-                                            <td><?php echo ($item->description) ? (strlen($item->description) > 40 ? substr($item->description, 0, 40). "..." : $item->description) : '' ?></td>
+                                            <td><?php echo ($item->description) ? (strlen($item->description) > 40 ? substr(replace($item->description), 0, 40). "..." : replace($item->description)) : '' ?></td>
                                             <td class="">
                                                 <center>
                                                     <?php echo ($item->status == EXPERIENCE_VISIBLE) ? '<i class="icon-check-sign"></i>' : '<i class="icon-minus-sign-alt"></i>' ?>

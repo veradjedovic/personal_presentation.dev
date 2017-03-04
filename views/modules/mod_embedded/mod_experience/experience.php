@@ -7,16 +7,16 @@
             echo "<hr style='border-top: 1px solid #ccc;' />";
             
             if($item->title)
-            echo "<h3>{$item->title}</h3>";
+            echo "<h3>" . replace($item->title) . "</h3>";
             
             if($item->company || $item->city || $item->country)
-            echo "<p>" . ($item->company ? $item->company : '' ) . ", " . ($item->city ? $item->city : '') . ", " . ($item->country ? $item->country : '') . "<br />";
+            echo "<p>" . ($item->company ? replace($item->company) . ", " : '' ) . ($item->city ? replace($item->city) . ", " : '') . ($item->country ? $item->country : '') . "<br />";
             
             if(($item->month_from && $item->year_from) || ($item->month_to && $item->year_to))
             echo ($item->month_from ? $item->month_from : '') . " " . ($item->year_from ? $item->year_from : '') . " - " . ($item->month_to ? $item->month_to : '') . " " . ($item->year_to ? $item->year_to : '') . "<br />";  
             
             if($item->description)
-            echo $item->description . "</p>";
+            echo replace($item->description) . "</p>";
         }
     ?>
 </section>

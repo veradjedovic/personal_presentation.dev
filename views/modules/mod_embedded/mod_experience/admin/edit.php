@@ -22,21 +22,21 @@
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Title *</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_title" id="req" value="<?php echo $data['experience']->title ? $data['experience']->title : '' ?>" />
+                                                <input type="text" class="validate[required] form-control" name="tb_title" id="req" value="<?php echo $data['experience']->title ? replace($data['experience']->title) : '' ?>" />
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Company *</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_company" id="req" value="<?php echo $data['experience']->company ? $data['experience']->company : '' ?>" />
+                                                <input type="text" class="validate[required] form-control" name="tb_company" id="req" value="<?php echo $data['experience']->company ? replace($data['experience']->company) : '' ?>" />
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">City</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_city" value="<?php echo $data['experience']->city ? $data['experience']->city : '' ?>" />
+                                                <input type="text" class="validate[required] form-control" name="tb_city" value="<?php echo $data['experience']->city ? replace($data['experience']->city) : '' ?>" />
                                             </div>
                                         </div>
                                         
@@ -63,7 +63,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Description</label>
                                             <div class="col-lg-4">
-                                                <textarea class="form-control" name="ta_description" rows="7"><?php echo $data['experience']->description ? $data['experience']->description : '' ?></textarea>
+                                                <textarea class="form-control" name="ta_description" rows="7"><?php echo $data['experience']->description ? replace($data['experience']->description) : '' ?></textarea>
                                             </div>
                                         </div> 
 
