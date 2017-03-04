@@ -19,9 +19,9 @@
                         <input type="hidden" name="_method" value="patch" />
 
                         <div class="form-group">
-                            <label class="control-label col-lg-4">Project Nmame *</label>
+                            <label class="control-label col-lg-4">Project Name *</label>
                             <div class="col-lg-4">
-                                <input type="text" class="validate[required] form-control" name="tb_name" id="req" value="<?php echo $data['project']->name ? $data['project']->name : '' ?>" />
+                                <input type="text" class="validate[required] form-control" name="tb_name" id="req" value="<?php echo $data['project']->name ? replace($data['project']->name) : '' ?>" />
                             </div>
                         </div>
                         
@@ -77,7 +77,7 @@
                         <div class="form-group">
                             <label class="control-label col-lg-4">Description</label>
                             <div class="col-lg-4">
-                                <textarea class="form-control" name="ta_description" rows="7"><?php echo $data['project']->description ? $data['project']->description : '' ?></textarea>
+                                <textarea class="form-control" name="ta_description" rows="7"><?php echo $data['project']->description ? replace($data['project']->description) : '' ?></textarea>
                             </div>
                         </div> 
                         

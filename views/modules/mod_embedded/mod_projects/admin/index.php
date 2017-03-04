@@ -36,14 +36,14 @@
                                         <!--moze i ovako, kada je id u pitanju-->
                                         <tr id="row<?php echo ($item->id) ? $item->id : 1; ?>" class="odd gradeX">
                                             <td class=""><?php echo ($item->project_month) ? $item->project_month : '' ?> <?php echo ($item->project_year) ? $item->project_year : '' ?></td>
-                                            <td class=""><?php echo ($item->name) ? $item->name : '' ?></td>
-                                            <td><?php echo ($item->author) ? $item->author : '' ?>
+                                            <td class=""><?php echo ($item->name) ? replace($item->name) : '' ?></td>
+                                            <td><?php echo ($item->author) ? replace($item->author) : '' ?>
                                                 <a class="update pull-right" href="admin-projects-members-list/<?php echo ($item->id) ? $item->id : 1; ?>">
                                                     <i class="icon-edit"></i>
                                                 </a>
                                             </td> 
                                             <td><?php echo ($item->project_url) ? $item->project_url : '' ?></td> 
-                                            <td><?php echo ($item->description) ? (strlen($item->description) > 40 ? substr($item->description, 0, 40). "..." : $item->description) : '' ?></td>
+                                            <td><?php echo ($item->description) ? (strlen($item->description) > 40 ? substr(replace($item->description), 0, 40). "..." : replace($item->description)) : '' ?></td>
                                             <td class="">
                                                 <center>
                                                     <?php echo ($item->status == PROJECT_VISIBLE) ? '<i class="icon-check-sign"></i>' : '<i class="icon-minus-sign-alt"></i>' ?>

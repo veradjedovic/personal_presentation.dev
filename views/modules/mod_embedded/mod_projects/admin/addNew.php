@@ -14,7 +14,7 @@
                     <form class="formInsert form-horizontal" id="popup-validation" action="admin-projects/" method="post">                        
 
                         <div class="form-group">
-                            <label class="control-label col-lg-4">Project Nmame *</label>
+                            <label class="control-label col-lg-4">Project Name *</label>
                             <div class="col-lg-4">
                                 <input type="text" class="validate[required] form-control" name="tb_name" id="req" placeholder="Add a project name..." />
                             </div>

@@ -7,11 +7,11 @@
             echo "<hr style='border-top: 1px solid #ccc;' />";
             
             if($item->name){
-                echo "<h3>{$item->name}</h3>";
+                echo "<h3>" . replace($item->name) . "</h3>";
             }
                         
             if($item->author){
-                echo "<p>Clanovi tima: " . $item->author . "<br />";
+                echo "<p>Clanovi tima: " . replace($item->author) . "<br />";
             }
             
             if($item->project_url){
@@ -23,7 +23,7 @@
             }
             
             if($item->description){
-                echo $item->description . "</p>";
+                echo replace($item->description) . "</p>";
             }
         }
     ?>
