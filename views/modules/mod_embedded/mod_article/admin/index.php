@@ -37,11 +37,11 @@
                                         <!--moze i ovako, kada je id u pitanju-->
                                         <tr id="row<?php echo ($item->id) ? $item->id : 1; ?>" class="odd gradeX">
                                             <td class=""><?php echo ($item->updated_at) ? date('d\.m\.Y', strtotime($item->updated_at)) : '' ?></td>
-                                            <td class=""><?php echo ($item->title) ? str_replace('#', "'",$item->title) : '' ?></td>
-                                            <td><?php echo ($item->author_name) ? str_replace('#',"'",$item->author_name) : '' ?> <?php echo ($item->author_surname) ? str_replace('#', "'",$item->author_surname) : '' ?></td> 
-                                            <td><?php echo ($item->content) ? (strlen($item->content) > 40 ? substr(str_replace('#', "'", $item->content), 0, 40). "..." : str_replace('#', "'", $item->content)) : '' ?></td> 
-                                            <td><?php echo ($item->page) ? str_replace('#', "'",$item->page) : '' ?></td>
-                                            <td><?php echo ($item->image) ? '<img src = "' . SITE_ROOT . '/resources/images/img_for_articles/' . str_replace('#', "'",$item->image) . '" alt="picture" style="width: 70px;" />' : ''; ?></td>
+                                            <td class=""><?php echo ($item->title) ? replace($item->title) : '' ?></td>
+                                            <td><?php echo ($item->author_name) ? replace($item->author_name) : '' ?> <?php echo ($item->author_surname) ? replace($item->author_surname) : '' ?></td> 
+                                            <td><?php echo ($item->content) ? (strlen($item->content) > 40 ? substr(replace($item->content), 0, 40). "..." : replace($item->content)) : '' ?></td> 
+                                            <td><?php echo ($item->page) ? replace($item->page) : '' ?></td>
+                                            <td><?php echo ($item->image) ? '<img src = "' . SITE_ROOT . '/resources/images/img_for_articles/' . replace($item->image) . '" alt="picture" style="width: 70px;" />' : ''; ?></td>
                                             <td class="">
                                                 <center>
                                                     <?php echo ($item->status == ARTICLE_VISIBLE) ? '<i class="icon-check-sign"></i>' : '<i class="icon-minus-sign-alt"></i>' ?>

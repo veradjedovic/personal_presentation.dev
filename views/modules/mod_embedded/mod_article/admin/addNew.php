@@ -41,7 +41,7 @@
                                                     <option value="">Chose a page...</option>
                                                 <?php foreach($data['pages'] as $page) { ?>
                                                     
-                                                    <option value="<?php echo $page->id ? $page->id : 1; ?>"><?php echo $page->name? str_replace('#', "'", $page->name) : ''; ?> <?php echo ($page->status == WEB_NOT_VISIBLE) ? '(not visible)' : ''; ?></option>
+                                                    <option value="<?php echo $page->id ? $page->id : 1; ?>"><?php echo $page->name? replace($page->name) : ''; ?> <?php echo ($page->status == WEB_NOT_VISIBLE) ? '(not visible)' : ''; ?></option>
 
                                                 <?php } ?>
                                                     

@@ -25,7 +25,16 @@ function numbersOfControllers()
  */
 function dd($param)
 {
-    print_r($param);
+    print_r($param);    
     die();
+}
+
+/**
+ * 
+ * @param type $param
+ */
+function replace($param)
+{
+    return str_replace("#", "'", $param);
 }
 
