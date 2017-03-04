@@ -22,28 +22,28 @@
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">School *</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_school" id="req" value="<?php echo $data['education']->school ? $data['education']->school : '' ?>" />
+                                                <input type="text" class="validate[required] form-control" name="tb_school" id="req" value="<?php echo $data['education']->school ? replace($data['education']->school) : '' ?>" />
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Degree *</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_degree" id="req" value="<?php echo $data['education']->degree ? $data['education']->degree : '' ?>" />
+                                                <input type="text" class="validate[required] form-control" name="tb_degree" id="req" value="<?php echo $data['education']->degree ? replace($data['education']->degree) : '' ?>" />
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Field of Study *</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_field_of_study" id="req" value="<?php echo $data['education']->field_of_study ? $data['education']->field_of_study : '' ?>" />
+                                                <input type="text" class="validate[required] form-control" name="tb_field_of_study" id="req" value="<?php echo $data['education']->field_of_study ? replace($data['education']->field_of_study) : '' ?>" />
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Description</label>
                                             <div class="col-lg-4">
-                                                <textarea class="form-control" name="ta_description" rows="7"><?php echo $data['education']->description ? $data['education']->description : '' ?></textarea>
+                                                <textarea class="form-control" name="ta_description" rows="7"><?php echo $data['education']->description ? replace($data['education']->description) : '' ?></textarea>
                                             </div>
                                         </div> 
 

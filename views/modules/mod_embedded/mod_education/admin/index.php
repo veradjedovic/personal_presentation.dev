@@ -36,10 +36,10 @@
                                         <!--moze i ovako, kada je id u pitanju-->
                                         <tr id="row<?php echo ($item->id) ? $item->id : 1; ?>" class="odd gradeX">
                                             <td class=""><?php echo ($item->year_from) ? $item->year_from : '' ?> - <?php echo ($item->year_to) ? $item->year_to : '' ?></td>
-                                            <td><?php echo ($item->school) ? $item->school : '' ?></td> 
-                                            <td><?php echo ($item->degree) ? $item->degree : '' ?></td> 
-                                            <td><?php echo ($item->field_of_study) ? $item->field_of_study : '' ?></td>
-                                            <td><?php echo ($item->description) ? (strlen($item->description) > 40 ? substr($item->description, 0, 40). "..." : $item->description) : '' ?></td>
+                                            <td><?php echo ($item->school) ? replace($item->school) : '' ?></td> 
+                                            <td><?php echo ($item->degree) ? replace($item->degree) : '' ?></td> 
+                                            <td><?php echo ($item->field_of_study) ? replace($item->field_of_study) : '' ?></td>
+                                            <td><?php echo ($item->description) ? (strlen($item->description) > 40 ? substr(replace($item->description), 0, 40). "..." : replace($item->description)) : '' ?></td>
                                             <td class="">
                                                 <center>
                                                     <?php echo ($item->status == EDUCATION_VISIBLE) ? '<i class="icon-check-sign"></i>' : '<i class="icon-minus-sign-alt"></i>' ?>
