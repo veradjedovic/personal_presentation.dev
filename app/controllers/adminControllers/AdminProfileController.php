@@ -132,7 +132,7 @@ class AdminProfileController extends Controller
     {
         try {
             
-            $this->userProfile->UploadProfilePicture((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $this->userProfile->UpdateProfilePicture((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
             
             return json_encode(['message' => 'Successful edit profile picture', 'error' => false]);
             

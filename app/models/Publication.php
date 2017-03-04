@@ -119,8 +119,8 @@ class Publication extends Model
                 
                 throw new ValidatorException('Data are not exist');
             }
-   
-            $item = $this->GetById($id);
+
+            $item = $this->GetById($this->validator->Numeric($id));
             $item->title = $this->validator->Required($_POST['tb_title']);
             $item->publisher = $this->validator->Required($_POST['tb_publisher']);
             $item->publ_url = !empty(trim($_POST['tb_url'])) ? $this->validator->Url($_POST['tb_url']) : '';
@@ -129,6 +129,7 @@ class Publication extends Model
             $item->publ_month = $this->validator->Required(isset($_POST['tb_month']) ? $_POST['tb_month'] : 'January');
             $item->status = isset($_POST['tb_status']) ? PUBL_VISIBLE : PUBL_NOT_VISIBLE;
             $item->updated_at = date('Y-m-d H:i:s');
+
             $item->Update();
         }
         
@@ -167,8 +168,7 @@ class Publication extends Model
 
                 $pdf = uniqid() . $_FILES['f_upload']['name'];
                 $pdf = str_replace(' ', '_', $pdf);
-                $pdf = $this->validator->TestInput($pdf);
-                move_uploaded_file($_FILES['f_upload']['tmp_name'], APP_PATH. 'resources/documents/publications_pdf/' . $pdf);                
+                move_uploaded_file($_FILES['f_upload']['tmp_name'], APP_PATH. "resources/documents/publications_pdf/" . $pdf);                
             }
             
             return $pdf;
@@ -181,7 +181,7 @@ class Publication extends Model
         public function UpdatePublicationPdf($id) 
         {
             $item = $this->GetById($this->validator->Numeric($id));
-            $item->document_name = $this->UploadPdf();
+            $item->document_name = $this->validator->TestInput($this->UploadPdf());
             $item->Update();
         }
 }

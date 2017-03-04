@@ -8,6 +8,7 @@ use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use app\exceptions\InsertNotExecutedException as InsertNotExecutedException;
 use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
 use app\exceptions\DeleteNotExecutedException as DeleteNotExecutedException;
+use app\classes\Validator as Validator;
 
 /**
  * Abstract Class Model
@@ -56,7 +57,7 @@ abstract class Model
                     
                     throw new ItemNotFoundException('Item not found');
                 }
-                
+               
 		return $item;
 	}
 
@@ -87,7 +88,7 @@ abstract class Model
                     
                     throw new CollectionNotFoundException('Collection not found.');
                 }  
-                
+ 
 		return $ret_val;
 	}
 

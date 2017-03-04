@@ -41,7 +41,7 @@
                                             <td><?php echo ($item->author_name) ? $item->author_name : '' ?> <?php echo ($item->author_surname) ? $item->author_surname : '' ?></td> 
                                             <td><?php echo ($item->content) ? (strlen($item->content) > 40 ? substr($item->content, 0, 40). "..." : $item->content) : '' ?></td> 
                                             <td><?php echo ($item->page) ? $item->page : '' ?></td>
-                                            <td><?php echo ($item->image) ? "<img src = '" . SITE_ROOT . "/resources/images/img_for_articles/" . $item->image . "' alt='picture' style='width: 70px;' />" : ""; ?></td>
+                                            <td><?php echo ($item->image) ? '<img src = "' . SITE_ROOT . '/resources/images/img_for_articles/' . $item->image . '" alt="picture" style="width: 70px;" />' : ''; ?></td>
                                             <td class="">
                                                 <center>
                                                     <?php echo ($item->status == ARTICLE_VISIBLE) ? '<i class="icon-check-sign"></i>' : '<i class="icon-minus-sign-alt"></i>' ?>

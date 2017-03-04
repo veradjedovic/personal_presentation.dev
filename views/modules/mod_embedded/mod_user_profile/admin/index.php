@@ -21,7 +21,7 @@
                                             <label class="control-label col-lg-4">Pre Defined Image</label>
                                             <div class="col-lg-8">
                                                 <div class="fileupload fileupload-new" data-provides="fileupload">
-                                                    <div id="prewAvatar" class="fileupload-new thumbnail" style="width: 200px; height: 200px;"><img src="<?php echo $data['userProfile']->image ? SITE_ROOT . '/resources/images/img_profile/' . $data['userProfile']->image : SITE_ROOT .'/templates/admin/assets/img/demoBig.jpg'; ?>" alt="" /></div>
+                                                    <div id="prewAvatar" class="fileupload-new thumbnail" style="width: 200px; height: 200px;"><img src="<?php echo $data['userProfile']->image ? SITE_ROOT . '/resources/images/img_profile/' . str_replace('#', "'", $data['userProfile']->image) : SITE_ROOT .'/templates/admin/assets/img/demoBig.jpg'; ?>" alt="" /></div>
                                                     <div id="uploadProfImage" class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 200px; line-height: 20px;"></div>
                                                     <div>
                                                         <span class="btn btn-file btn-primary"><span class="fileupload-new">Upload image</span><span class="fileupload-exists">Change</span><input id="fUpload" name="f_upload" type="file" /></span>

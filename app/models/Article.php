@@ -105,7 +105,7 @@ class Article extends Model
             $this->status = isset($_POST['tb_status']) ? ARTICLE_VISIBLE : ARTICLE_NOT_VISIBLE;
             $this->created_at = date('Y-m-d H:i:s');
             $this->updated_at = date('Y-m-d H:i:s');       
-            $this->image = $this->UploadArticlePicture();
+            $this->image = $this->validator->TestInput($this->UploadArticlePicture());
             $this->Insert(); 
     }
     
@@ -165,7 +165,6 @@ class Article extends Model
 
                 $avatar_img = uniqid() . $_FILES['f_upload']['name'];
                 $avatar_img = str_replace(' ', '_', $avatar_img);
-                $avatar_img = $this->validator->TestInput($avatar_img);
                 move_uploaded_file($_FILES['f_upload']['tmp_name'], APP_PATH. 'resources/images/img_for_articles/' . $avatar_img);                
             }
             
@@ -179,7 +178,7 @@ class Article extends Model
     public function UpdateArticlePicture($id) 
     {
         $article = $this->GetById($this->validator->Numeric($id));
-        $article->image = $this->UploadArticlePicture();
+        $article->image = $this->validator->TestInput($this->UploadArticlePicture());
         $article->Update();
     } 
 }

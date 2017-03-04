@@ -96,10 +96,10 @@ class UserProfile extends Model
         
         /**
          * 
-         * @param int $id
+         * @return int
          * @throws FileUploadException
          */
-        public function UploadProfilePicture($id)
+        protected function UploadProfilePicture()
         {
             if(!isset($_FILES)) {
                 
@@ -128,21 +128,21 @@ class UserProfile extends Model
                 }
 
                 $avatar_img = uniqid() . $_FILES['f_upload']['name'];
-                move_uploaded_file($_FILES['f_upload']['tmp_name'], APP_PATH. 'resources/images/img_profile/' . $avatar_img);
-                
-                $this->UpdateProfilePicture($id, $avatar_img);
+                $avatar_img = str_replace(' ', '_', $avatar_img);
+                move_uploaded_file($_FILES['f_upload']['tmp_name'], APP_PATH. 'resources/images/img_profile/' . $avatar_img); 
             }
+
+            return $avatar_img;
         }
         
         /**
          * 
          * @param int $id
-         * @param string $param
          */
-        protected function UpdateProfilePicture($id, $param) 
+        public function UpdateProfilePicture($id) 
         {
             $profile = $this->GetById($this->validator->Numeric($id));
-            $profile->image = $this->validator->TestInput($param);
+            $profile->image = $this->validator->TestInput($this->UploadProfilePicture());
             $profile->Update();
         }
 }
