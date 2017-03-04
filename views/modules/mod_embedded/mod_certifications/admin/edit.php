@@ -22,21 +22,21 @@
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Name *</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_name" id="req" value="<?php echo $data['certification']->name ? $data['certification']->name : '' ?>">
+                                                <input type="text" class="validate[required] form-control" name="tb_name" id="req" value="<?php echo $data['certification']->name ? replace($data['certification']->name) : '' ?>">
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Authority *</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_authority" id="req" value="<?php echo $data['certification']->authority ? $data['certification']->authority : '' ?>">
+                                                <input type="text" class="validate[required] form-control" name="tb_authority" id="req" value="<?php echo $data['certification']->authority ? replace($data['certification']->authority) : '' ?>">
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Licence number</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_licence_number" value="<?php echo $data['certification']->licence_number ? $data['certification']->licence_number : '' ?>">
+                                                <input type="text" class="validate[required] form-control" name="tb_licence_number" value="<?php echo $data['certification']->licence_number ? replace($data['certification']->licence_number) : '' ?>">
                                             </div>
                                         </div>
                                         

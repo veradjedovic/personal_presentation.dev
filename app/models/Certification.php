@@ -128,7 +128,7 @@ class Certification extends Model
             $this->name = $this->validator->Required($_POST['tb_name']);
             $this->authority = $this->validator->Required($_POST['tb_authority']);
             $this->licence_number = $this->validator->TestInput($_POST['tb_licence_number']);
-            $this->certif_url = $this->validator->TestInput($_POST['tb_certif_url']);
+            $this->certif_url = $this->validator->Url($_POST['tb_certif_url']);
             $this->certif_month = $this->validator->Required(isset($_POST['tb_month']) ? $_POST['tb_month'] : 'January');
             $this->certif_year = $this->validator->Required(isset($_POST['tb_year']) ? $_POST['tb_year'] : date('Y'));
             $this->status = isset($_POST['tb_status']) ? CERTIF_VISIBLE : CERTIF_NOT_VISIBLE;
@@ -149,11 +149,11 @@ class Certification extends Model
                 throw new ValidatorException('Data is not exists');
             }
    
-            $item = $this->GetById($id);
+            $item = $this->GetById($this->validator->Numeric($id));
             $item->name = $this->validator->Required($_POST['tb_name']);
             $item->authority = $this->validator->Required($_POST['tb_authority']);
             $item->licence_number = $this->validator->TestInput($_POST['tb_licence_number']);
-            $item->certif_url = $this->validator->TestInput($_POST['tb_certif_url']);
+            $item->certif_url = $this->validator->Url($_POST['tb_certif_url']);
             $item->certif_month = $this->validator->Required(isset($_POST['tb_month']) ? $_POST['tb_month'] : 'January');
             $item->certif_year = $this->validator->Required(isset($_POST['tb_year']) ? $_POST['tb_year'] : date('Y'));
             $item->status = isset($_POST['tb_status']) ? CERTIF_VISIBLE : CERTIF_NOT_VISIBLE;

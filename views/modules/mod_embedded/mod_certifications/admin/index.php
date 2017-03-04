@@ -18,6 +18,7 @@
                                             <th>Starting</th>
                                             <th>Name</th>
                                             <th>Authority</th>
+                                            <th>Url</th>
                                             <th>Licence Number</th>                                            
                                             <th><i class="icon-check-sign"></i> Visible</th>
                                             <th>Edit</th>
@@ -35,9 +36,10 @@
                                         <!--moze i ovako, kada je id u pitanju-->
                                         <tr id="row<?php echo ($certification->id) ? $certification->id : 1; ?>" class="odd gradeX">
                                             <td class=""><?php echo ($certification->certif_month) ? $certification->certif_month : '' ?> <?php echo ($certification->certif_year) ? $certification->certif_year : '' ?></td>
-                                            <td><?php echo ($certification->name) ? $certification->name : '' ?></td> 
-                                            <td><?php echo ($certification->authority) ? $certification->authority : '' ?></td> 
-                                            <td><?php echo ($certification->licence_number) ? $certification->licence_number : '' ?></td>
+                                            <td><?php echo ($certification->name) ? replace($certification->name) : '' ?></td> 
+                                            <td><?php echo ($certification->authority) ? replace($certification->authority) : '' ?></td>
+                                            <td><?php echo ($certification->certif_url) ? $certification->certif_url : '' ?></td>
+                                            <td><?php echo ($certification->licence_number) ? replace($certification->licence_number) : '' ?></td>
                                             <td class="">
                                                 <center>
                                                     <i id="icon<?php echo ($certification->id) ? $certification->id : 1; ?>" data-id-status="<?php echo ($certification->id) ? $certification->id : 1; ?>" class="<?php echo ($certification->status == CERTIF_VISIBLE) ? 'statusVisible icon-check-sign' : 'statusUnvisible icon-minus-sign-alt'; ?>" style="cursor: pointer;"></i>
