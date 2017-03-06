@@ -22,7 +22,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Name *</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_name" id="req" value="<?php echo $data['skill']->name ? $data['skill']->name : '' ?>" />
+                                                <input type="text" class="validate[required] form-control" name="tb_name" id="req" value="<?php echo $data['skill']->name ? replace($data['skill']->name) : '' ?>" />
                                             </div>
                                         </div>
                                         

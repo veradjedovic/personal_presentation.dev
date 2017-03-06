@@ -7,15 +7,15 @@
             echo "<hr style='border-top: 1px solid #ccc;' />";
             
             if($item->title){
-                echo "<h3>{$item->title}</h3>";
+                echo "<h3>" . replace($item->title) . "</h3>";
             }
               
             if($item->publisher){
-                echo "<p>Izdavac: " . $item->publisher . "<br />";
+                echo "<p>Izdavac: " . replace($item->publisher) . "<br />";
             }
             
             if($item->author){
-                echo "Autori: " . $item->author . "<br />";
+                echo "Autori: " . replace($item->author) . "<br />";
             }
             
             if($item->publ_month || $item->publ_year){
@@ -23,11 +23,11 @@
             }
             
             if($item->description){
-                echo $item->description . "<br />";
+                echo replace($item->description) . "<br />";
             }
             
             if($item->document_name){
-                echo '<a href="' . SITE_ROOT . '/resources/documents/publications_pdf/' . $item->document_name . '" download>Preuzmi pdf</a></p>';
+                echo '<a href="' . SITE_ROOT . '/resources/documents/publications_pdf/' . replace($item->document_name) . '" download>Preuzmi pdf</a></p>';
             }
         }
     ?>

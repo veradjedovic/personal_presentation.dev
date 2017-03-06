@@ -7,7 +7,7 @@
         foreach ($data['skills'] as $item) {
                       
             if($item->name){
-                echo "<span class='button_small' style='color:#ffffff; margin:5px 10px 5px 0;'>" . ($item->persentage ? $item->persentage . '%' : '1%') . " {$item->name} </span>";
+                echo "<span class='button_small' style='color:#ffffff; margin:5px 10px 5px 0;'>" . ($item->persentage ? $item->persentage . '%' : '1%') . " " . replace($item->name) . "</span>";
             }
         }
     ?>

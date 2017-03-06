@@ -33,7 +33,7 @@
                                         <!--moze i ovako, kada je id u pitanju-->
                                         <tr id="row<?php echo ($item->id) ? $item->id : 1; ?>" class="odd gradeX">
                                             <td><?php echo ($item->persentage) ? $item->persentage : '0' ?></td> 
-                                            <td><?php echo ($item->name) ? $item->name : '' ?></td>
+                                            <td><?php echo ($item->name) ? replace($item->name) : '' ?></td>
                                             <td class="">
                                                 <center>
                                                     <?php echo ($item->status == SKILL_VISIBLE) ? '<i class="icon-check-sign"></i>' : '<i class="icon-minus-sign-alt"></i>' ?>
