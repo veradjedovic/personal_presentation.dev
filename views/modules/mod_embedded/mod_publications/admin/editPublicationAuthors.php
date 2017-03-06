@@ -65,9 +65,9 @@
                                         ?> 
                                         <!--moze i ovako, kada je id u pitanju-->
                                         <tr id="row<?php echo ($item->id) ? $item->id : 1; ?>" class="odd gradeX">
-                                            <td class=""><?php echo ($item->author_name) ? $item->author_name : '' ?> <?php echo ($item->author_surname) ? $item->author_surname : '' ?></td>
+                                            <td class=""><?php echo ($item->author_name) ? replace($item->author_name) : '' ?> <?php echo ($item->author_surname) ? replace($item->author_surname) : '' ?></td>
                                             <td><?php 
-                                                    if ($_SESSION['name'] == $item->author_name && $_SESSION['surname'] == $item->author_surname) {
+                                                    if ($_SESSION['name'] == replace($item->author_name) && $_SESSION['surname'] == replace($item->author_surname)) {
                                                 ?>
                                                 <center>
                                                     <i class="icon-ban-circle"></i>

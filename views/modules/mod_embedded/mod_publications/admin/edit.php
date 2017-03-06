@@ -26,7 +26,7 @@
                                         <span class="fileupload-exists">Change</span>
                                         <input type="file" id="fUpload" name="f_upload" />
                                     </span>
-                                    <span class="fileupload-preview"><?php echo $data['publication']->document_name ? $data['publication']->document_name : ''; ?></span>
+                                    <span class="fileupload-preview"><?php echo $data['publication']->document_name ? replace($data['publication']->document_name) : ''; ?></span>
                                     <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
                                 </div>
                             </div>
@@ -39,14 +39,14 @@
                         <div class="form-group">
                             <label class="control-label col-lg-4">Title *</label>
                             <div class="col-lg-4">
-                                <input type="text" class="validate[required] form-control" name="tb_title" id="req" value="<?php echo $data['publication']->title ? str_replace('#', "'",$data['publication']->title) : '' ?>" />
+                                <input type="text" class="validate[required] form-control" name="tb_title" id="req" value="<?php echo $data['publication']->title ? replace($data['publication']->title) : '' ?>" />
                             </div>
                         </div>
                         
                         <div class="form-group">
                             <label class="control-label col-lg-4">Publisher *</label>
                             <div class="col-lg-4">
-                                <input type="text" class="validate[required] form-control" name="tb_publisher" id="req" value="<?php echo $data['publication']->publisher ? str_replace('#', "'",$data['publication']->publisher) : '' ?>" />
+                                <input type="text" class="validate[required] form-control" name="tb_publisher" id="req" value="<?php echo $data['publication']->publisher ? replace($data['publication']->publisher) : '' ?>" />
                             </div>
                         </div>
                         
@@ -102,7 +102,7 @@
                         <div class="form-group">
                             <label class="control-label col-lg-4">Description</label>
                             <div class="col-lg-4">
-                                <textarea class="form-control" name="ta_description" rows="7"><?php echo $data['publication']->description ? str_replace('#', "'",$data['publication']->description) : '' ?></textarea>
+                                <textarea class="form-control" name="ta_description" rows="7"><?php echo $data['publication']->description ? replace($data['publication']->description) : '' ?></textarea>
                             </div>
                         </div> 
                         

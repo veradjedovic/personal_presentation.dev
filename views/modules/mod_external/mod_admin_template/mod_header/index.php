@@ -7,7 +7,7 @@
                 <!-- LOGO SECTION -->
                 <header class="navbar-header">
 
-                    <a href="index.html" class="navbar-brand">
+                    <a href="<?php echo SITE_ROOT; ?>/admin/" class="navbar-brand">
                     <img src="<?php echo SITE_ROOT; ?>/templates/admin/assets/img/logo.png" alt="" /></a>
                 </header>
                 <!-- END LOGO SECTION -->
@@ -15,13 +15,13 @@
 
                     <!-- MESSAGES SECTION -->
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo SITE_ROOT; ?>/admin/">
                             <span class="label label-success">2</span>    <i class="icon-envelope-alt"></i>&nbsp; <i class="icon-chevron-down"></i>
                         </a>
 
                         <ul class="dropdown-menu dropdown-messages">
                             <li>
-                                <a href="#">
+                                <a href="<?php echo SITE_ROOT; ?>/admin/">
                                     <div>
                                        <strong>John Smith</strong>
                                         <span class="pull-right text-muted">
@@ -37,7 +37,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#">
+                                <a href="<?php echo SITE_ROOT; ?>/admin/">
                                     <div>
                                         <strong>Raphel Jonson</strong>
                                         <span class="pull-right text-muted">
@@ -52,7 +52,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#">
+                                <a href="<?php echo SITE_ROOT; ?>/admin/">
                                     <div>
                                         <strong>Chi Ley Suk</strong>
                                         <span class="pull-right text-muted">
@@ -67,7 +67,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a class="text-center" href="#">
+                                <a class="text-center" href="<?php echo SITE_ROOT; ?>/admin/">
                                     <strong>Read All Messages</strong>
                                     <i class="icon-angle-right"></i>
                                 </a>
@@ -79,13 +79,13 @@
 
                     <!--TASK SECTION -->
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo SITE_ROOT; ?>/admin/">
                             <span class="label label-danger">5</span>   <i class="icon-tasks"></i>&nbsp; <i class="icon-chevron-down"></i>
                         </a>
 
                         <ul class="dropdown-menu dropdown-tasks">
                             <li>
-                                <a href="#">
+                                <a href="<?php echo SITE_ROOT; ?>/admin/">
                                     <div>
                                         <p>
                                             <strong> Profile </strong>
@@ -101,7 +101,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#">
+                                <a href="<?php echo SITE_ROOT; ?>/admin/">
                                     <div>
                                         <p>
                                             <strong> Pending Tasks </strong>
@@ -117,7 +117,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#">
+                                <a href="<?php echo SITE_ROOT; ?>/admin/">
                                     <div>
                                         <p>
                                             <strong> Work Completed </strong>
@@ -133,7 +133,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#">
+                                <a href="<?php echo SITE_ROOT; ?>/admin/">
                                     <div>
                                         <p>
                                             <strong> Summary </strong>
@@ -149,7 +149,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a class="text-center" href="#">
+                                <a class="text-center" href="<?php echo SITE_ROOT; ?>/admin/">
                                     <strong>See All Tasks</strong>
                                     <i class="icon-angle-right"></i>
                                 </a>
@@ -161,14 +161,14 @@
 
                     <!--ALERTS SECTION -->
                     <li class="chat-panel dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo SITE_ROOT; ?>/admin/">
                             <span class="label label-info">8</span>   <i class="icon-comments"></i>&nbsp; <i class="icon-chevron-down"></i>
                         </a>
 
                         <ul class="dropdown-menu dropdown-alerts">
 
                             <li>
-                                <a href="#">
+                                <a href="<?php echo SITE_ROOT; ?>/admin/">
                                     <div>
                                         <i class="icon-comment" ></i> New Comment
                                     <span class="pull-right text-muted small"> 4 minutes ago</span>
@@ -177,7 +177,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#">
+                                <a href="<?php echo SITE_ROOT; ?>/admin/">
                                     <div>
                                         <i class="icon-twitter info"></i> 3 New Follower
                                     <span class="pull-right text-muted small"> 9 minutes ago</span>
@@ -186,7 +186,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#">
+                                <a href="<?php echo SITE_ROOT; ?>/admin/">
                                     <div>
                                         <i class="icon-envelope"></i> Message Sent
                                     <span class="pull-right text-muted small" > 20 minutes ago</span>
@@ -195,7 +195,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#">
+                                <a href="<?php echo SITE_ROOT; ?>/admin/">
                                     <div>
                                         <i class="icon-tasks"></i> New Task
                                     <span class="pull-right text-muted small"> 1 Hour ago</span>
@@ -204,7 +204,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#">
+                                <a href="<?php echo SITE_ROOT; ?>/admin/">
                                     <div>
                                         <i class="icon-upload"></i> Server Rebooted
                                     <span class="pull-right text-muted small"> 2 Hour ago</span>
@@ -231,9 +231,9 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="icon-user"></i> User Profile </a>
+                            <li><a href="<?php echo SITE_ROOT; ?>/admin/"><i class="icon-user"></i> User Profile </a>
                             </li>
-                            <li><a href="#"><i class="icon-gear"></i> Settings </a>
+                            <li><a href="<?php echo SITE_ROOT; ?>/admin-user/"><i class="icon-gear"></i> Settings </a>
                             </li>
                             <li class="divider"></li>
                             <li><a href="<?php echo SITE_ROOT; ?>/logout/"><i class="icon-signout"></i> Logout </a>

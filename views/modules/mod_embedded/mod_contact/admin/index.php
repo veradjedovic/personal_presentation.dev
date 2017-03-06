@@ -38,7 +38,7 @@
                                             <td class="">
                                                 <center>
                                                     <a href="admin-messages/<?php echo ($message->id) ? $message->id : 1; ?>">
-                                                    <?php echo ($message->status == MESSAGE_READ) ? '<i class="icon-circle-blank"></i>' : '<i class="icon-circle"></i>' ?>
+                                                    <?php echo ($message->status == MESSAGE_READ) ? '<i class="icon-envelope-alt"></i>' : '<i class="icon-envelope"></i>' ?>
                                                     </a>
                                                 </center>
                                             </td>
