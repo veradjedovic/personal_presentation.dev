@@ -3,7 +3,10 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="icon-envelope"></i>
-                            Messages <?php echo isset($data['messageException']) ? ' - ' . $data['messageException'] : '';  ?>
+                            <span class="btn">Messages <?php echo isset($data['messageException']) ? ' - ' . $data['messageException'] : '';  ?></span>
+                        
+                            <a href="<?php echo SITE_ROOT; ?>/admin-messages/" class="btn btn-primary pull-right"><i class="icon-comment"></i> Add New </a>
+                            <div style="clear: both;"></div>
                         </div>
                         
                         <div id ="message" class="success">                  

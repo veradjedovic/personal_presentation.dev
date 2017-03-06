@@ -5,7 +5,7 @@
                     foreach($data['adminMenu'] as $menu){ 
                 ?>
                         <li class="panel">
-                            <a href="/<?php echo ($menu->route) ? $menu->route : 'admin'; ?>/" >
+                            <a href="<?php echo SITE_ROOT . '/' . (($menu->route) ? $menu->route : 'admin') . '/'; ?>" >
                                 <i class="<?php echo ($menu->icon) ? $menu->icon : ''; ?>">
                                 </i> <?php echo ($menu->name) ? $menu->name : 'Admin'; ?>
                             </a>                   
