@@ -21,7 +21,7 @@
                                             <label class="control-label col-lg-4">Pre Defined Image</label>
                                             <div class="col-lg-8">
                                                 <div class="fileupload fileupload-new" data-provides="fileupload">
-                                                    <div id="prewAvatar" class="fileupload-new thumbnail" style="width: 200px; height: 200px;"><img src="<?php echo $data['userProfile']->image ? SITE_ROOT . '/resources/images/img_profile/' . str_replace('#', "'", $data['userProfile']->image) : SITE_ROOT .'/templates/admin/assets/img/demoBig.jpg'; ?>" alt="" /></div>
+                                                    <div id="prewAvatar" class="fileupload-new thumbnail" style="width: 200px; height: 200px;"><img src="<?php echo $data['userProfile']->image ? SITE_ROOT . '/resources/images/img_profile/' . replace($data['userProfile']->image) : SITE_ROOT .'/templates/admin/assets/img/demoBig.jpg'; ?>" alt="profile_picture" /></div>
                                                     <div id="uploadProfImage" class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 200px; line-height: 20px;"></div>
                                                     <div>
                                                         <span class="btn btn-file btn-primary"><span class="fileupload-new">Upload image</span><span class="fileupload-exists">Change</span><input id="fUpload" name="f_upload" type="file" /></span>
@@ -38,35 +38,35 @@
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Name</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_name" id="req" value="<?php echo $data['userProfile']->name ? $data['userProfile']->name : '' ?>">
+                                                <input type="text" class="validate[required] form-control" name="tb_name" id="req" value="<?php echo $data['userProfile']->name ? replace($data['userProfile']->name) : '' ?>">
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Surname</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_surname" id="req" value="<?php echo $data['userProfile']->surname ? $data['userProfile']->surname : '' ?>">
+                                                <input type="text" class="validate[required] form-control" name="tb_surname" id="req" value="<?php echo $data['userProfile']->surname ? replace($data['userProfile']->surname) : '' ?>">
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Professional Headline</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_profess_headline" id="req" value="<?php echo $data['userProfile']->profess_headline ? $data['userProfile']->profess_headline : '' ?>">
+                                                <input type="text" class="validate[required] form-control" name="tb_profess_headline" id="req" value="<?php echo $data['userProfile']->profess_headline ? replace($data['userProfile']->profess_headline) : '' ?>">
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Address</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_address" id="req" value="<?php echo $data['userProfile']->address ? $data['userProfile']->address : '' ?>">
+                                                <input type="text" class="validate[required] form-control" name="tb_address" id="req" value="<?php echo $data['userProfile']->address ? replace($data['userProfile']->address) : '' ?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">City</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_city" id="req" value="<?php echo $data['userProfile']->city ? $data['userProfile']->city : '' ?>">
+                                                <input type="text" class="validate[required] form-control" name="tb_city" id="req" value="<?php echo $data['userProfile']->city ? replace($data['userProfile']->city) : '' ?>">
                                             </div>
                                         </div>
                                         
@@ -91,7 +91,7 @@
                                                 <select name="tb_industry" id="sport" class="validate[required] form-control">
                                                 <?php foreach($data['industry'] as $industry) { ?>
                                                     
-                                                    <option <?php echo ($data['userProfile']->industry_id == $industry->id) ? 'selected' : '' ?> value="<?php echo $industry->id ? $industry->id : 1; ?>"><?php echo $industry->name? $industry->name : ''; ?></option>
+                                                    <option <?php echo ($data['userProfile']->industry_id == $industry->id) ? 'selected' : '' ?> value="<?php echo $industry->id ? $industry->id : 1; ?>"><?php echo $industry->name? replace($industry->name) : ''; ?></option>
 
                                                 <?php } ?>
                                                 </select>
