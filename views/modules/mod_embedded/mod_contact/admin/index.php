@@ -82,7 +82,6 @@ $('.deleteBtn').click(function(e){
     $("#message").html("").removeClass("alert alert-success alert-danger alert-dismissable");
     
     var id =  $(this).attr('data-id');
-    //var value = $(this).val();
     
     $.ajax({
             
@@ -96,7 +95,6 @@ $('.deleteBtn').click(function(e){
                 if(response.error == false){
                     
                     $("#message").html(response.message ).addClass( "alert alert-success alert-dismissable" );
-                    //$("#row"+response.id).remove(); ovo ispod je bezbednije, ali moze i ovako
                     $('tbody > tr#row'+response.id).remove();
                 } else {
                     $("#message").html(response.message ).addClass( "alert alert-danger alert-dismissable" );

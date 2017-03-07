@@ -109,7 +109,9 @@ class AdminProjectController extends Controller
     }
     
     /**
+     * 
      * Store method
+     * @return json
      */
     public function store()
     {
@@ -159,7 +161,9 @@ class AdminProjectController extends Controller
     }
     
     /**
+     * 
      * Update method
+     * @return json
      */
     public function update()
     {
@@ -188,10 +192,95 @@ class AdminProjectController extends Controller
     }
     
     /**
+     * 
+     * Method UpdateStatusVisible
+     * @return json
+     */
+    public function updateStatusVisible()
+    {
+        try {
+            
+            $item = $this->project->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            
+            return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
+            
+        } catch (ItemNotFoundException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (UpdateNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Project not found', 'error'=> true]);
+        }
+    }
+    
+    /**
+     * 
+     * Method UpdateStatusNotVisible
+     * @return json
+     */
+    public function updateStatusNotVisible()
+    {
+        try {
+            
+            $item = $this->project->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            
+            return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
+            
+        } catch (ItemNotFoundException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (UpdateNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Project not found', 'error'=> true]);
+        }
+    }
+    
+    /**
+     * 
      * Destroy method
+     * @return json
      */
     public function destroy()
     {
-        echo 'Delete method';
+        try {
+            
+            $item = $this->project->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            
+            return json_encode(['message' => 'Project deleted', 'id' => $item->id, 'error'=> false]);
+            
+        } catch (ItemNotFoundException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (UpdateNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Project not found', 'error'=> true]);
+        }
     }
 }

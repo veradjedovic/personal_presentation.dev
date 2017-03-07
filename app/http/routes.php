@@ -17,6 +17,8 @@ $collector->get('admin-articles/{id}', ['app\controllers\adminControllers\AdminA
 $collector->any('admin-articles-update/{id}', ['app\controllers\adminControllers\AdminArticleController','update']);
 $collector->any('admin-articles-delete/{id}', ['app\controllers\adminControllers\AdminArticleController','destroy']);
 $collector->any('admin-articles-picture/{id}', ['app\controllers\adminControllers\AdminArticleController','uploadArticlePicture']);
+$collector->any('admin-articles-visible/{id}', ['app\controllers\adminControllers\AdminArticleController','updateStatusVisible']);
+$collector->any('admin-articles-unvisible/{id}', ['app\controllers\adminControllers\AdminArticleController','updateStatusNotVisible']);
 
 //admin-certifications routes
 $collector->get('admin-certifications-list', ['app\controllers\adminControllers\AdminCertificationController','index']);
@@ -43,6 +45,8 @@ $collector->post('admin-education', ['app\controllers\adminControllers\AdminEduc
 $collector->get('admin-education/{id}', ['app\controllers\adminControllers\AdminEducationController','show']);
 $collector->any('admin-education-update/{id}', ['app\controllers\adminControllers\AdminEducationController','update']);
 $collector->any('admin-education-delete/{id}', ['app\controllers\adminControllers\AdminEducationController','destroy']);
+$collector->any('admin-education-visible/{id}', ['app\controllers\adminControllers\AdminEducationController','updateStatusVisible']);
+$collector->any('admin-education-unvisible/{id}', ['app\controllers\adminControllers\AdminEducationController','updateStatusNotVisible']);
 
 //admin-experience routes
 $collector->get('admin-experience-list', ['app\controllers\adminControllers\AdminExperienceController','index']);
@@ -51,6 +55,8 @@ $collector->post('admin-experience', ['app\controllers\adminControllers\AdminExp
 $collector->get('admin-experience/{id}', ['app\controllers\adminControllers\AdminExperienceController','show']);
 $collector->any('admin-experience-update/{id}', ['app\controllers\adminControllers\AdminExperienceController','update']);
 $collector->any('admin-experience-delete/{id}', ['app\controllers\adminControllers\AdminExperienceController','destroy']);
+$collector->any('admin-experience-visible/{id}', ['app\controllers\adminControllers\AdminExperienceController','updateStatusVisible']);
+$collector->any('admin-experience-unvisible/{id}', ['app\controllers\adminControllers\AdminExperienceController','updateStatusNotVisible']);
 
 //admin-languages routes
 $collector->get('admin-languages-list', ['app\controllers\adminControllers\AdminLanguageController','index']);
@@ -59,6 +65,8 @@ $collector->post('admin-languages', ['app\controllers\adminControllers\AdminLang
 $collector->get('admin-languages/{id}', ['app\controllers\adminControllers\AdminLanguageController','show']);
 $collector->any('admin-languages-update/{id}', ['app\controllers\adminControllers\AdminLanguageController','update']);
 $collector->any('admin-languages-delete/{id}', ['app\controllers\adminControllers\AdminLanguageController','destroy']);
+$collector->any('admin-languages-visible/{id}', ['app\controllers\adminControllers\AdminLanguageController','updateStatusVisible']);
+$collector->any('admin-languages-unvisible/{id}', ['app\controllers\adminControllers\AdminLanguageController','updateStatusNotVisible']);
 
 //admin-modules routes
 $collector->get('admin-modules-list', ['app\controllers\adminControllers\AdminModuleController','index']);
@@ -83,6 +91,8 @@ $collector->post('admin-projects', ['app\controllers\adminControllers\AdminProje
 $collector->get('admin-projects/{id}', ['app\controllers\adminControllers\AdminProjectController','show']);
 $collector->any('admin-projects-update/{id}', ['app\controllers\adminControllers\AdminProjectController','update']);
 $collector->any('admin-projects-delete/{id}', ['app\controllers\adminControllers\AdminProjectController','destroy']);
+$collector->any('admin-projects-visible/{id}', ['app\controllers\adminControllers\AdminProjectController','updateStatusVisible']);
+$collector->any('admin-projects-unvisible/{id}', ['app\controllers\adminControllers\AdminProjectController','updateStatusNotVisible']);
 
 //admin-project-members routes
 $collector->get('admin-projects-members-list/{id}', ['app\controllers\adminControllers\AdminProjectMemberController','index']);
@@ -97,6 +107,8 @@ $collector->get('admin-publications/{id}', ['app\controllers\adminControllers\Ad
 $collector->any('admin-publications-update/{id}', ['app\controllers\adminControllers\AdminPublicationController','update']);
 $collector->any('admin-publications-delete/{id}', ['app\controllers\adminControllers\AdminPublicationController','destroy']);
 $collector->any('admin-publications-picture/{id}', ['app\controllers\adminControllers\AdminPublicationController','uploadPublicationPdf']);
+$collector->any('admin-publications-visible/{id}', ['app\controllers\adminControllers\AdminPublicationController','updateStatusVisible']);
+$collector->any('admin-publications-unvisible/{id}', ['app\controllers\adminControllers\AdminPublicationController','updateStatusNotVisible']);
 
 //admin-publication-authors routes
 $collector->get('admin-publications-authors-list/{id}', ['app\controllers\adminControllers\AdminPublicationAuthorController','index']);
@@ -110,6 +122,8 @@ $collector->post('admin-skills', ['app\controllers\adminControllers\AdminSkillCo
 $collector->get('admin-skills/{id}', ['app\controllers\adminControllers\AdminSkillController','show']);
 $collector->any('admin-skills-update/{id}', ['app\controllers\adminControllers\AdminSkillController','update']);
 $collector->any('admin-skills-delete/{id}', ['app\controllers\adminControllers\AdminSkillController','destroy']);
+$collector->any('admin-skills-visible/{id}', ['app\controllers\adminControllers\AdminSkillController','updateStatusVisible']);
+$collector->any('admin-skills-unvisible/{id}', ['app\controllers\adminControllers\AdminSkillController','updateStatusNotVisible']);
 
 //admin-profile routes
 $collector->get('admin', ['app\controllers\adminControllers\AdminProfileController','index']);

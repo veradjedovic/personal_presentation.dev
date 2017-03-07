@@ -77,7 +77,7 @@ class Certification extends Model
          */
         protected function SetStatus($id, $status)
         {
-        $item = $this->GetById($id);     
+        $item = $this->GetById($this->validator->Numeric($id));     
         $item->status = $status;
         $item->Update();
 

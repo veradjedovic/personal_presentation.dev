@@ -82,12 +82,12 @@ class User extends Model
          */
         public function setSessions()
         {
-            Session::set("status",$this->status);
-            Session::set("id",$this->id);
-            Session::set("token",$this->token);
-            Session::set("name",$this->userProfile->GetUserProfile($this->id)->name);
-            Session::set("surname",$this->userProfile->GetUserProfile($this->id)->surname);
-            Session::set("image",$this->userProfile->GetUserProfile($this->id)->image);
+            Session::set("status", $this->status);
+            Session::set("id", $this->id);
+            Session::set("token", $this->token);
+            Session::set("name", replace($this->userProfile->GetUserProfile($this->id)->name));
+            Session::set("surname", replace($this->userProfile->GetUserProfile($this->id)->surname));
+            Session::set("image", replace($this->userProfile->GetUserProfile($this->id)->image));
         }
 
         /**

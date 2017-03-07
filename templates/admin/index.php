@@ -3,7 +3,7 @@
 use app\classes\Session as Session;
 
 if(!Session::get("status")||Session::get("status")!=ADMIN){
-	header("location: login");
+	header("location: " . SITE_ROOT . "/login");
 }
 
 ?>

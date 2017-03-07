@@ -69,6 +69,51 @@ class Language extends Model
         
         /**
          * 
+         * @param int $id
+         * @param int $status
+         * @return object
+         */
+        protected function SetStatus($id, $status)
+        {
+        $item = $this->GetById($this->validator->Numeric($id));     
+        $item->status = $status;
+        $item->Update();
+
+        return $item;
+        }
+        
+        /**
+         * 
+         * @param int $id
+         * @return object
+         */
+        public function SetStatusVisible($id)
+        {
+            return $this->SetStatus($id, LANG_VISIBLE);
+        }
+        
+        /**
+         * 
+         * @param int $id
+         * @return object
+         */
+        public function SetStatusNotVisible($id)
+        {
+            return $this->SetStatus($id, LANG_NOT_VISIBLE);
+        }
+        
+        /**
+         * 
+         * @param int $id
+         * @return object
+         */
+        public function SetStatusDeleted($id)
+        {
+            return $this->SetStatus($id, LANG_DELETED);
+        }
+        
+        /**
+         * 
          * @throws ValidatorException
          */
         public function InsertLanguage()

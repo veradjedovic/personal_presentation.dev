@@ -194,6 +194,10 @@ class AdminCertificationController extends Controller
             
             return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
             
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
         } catch (Exception $ex) {
             
             return json_encode(['message' => 'Certification not found', 'error'=> true]);
@@ -221,6 +225,10 @@ class AdminCertificationController extends Controller
             
             return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
             
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
         } catch (Exception $ex) {
             
             return json_encode(['message' => 'Certification not found', 'error'=> true]);
@@ -245,6 +253,10 @@ class AdminCertificationController extends Controller
             return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
             
         } catch (UpdateNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (ValidatorException $ex) {
             
             return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
             

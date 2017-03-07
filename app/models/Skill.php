@@ -86,6 +86,51 @@ class Skill extends Model
             }
             
             return $skills;
+        }      
+        
+        /**
+         * 
+         * @param int $id
+         * @param int $status
+         * @return object
+         */
+        protected function SetStatus($id, $status)
+        {
+        $item = $this->GetById($this->validator->Numeric($id));     
+        $item->status = $status;
+        $item->Update();
+
+        return $item;
+        }
+        
+        /**
+         * 
+         * @param int $id
+         * @return object
+         */
+        public function SetStatusVisible($id)
+        {
+            return $this->SetStatus($id, SKILL_VISIBLE);
+        }
+        
+        /**
+         * 
+         * @param int $id
+         * @return object
+         */
+        public function SetStatusNotVisible($id)
+        {
+            return $this->SetStatus($id, SKILL_NOT_VISIBLE);
+        }
+        
+        /**
+         * 
+         * @param int $id
+         * @return object
+         */
+        public function SetStatusDeleted($id)
+        {
+            return $this->SetStatus($id, SKILL_DELETED);
         }
         
         /**

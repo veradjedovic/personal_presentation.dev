@@ -80,6 +80,51 @@ class Project extends Model
         /**
          * 
          * @param int $id
+         * @param int $status
+         * @return object
+         */
+        protected function SetStatus($id, $status)
+        {
+        $item = $this->GetById($this->validator->Numeric($id));     
+        $item->status = $status;
+        $item->Update();
+
+        return $item;
+        }
+        
+        /**
+         * 
+         * @param int $id
+         * @return object
+         */
+        public function SetStatusVisible($id)
+        {
+            return $this->SetStatus($id, PROJECT_VISIBLE);
+        }
+        
+        /**
+         * 
+         * @param int $id
+         * @return object
+         */
+        public function SetStatusNotVisible($id)
+        {
+            return $this->SetStatus($id, PROJECT_NOT_VISIBLE);
+        }
+        
+        /**
+         * 
+         * @param int $id
+         * @return object
+         */
+        public function SetStatusDeleted($id)
+        {
+            return $this->SetStatus($id, PROJECT_DELETED);
+        }
+        
+        /**
+         * 
+         * @param int $id
          * @throws ValidatorException
          */
         public function UpdateProject($id)

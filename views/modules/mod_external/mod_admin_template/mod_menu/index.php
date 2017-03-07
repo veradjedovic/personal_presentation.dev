@@ -1,11 +1,11 @@
 <div id="left">
             <div class="media user-media well-small">
                 <a class="user-link" href="#">
-                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="<?php echo SITE_ROOT; ?>/templates/admin/assets/img/user.gif" />
+                    <img class="media-object img-thumbnail user-img" alt="User Picture" width="64" height="64" src="<?php echo SITE_ROOT . '/resources/images/img_profile/' . $_SESSION['image']; ?>" />
                 </a>
                 <br />
                 <div class="media-body">
-                    <h5 class="media-heading"> Joe Romlin</h5>
+                    <h5 class="media-heading"><?php echo $_SESSION['name'] . "<br /> " . $_SESSION['surname']; ?></h5>
                     <ul class="list-unstyled user-info">
                         
                         <li>
@@ -17,6 +17,6 @@
                 </div>
                 <br />
             </div>   
-            
+
     [MENU]
 </div>

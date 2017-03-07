@@ -49,7 +49,7 @@
                                             <td><?php echo ($item->description) ? (strlen($item->description) > 40 ? substr(replace($item->description), 0, 40). "..." : replace($item->description)) : '' ?></td>
                                             <td class="">
                                                 <center>
-                                                    <?php echo ($item->status == EXPERIENCE_VISIBLE) ? '<i class="icon-check-sign"></i>' : '<i class="icon-minus-sign-alt"></i>' ?>
+                                                    <i id="icon<?php echo ($item->id) ? $item->id : 1; ?>" data-id-status="<?php echo ($item->id) ? $item->id : 1; ?>" class="<?php echo ($item->status == EXPERIENCE_VISIBLE) ? 'statusVisible icon-check-sign' : 'statusUnvisible icon-minus-sign-alt'; ?>" style="cursor: pointer;"></i>
                                                 </center>
                                             </td>
                                             <td class="">
@@ -61,8 +61,8 @@
                                             </td>
                                             <td>
                                                 <center>
-                                                    <a class="insert" href="admin-experience-delete/<?php echo ($item->id) ? $item->id : 1; ?>">
-                                                        <i class="submit icon-trash"></i>
+                                                    <a class="deleteBtn" data-id="<?=($item->id) ? $item->id : ''?>" href="">
+                                                        <i class="icon-trash"></i>
                                                     </a>
                                                 </center>
                                             </td>
@@ -88,36 +88,85 @@
 
 <script type="text/javascript">
 
-//var submitBtn = $('.insert');
-//this.submitBtn.click(function(e)
-//{           
-//        e.preventDefault(); 
-//        $("#message").html("").removeClass("alert alert-success alert-danger alert-dismissable");
-//        
-//        $.ajax({
-//            
-//            url: $('.insert').attr('href'),      
-//            type: 'post',         
-////            data: '',       
-//            dataType: 'json',
-//       
-//            success: function(response) {
-//                
-//                console.log(response.id);             
-//                if(response.error == false){
-//                    
-//                    $("#message").html(response.message ).addClass( "alert alert-success alert-dismissable" );
-//                    //$("#row"+response.id).remove(); ovo ispod je bezbednije, ali moze i ovako
-//                    $('tbody > tr#row'+response.id).remove();
-//                } else {
-//                    $("#message").append(response.message ).addClass( "alert alert-danger alert-dismissable" );
-//                }       
-//            },
-//            
-//            error: function() {
-//                console.log('Greska');
-//            }
-//        });       
-//    });
+$('.deleteBtn').click(function(e){
+    
+    e.preventDefault();
+    $("#message").html("").removeClass("alert alert-success alert-danger alert-dismissable");
+    
+    var id =  $(this).attr('data-id');
+    
+    $.ajax({
+            
+            url: 'admin-experience-delete/'+id,      
+            type: 'POST',        
+            dataType: 'json',
+       
+            success: function(response) {
+                
+                console.log(response);             
+                if(response.error == false){
+                    
+                    $("#message").html(response.message ).addClass( "alert alert-success alert-dismissable" );
+                    $('tbody > tr#row'+response.id).remove();
+                } else {
+                    $("#message").html(response.message ).addClass( "alert alert-danger alert-dismissable" );
+                }       
+            },
+            
+            error: function() {
+                console.log('Greska');
+            }
+        });      
+   
+});   
+
+$('body').on('click', '.statusVisible', function(e){
+    
+    e.preventDefault();
+    $("#message").html("").removeClass("alert alert-success alert-danger alert-dismissable");
+    $(this).removeClass('statusVisible icon-check-sign');
+    
+    var id =  $(this).attr('data-id-status');
+
+    $.ajax({
+            
+            url: 'admin-experience-unvisible/'+id,      
+            type: 'POST',        
+            dataType: 'json',
+            success: function(response) {
+               
+                console.log(response);            
+                    $('#icon'+response.id).addClass('statusUnvisible icon-minus-sign-alt');
+            },           
+            error: function() {
+                console.log('Greska');
+            }
+        });       
+});
+
+$('body').on('click', '.statusUnvisible', function(e){
+    
+    e.preventDefault();
+    $("#message").html("").removeClass("alert alert-success alert-danger alert-dismissable");
+    $(this).removeClass('statusUnvisible icon-minus-sign-alt');
+    
+    var id =  $(this).attr('data-id-status');
+
+    $.ajax({
+            
+            url: 'admin-experience-visible/'+id,      
+            type: 'POST',        
+            dataType: 'json',       
+            success: function(response) {
+                
+                console.log(response);             
+                    $('#icon'+response.id).addClass('statusVisible icon-check-sign');
+            },
+            
+            error: function() {
+                console.log('Greska');
+            }
+        });        
+});
     
 </script>
