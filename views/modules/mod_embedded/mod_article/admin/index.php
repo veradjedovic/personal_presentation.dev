@@ -42,7 +42,7 @@
                                             <td class=""><?php echo ($item->updated_at) ? date('d\.m\.Y', strtotime($item->updated_at)) : '' ?></td>
                                             <td class=""><?php echo ($item->title) ? replace($item->title) : '' ?></td>
                                             <td><?php echo ($item->author_name) ? replace($item->author_name) : '' ?> <?php echo ($item->author_surname) ? replace($item->author_surname) : '' ?></td> 
-                                            <td><?php echo ($item->content) ? (strlen($item->content) > 40 ? substr(replace($item->content), 0, 40). "..." : replace($item->content)) : '' ?></td> 
+                                            <td><?php echo ($item->content) ? (strlen($item->content) > 40 ? htmlspecialchars_decode(substr(replace($item->content), 0, 40)). "..." : htmlspecialchars_decode(replace($item->content))) : '' ?></td> 
                                             <td><?php echo ($item->page) ? replace($item->page) : '' ?></td>
                                             <td><?php echo ($item->image) ? '<img src = "' . SITE_ROOT . '/resources/images/img_for_articles/' . replace($item->image) . '" alt="picture" style="width: 70px;" />' : ''; ?></td>
                                             <td class="">

@@ -106,9 +106,9 @@ class UserProfile extends Model
                 throw new FileUploadException("File doesn't exists");   
             }
             
-            if($_FILES==[]){
+            if($_FILES==[] || ($_FILES['f_upload']['size'] == false && $_FILES['f_upload']['type'] == false && $_FILES['f_upload']['error'] == true && $_FILES['f_upload']['name'] == false && $_FILES['f_upload']['tmp_name'] == false)){
                 
-                $this->UpdateProfilePicture($id, '');
+                $avatar_img = '';
                 
             } else {
                 

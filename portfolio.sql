@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 23, 2017 at 05:45 PM
+-- Generation Time: Mar 07, 2017 at 09:31 PM
 -- Server version: 5.5.54-0ubuntu0.14.04.1
 -- PHP Version: 5.6.23-1+deprecated+dontuse+deb.sury.org~trusty+1
 
@@ -37,17 +37,18 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `articles`
 --
 
 INSERT INTO `articles` (`id`, `title`, `content`, `image`, `author_id`, `page_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Clanak 1', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\nLorem ipsum dolor sit amet, auctor eget nisl, pharetra nibh lorem aliquet duis nostra, nulla nullam velit. Morbi ipsum mauris dapibus sodales, sed libero, at erat sed, massa faucibus sodales, aenean lacinia eu malesuada porta volutpat volutpat. Pede feugiat dui, turpis mauris nunc sit tellus, nulla penatibus vestibulum ipsum dolor vestibulum nunc. Ut morbi integer, esse adipisci neque volutpat ut, eget laoreet, magna justo sodales curabitur. Laoreet at, ac blandit euismod. Ligula pellentesque lacus donec vel fermentum. Pede vitae enim, sem sem iaculis vel vel, dolor sed aliquam eu vivamus, sit phasellus vivamus. Atque aliquet turpis gravida, neque dictumst vel cras curabitur. Interdum mi velit, nullam dolor sem viverra placerat eros aliquam, cupiditate erat, mus at orci fusce consectetuer, ante ornare placerat maecenas a egestas. Nonummy sed neque, velit amet egestas pellentesque do arcu auctor, consequat lobortis. Integer dui morbi nullam posuere, dignissim per pellentesque hymenaeos, pellentesque in tempus unde elit wisi, dapibus arcu nunc vivamus tristique sed voluptas. In odio, quis praesent vehicula.', 'http://www.crtanifilmovi.rs/wp-content/uploads/2012/10/plava-princeza-RS.jpg', 1, 1, 1, '2017-01-05 20:54:23', '2017-01-05 20:54:23'),
-(2, 'Clanak 2', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '', 1, 1, 1, '2017-01-01 07:20:08', '2017-01-02 06:07:22'),
-(3, 'Clanak 3', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'http://www.crtanifilmovi.rs/wp-content/uploads/2012/10/plava-princeza-RS.jpg', 1, 1, 1, '2017-01-03 00:00:00', '2017-01-03 04:06:23'),
-(4, 'Clanak 4', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '', 1, 2, 1, '2017-01-04 04:03:12', '2017-01-04 11:37:49');
+(22, 'Test Article 1', '&lt;span&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/span&gt;', '', 1, 1, 1, '2017-03-07 18:42:31', '2017-03-07 18:42:31'),
+(23, 'Test Article 2', '&lt;span&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/span&gt;', '', 1, 1, 1, '2017-03-07 18:42:47', '2017-03-07 18:42:47'),
+(24, 'Test Article 3', '&lt;span&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/span&gt;', '', 1, 1, 1, '2017-03-07 18:43:01', '2017-03-07 18:43:01'),
+(25, 'Test Article 4', '&lt;span&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/span&gt;', '', 1, 1, 0, '2017-03-07 18:43:13', '2017-03-07 18:43:13'),
+(26, 'Test Article 5', '&lt;span&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/span&gt;', '', 1, 2, 0, '2017-03-07 18:43:27', '2017-03-07 18:43:27');
 
 -- --------------------------------------------------------
 
@@ -61,22 +62,24 @@ CREATE TABLE IF NOT EXISTS `certifications` (
   `authority` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `licence_number` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
   `certif_url` varchar(1024) COLLATE utf8_unicode_ci NOT NULL,
-  `certif_day` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `certif_month` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `certif_year` smallint(4) NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `certifications`
 --
 
-INSERT INTO `certifications` (`id`, `name`, `authority`, `licence_number`, `certif_url`, `certif_day`, `certif_year`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Sertifikat 1 - Lorem ipsum dolor sit amet, etiam aenean erat lacus.', 'Kompanija 1', '123456', '', 'Friday', 2016, 1, '2017-01-05 19:19:39', '2017-01-05 19:19:39'),
-(2, 'Sertifikat 2 - Lorem ipsum dolor sit amet, etiam aenean erat lacus.', 'Kompanija 2', 'fghi1211', '', 'Monday', 2011, 1, '2017-01-09 21:42:00', '2017-01-09 21:42:00'),
-(3, 'Sertifikat 3 - Lorem ipsum dolor sit amet, etiam aenean erat lacus.', 'Kompanije 3', 'ddds434343', 'http://vddgdgdg.com', 'Friday', 2014, 1, '2017-01-09 21:42:00', '2017-01-09 21:42:00');
+INSERT INTO `certifications` (`id`, `name`, `authority`, `licence_number`, `certif_url`, `certif_month`, `certif_year`, `status`, `created_at`, `updated_at`) VALUES
+(19, 'Sertifikat 3', 'Test 3', '5546yt', 'http://test3.com', 'March', 2015, 0, '2017-03-07 18:59:46', '2017-03-07 18:59:46'),
+(16, 'Sertifikat 2', 'Test 2', '5546yttyt6575767', 'http://testtest.com', 'March', 2010, 1, '2017-03-07 18:54:33', '2017-03-07 18:54:33'),
+(17, 'Sertifikat 4', 'Test 4', '5546y', '', 'April', 2013, 1, '2017-03-07 18:58:34', '2017-03-07 18:58:34'),
+(18, 'Sertifikat 5', 'Test 5', '', '', 'April', 2008, 0, '2017-03-07 18:58:57', '2017-03-07 18:58:57'),
+(15, 'Sertifikat 1', 'Test 1', '5546yttyt6575767', 'http://test.com', 'January', 2017, 1, '2017-03-07 18:53:48', '2017-03-07 18:53:48');
 
 -- --------------------------------------------------------
 
@@ -363,15 +366,18 @@ CREATE TABLE IF NOT EXISTS `education` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `education`
 --
 
 INSERT INTO `education` (`id`, `school`, `year_from`, `year_to`, `degree`, `field_of_study`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'School 1', 2011, 2012, 'Diploma 1', 'Economy', 'Lorem ipsum dolor sit amet, etiam aenean erat lacus. Non mauris, phasellus platea justo auctor fames ante nunc, varius erat, est ipsum dolor, metus imperdiet magna enim justo.', 1, '2017-01-05 20:12:05', '2017-01-05 20:12:05'),
-(2, 'School 2', 2004, 2007, 'Diploma 2', 'Management', '', 1, '2017-01-05 20:13:17', '2017-01-05 20:13:17');
+(12, 'School 2', 2000, 2002, 'Test 2', 'Test 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, '2017-03-07 19:48:51', '2017-03-07 19:48:51'),
+(11, 'School 1', 2002, 2006, 'Test 1', 'Test 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, '2017-03-07 19:48:24', '2017-03-07 19:48:24'),
+(13, 'School 3', 2009, 2014, 'Test 3', 'Test 3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, '2017-03-07 19:49:16', '2017-03-07 19:49:16'),
+(14, 'School 4', 2002, 2005, 'Test 4', 'Test 4', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, '2017-03-07 19:49:43', '2017-03-07 19:49:43'),
+(15, 'School 5', 2001, 2004, 'Test 5', 'Test 5', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, '2017-03-07 19:50:09', '2017-03-07 19:50:09');
 
 -- --------------------------------------------------------
 
@@ -394,15 +400,18 @@ CREATE TABLE IF NOT EXISTS `experience` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `experience`
 --
 
 INSERT INTO `experience` (`id`, `title`, `company`, `city`, `country_id`, `month_from`, `month_to`, `year_from`, `year_to`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Pozicija 1', 'Company 1', 'Belgrade', 187, 'May', 'October', 2010, 2013, 'Lorem ipsum dolor sit amet, etiam aenean erat lacus. Non mauris, phasellus platea justo auctor fames ante nunc, varius erat, est ipsum dolor, metus imperdiet magna enim justo.', 1, '2017-01-05 20:21:35', '2017-01-05 20:21:35'),
-(2, 'Pozicija 2', 'Company 2', 'Belgrade', 187, 'October', '', 2013, 0, 'Lorem ipsum dolor sit amet, etiam aenean erat lacus. Non mauris, phasellus platea justo auctor fames ante nunc, varius erat, est ipsum dolor, metus imperdiet magna enim justo.', 1, '2017-01-05 20:23:58', '2017-01-05 20:23:58');
+(15, 'Experience 3', 'Company 3', 'Belgrade', 187, 'December', 'November', 2004, 2006, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, '2017-03-07 19:54:35', '2017-03-07 19:54:35'),
+(14, 'Experience 2', 'Company 2', 'Belgrade', 187, 'November', 'November', 2002, 2004, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, '2017-03-07 19:53:51', '2017-03-07 20:53:18'),
+(13, 'Experience 1', 'Company 1', 'Belgrade', 187, 'January', 'November', 2001, 2002, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, '2017-03-07 19:53:06', '2017-03-07 19:53:06'),
+(16, 'Experience 4', 'Company 4', 'Belgrade', 187, 'July', 'September', 2004, 2010, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, '2017-03-07 19:55:23', '2017-03-07 19:55:23'),
+(17, 'Experience 5', 'Company 5', 'Belgrade', 187, 'January', 'February', 2004, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, '2017-03-07 19:56:01', '2017-03-07 19:56:01');
 
 -- --------------------------------------------------------
 
@@ -414,7 +423,67 @@ CREATE TABLE IF NOT EXISTS `industry` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=56 ;
+
+--
+-- Dumping data for table `industry`
+--
+
+INSERT INTO `industry` (`id`, `name`) VALUES
+(1, 'Administracija'),
+(2, 'Arhitektura'),
+(4, 'Bankarstvo'),
+(5, 'Biologija'),
+(6, 'Briga o lepoti'),
+(7, 'Dizajn'),
+(8, 'Ekonomija'),
+(9, 'Elektrotehnika'),
+(10, 'Farmacija'),
+(11, 'Finansije'),
+(12, 'Fizika'),
+(13, 'Grafičarstvo, izdavaštvo'),
+(14, 'Građevina, geodezija'),
+(15, 'Hemija'),
+(16, 'IT'),
+(17, 'Jezici, književnost'),
+(18, 'Kontrola kvaliteta'),
+(19, 'Ljudski resursi'),
+(20, 'Logistika'),
+(21, 'Magacin'),
+(22, 'Marketing, promocija'),
+(23, 'Mašinstvo'),
+(24, 'Mediji(novinarstvo, štampa)'),
+(25, 'Menadžment-srednji'),
+(26, 'Menadžment-viši, konsalting'),
+(27, 'Obezbeđenje'),
+(28, 'Obrazovanje'),
+(29, 'Briga o deci'),
+(30, 'Ostalo'),
+(31, 'Poljoprivreda'),
+(32, 'Pozivni centri'),
+(33, 'PR'),
+(34, 'Pravo'),
+(35, 'Prehrambena tehnologija'),
+(36, 'Proizvodnja hrane'),
+(37, 'Psihologija'),
+(38, 'Računovodstvo, knjigovodstvo'),
+(39, 'Rudarstvo, metalurgija'),
+(40, 'Saobraćaj'),
+(41, 'Sociologija'),
+(42, 'Sport, rekreacija'),
+(43, 'Stomatologija'),
+(44, 'Tekstilna industrija'),
+(45, 'Telekomunikacije'),
+(46, 'Transport'),
+(47, 'Trgovina, prodaja'),
+(48, 'Turizam'),
+(49, 'Ugostiteljstvo'),
+(50, 'Veterina'),
+(51, 'Zabava'),
+(52, 'Zaštita na radu'),
+(53, 'Zaštita životne sredine, ekologija'),
+(54, 'Zdravstvo'),
+(55, 'Šumarstvo');
 
 -- --------------------------------------------------------
 
@@ -430,15 +499,17 @@ CREATE TABLE IF NOT EXISTS `languages` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `languages`
 --
 
 INSERT INTO `languages` (`id`, `name`, `proficiency_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'English', 3, 1, '2017-01-05 19:13:11', '2017-01-05 19:13:11'),
-(2, 'Serbian', 5, 1, '2017-01-05 19:13:11', '2017-01-05 19:13:11');
+(1, 'English', 4, 1, '2017-01-05 19:13:11', '2017-02-08 23:07:48'),
+(2, 'Serbian', 5, 1, '2017-01-05 19:13:11', '2017-02-08 22:46:11'),
+(3, 'Deutch', 1, 1, '2017-02-08 23:20:56', '2017-02-08 23:20:56'),
+(4, 'Franch', 1, 1, '2017-02-08 23:21:45', '2017-02-08 23:21:45');
 
 -- --------------------------------------------------------
 
@@ -477,16 +548,18 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=45 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=155 ;
 
 --
 -- Dumping data for table `messages`
 --
 
 INSERT INTO `messages` (`id`, `subject`, `content`, `email_from`, `status`, `created_at`) VALUES
-(1, 'Poruka', 'Lorem ipsum dolor sit amet, etiam aenean erat lacus. Non mauris, phasellus platea justo auctor fames ante nunc, varius erat, est ipsum dolor, metus imperdiet magna enim justo.', 'v@v.com', 1, '2017-01-05 21:29:35'),
-(2, 'Poruka2', 'Lorem ipsum dolor sit amet, etiam aenean erat lacus. Non mauris, phasellus platea justo auctor fames ante nunc, varius erat, est ipsum dolor, metus imperdiet magna enim justo.', 'v@m.com', 1, '2017-01-01 03:11:18'),
-(3, 'Poruka 3', 'Lorem ipsum dolor sit amet, etiam aenean erat lacus. Non mauris, phasellus platea justo auctor fames ante nunc, varius erat, est ipsum dolor, metus imperdiet magna enim justo.', 'm@m.com', 0, '2017-01-03 02:12:14');
+(153, 'Test Poruka 4', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'v@v.com', 1, '2017-03-07 18:50:11'),
+(152, 'Test Poruka 3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 't@t.com', 2, '2017-03-07 18:49:59'),
+(154, 'Test Poruka 5', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor# in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'v@v.com', 1, '2017-03-07 18:50:35'),
+(150, 'Test Poruka 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'v@v.com', 1, '2017-03-07 18:49:19'),
+(151, 'Test Poruka 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 't@t.com', 2, '2017-03-07 18:49:39');
 
 -- --------------------------------------------------------
 
@@ -534,7 +607,7 @@ CREATE TABLE IF NOT EXISTS `module_pages` (
   `module_id` int(10) unsigned NOT NULL,
   `priority` smallint(3) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `module_pages`
@@ -552,29 +625,18 @@ INSERT INTO `module_pages` (`id`, `page_id`, `module_id`, `priority`) VALUES
 (9, 4, 3, 1),
 (10, 1, 12, 1),
 (11, 5, 12, 1),
-(12, 6, 11, 2),
 (13, 7, 1, 5),
-(14, 8, 1, 6),
 (15, 9, 2, 7),
-(16, 10, 2, 8),
 (17, 11, 3, 3),
-(18, 12, 3, 4),
 (19, 13, 4, 9),
-(20, 14, 4, 10),
 (21, 15, 5, 11),
-(22, 16, 5, 12),
 (23, 17, 6, 13),
-(24, 18, 6, 14),
 (25, 19, 14, 21),
-(26, 20, 14, 22),
 (27, 21, 13, 23),
-(28, 22, 13, 24),
 (29, 23, 8, 15),
-(30, 24, 8, 16),
 (31, 25, 9, 17),
-(32, 26, 9, 18),
 (33, 27, 10, 19),
-(34, 28, 10, 20);
+(35, 6, 11, 2);
 
 -- --------------------------------------------------------
 
@@ -611,27 +673,16 @@ INSERT INTO `pages` (`id`, `name`, `name_controller`, `name_method`, `route`, `t
 (5, 'Profile', 'adminProfile', 'index', 'admin', 'admin', '', '', 'icon-user', 0, 3, '2017-01-19 15:53:57', '2017-01-19 15:53:57'),
 (6, 'Edit Credential', 'adminUser', 'index', 'admin-user', 'admin', '', '', 'icon-cloud', 0, 3, '2017-01-19 15:58:06', '2017-01-19 15:58:06'),
 (7, 'Articles', 'adminArticle', 'index', 'admin-articles-list', 'admin', '', '', 'icon-font', 0, 3, '2017-01-19 16:11:10', '2017-01-19 16:11:10'),
-(8, 'Add New Articles', 'adminArticle', 'insert', 'admin-articles', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 16:11:10', '2017-01-19 16:11:10'),
 (9, 'Certifications', 'adminCertification', 'index', 'admin-certifications-list', 'admin', '', '', 'icon-ok-sign', 0, 3, '2017-01-19 22:11:00', '2017-01-19 22:11:00'),
-(10, 'Add New Certification', 'adminCertification', 'insert', 'admin-certifications', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 22:13:16', '2017-01-19 22:13:16'),
 (11, 'Messages', 'adminContact', 'index', 'admin-messages-list', 'admin', '', '', 'icon-envelope', 0, 3, '2017-01-19 22:15:22', '2017-01-19 22:15:22'),
-(12, 'New Message', 'adminContact', 'newMessage', 'admin-messages', 'admin', '', '', 'icon-comment', 0, 3, '2017-01-19 22:19:36', '2017-01-19 22:19:36'),
 (13, 'Education', 'adminEducation', 'index', 'admin-education-list', 'admin', '', '', 'icon-apple', 0, 3, '2017-01-19 22:22:34', '2017-01-19 22:22:34'),
-(14, 'Add New Education', 'adminEducation', 'insert', 'admin-education', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 22:25:05', '2017-01-19 22:25:05'),
 (15, 'Experience', 'adminExperience', 'index', 'admin-experience-list', 'admin', '', '', 'icon-briefcase', 0, 3, '2017-01-19 22:28:47', '2017-01-19 22:28:47'),
-(16, 'Add New Experience', 'adminExperience', 'insert', 'admin-experience', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 22:30:48', '2017-01-19 22:30:48'),
 (17, 'Languages', 'adminLanguage', 'index', 'admin-languages-list', 'admin', '', '', 'icon-globe', 0, 3, '2017-01-19 23:26:48', '2017-01-19 23:26:48'),
-(18, 'Add New Language', 'adminLanguage', 'insert', 'admin-languages', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-19 23:28:30', '2017-01-19 23:28:30'),
 (19, 'Modules', 'adminModule', 'index', 'admin-modules-list', 'admin', '', '', 'icon-th-list', 0, 3, '2017-01-20 16:56:34', '2017-01-20 16:56:34'),
-(20, 'Add New Module', 'adminModule', 'insert', 'admin-modules', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-20 16:59:52', '2017-01-20 16:59:52'),
 (21, 'Pages', 'adminPage', 'index', 'admin-pages-list', 'admin', '', '', 'icon-file', 0, 3, '2017-01-20 17:03:37', '2017-01-20 17:03:37'),
-(22, 'Add New Page', 'adminPage', 'insert', 'admin-pages', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-20 17:05:39', '2017-01-20 17:05:39'),
 (23, 'Projects', 'adminProject', 'index', 'admin-projects-list', 'admin', '', '', 'icon-folder-open', 0, 3, '2017-01-20 17:19:41', '2017-01-20 17:19:41'),
-(24, 'Add New Project', 'adminProject', 'insert', 'admin-projects', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-20 17:19:41', '2017-01-20 17:19:41'),
 (25, 'Publications', 'adminPublication', 'index', 'admin-publications-list', 'admin', '', '', 'icon-book', 0, 3, '2017-01-20 17:22:49', '2017-01-20 17:22:49'),
-(26, 'Add New Publication', 'adminPublication', 'insert', 'admin-publications', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-20 17:22:49', '2017-01-20 17:22:49'),
-(27, 'Skills', 'adminSkill', 'index', 'admin-skills-list', 'admin', '', '', 'icon-wrench', 0, 3, '2017-01-20 17:25:03', '2017-01-20 17:25:03'),
-(28, 'Add New Skill', 'adminSkill', 'insert', 'admin-skills', 'admin', '', '', 'icon-pencil', 0, 3, '2017-01-20 17:25:03', '2017-01-20 17:25:03');
+(27, 'Skills', 'adminSkill', 'index', 'admin-skills-list', 'admin', '', '', 'icon-wrench', 0, 3, '2017-01-20 17:25:03', '2017-01-20 17:25:03');
 
 -- --------------------------------------------------------
 
@@ -650,15 +701,18 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `projects`
 --
 
 INSERT INTO `projects` (`id`, `name`, `project_month`, `project_year`, `project_url`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Projekat 1', 'May', 2014, 'http://project1.com', 'Lorem ipsum dolor sit amet, etiam aenean erat lacus. Non mauris, phasellus platea justo auctor fames ante nunc, varius erat, est ipsum dolor, metus imperdiet magna enim justo.', 1, '2017-01-05 20:33:33', '2017-01-05 20:33:33'),
-(2, 'Projekat 2', 'December', 2015, '', '', 1, '2017-01-05 20:33:33', '2017-01-05 20:33:33');
+(16, 'Project 2', 'March', 2015, 'http://project2.com', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, '2017-03-07 21:02:32', '2017-03-07 21:02:32'),
+(15, 'Project 1', 'February', 2014, 'http://project1.com', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, '2017-03-07 21:02:11', '2017-03-07 21:02:11'),
+(17, 'Project 3', 'June', 2014, 'http://project3.com', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, '2017-03-07 21:02:54', '2017-03-07 21:02:54'),
+(18, 'Projekat 4', 'April', 2015, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, '2017-03-07 21:03:18', '2017-03-07 21:03:18'),
+(19, 'Projekat 5', 'June', 2013, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 0, '2017-03-07 21:03:33', '2017-03-07 21:03:33');
 
 -- --------------------------------------------------------
 
@@ -675,16 +729,18 @@ CREATE TABLE IF NOT EXISTS `project_members` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data for table `project_members`
 --
 
 INSERT INTO `project_members` (`id`, `author_name`, `author_surname`, `project_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Name1', 'Surname1', 1, 1, '2017-01-05 20:37:13', '2017-01-05 20:37:13'),
-(2, 'Name1', 'Surname1', 2, 1, '2017-01-05 20:37:13', '2017-01-05 20:37:13'),
-(3, 'Name2', 'Surname2', 1, 1, '2017-01-05 20:37:51', '2017-01-05 20:37:51');
+(29, 'Test', 'Test', 15, 1, '2017-03-07 21:02:11', '2017-03-07 21:02:11'),
+(30, 'Test', 'Test', 16, 1, '2017-03-07 21:02:32', '2017-03-07 21:02:32'),
+(31, 'Test', 'Test', 17, 1, '2017-03-07 21:02:54', '2017-03-07 21:02:54'),
+(32, 'Test', 'Test', 18, 1, '2017-03-07 21:03:18', '2017-03-07 21:03:18'),
+(33, 'Test', 'Test', 19, 1, '2017-03-07 21:03:33', '2017-03-07 21:03:33');
 
 -- --------------------------------------------------------
 
@@ -705,15 +761,18 @@ CREATE TABLE IF NOT EXISTS `publications` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `publications`
 --
 
 INSERT INTO `publications` (`id`, `title`, `publisher`, `publ_month`, `publ_year`, `description`, `publ_url`, `document_name`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Publ 1', 'Publisher 1', 'March', 2011, 'Lorem Ipsum is simply dummy text of the printing and typesetting ', '', 'publ.pdf', 1, '2017-01-05 21:02:58', '2017-01-05 21:02:58'),
-(2, 'Publ 2', 'Publisher 2', 'April', 2012, '', '', 'publ2.pdf', 1, '2017-01-05 21:02:58', '2017-01-05 21:02:58');
+(20, 'Publ 1', 'Test 1', 'March', 2016, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'http://project1.com', '', 1, '2017-03-07 21:06:44', '2017-03-07 21:06:44'),
+(21, 'Publ 2', 'Test 2', 'January', 2005, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'http://project2.com', '', 1, '2017-03-07 21:07:11', '2017-03-07 21:07:11'),
+(22, 'Publ 3', 'Test 3', 'February', 2012, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '', '', 1, '2017-03-07 21:07:28', '2017-03-07 21:07:28'),
+(23, 'Publ 4', 'Test 4', 'April', 2014, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'http://project4.com', '', 0, '2017-03-07 21:07:59', '2017-03-07 21:07:59'),
+(24, 'Publ 5', 'Test 5', 'February', 2015, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '', '', 0, '2017-03-07 21:08:17', '2017-03-07 21:08:17');
 
 -- --------------------------------------------------------
 
@@ -730,19 +789,18 @@ CREATE TABLE IF NOT EXISTS `publication_authors` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `publication_authors`
 --
 
 INSERT INTO `publication_authors` (`id`, `author_name`, `author_surname`, `publication_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Author1', 'Surname1', 1, 1, '2017-01-11 12:51:24', '2017-01-11 12:51:24'),
-(2, 'Author2', 'Surname2', 1, 1, '2017-01-11 12:51:24', '2017-01-11 12:51:24'),
-(3, 'Author3', 'Surname3', 1, 0, '2017-01-11 12:52:03', '2017-01-11 12:52:03'),
-(4, 'Author4', 'Surname4', 2, 1, '2017-01-11 12:52:03', '2017-01-11 12:52:03'),
-(5, 'Author5', 'Surname5', 2, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 'Author6', 'Surname6', 2, 1, '2017-01-11 12:52:32', '2017-01-11 12:52:32');
+(24, 'Test', 'Test', 20, 1, '2017-03-07 21:06:44', '2017-03-07 21:06:44'),
+(25, 'Test', 'Test', 21, 1, '2017-03-07 21:07:11', '2017-03-07 21:07:11'),
+(26, 'Test', 'Test', 22, 1, '2017-03-07 21:07:28', '2017-03-07 21:07:28'),
+(27, 'Test', 'Test', 23, 1, '2017-03-07 21:07:59', '2017-03-07 21:07:59'),
+(28, 'Test', 'Test', 24, 1, '2017-03-07 21:08:17', '2017-03-07 21:08:17');
 
 -- --------------------------------------------------------
 
@@ -756,7 +814,7 @@ CREATE TABLE IF NOT EXISTS `skills` (
   `persentage` tinyint(3) NOT NULL,
   `status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=29 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=51 ;
 
 --
 -- Dumping data for table `skills`
@@ -764,33 +822,14 @@ CREATE TABLE IF NOT EXISTS `skills` (
 
 INSERT INTO `skills` (`id`, `name`, `persentage`, `status`) VALUES
 (1, 'PHP', 99, 1),
-(2, 'MySQL', 85, 1),
+(2, 'MySQL', 85, 0),
 (3, 'Management', 78, 1),
-(4, 'Skating', 100, 1),
+(4, 'Sledging', 98, 0),
 (5, 'Linux', 77, 1),
 (6, 'Microsoft Office', 99, 1),
 (7, 'Customer Service', 65, 1),
 (8, 'Teamwork', 70, 1),
-(9, 'Photoshop', 56, 1),
-(10, 'OOP', 66, 1),
-(11, 'Bootstrap', 5, 1),
-(12, 'Laravel', 85, 1),
-(13, 'Git', 77, 1),
-(14, 'PhpMyAdmin', 66, 1),
-(15, 'Banking', 54, 1),
-(16, 'Portale Fornitori', 76, 1),
-(17, 'SAP', 100, 1),
-(18, 'Retail Banking', 56, 1),
-(19, 'Financial Analysis', 68, 1),
-(20, 'Credit Cards', 58, 1),
-(21, 'Credit Risk', 66, 1),
-(22, 'Credit', 80, 1),
-(23, 'Loans', 45, 1),
-(24, 'Finance', 35, 1),
-(25, 'Comercial Banking', 45, 1),
-(26, 'Branch Banking', 46, 1),
-(27, 'Credit Analysis', 57, 1),
-(28, 'Financial Risk', 35, 1);
+(9, 'Photoshop', 56, 2);
 
 -- --------------------------------------------------------
 
@@ -803,15 +842,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `token` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
+  `status` tinyint(2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `token`) VALUES
-(1, 'u@u.com', '111111', '123123');
+INSERT INTO `users` (`id`, `email`, `password`, `token`, `status`) VALUES
+(1, 'v@v.com', '96e79218965eb72c92a549dd5a330112', 'test123', 1);
 
 -- --------------------------------------------------------
 
@@ -825,6 +865,7 @@ CREATE TABLE IF NOT EXISTS `user_profiles` (
   `surname` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(170) COLLATE utf8_unicode_ci NOT NULL,
   `city` varchar(170) COLLATE utf8_unicode_ci NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   `country_id` int(10) unsigned NOT NULL,
   `profess_headline` text COLLATE utf8_unicode_ci NOT NULL,
   `industry_id` int(10) unsigned NOT NULL,
@@ -838,8 +879,8 @@ CREATE TABLE IF NOT EXISTS `user_profiles` (
 -- Dumping data for table `user_profiles`
 --
 
-INSERT INTO `user_profiles` (`id`, `name`, `surname`, `address`, `city`, `country_id`, `profess_headline`, `industry_id`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'UserName', 'UserSurname', '', 'Belgrade', 187, 'Lorem ipsum dolor', 1, '', '2017-01-05 18:52:35', '2017-01-05 18:53:12');
+INSERT INTO `user_profiles` (`id`, `name`, `surname`, `address`, `city`, `user_id`, `country_id`, `profess_headline`, `industry_id`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'Test', 'Test', 'Brehtova 11', 'Bukovica', 1, 187, 'test', 16, '', '2017-01-05 18:52:35', '2017-01-05 18:53:12');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

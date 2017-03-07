@@ -41,7 +41,7 @@
                                         <!--moze i ovako, kada je id u pitanju-->
                                         <tr id="row<?php echo ($item->id) ? $item->id : 1; ?>" class="odd gradeX">
                                             <td class=""><?php echo ($item->month_from) ? $item->month_from : '' ?> <?php echo ($item->year_from) ? $item->year_from : '' ?></td>
-                                            <td class=""><?php echo ($item->month_to) ? $item->month_to : '' ?> <?php echo ($item->year_to) ? $item->year_to : 'I currently working here' ?></td>
+                                            <td class=""><?php echo ($item->month_to && $item->year_to) ? $item->month_to . ' ' . $item->year_to : 'I currently working here' ?></td>
                                             <td><?php echo ($item->title) ? replace($item->title) : '' ?></td> 
                                             <td><?php echo ($item->company) ? replace($item->company) : '' ?></td> 
                                             <td><?php echo ($item->city) ? replace($item->city) : '' ?></td>

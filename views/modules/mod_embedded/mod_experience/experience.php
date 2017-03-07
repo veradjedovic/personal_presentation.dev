@@ -13,7 +13,7 @@
             echo "<p>" . ($item->company ? replace($item->company) . ", " : '' ) . ($item->city ? replace($item->city) . ", " : '') . ($item->country ? $item->country : '') . "<br />";
             
             if(($item->month_from && $item->year_from) || ($item->month_to && $item->year_to))
-            echo ($item->month_from ? $item->month_from : '') . " " . ($item->year_from ? $item->year_from : '') . " - " . ($item->month_to ? $item->month_to : '') . " " . ($item->year_to ? $item->year_to : '') . "<br />";  
+            echo ($item->month_from ? $item->month_from : '') . " " . ($item->year_from ? $item->year_from : '') . " - " . (($item->month_to && $item->year_to) ? $item->month_to . ' ' . $item->year_to: 'I currently working here.') . "<br />";  
             
             if($item->description)
             echo replace($item->description) . "</p>";
