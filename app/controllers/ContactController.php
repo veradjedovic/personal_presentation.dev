@@ -53,7 +53,8 @@ class ContactController extends Controller
     
     /**
      * 
-     * @return json object
+     * Insert method
+     * @return json
      */
     public function insert()
     {

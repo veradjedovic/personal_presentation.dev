@@ -15,27 +15,27 @@ use Exception;
 class ExperienceController extends Controller
 {
     /**
-       *
-       * @var string 
-       */
+     *
+     * @var string
+     */
     public $layout = '';
     
     /**
-        *
-        * @var object
-        */
+     *
+     * @var object
+     */
     public $experience; 
     
     /**
-        *
-        * @var object 
-        */
+     *
+     * @var object
+     */
     protected $builder;
     
     
     /**
-        * Construct
-        */
+     * Construct
+     */
     public function __construct() 
     {
         $this->experience = new Experience();
@@ -43,8 +43,8 @@ class ExperienceController extends Controller
     }
     
     /**
-       * Index method
-       */
+     * Index method
+     */
     public function index()
     {
         try {

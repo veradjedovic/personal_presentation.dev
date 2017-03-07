@@ -1,6 +1,6 @@
 <div id="left">
             <div class="media user-media well-small">
-                <a class="user-link" href="#">
+                <a class="user-link" href="<?php echo SITE_ROOT . '/admin/'; ?>">
                     <img class="media-object img-thumbnail user-img" alt="Profile Picture" width="64" height="64" src="<?php echo $_SESSION['image'] ? SITE_ROOT . '/resources/images/img_profile/' . $_SESSION['image'] : ''; ?>" />
                 </a>
                 <br />

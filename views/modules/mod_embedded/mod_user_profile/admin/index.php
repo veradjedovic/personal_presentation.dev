@@ -36,14 +36,14 @@
                                         <input type="hidden" name="_method" value="patch" />
                                                    
                                         <div class="form-group">
-                                            <label class="control-label col-lg-4">Name</label>
+                                            <label class="control-label col-lg-4">Name *</label>
                                             <div class="col-lg-4">
                                                 <input type="text" class="validate[required] form-control" name="tb_name" id="req" value="<?php echo $data['userProfile']->name ? replace($data['userProfile']->name) : '' ?>">
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label class="control-label col-lg-4">Surname</label>
+                                            <label class="control-label col-lg-4">Surname *</label>
                                             <div class="col-lg-4">
                                                 <input type="text" class="validate[required] form-control" name="tb_surname" id="req" value="<?php echo $data['userProfile']->surname ? replace($data['userProfile']->surname) : '' ?>">
                                             </div>
@@ -52,21 +52,21 @@
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Professional Headline</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_profess_headline" id="req" value="<?php echo $data['userProfile']->profess_headline ? replace($data['userProfile']->profess_headline) : '' ?>">
+                                                <input type="text" class="form-control" name="tb_profess_headline" value="<?php echo $data['userProfile']->profess_headline ? replace($data['userProfile']->profess_headline) : '' ?>">
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">Address</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_address" id="req" value="<?php echo $data['userProfile']->address ? replace($data['userProfile']->address) : '' ?>">
+                                                <input type="text" class="form-control" name="tb_address" value="<?php echo $data['userProfile']->address ? replace($data['userProfile']->address) : '' ?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label col-lg-4">City</label>
                                             <div class="col-lg-4">
-                                                <input type="text" class="validate[required] form-control" name="tb_city" id="req" value="<?php echo $data['userProfile']->city ? replace($data['userProfile']->city) : '' ?>">
+                                                <input type="text" class="form-control" name="tb_city" value="<?php echo $data['userProfile']->city ? replace($data['userProfile']->city) : '' ?>">
                                             </div>
                                         </div>
                                         

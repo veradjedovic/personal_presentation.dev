@@ -15,27 +15,27 @@ use Exception;
 class PublicationController extends Controller
 {
     /**
-       *
-       * @var string 
-       */
+     *
+     * @var string
+     */
     public $layout = '';
     
     /**
-        *
-        * @var object 
-        */
+     *
+     * @var object
+     */
     protected $publication;
     
     /**
-        *
-        * @var obj 
-        */
+     *
+     * @var object
+     */
     protected $builder;
 
 
     /**
-        * Construct
-        */
+     * Construct
+     */
     public function __construct()
     {
         $this->publication = new Publication();
@@ -43,8 +43,8 @@ class PublicationController extends Controller
     }
     
     /**
-       * Index method
-       */
+     * Index method
+     */
     public function index()
     {
         try {

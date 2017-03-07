@@ -10,14 +10,14 @@ namespace app\controllers;
 class ModuleController extends Controller
 {
     /**
-       *
-       * @var string 
-       */
+     *
+     * @var string
+     */
     public $layout = '';
     
     /**
-       * Index method
-       */
+     * Index method
+     */
     public function index()
     {
         

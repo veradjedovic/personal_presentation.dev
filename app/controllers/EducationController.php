@@ -14,28 +14,28 @@ use Exception;
 class EducationController extends Controller
 {
     /**
-       *
-       * @var string 
-       */
+     *
+     * @var string
+     */
     public $layout = '';
     
     /**
-        *
-        * @var object 
-        */
+     *
+     * @var object
+     */
     protected $education;
     
     /**
-        * Consrtuct
-        */
+     * Construct
+     */
     public function __construct() 
     {
         $this->education = new Education();
     }
     
     /**
-       * Index method
-       */
+     * Index method
+     */
     public function index()
     {
         try {

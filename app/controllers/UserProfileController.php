@@ -10,14 +10,14 @@ namespace app\controllers;
 class UserProfileController extends Controller
 {
     /**
-       *
-       * @var string 
-       */
+     *
+     * @var string
+     */
     public $layout = 'default';
     
     /**
-       * Index method
-       */
+     * Index method
+     */
     public function index()
     {
         echo 'hello, user profile';

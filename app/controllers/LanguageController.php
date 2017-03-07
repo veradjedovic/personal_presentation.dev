@@ -15,21 +15,21 @@ use Exception;
 class LanguageController extends Controller
 {
     /**
-       *
-       * @var string 
-       */
+     *
+     * @var string
+     */
     public $layout = '';
     
     /**
-        *
-        * @var object 
-        */
+     *
+     * @var object
+     */
     public $builder;
     
     
     /**
-        * Construct
-        */
+     * Construct
+     */
     public function __construct()
     {
         $this->language = new Language();
@@ -37,8 +37,8 @@ class LanguageController extends Controller
     }
     
     /**
-       * Index method
-       */
+     * Index method
+     */
     public function index()
     {
         try {

@@ -15,9 +15,9 @@ use Exception as Exception;
 class AuthController extends Controller
 {
     /**
-       *
-       * @var string 
-       */
+     *
+     * @var string
+     */
     public $layout = '';
     
     /**
@@ -36,11 +36,11 @@ class AuthController extends Controller
     }
 
     /**
-       * Index method
-       */
+     * Index method
+     */
     public function index()
     {
-        echo 'hello user';
+        echo '';
     }
     
     /**

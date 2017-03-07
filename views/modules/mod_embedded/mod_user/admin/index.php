@@ -17,29 +17,29 @@
 
                                     <div id="collapseOne" class="accordion-body collapse in body">
                                     
-                                    <form action="admin-user/<?php echo $data['user']->id ? $data['user']->id : ''; ?>" method ="post" class="formInsert form-horizontal" id="block-validate">
+                                    <form id="popup-validation" action="admin-user/<?php echo $data['user']->id ? $data['user']->id : ''; ?>" method ="post" class="formInsert form-horizontal" id="block-validate">
                                         <input type="hidden" name="_method" value="patch" />
                                         <input type="hidden" name="tb_token" value="<?php echo $data['user']->token ? $data['user']->token : ''; ?>" />
                                         
                                         <div class="form-group">
-                                            <label class="control-label col-lg-4">E-mail</label>
+                                            <label class="control-label col-lg-4">E-mail *</label>
 
                                             <div class="col-lg-4">
-                                                <input type="email" id="email2" name="tb_email" class="form-control" value="<?php echo $data['user']->email ? $data['user']->email : ''; ?>" />
+                                                <input type="email" id="req" name="tb_email" class="validate[required] form-control" placeholder="Enter email..." value="<?php echo $data['user']->email ? $data['user']->email : ''; ?>" />
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-4">Password</label>
+                                            <label class="control-label col-lg-4">Password *</label>
 
                                             <div class="col-lg-4">
-                                                <input type="password" id="password2" name="tb_password" class="form-control" placeholder="Enter your password" />
+                                                <input type="password" id="req" name="tb_password" class="validate[required] form-control" placeholder="Enter your password..." />
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-4">Confirm Password</label>
+                                            <label class="control-label col-lg-4">Confirm Password *</label>
 
                                             <div class="col-lg-4">
-                                                <input type="password" id="confirm_password2" name="tb_confirm_password" class="form-control" placeholder="Confirm your password" />
+                                                <input type="password" id="req" name="tb_confirm_password" class="validate[required] form-control" placeholder="Confirm your password..." />
                                             </div>
                                         </div> 
                                         

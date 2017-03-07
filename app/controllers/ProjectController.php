@@ -15,27 +15,27 @@ use Exception;
 class ProjectController extends Controller
 {
     /**
-       *
-       * @var string 
-       */
+     *
+     * @var string
+     */
     public $layout = '';
     
     /**
-        *
-        * @var obj 
-        */
+     *
+     * @var object
+     */
     protected $projects;
     
     /**
-        *
-        * @var object 
-        */
+     *
+     * @var object
+     */
     protected $builder;
 
 
     /**
-        * Construct
-        */
+     * Construct
+     */
     public function __construct()
     {
         $this->projects = new Project();
@@ -43,8 +43,8 @@ class ProjectController extends Controller
     }
     
     /**
-       * Index method
-       */
+     * Index method
+     */
     public function index()
     {
 	try {

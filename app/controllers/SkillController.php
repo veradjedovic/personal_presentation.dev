@@ -14,29 +14,29 @@ use Exception;
 class SkillController extends Controller
 {
     /**
-       *
-       * @var string 
-       */
+     *
+     * @var string
+     */
     public $layout = '';
     
     /**
-        *
-        * @var object 
-        */
+     *
+     * @var object
+     */
     public $skill;
     
     
     /**
-        * Construct
-        */
+     * Construct
+     */
     public function __construct()
     {
        $this->skill = new Skill(); 
     }
 
     /**
-       * Index method
-       */
+     * Index method
+     */
     public function index()
     {
         try {
