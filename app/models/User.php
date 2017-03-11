@@ -3,8 +3,7 @@
 namespace app\models;
 
 use app\classes\Session as Session;
-use app\models\UserProfile as UserProfile;
-use app\classes\Validator as Validator;
+use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\ValidatorException as ValidatorException;
 
 /**
@@ -56,8 +55,8 @@ class User extends Model
          */
         public function __construct() 
         {
-            $this->validator = new Validator();
-            $this->userProfile = new UserProfile();
+            $this->validator = Factory::GetObject('app\classes\Validator');
+            $this->userProfile = Factory::GetObject('app\models\UserProfile');
         }
         
         /**

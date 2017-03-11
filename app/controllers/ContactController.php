@@ -2,11 +2,10 @@
 
 namespace app\controllers;
 
-use app\models\Contact as Contact;
-use app\classes\Validator as Validator;
 use app\exceptions\ValidatorException as ValidatorException;
 use app\exceptions\InsertNotExecutedException as InsertNotExecutedException;
 use Exception as Exception;
+use app\factories\LoadObjectFactory as Factory;
 
 /**
  * Description of ContactController
@@ -39,8 +38,7 @@ class ContactController extends Controller
      */
     public function __construct()
     {
-        $this->contact = new Contact();
-        $this->validator = new Validator();
+        $this->contact = Factory::GetObject('app\models\Contact');
     }
 
     /**

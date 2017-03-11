@@ -48,11 +48,11 @@ class AdminLanguageController extends Controller
     /**
      * Construct
      */
-    public function __construct() 
+    public function __construct( AdminMenuController $menuModule, Language $language, LanguageProficiency $proficiency ) 
     {
-        $this->menuModule = new AdminMenuController();
-        $this->language = new Language();
-        $this->proficiency = new LanguageProficiency();
+        $this->menuModule = $menuModule;
+        $this->language = $language;
+        $this->proficiency = $proficiency;
     }
     
     /**

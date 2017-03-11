@@ -3,7 +3,7 @@
 namespace app\models;
 
 use app\exceptions\ValidatorException as ValidatorException;
-use app\classes\Validator as Validator;
+use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\FileUploadException as FileUploadException;
 use app\exceptions\ProfileNotFoundException as ProfileNotFoundException;
 
@@ -44,7 +44,7 @@ class UserProfile extends Model
          */
         public function __construct() 
         {
-            $this->validator = new Validator();
+            $this->validator = Factory::GetObject('app\classes\Validator');
         }
 
         /**

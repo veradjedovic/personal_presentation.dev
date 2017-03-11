@@ -2,8 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\Project as Project;
-use app\builders\ProjectBuilder as ProjectBuilder;
+use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\ProjectsNotFoundException as ProjectsNotFoundException;
 use Exception;
 
@@ -38,8 +37,8 @@ class ProjectController extends Controller
      */
     public function __construct()
     {
-        $this->projects = new Project();
-        $this->builder = new ProjectBuilder();
+        $this->projects = Factory::GetObject('app\models\Project');
+        $this->builder = Factory::GetObject('app\builders\ProjectBuilder');
     }
     
     /**

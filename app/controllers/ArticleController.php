@@ -2,11 +2,10 @@
 
 namespace app\controllers;
 
-use app\models\Page as Page;
-use app\builders\ArticleBuilder as ArticleBuilder;
 use app\exceptions\ArticleNotFoundException as ArticleNotFoundException;
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
 use Exception;
+use app\factories\LoadObjectFactory as Factory;
 
 /**
  * Description of ArticleController
@@ -39,8 +38,8 @@ class ArticleController extends Controller
      */
     public function __construct() 
     {
-        $this->page = new Page();
-        $this->builder = new ArticleBuilder();
+        $this->page = Factory::GetObject('app\models\Page');
+        $this->builder = Factory::GetObject('app\builders\ArticleBuilder');
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace app\models;
 
 use app\exceptions\EducationNotFoundException;
-use app\classes\Validator as Validator;
+use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\ValidatorException as ValidatorException;
 
 /**
@@ -49,7 +49,7 @@ class Education extends Model
          */
         public function __construct() 
         {
-           $this->validator = new Validator(); 
+           $this->validator = Factory::GetObject('app\classes\Validator'); 
         }
 
         /**

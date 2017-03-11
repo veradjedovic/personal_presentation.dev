@@ -2,8 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\Language as Language;
-use app\builders\LanguageBuilder as LanguageBuilder;
+use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\LanguagesNotFoundException as LanguagesNotFoundException;
 use Exception;
 
@@ -32,8 +31,8 @@ class LanguageController extends Controller
      */
     public function __construct()
     {
-        $this->language = new Language();
-        $this->builder = new LanguageBuilder();
+        $this->language = Factory::GetObject('app\models\Language');
+        $this->builder = Factory::GetObject('app\builders\LanguageBuilder');
     }
     
     /**

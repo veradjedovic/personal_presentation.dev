@@ -2,9 +2,9 @@
 
 namespace app\controllers;
 
-use app\models\Certification as Certification;
 use Exception as Exception;
 use app\exceptions\CertificationsNotFoundException as CertificationsNotFoundException;
+use app\factories\LoadObjectFactory as Factory;
 
 /**
  * Description of CertificationController
@@ -30,7 +30,7 @@ class CertificationController extends Controller
      */
     public function __construct() 
     {
-        $this->certification = new Certification();
+        $this->certification = Factory::GetObject('app\models\Certification');
     }
     
     /**

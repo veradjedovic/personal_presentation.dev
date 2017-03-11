@@ -7,6 +7,7 @@ use app\models\ModulePage as ModulePage;
 use app\exceptions\PagesNotFoundException as PagesNotFoundException;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use Exception as Exception;
+use app\factories\LoadObjectFactory as Factory;
 
 /**
  * Description of AdminProfileController
@@ -32,7 +33,7 @@ class AdminMenuController extends Controller
      */
     public function __construct() 
     {
-        $this->modulePage = new ModulePage();
+        $this->modulePage = Factory::GetObject('app\models\ModulePage');
     }
     
     /**

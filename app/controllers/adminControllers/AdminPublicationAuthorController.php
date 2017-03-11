@@ -48,11 +48,11 @@ class AdminPublicationAuthorController extends Controller
     /**
      * Construct
      */
-    public function __construct() 
+    public function __construct( AdminMenuController $menuModule, Publication $publication, PublicationAuthor $author ) 
     {
-        $this->menuModule = new AdminMenuController();
-        $this->publication = new Publication();
-        $this->author = new PublicationAuthor();
+        $this->menuModule = $menuModule;
+        $this->publication = $publication;
+        $this->author = $author;
     }
     
    /**

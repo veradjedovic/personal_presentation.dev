@@ -3,7 +3,7 @@
 namespace app\models;
 
 use app\models\Model as Model;
-use app\classes\Validator as Validator;
+use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\ValidatorException as ValidatorException;
 use app\exceptions\ContactNotFoundException as ContactNotFoundException;
 
@@ -49,7 +49,7 @@ class Contact extends Model
      */
     public function __construct() 
     {
-        $this->validator = new Validator();
+        $this->validator = Factory::GetObject('app\classes\Validator');
     }
 
     /**
@@ -79,7 +79,7 @@ class Contact extends Model
     public function GetVisibleMessage()
     {
         $messages = $this->GetAll('*', ' WHERE status =' . MESSAGE_UNREAD . ' OR status =' . MESSAGE_READ . ' ORDER BY created_at DESC');
-//        $messages=null;
+
         if(!$messages) {
             
             throw new ContactNotFoundException('No messages');

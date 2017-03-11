@@ -48,11 +48,11 @@ class AdminProjectMemberController extends Controller
     /**
      * Construct
      */
-    public function __construct() 
+    public function __construct( AdminMenuController $menuModule, ProjectMember $project_member, Project $project ) 
     {
-        $this->menuModule = new AdminMenuController();
-        $this->project_member = new ProjectMember();
-        $this->project = new Project();
+        $this->menuModule = $menuModule;
+        $this->project_member =$project_member;
+        $this->project = $project;
     }
     
    /**

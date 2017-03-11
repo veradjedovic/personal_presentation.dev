@@ -3,10 +3,11 @@
 namespace app\models;
 
 use app\models\Model as Model;
-use app\classes\Validator as Validator;
 use app\exceptions\ArticleNotFoundException as ArticleNotFoundException;
 use app\exceptions\FileUploadException as FileUploadException;
 use app\exceptions\ValidatorException as ValidatorException;
+use app\factories\LoadObjectFactory as Factory;
+
 
 /**
  * Class Article
@@ -51,7 +52,7 @@ class Article extends Model
          */
         public function __construct()
         {
-            $this->validator = new Validator();
+            $this->validator = Factory::GetObject('app\classes\Validator');
         }
 
         /**

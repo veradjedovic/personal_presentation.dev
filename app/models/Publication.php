@@ -3,7 +3,7 @@
 namespace app\models;
 
 use app\models\Model as Model;
-use app\classes\Validator as Validator;
+use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\ValidatorException as ValidatorException;
 use app\exceptions\PublicationsNotFoundException as PublicationsNotFoundException;
 use app\exceptions\FileUploadException as FileUploadException;
@@ -51,7 +51,7 @@ class Publication extends Model
          */
         public function __construct() 
         {
-            $this->validator = new Validator();
+            $this->validator = Factory::GetObject('app\classes\Validator');
         }
 
         /**

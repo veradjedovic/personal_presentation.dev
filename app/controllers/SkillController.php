@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\Skill as Skill;
+use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\SkillsNotFoundException as SkillsNotFoundException;
 use Exception;
 
@@ -31,7 +31,7 @@ class SkillController extends Controller
      */
     public function __construct()
     {
-       $this->skill = new Skill(); 
+       $this->skill = Factory::GetObject('app\models\Skill'); 
     }
 
     /**

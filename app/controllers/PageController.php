@@ -46,11 +46,11 @@ class PageController extends Controller
         /**
          * Construct
          */
-        public function __construct() 
+        public function __construct(Page $page, ModulePage $modulePage, ModulePageBuilder $builder) 
         {
-            $this->page = new Page();  
-            $this->modulePage = new ModulePage();
-            $this->builder = new ModulePageBuilder();
+            $this->page = $page;  
+            $this->modulePage = $modulePage;
+            $this->builder = $builder;
         }
 
         /**

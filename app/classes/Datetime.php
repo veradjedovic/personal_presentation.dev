@@ -24,21 +24,11 @@ class Datetime
     
     /**
      * 
-     * @param string/int $yearBegin
-     * @param string/int $yearEnd
-     */
-    public function __construct($yearBegin, $yearEnd) 
-    {
-        $this->yearBegin = $yearBegin;
-        $this->yearEnd = $yearEnd;
-    }
-    
-    /**
-     * 
      * @return string/int
      */
     public function getYearBegin() 
     {
+        $this->yearBegin = date("Y")-60;
         return $this->yearBegin;
     }
 
@@ -48,6 +38,7 @@ class Datetime
      */
     public function getYearEnd() 
     {
+        $this->yearEnd = date("Y");
         return $this->yearEnd;
     }
     

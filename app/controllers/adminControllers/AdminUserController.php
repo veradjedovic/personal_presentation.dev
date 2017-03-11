@@ -48,11 +48,11 @@ class AdminUserController extends Controller
     /**
      * Construct
      */
-    public function __construct() 
+    public function __construct( User $user, Validator $validator, AdminMenuController $menuModule ) 
     {
-        $this->user = new User();
-        $this->validator = new Validator();
-        $this->menuModule = new AdminMenuController();
+        $this->user = $user;
+        $this->validator = $validator;
+        $this->menuModule = $menuModule;
     }
     
     /**

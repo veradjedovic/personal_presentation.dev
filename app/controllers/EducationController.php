@@ -2,9 +2,9 @@
 
 namespace app\controllers;
 
-use app\models\Education as Education;
 use app\exceptions\EducationNotFoundException as EducationNotFoundException;
 use Exception;
+use app\factories\LoadObjectFactory as Factory;
 
 /**
  * Description of EducationController
@@ -30,7 +30,7 @@ class EducationController extends Controller
      */
     public function __construct() 
     {
-        $this->education = new Education();
+        $this->education = Factory::GetObject('app\models\Education');
     }
     
     /**

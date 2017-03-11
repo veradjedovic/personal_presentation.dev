@@ -2,10 +2,10 @@
 
 namespace app\controllers;
 
-use app\models\User as User;
 use app\exceptions\ValidatorException as ValidatorException;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use Exception as Exception;
+use app\factories\LoadObjectFactory as Factory;
 
 /**
  * Description of UserController
@@ -32,7 +32,7 @@ class AuthController extends Controller
      */
     public function __construct() 
     {
-        $this->user = new User();
+        $this->user = Factory::GetObject('app\models\User');
     }
 
     /**

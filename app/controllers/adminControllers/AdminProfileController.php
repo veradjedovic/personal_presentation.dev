@@ -57,12 +57,12 @@ class AdminProfileController extends Controller
     /**
      * Construct
      */
-    public function __construct() 
+    public function __construct( UserProfile $userProfile, Country $country, Industry $industry, AdminMenuController $menuModule ) 
     {
-        $this->userProfile = new UserProfile();
-        $this->country = new Country();
-        $this->industry = new Industry();
-        $this->menuModule = new AdminMenuController();
+        $this->userProfile = $userProfile;
+        $this->country = $country;
+        $this->industry = $industry;
+        $this->menuModule = $menuModule;
     }
     
     /**

@@ -2,8 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\Publication as Publication;
-use app\builders\PublicationBuilder as PublicationBuilder;
+use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\PublicationsNotFoundException as PublicationsNotFoundException;
 use Exception;
 
@@ -38,8 +37,8 @@ class PublicationController extends Controller
      */
     public function __construct()
     {
-        $this->publication = new Publication();
-        $this->builder = new PublicationBuilder();
+        $this->publication = Factory::GetObject('app\models\Publication');
+        $this->builder = Factory::GetObject('app\builders\PublicationBuilder');
     }
     
     /**

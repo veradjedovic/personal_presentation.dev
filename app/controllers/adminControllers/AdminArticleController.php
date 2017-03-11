@@ -16,6 +16,8 @@ use app\exceptions\FileUploadException as FileUploadException;
 use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
 use app\exceptions\InsertNotExecutedException as InsertNotExecutedException;
 use Exception as Exception;
+
+
 /**
  * Description of AdminArticleController
  *
@@ -46,16 +48,16 @@ class AdminArticleController extends Controller
      * @var object
      */
     protected $page;
-
+    
 
     /**
      * Construct
      */
-    public function __construct() 
+    public function __construct( AdminMenuController $menuModule, Article $article, Page $page ) 
     {
-        $this->menuModule = new AdminMenuController();
-        $this->article = new Article();
-        $this->page = new Page();
+        $this->menuModule = $menuModule;
+        $this->article = $article;
+        $this->page = $page;
     }
     
     /**

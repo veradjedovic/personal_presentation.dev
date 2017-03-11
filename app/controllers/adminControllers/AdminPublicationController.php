@@ -58,12 +58,12 @@ class AdminPublicationController extends Controller
     /**
      * Construct
      */
-    public function __construct() 
+    public function __construct( AdminMenuController $menuModule, Publication $publication, PublicationAuthor $publicationAuthor, Datetime $datetime ) 
     {
-        $this->menuModule = new AdminMenuController();
-        $this->publication = new Publication();
-        $this->publicationAuthor = new PublicationAuthor();
-        $this->datetime = new Datetime(date('Y')-50, date('Y'));
+        $this->menuModule = $menuModule;
+        $this->publication = $publication;
+        $this->publicationAuthor = $publicationAuthor;
+        $this->datetime = $datetime;
     }
     
     /**

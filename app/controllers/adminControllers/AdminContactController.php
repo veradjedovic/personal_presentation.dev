@@ -40,10 +40,10 @@ class AdminContactController extends Controller
     /**
      * Construct
      */
-    public function __construct()
+    public function __construct( Contact $contact, AdminMenuController $menuModule )
     {
-        $this->contact = new Contact();
-        $this->menuModule = new AdminMenuController();
+        $this->contact = $contact;
+        $this->menuModule = $menuModule;
     }
 
     /**

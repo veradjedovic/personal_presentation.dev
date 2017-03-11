@@ -2,8 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\Experience as Experience;
-use app\builders\ExperienceBuilder as ExperienceBuilder;
+use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\ExperienceNotFoundException as ExperienceNotFoundException;
 use Exception;
 
@@ -38,8 +37,8 @@ class ExperienceController extends Controller
      */
     public function __construct() 
     {
-        $this->experience = new Experience();
-        $this->builder = new ExperienceBuilder();
+        $this->experience = Factory::GetObject('app\models\Experience');
+        $this->builder = Factory::GetObject('app\builders\ExperienceBuilder');
     }
     
     /**

@@ -48,11 +48,11 @@ class AdminEducationController extends Controller
     /**
      * Construct
      */
-    public function __construct() 
+    public function __construct( AdminMenuController $menuModule, Education $education, Datetime $datetime ) 
     {
-        $this->menuModule = new AdminMenuController();
-        $this->education = new Education();
-        $this->datetime = new Datetime(date('Y')-50, date('Y'));
+        $this->menuModule = $menuModule;
+        $this->education = $education;
+        $this->datetime = $datetime;
     }
     
     /**

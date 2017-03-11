@@ -48,11 +48,11 @@ class AdminCertificationController extends Controller
     /**
      * Construct
      */
-    public function __construct() 
+    public function __construct( AdminMenuController $menuModule, Certification $certification, Datetime $datetime ) 
     {
-        $this->menuModule = new AdminMenuController();
-        $this->certification = new Certification();
-        $this->datetime = new Datetime(date("Y")-60, date("Y"));
+        $this->menuModule = $menuModule;
+        $this->certification = $certification;
+        $this->datetime = $datetime;
     }
     
     /**

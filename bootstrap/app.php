@@ -11,6 +11,12 @@ require __DIR__ . '/../vendor/autoload.php';
 require_once 'config/index.php'; 
 
 /**
+ * Load Service Container.
+ */
+require 'config/container/serviceContainer.php';
+
+/**
  * Load The Application Routes.
  */
 require_once APP_PATH . 'router/dispatcher.php';
+

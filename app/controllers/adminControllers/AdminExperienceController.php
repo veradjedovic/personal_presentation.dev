@@ -55,12 +55,12 @@ class AdminExperienceController extends Controller
     /**
      * Construct
      */
-    public function __construct() 
+    public function __construct( AdminMenuController $menuModule, Experience $experience, Country $country, Datetime $datetime ) 
     {
-        $this->menuModule = new AdminMenuController();
-        $this->experience = new Experience();
-        $this->country = new Country();
-        $this->datetime = new Datetime(date('Y')-50, date('Y'));
+        $this->menuModule = $menuModule;
+        $this->experience = $experience;
+        $this->country = $country;
+        $this->datetime = $datetime;
     }
     
    /**

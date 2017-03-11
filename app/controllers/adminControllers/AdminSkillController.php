@@ -42,10 +42,10 @@ class AdminSkillController extends Controller
     /**
      * Construct
      */
-    public function __construct() 
+    public function __construct( AdminMenuController $menuModule, Skill $skill ) 
     {
-        $this->menuModule = new AdminMenuController();
-        $this->skill = new Skill();
+        $this->menuModule = $menuModule;
+        $this->skill = $skill;
     }
     
    /**

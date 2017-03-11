@@ -29,9 +29,9 @@ class AdminPageController extends Controller
     /**
      * Construct
      */
-    public function __construct() 
+    public function __construct( AdminMenuController $menuModule ) 
     {
-        $this->menuModule = new AdminMenuController();
+        $this->menuModule = $menuModule;
     }   
     
    /**

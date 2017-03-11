@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use app\classes\Validator as Validator;
+use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\ValidatorException as ValidatorException;
 use app\exceptions\CertificationsNotFoundException;
 
@@ -49,7 +49,7 @@ class Certification extends Model
          */
         public function __construct() 
         {
-            $this->validator = new Validator();
+            $this->validator = Factory::GetObject('app\classes\Validator');
         }
 
         /**

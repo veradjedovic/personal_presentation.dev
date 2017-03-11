@@ -3,7 +3,7 @@
 namespace app\models;
 
 use app\models\Model as Model;
-use app\classes\Validator as Valdator;
+use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\SkillsNotFoundException as SkillsNotFoundException;
 use app\exceptions\ValidatorException as ValidatorException;
 
@@ -50,7 +50,7 @@ class Skill extends Model
          */
         public function __construct() 
         {
-            $this->validator = new Valdator();
+            $this->validator = Factory::GetObject('app\classes\Validator');
         }
 
         /**
