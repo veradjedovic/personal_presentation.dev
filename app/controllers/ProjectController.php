@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\ProjectsNotFoundException as ProjectsNotFoundException;
+use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use Exception;
 
 /**
@@ -23,13 +24,7 @@ class ProjectController extends Controller
      *
      * @var object
      */
-    protected $projects;
-    
-    /**
-     *
-     * @var object
-     */
-    protected $builder;
+    protected $project;
 
 
     /**
@@ -37,8 +32,7 @@ class ProjectController extends Controller
      */
     public function __construct()
     {
-        $this->projects = Factory::GetObject('app\models\Project');
-        $this->builder = Factory::GetObject('app\builders\ProjectBuilder');
+        $this->project = Factory::GetObject('app\models\Project');
     }
     
     /**
@@ -48,11 +42,15 @@ class ProjectController extends Controller
     {
 	try {
             
-            $projects = $this->builder->GetVisibleProjects();
+            $projects = $this->project->GetVisibleProjects();
             
             $this->view('modules/mod_embedded/mod_projects/projects', ['projects' => $projects]);
             
         } catch (ProjectsNotFoundException $ex) {
+            
+            echo "<section class = 'section_of_modules'><h1>Projekti</h1><p>{$ex->getMessage()}</p></section>";
+            
+        } catch (CollectionNotFoundException $ex) {
             
             echo "<section class = 'section_of_modules'><h1>Projekti</h1><p>{$ex->getMessage()}</p></section>";
             

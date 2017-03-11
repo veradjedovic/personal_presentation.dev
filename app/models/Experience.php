@@ -54,6 +54,30 @@ class Experience extends Model
         /**
          * 
          * @return array
+         * @throws ExperienceNotFoundException
+         */
+        public function GetVisibleExperience()
+        {
+            $fields = static::$table . ".title, " . static::$table . ".company, " . static::$table . ".city, " . static::$table . ".month_from, " . static::$table . ".month_to, " . static::$table . ".year_from, " . static::$table . ".year_to, " . static::$table . ".description, countries.country";        
+
+            $q = " LEFT JOIN countries
+                  ON " . static::$table . ".country_id = countries.id
+                  WHERE " . static::$table . ".status = " . EXPERIENCE_VISIBLE . "
+                  ORDER BY " . static::$table . ".year_from DESC";
+
+            $experience = $this->GetAll($fields, $q);
+
+            if(!$experience) {
+
+                    throw new ExperienceNotFoundException('Informacije o radnom iskustvu nisu pronadjene.');
+                }
+
+            return $experience;
+        }
+        
+        /**
+         * 
+         * @return array
          */
         public function GetAllExperience() 
         {

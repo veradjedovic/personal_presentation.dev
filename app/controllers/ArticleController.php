@@ -24,7 +24,7 @@ class ArticleController extends Controller
      *
      * @var object
      */
-    protected $builder;
+    protected $article;
     
     /**
      *
@@ -39,7 +39,7 @@ class ArticleController extends Controller
     public function __construct() 
     {
         $this->page = Factory::GetObject('app\models\Page');
-        $this->builder = Factory::GetObject('app\builders\ArticleBuilder');
+        $this->article = Factory::GetObject('app\models\Article');
     }
 
     /**
@@ -50,7 +50,7 @@ class ArticleController extends Controller
         try {
             
             $page = $this->page->GetById((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : 1);
-            $articles = $this->builder->GetVisibleArticle($page->id);
+            $articles = $this->article->GetVisibleArticle($page->id);
            
             $this->view('modules/mod_embedded/mod_article/article', ['articles'=>$articles]);
             

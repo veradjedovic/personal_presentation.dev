@@ -19,12 +19,6 @@ class LanguageController extends Controller
      */
     public $layout = '';
     
-    /**
-     *
-     * @var object
-     */
-    public $builder;
-    
     
     /**
      * Construct
@@ -32,7 +26,6 @@ class LanguageController extends Controller
     public function __construct()
     {
         $this->language = Factory::GetObject('app\models\Language');
-        $this->builder = Factory::GetObject('app\builders\LanguageBuilder');
     }
     
     /**
@@ -42,7 +35,7 @@ class LanguageController extends Controller
     {
         try {
             
-            $languages = $this->builder->GetVisibleLanguages();
+            $languages = $this->language->GetVisibleLanguages();
             
             $this->view('modules/mod_embedded/mod_languages/languages', ['languages' => $languages]);
             

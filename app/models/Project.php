@@ -56,6 +56,32 @@ class Project extends Model
          * @return array
          * @throws ProjectsNotFoundException
          */
+        public function GetVisibleProjects()
+        {
+            $fields = static::$table . ".name, " . static::$table . ".project_month, " . static::$table . ".project_year, " . static::$table . ".project_url, " . static::$table . ".description,
+                  GROUP_CONCAT(project_members.author_name, ' ', project_members.author_surname 
+                  SEPARATOR  ', ' ) as author";
+
+            $q = "LEFT JOIN project_members ON " . static::$table . ".id = project_members.project_id
+                  WHERE " . static::$table . ".status = " . PROJECT_VISIBLE . " AND project_members.status = " . PROJECT_MEMBER_VISIBLE . "            
+                  GROUP BY " . static::$table . ".id
+                  ORDER BY " . static::$table . ".project_year DESC";
+
+            $projects = $this->GetAll($fields, $q);
+
+            if(!$projects) {
+
+                throw new ProjectsNotFoundException('Nije pronadjen ni jedan projekat.');
+            }
+
+            return $projects;
+        }
+        
+        /**
+         * 
+         * @return array
+         * @throws ProjectsNotFoundException
+         */
         public function GetAllProjects()
         {
             $fields = static::$table . ".id, " .static::$table . ".name, " . static::$table . ".project_month, " . static::$table . ".project_year, " . static::$table . ".project_url, " . static::$table . ".description, " . static::$table . ".status,

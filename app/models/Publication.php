@@ -59,6 +59,32 @@ class Publication extends Model
          * @return array
          * @throws PublicationsNotFoundException
          */
+        public function GetVisiblePublications()
+        {
+            $fields = static::$table . ".title, " . static::$table . ".publisher, " . static::$table . ".publ_month, " . static::$table . ".publ_year, " . static::$table . ".publ_url, " . static::$table . ".description, " . static::$table . ".document_name,
+                  GROUP_CONCAT(publication_authors.author_name, ' ', publication_authors.author_surname
+                  SEPARATOR  ', ' ) as author";
+
+            $q = "LEFT JOIN publication_authors ON " . static::$table . ".id = publication_authors.publication_id
+                  WHERE " . static::$table . ".status = " . PUBL_VISIBLE . " AND publication_authors.status = " . PUBL_AUTHOR_VISIBLE . "            
+                  GROUP BY " . static::$table . ".id
+                  ORDER BY " . static::$table . ".publ_year DESC";
+
+            $publications = $this->GetAll($fields, $q);
+
+            if(!$publications) {
+
+                throw new PublicationsNotFoundException('Nije pronadjeno ni jedno izdanje.');
+            }
+
+            return $publications;
+        }
+        
+        /**
+         * 
+         * @return array
+         * @throws PublicationsNotFoundException
+         */
         public function GetAllPublications()
         {
             $fields = static::$table . ".id, " .static::$table . ".title, "  .static::$table . ".publisher, " . static::$table . ".publ_month, " . static::$table . ".publ_year, " . static::$table . ".publ_url, " . static::$table . ".description, " . static::$table . ".document_name, " . static::$table . ".status,

@@ -25,12 +25,6 @@ class ExperienceController extends Controller
      */
     public $experience; 
     
-    /**
-     *
-     * @var object
-     */
-    protected $builder;
-    
     
     /**
      * Construct
@@ -38,7 +32,6 @@ class ExperienceController extends Controller
     public function __construct() 
     {
         $this->experience = Factory::GetObject('app\models\Experience');
-        $this->builder = Factory::GetObject('app\builders\ExperienceBuilder');
     }
     
     /**
@@ -48,7 +41,7 @@ class ExperienceController extends Controller
     {
         try {
             
-            $experience = $this->builder->GetVisibleExperience();
+            $experience = $this->experience->GetVisibleExperience();
 
             $this->view('modules/mod_embedded/mod_experience/experience', ['experience' => $experience]);
             

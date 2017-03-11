@@ -53,7 +53,29 @@ class Language extends Model
 
         /**
          * 
-         * @return object
+         * @return array
+         * @throws LanguagesNotFoundException
+         */
+        public function GetVisibleLanguages()
+        {
+            $fields = static::$table . ".name, language_proficiences.name as prof_name";
+            $q = " LEFT JOIN language_proficiences 
+                ON " . static::$table . ".proficiency_id = language_proficiences.id
+                WHERE " . static::$table . ".status = " . LANG_VISIBLE;
+
+            $languages = $this->GetAll($fields, $q);
+
+                if(!$languages) {
+
+                    throw new LanguagesNotFoundException('Nije pronadjena ni jedna informacija o poznavanju jezika.');
+                }
+
+            return $languages;
+        }
+        
+        /**
+         * 
+         * @return array
          */
         public function GetAllLanguages() 
         {

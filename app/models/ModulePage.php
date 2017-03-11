@@ -36,6 +36,31 @@ class ModulePage extends Model
      */
     public $id, $page_id, $module_id, $priority;  
     
+    
+    /**
+     * 
+     * @param int $id
+     * @return array
+     * @throws ItemNotFoundException
+     */
+    public function GetVisibleModulesOfPage($id)
+    {
+        $fields = "modules.name";       
+        $q = "LEFT JOIN modules
+              ON " . static::$table . ".module_id = modules.id
+              WHERE page_id = {$id} AND modules.status = " . MODULE_VISIBLE . "
+              ORDER BY priority";
+ 
+        $modulesOfPage = $this->GetAll($fields, $q);
+
+        if(!$modulesOfPage) {
+            
+            throw new ItemNotFoundException('Moduli nisu pronadjeni');
+        }
+
+	return $modulesOfPage;
+    }
+    
     /**
      * 
      * @return array

@@ -24,12 +24,6 @@ class PublicationController extends Controller
      * @var object
      */
     protected $publication;
-    
-    /**
-     *
-     * @var object
-     */
-    protected $builder;
 
 
     /**
@@ -38,7 +32,6 @@ class PublicationController extends Controller
     public function __construct()
     {
         $this->publication = Factory::GetObject('app\models\Publication');
-        $this->builder = Factory::GetObject('app\builders\PublicationBuilder');
     }
     
     /**
@@ -48,7 +41,7 @@ class PublicationController extends Controller
     {
         try {
             
-            $publications = $this->builder->GetVisiblePublications();
+            $publications = $this->publication->GetVisiblePublications();
 
             $this->view('modules/mod_embedded/mod_publications/publications', ['publications' => $publications]);
             

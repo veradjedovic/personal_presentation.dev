@@ -57,6 +57,33 @@ class Article extends Model
 
         /**
          * 
+         * @param int $id
+         * @return array
+         * @throws ArticleNotFoundException
+         */
+        public function GetVisibleArticle($id)
+        {      
+            $fields = static::$table . ".title, " . static::$table . ".content, " . static::$table . ".image, " . static::$table . ".updated_at, user_profiles.name as author_name, user_profiles.surname as author_surname";        
+
+            $q = " LEFT JOIN user_profiles
+                  ON " . static::$table . ".author_id = user_profiles.id
+                  WHERE " . static::$table . ".status = " . ARTICLE_VISIBLE . "
+                  AND " . static::$table . ".page_id = {$id}
+                  ORDER BY " . static::$table . ".updated_at DESC 
+                  LIMIT 0 , 10";
+
+            $articles = $this->GetAll($fields, $q);
+
+            if(!$articles) {
+
+                    throw new ArticleNotFoundException('Nije pronadjen ni jedan clanak.');
+                }
+
+            return $articles;
+        }
+        
+        /**
+         * 
          * @return array
          * @throws ArticleNotFoundException
          */

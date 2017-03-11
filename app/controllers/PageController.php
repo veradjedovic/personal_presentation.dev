@@ -4,7 +4,6 @@ namespace app\controllers;
 
 use app\controllers\Controller as Controller;
 use app\models\Page as Page;
-use app\builders\ModulePageBuilder as ModulePageBuilder;
 use Exception;
 use app\exceptions\PagesNotFoundException as PagesNotFoundException;
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
@@ -35,22 +34,15 @@ class PageController extends Controller
          * @var object
          */
         public $modulePage;
-        
-        /**
-         *
-         * @var bject
-         */
-        protected $builder;
 
 
         /**
          * Construct
          */
-        public function __construct(Page $page, ModulePage $modulePage, ModulePageBuilder $builder) 
+        public function __construct(Page $page, ModulePage $modulePage) 
         {
             $this->page = $page;  
             $this->modulePage = $modulePage;
-            $this->builder = $builder;
         }
 
         /**
@@ -63,7 +55,7 @@ class PageController extends Controller
 		$pages = $this->page->GetWebPages();
                 $page = $this->page->GetById((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : 1);  
 
-                $modulesOfPage = $this->builder->GetVisibleModulesOfPage($page->id);
+                $modulesOfPage = $this->modulePage->GetVisibleModulesOfPage($page->id);
         
 		$this->view('index', array('pages' => $pages, 'page' => $page, 'modulesOfPage' => $modulesOfPage));
                 
