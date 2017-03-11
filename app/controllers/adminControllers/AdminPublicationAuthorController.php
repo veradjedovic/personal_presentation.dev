@@ -2,8 +2,7 @@
 
 namespace app\controllers\adminControllers;
 
-use app\controllers\Controller as Controller;
-use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
+use app\controllers\adminControllers\AdminController as AdminController;
 use app\models\Publication as Publication;
 use app\models\PublicationAuthor as PublicationAuthor;
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
@@ -18,20 +17,8 @@ use Exception as Exception;
  *
  * @author Vera
  */
-class AdminPublicationAuthorController extends Controller
+class AdminPublicationAuthorController extends AdminController
 {
-   /**
-     *
-     * @var string 
-     */
-    public $layout = 'admin';
-    
-    /**
-     *
-     * @var object
-     */
-    protected $menuModule;
-    
     /**
      *
      * @var object
@@ -48,9 +35,10 @@ class AdminPublicationAuthorController extends Controller
     /**
      * Construct
      */
-    public function __construct( AdminMenuController $menuModule, Publication $publication, PublicationAuthor $author ) 
+    public function __construct( Publication $publication, PublicationAuthor $author ) 
     {
-        $this->menuModule = $menuModule;
+        parent::__construct();
+
         $this->publication = $publication;
         $this->author = $author;
     }

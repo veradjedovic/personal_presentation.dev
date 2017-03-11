@@ -2,8 +2,7 @@
 
 namespace app\controllers\adminControllers;
 
-use app\controllers\Controller as Controller;
-use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
+use app\controllers\adminControllers\AdminController as AdminController;
 use Exception as Exception;
 
 /**
@@ -11,27 +10,14 @@ use Exception as Exception;
  *
  * @author Vera
  */
-class AdminPageController extends Controller
+class AdminPageController extends AdminController
 {
-   /**
-     *
-     * @var string 
-     */
-    public $layout = 'admin';
-    
-    /**
-     *
-     * @var object
-     */
-    protected $menuModule;
-
-
     /**
      * Construct
      */
-    public function __construct( AdminMenuController $menuModule ) 
+    public function __construct() 
     {
-        $this->menuModule = $menuModule;
+        parent::__construct();
     }   
     
    /**

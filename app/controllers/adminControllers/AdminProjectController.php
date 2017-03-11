@@ -2,12 +2,11 @@
 
 namespace app\controllers\adminControllers;
 
-use app\controllers\Controller as Controller;
+use app\controllers\adminControllers\AdminController as AdminController;
 use app\models\Project as Project;
 use app\models\ProjectMember as ProjectMember;
 use app\classes\Session as Session;
 use app\classes\Datetime as Datetime;
-use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use app\exceptions\ProjectsNotFoundException as ProjectsNotFoundException;
 use app\exceptions\ValidatorException as ValidatorException;
@@ -21,20 +20,8 @@ use Exception as Exception;
  *
  * @author Vera
  */
-class AdminProjectController extends Controller
+class AdminProjectController extends AdminController
 {
-   /**
-     *
-     * @var string 
-     */
-    public $layout = 'admin';
-    
-    /**
-     *
-     * @var object
-     */
-    protected $menuModule;
-    
     /**
      *
      * @var object
@@ -56,9 +43,10 @@ class AdminProjectController extends Controller
     /**
      * Construct
      */
-    public function __construct( AdminMenuController $menuModule, Project $project, ProjectMember $projectMember, Datetime $datetime ) 
+    public function __construct( Project $project, ProjectMember $projectMember, Datetime $datetime ) 
     {
-        $this->menuModule = $menuModule;
+        parent::__construct();
+
         $this->project = $project;
         $this->projectMember = $projectMember;
         $this->datetime = $datetime;

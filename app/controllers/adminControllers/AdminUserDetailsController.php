@@ -3,17 +3,18 @@
 namespace app\controllers\adminControllers;
 
 use app\controllers\Controller as Controller;
-use app\exceptions\PagesNotFoundException as PagesNotFoundException;
+use app\classes\Session as Session;
+use app\exceptions\ProfileNotFoundException as ProfileNotFoundException;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use Exception as Exception;
 use app\factories\LoadObjectFactory as Factory;
 
 /**
- * Description of AdminProfileController
+ * Description of AdminUserDetailsController
  *
  * @author Vera
  */
-class AdminMenuController extends Controller
+class AdminUserDetailsController extends Controller
 {
    /**
      *
@@ -25,14 +26,14 @@ class AdminMenuController extends Controller
      *
      * @var object
      */
-    protected $modulePage;
+    protected $detailOfUser;
     
     /**
      * Construct
      */
     public function __construct() 
     {
-        $this->modulePage = Factory::GetObject('app\models\ModulePage');
+        $this->detailOfUser = Factory::GetObject('app\models\UserProfile');
     }
     
     /**
@@ -42,27 +43,27 @@ class AdminMenuController extends Controller
     {
         try {
             
-            $adminMenu = $this->modulePage->GetAdminPages();
+            $detailOfUser = $this->detailOfUser->GetUserProfile(Session::get('id') ? Session::get('id') : '');
 
-            $this->view('modules/mod_external/mod_admin_template/mod_menu/menu', ['adminMenu' => $adminMenu]);
+            $this->view('modules/mod_external/mod_admin_template/mod_menu/userDetails', ['detailOfUser' => $detailOfUser]);
             
         } catch (CollectionNotFoundException $ex) {
             
             $message = $ex->getMessage();
             
-            $this->view('modules/mod_external/mod_admin_template/mod_menu/menu', ['message' => $message]);
+            $this->view('modules/mod_external/mod_admin_template/mod_menu/userDetails', ['message' => $message]);
             
-        } catch (PagesNotFoundException $ex) {
+        } catch (ProfileNotFoundException $ex) {
             
             $message = $ex->getMessage();
             
-            $this->view('modules/mod_external/mod_admin_template/mod_menu/menu', ['message' => $message]);
+            $this->view('modules/mod_external/mod_admin_template/mod_menu/userDetails', ['message' => $message]);
             
         } catch (Exception $ex) {
             
             $message = 'Linkovi nisu pronadjeni';
             
-            $this->view('modules/mod_external/mod_admin_template/mod_menu/menu', ['message' => $message]);
+            $this->view('modules/mod_external/mod_admin_template/mod_menu/userDetails', ['message' => $message]);
         }
     }
 }

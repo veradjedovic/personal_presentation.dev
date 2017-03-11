@@ -2,10 +2,9 @@
 
 namespace app\controllers\adminControllers;
 
-use app\controllers\Controller as Controller;
+use app\controllers\adminControllers\AdminController as AdminController;
 use app\classes\Session as Session;
 use app\models\User as User;
-use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use app\classes\Validator as Validator;
 use app\exceptions\ValidatorException as ValidatorException;
 use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
@@ -18,14 +17,8 @@ use Exception as Exception;
  *
  * @author Vera
  */
-class AdminUserController extends Controller
-{
-   /**
-     *
-     * @var string 
-     */
-    public $layout = 'admin';
-    
+class AdminUserController extends AdminController
+{   
     /**
      *
      * @var object
@@ -37,22 +30,17 @@ class AdminUserController extends Controller
      * @var object
      */
     protected $validator;
-    
-    /**
-     *
-     * @var object
-     */
-    protected $menuModule;
 
 
     /**
      * Construct
      */
-    public function __construct( User $user, Validator $validator, AdminMenuController $menuModule ) 
+    public function __construct( User $user, Validator $validator ) 
     {
+        parent::__construct();
+
         $this->user = $user;
         $this->validator = $validator;
-        $this->menuModule = $menuModule;
     }
     
     /**

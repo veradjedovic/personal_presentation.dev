@@ -2,8 +2,7 @@
 
 namespace app\controllers\adminControllers;
 
-use app\controllers\Controller as Controller;
-use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
+use app\controllers\adminControllers\AdminController as AdminController;
 use app\models\Language as Language;
 use app\models\LanguageProficiency as LanguageProficiency;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
@@ -18,20 +17,8 @@ use Exception as Exception;
  *
  * @author Vera
  */
-class AdminLanguageController extends Controller
+class AdminLanguageController extends AdminController
 {
-   /**
-     *
-     * @var string 
-     */
-    public $layout = 'admin';
-    
-    /**
-     *
-     * @var object
-     */
-    protected $menuModule;
-    
     /**
      *
      * @var object
@@ -48,9 +35,10 @@ class AdminLanguageController extends Controller
     /**
      * Construct
      */
-    public function __construct( AdminMenuController $menuModule, Language $language, LanguageProficiency $proficiency ) 
+    public function __construct( Language $language, LanguageProficiency $proficiency ) 
     {
-        $this->menuModule = $menuModule;
+        parent::__construct();
+
         $this->language = $language;
         $this->proficiency = $proficiency;
     }

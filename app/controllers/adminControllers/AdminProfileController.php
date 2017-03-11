@@ -2,7 +2,7 @@
 
 namespace app\controllers\adminControllers;
 
-use app\controllers\Controller as Controller;
+use app\controllers\adminControllers\AdminController as AdminController;
 use app\models\UserProfile as UserProfile;
 use app\models\Country as Country;
 use app\models\Industry as Industry;
@@ -12,7 +12,6 @@ use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
 use app\exceptions\FileUploadException as FileUploadException;
-use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use app\exceptions\ProfileNotFoundException as ProfileNotFoundException;
 use Exception as Exception;
 
@@ -21,14 +20,8 @@ use Exception as Exception;
  *
  * @author Vera
  */
-class AdminProfileController extends Controller
-{
-   /**
-     *
-     * @var string 
-     */
-    public $layout = 'admin';
-    
+class AdminProfileController extends AdminController
+{ 
     /**
      *
      * @var object
@@ -47,22 +40,17 @@ class AdminProfileController extends Controller
      */
     protected $industry;
     
-    /**
-     *
-     * @var object
-     */
-    protected $menuModule;
-    
 
     /**
      * Construct
      */
-    public function __construct( UserProfile $userProfile, Country $country, Industry $industry, AdminMenuController $menuModule ) 
+    public function __construct( UserProfile $userProfile, Country $country, Industry $industry ) 
     {
+        parent::__construct();
+
         $this->userProfile = $userProfile;
         $this->country = $country;
         $this->industry = $industry;
-        $this->menuModule = $menuModule;
     }
     
     /**

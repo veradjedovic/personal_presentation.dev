@@ -2,8 +2,7 @@
 
 namespace app\controllers\adminControllers;
 
-use app\controllers\Controller as Controller;
-use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
+use app\controllers\adminControllers\AdminController as AdminController;
 use app\models\Certification as Certification;
 use app\classes\Datetime as Datetime;
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
@@ -18,20 +17,8 @@ use Exception as Exception;
  *
  * @author Vera
  */
-class AdminCertificationController extends Controller
-{
-   /**
-     *
-     * @var string 
-     */
-    public $layout = 'admin';
-    
-    /**
-     *
-     * @var object
-     */
-    protected $menuModule;
-    
+class AdminCertificationController extends AdminController
+{   
     /**
      *
      * @var object
@@ -48,9 +35,10 @@ class AdminCertificationController extends Controller
     /**
      * Construct
      */
-    public function __construct( AdminMenuController $menuModule, Certification $certification, Datetime $datetime ) 
+    public function __construct( Certification $certification, Datetime $datetime ) 
     {
-        $this->menuModule = $menuModule;
+        parent::__construct();
+
         $this->certification = $certification;
         $this->datetime = $datetime;
     }

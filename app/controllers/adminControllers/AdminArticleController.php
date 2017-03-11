@@ -2,11 +2,10 @@
 
 namespace app\controllers\adminControllers;
 
-use app\controllers\Controller as Controller;
+use app\controllers\adminControllers\AdminController as AdminController;
 use app\models\Article as Article;
 use app\models\Page as Page;
 use app\classes\Session as Session;
-use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use app\exceptions\ArticleNotFoundException as ArticleNotFoundException;
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
@@ -23,20 +22,8 @@ use Exception as Exception;
  *
  * @author Vera
  */
-class AdminArticleController extends Controller
-{
-   /**
-     *
-     * @var string 
-     */
-    public $layout = 'admin';
-    
-    /**
-     *
-     * @var object
-     */
-    protected $menuModule;
-    
+class AdminArticleController extends AdminController
+{   
     /**
      *
      * @var object
@@ -53,9 +40,10 @@ class AdminArticleController extends Controller
     /**
      * Construct
      */
-    public function __construct( AdminMenuController $menuModule, Article $article, Page $page ) 
+    public function __construct( Article $article, Page $page ) 
     {
-        $this->menuModule = $menuModule;
+        parent::__construct();
+        
         $this->article = $article;
         $this->page = $page;
     }

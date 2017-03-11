@@ -2,8 +2,7 @@
 
 namespace app\controllers\adminControllers;
 
-use app\controllers\Controller as Controller;
-use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
+use app\controllers\adminControllers\AdminController as AdminController;
 use app\models\Skill as Skill;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use app\exceptions\SkillsNotFoundException as SkillsNotFoundException;
@@ -18,20 +17,8 @@ use Exception as Exception;
  *
  * @author Vera
  */
-class AdminSkillController extends Controller
+class AdminSkillController extends AdminController
 {
-   /**
-     *
-     * @var string 
-     */
-    public $layout = 'admin';
-    
-    /**
-     *
-     * @var object
-     */
-    protected $menuModule;
-    
     /**
      *
      * @var object
@@ -42,9 +29,10 @@ class AdminSkillController extends Controller
     /**
      * Construct
      */
-    public function __construct( AdminMenuController $menuModule, Skill $skill ) 
+    public function __construct( Skill $skill ) 
     {
-        $this->menuModule = $menuModule;
+        parent::__construct();
+
         $this->skill = $skill;
     }
     

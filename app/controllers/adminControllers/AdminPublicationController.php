@@ -2,12 +2,11 @@
 
 namespace app\controllers\adminControllers;
 
-use app\controllers\Controller as Controller;
+use app\controllers\adminControllers\AdminController as AdminController;
 use app\models\Publication as Publication;
 use app\models\PublicationAuthor as PublicationAuthor;
 use app\classes\Datetime as Datetime;
 use app\classes\Session as Session;
-use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use app\exceptions\PublicationsNotFoundException as PublicationsNotFoundException;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
@@ -22,20 +21,8 @@ use Exception as Exception;
  *
  * @author Vera
  */
-class AdminPublicationController extends Controller
+class AdminPublicationController extends AdminController
 {
-    /**
-     *
-     * @var string
-     */
-    public $layout = 'admin';
-    
-    /**
-     *
-     * @var object
-     */
-    protected $menuModule;
-    
     /**
      *
      * @var object
@@ -58,9 +45,10 @@ class AdminPublicationController extends Controller
     /**
      * Construct
      */
-    public function __construct( AdminMenuController $menuModule, Publication $publication, PublicationAuthor $publicationAuthor, Datetime $datetime ) 
+    public function __construct( Publication $publication, PublicationAuthor $publicationAuthor, Datetime $datetime ) 
     {
-        $this->menuModule = $menuModule;
+        parent::__construct();
+
         $this->publication = $publication;
         $this->publicationAuthor = $publicationAuthor;
         $this->datetime = $datetime;

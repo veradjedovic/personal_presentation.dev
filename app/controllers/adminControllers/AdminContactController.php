@@ -2,9 +2,8 @@
 
 namespace app\controllers\adminControllers;
 
-use app\controllers\Controller as Controller;
+use app\controllers\adminControllers\AdminController as AdminController;
 use app\models\Contact as Contact;
-use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use app\exceptions\ContactNotFoundException as ContactNotFoundException;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
@@ -16,34 +15,23 @@ use Exception as Exception;
  *
  * @author Vera
  */
-class AdminContactController extends Controller
+class AdminContactController extends AdminController
 {
-   /**
-     *
-     * @var string 
-     */
-    public $layout = 'admin';
-
     /**
      *
      * @var object
      */
     protected $contact;
-    
-    /**
-     *
-     * @var object
-     */
-    protected $menuModule;
 
 
     /**
      * Construct
      */
-    public function __construct( Contact $contact, AdminMenuController $menuModule )
+    public function __construct( Contact $contact )
     {
+        parent::__construct();
+
         $this->contact = $contact;
-        $this->menuModule = $menuModule;
     }
 
     /**

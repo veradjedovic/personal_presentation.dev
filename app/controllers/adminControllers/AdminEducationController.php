@@ -2,8 +2,7 @@
 
 namespace app\controllers\adminControllers;
 
-use app\controllers\Controller as Controller;
-use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
+use app\controllers\adminControllers\AdminController as AdminController;
 use app\models\Education as Education;
 use app\classes\Datetime as Datetime;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
@@ -18,20 +17,8 @@ use Exception as Exception;
  *
  * @author Vera
  */
-class AdminEducationController extends Controller
-{
-   /**
-     *
-     * @var string 
-     */
-    public $layout = 'admin';
-    
-    /**
-     *
-     * @var object
-     */
-    protected $menuModule;
-    
+class AdminEducationController extends AdminController
+{    
     /**
      *
      * @var object
@@ -48,9 +35,10 @@ class AdminEducationController extends Controller
     /**
      * Construct
      */
-    public function __construct( AdminMenuController $menuModule, Education $education, Datetime $datetime ) 
+    public function __construct( Education $education, Datetime $datetime ) 
     {
-        $this->menuModule = $menuModule;
+        parent::__construct();
+
         $this->education = $education;
         $this->datetime = $datetime;
     }

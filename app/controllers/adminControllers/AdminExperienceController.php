@@ -2,8 +2,7 @@
 
 namespace app\controllers\adminControllers;
 
-use app\controllers\Controller as Controller;
-use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
+use app\controllers\adminControllers\AdminController as AdminController;
 use app\models\Experience as Experience;
 use app\models\Country as Country;
 use app\classes\Datetime as Datetime;
@@ -19,20 +18,8 @@ use Exception as Exception;
  *
  * @author Vera
  */
-class AdminExperienceController extends Controller
+class AdminExperienceController extends AdminController
 {
-   /**
-     *
-     * @var string 
-     */
-    public $layout = 'admin';
-    
-    /**
-     *
-     * @var object
-     */
-    protected $menuModule;  
-    
     /**
      *
      * @var object
@@ -55,9 +42,10 @@ class AdminExperienceController extends Controller
     /**
      * Construct
      */
-    public function __construct( AdminMenuController $menuModule, Experience $experience, Country $country, Datetime $datetime ) 
+    public function __construct( Experience $experience, Country $country, Datetime $datetime ) 
     {
-        $this->menuModule = $menuModule;
+        parent::__construct();
+
         $this->experience = $experience;
         $this->country = $country;
         $this->datetime = $datetime;

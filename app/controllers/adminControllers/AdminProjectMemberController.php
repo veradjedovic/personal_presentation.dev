@@ -2,10 +2,9 @@
 
 namespace app\controllers\adminControllers;
 
-use app\controllers\Controller as Controller;
+use app\controllers\adminControllers\AdminController as AdminController;
 use app\models\ProjectMember as ProjectMember;
 use app\models\Project as Project;
-use app\controllers\adminControllers\AdminMenuController as AdminMenuController;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use app\exceptions\ProjectMembersNotFoundException as ProjectMembersNotFoundException;
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
@@ -18,20 +17,8 @@ use Exception as Exception;
  *
  * @author Vera
  */
-class AdminProjectMemberController extends Controller
+class AdminProjectMemberController extends AdminController
 {
-   /**
-     *
-     * @var string 
-     */
-    public $layout = 'admin';
-    
-    /**
-     *
-     * @var object
-     */
-    protected $menuModule;
-    
     /**
      *
      * @var object
@@ -48,9 +35,10 @@ class AdminProjectMemberController extends Controller
     /**
      * Construct
      */
-    public function __construct( AdminMenuController $menuModule, ProjectMember $project_member, Project $project ) 
+    public function __construct( ProjectMember $project_member, Project $project ) 
     {
-        $this->menuModule = $menuModule;
+        parent::__construct();
+
         $this->project_member =$project_member;
         $this->project = $project;
     }
