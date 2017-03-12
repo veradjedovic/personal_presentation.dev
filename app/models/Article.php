@@ -4,7 +4,6 @@ namespace app\models;
 
 use app\models\Model as Model;
 use app\exceptions\ArticleNotFoundException as ArticleNotFoundException;
-use app\exceptions\FileUploadException as FileUploadException;
 use app\exceptions\ValidatorException as ValidatorException;
 use app\factories\LoadObjectFactory as Factory;
 
@@ -45,6 +44,18 @@ class Article extends Model
          * @var object
          */
         protected $validator;
+        
+        /**
+         *
+         * @var object
+         */
+        protected $file_upload;
+        
+        /**
+         *
+         * @var string
+         */
+        protected $file_path = 'resources/images/img_for_articles';
 
 
         /**
@@ -53,6 +64,7 @@ class Article extends Model
         public function __construct()
         {
             $this->validator = Factory::GetObject('app\classes\Validator');
+            $this->file_upload = Factory::GetObject('app\jobs\FileUploadJob');
         }
 
         /**
@@ -206,42 +218,12 @@ class Article extends Model
         /**
          * 
          * @return string
-         * @throws FileUploadException
          */
         protected function UploadArticlePicture()
         {
-                if(!isset($_FILES)) {
-
-                    throw new FileUploadException("File doesn't exists");   
-                }
-
-                if($_FILES==[] || ($_FILES['f_upload']['size'] == false && $_FILES['f_upload']['type'] == false && $_FILES['f_upload']['error'] == true && $_FILES['f_upload']['name'] == false && $_FILES['f_upload']['tmp_name'] == false)){
-
-                    $avatar_img = '';
-
-                } else {
-
-                    if($_FILES['f_upload']['size'] <= 0) {
-
-                        throw new FileUploadException('The picture is too large');                   
-                    }
-
-                    if(($_FILES['f_upload']['type'] != "image/jpeg") && ($_FILES['f_upload']['type'] != "image/jpg") && ($_FILES['f_upload']['type'] != "image/JPG") && ($_FILES['f_upload']['type'] != "image/png")) {
-
-                        throw new FileUploadException('Invalid file format');                   
-                    }
-
-                    if ($_FILES['f_upload']['error'] > 0) {
-
-                        throw new FileUploadException('Error is happend');
-                    }
-
-                    $avatar_img = uniqid() . $_FILES['f_upload']['name'];
-                    $avatar_img = str_replace(' ', '_', $avatar_img);
-                    move_uploaded_file($_FILES['f_upload']['tmp_name'], APP_PATH. 'resources/images/img_for_articles/' . $avatar_img);                
-                }
-
-                return $avatar_img;
+            $file = $this->file_upload->UploadPicture($this->file_path);
+            
+            return $file;
         }
 
         /**

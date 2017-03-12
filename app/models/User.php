@@ -119,7 +119,7 @@ class User extends Model
                 throw new ValidatorException('Invalid access!');
             } 
 
-            header("location:" . SITE_ROOT . "/admin/");
+//            header("location:" . SITE_ROOT . "/admin/");
         }
         
         /**

@@ -49,7 +49,7 @@
                 </p>
                 <input name="tb_email" type="text" placeholder="Email" class="form-control" />
                 <input name="tb_password" type="password" placeholder="Password" class="form-control" />
-                <button class="submit btn text-muted text-center btn-danger" type="submit">Sign in</button>
+                <button id="submit" class="submit btn text-muted text-center btn-danger" type="submit">Sign in</button>
             </form>
         </div>
         <div id="forgot" class="tab-pane">
@@ -92,38 +92,39 @@
     <script src="<?php echo SITE_ROOT; ?>/templates/admin/assets/js/login.js"></script>
       <!--END PAGE LEVEL SCRIPTS -->
 
-    <script type="text/javascript">
-//        
-//      $('.submit').click(function(e){
-//       
-//        e.preventDefault();      
-//        $(".message").html("");
-//        
-//        $.ajax({
-//            
-//            url: $('.formInsert').attr('action'),      
-//            type: $('.formInsert').attr('method'),         
-//            data: $('.formInsert').serialize(),       
-//            dataType: 'json',
-//            
-//            success: function(response) {
-//                
-//                console.log(response); 
-//                
-//                if(response.error == false){
-//                    if (response.redirect) {
-//                        // data.redirect contains the string URL to redirect to
-//                        window.location.href = response.redirect;
-//                    }
-//                } else {
-//                    $("#message").html(response.message ).addClass( "alert alert-danger alert-dismissable" );
-//                }     
-//            }
-//        });        
-//    });
-//    
-    </script>
-      
+<script type="text/javascript">
+
+    $('#submit').click(function(e){
+       
+        e.preventDefault();      
+        $("#message").html("").removeClass("alert alert-success alert-danger alert-dismissable");
+        
+        $.ajax({
+            
+            url: $('.formInsert').attr('action'),      
+            type: $('.formInsert').attr('method'),         
+            data: $('.formInsert').serialize(),       
+            dataType: 'json',
+            
+            success: function(response) {
+                
+                if(response.error == false){   
+                    
+                    if (response.redirect) {
+                        // data.redirect contains the string URL to redirect to
+                        window.location.href = response.redirect;
+                    }    
+                    
+                } else {
+                    
+                    $(".formInsert")[0].reset();
+                    $("#message").html(response.message ).addClass( "alert alert-danger alert-dismissable" );
+                }
+                console.log(response);
+            }
+        });       
+    });
+</script>
 </body>
     <!-- END BODY -->
 </html>

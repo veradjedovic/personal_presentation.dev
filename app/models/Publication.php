@@ -44,6 +44,18 @@ class Publication extends Model
          * @var object
          */
         protected $validator;
+        
+        /**
+         *
+         * @var object
+         */
+        protected $file_upload;
+
+        /**
+         *
+         * @var object
+         */
+        protected $file_path = 'resources/documents/publications_pdf';
 
 
         /**
@@ -52,6 +64,7 @@ class Publication extends Model
         public function __construct() 
         {
             $this->validator = Factory::GetObject('app\classes\Validator');
+            $this->file_upload = Factory::GetObject('app\jobs\FileUploadJob');
         }
 
         /**
@@ -211,38 +224,9 @@ class Publication extends Model
          */
         protected function UploadPdf()
         {
-            if(!isset($_FILES)) {
-                
-                throw new FileUploadException("File doesn't exists");   
-            }
+            $file = $this->file_upload->UploadPdf($this->file_path);
             
-            if($_FILES==[] || ($_FILES['f_upload']['size'] == false && $_FILES['f_upload']['type'] == false && $_FILES['f_upload']['error'] == true && $_FILES['f_upload']['name'] == false && $_FILES['f_upload']['tmp_name'] == false)){
-                
-                $pdf = '';
-                
-            } else {
-                
-                if($_FILES['f_upload']['size'] <= 0) {
-                    
-                    throw new FileUploadException('The picture is too large');                   
-                }
-                
-                if(($_FILES['f_upload']['type'] != "application/pdf")) {
-                    
-                    throw new FileUploadException('Invalid file format');                   
-                }
-                
-                if ($_FILES['f_upload']['error'] > 0) {
-                    
-                    throw new FileUploadException('Error is happend');
-                }
-
-                $pdf = uniqid() . $_FILES['f_upload']['name'];
-                $pdf = str_replace(' ', '_', $pdf);
-                move_uploaded_file($_FILES['f_upload']['tmp_name'], APP_PATH. "resources/documents/publications_pdf/" . $pdf);                
-            }
-            
-            return $pdf;
+            return $file;
         }
         
         /**

@@ -62,6 +62,8 @@ class AuthController extends Controller
             
             $this->user->userLogin();
             
+            return json_encode(['error'=> false, 'redirect' => SITE_ROOT . '/admin/']);
+            
         } catch (ValidatorException $ex) {
             
             return json_encode(['message' => $ex->getMessage(), 'error'=> true]); 
