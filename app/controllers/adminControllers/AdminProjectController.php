@@ -188,7 +188,7 @@ class AdminProjectController extends AdminController
     {
         try {
             
-            $item = $this->project->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->project->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', PROJECT_VISIBLE);
             
             return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
@@ -219,7 +219,7 @@ class AdminProjectController extends AdminController
     {
         try {
             
-            $item = $this->project->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->project->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', PROJECT_NOT_VISIBLE);
             
             return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
@@ -250,7 +250,7 @@ class AdminProjectController extends AdminController
     {
         try {
             
-            $item = $this->project->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->project->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', PROJECT_DELETED);
             
             return json_encode(['message' => 'Project deleted', 'id' => $item->id, 'error'=> false]);
             

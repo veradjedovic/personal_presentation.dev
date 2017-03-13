@@ -160,7 +160,7 @@ class AdminSkillController extends AdminController
     {
         try {
             
-            $item = $this->skill->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->skill->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', SKILL_VISIBLE);
             
             return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
@@ -191,7 +191,7 @@ class AdminSkillController extends AdminController
     {
         try {
             
-            $item = $this->skill->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->skill->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', SKILL_NOT_VISIBLE);
             
             return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
@@ -222,7 +222,7 @@ class AdminSkillController extends AdminController
     {
         try {
             
-            $item = $this->skill->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->skill->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', SKILL_DELETED);
             
             return json_encode(['message' => 'Skill deleted', 'id' => $item->id, 'error'=> false]);
             

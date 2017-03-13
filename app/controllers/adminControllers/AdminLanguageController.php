@@ -174,7 +174,7 @@ class AdminLanguageController extends AdminController
     {
         try {
             
-            $item = $this->language->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->language->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', LANG_VISIBLE);
             
             return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
@@ -205,7 +205,7 @@ class AdminLanguageController extends AdminController
     {
         try {
             
-            $item = $this->language->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->language->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', LANG_NOT_VISIBLE);
             
             return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
@@ -236,7 +236,7 @@ class AdminLanguageController extends AdminController
     {
         try {
             
-            $item = $this->language->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->language->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', LANG_DELETED);
             
             return json_encode(['message' => 'Language deleted', 'id' => $item->id, 'error'=> false]);
             

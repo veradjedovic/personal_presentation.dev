@@ -229,7 +229,7 @@ class AdminPublicationController extends AdminController
     {
         try {
             
-            $item = $this->publication->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->publication->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', PUBL_VISIBLE);
             
             return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
@@ -260,7 +260,7 @@ class AdminPublicationController extends AdminController
     {
         try {
             
-            $item = $this->publication->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->publication->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', PUBL_NOT_VISIBLE);
             
             return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
@@ -291,7 +291,7 @@ class AdminPublicationController extends AdminController
     {
         try {
             
-            $item = $this->publication->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->publication->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', PUBL_DELETED);
             
             return json_encode(['message' => 'Publication deleted', 'id' => $item->id, 'error'=> false]);
             

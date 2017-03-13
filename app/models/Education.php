@@ -5,6 +5,7 @@ namespace app\models;
 use app\exceptions\EducationNotFoundException;
 use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\ValidatorException as ValidatorException;
+use app\traits\SetStatusTrait as SetStatusTrait;
 
 /**
  * Description of Education
@@ -13,6 +14,8 @@ use app\exceptions\ValidatorException as ValidatorException;
  */
 class Education extends Model
 {
+    use SetStatusTrait;
+    
         /**
          *
          * @var string
@@ -67,51 +70,6 @@ class Education extends Model
             }
             
             return $education;
-        }
-        
-        /**
-         * 
-         * @param int $id
-         * @param int $status
-         * @return object
-         */
-        protected function SetStatus($id, $status)
-        {
-        $item = $this->GetById($this->validator->Numeric($id));     
-        $item->status = $status;
-        $item->Update();
-
-        return $item;
-        }
-        
-        /**
-         * 
-         * @param int $id
-         * @return object
-         */
-        public function SetStatusVisible($id)
-        {
-            return $this->SetStatus($id, EDUCATION_VISIBLE);
-        }
-        
-        /**
-         * 
-         * @param int $id
-         * @return object
-         */
-        public function SetStatusNotVisible($id)
-        {
-            return $this->SetStatus($id, EDUCATION_NOT_VISIBLE);
-        }
-        
-        /**
-         * 
-         * @param int $id
-         * @return object
-         */
-        public function SetStatusDeleted($id)
-        {
-            return $this->SetStatus($id, EDUCATION_DELETED);
         }
         
         /**

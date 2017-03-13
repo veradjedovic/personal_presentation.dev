@@ -170,7 +170,7 @@ class AdminCertificationController extends AdminController
     {
         try {
             
-            $item = $this->certification->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->certification->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', CERTIF_VISIBLE);
             
             return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
@@ -201,7 +201,7 @@ class AdminCertificationController extends AdminController
     {
         try {
             
-            $item = $this->certification->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->certification->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', CERTIF_NOT_VISIBLE);
             
             return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
@@ -232,7 +232,7 @@ class AdminCertificationController extends AdminController
     {
         try {
             
-            $item = $this->certification->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->certification->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', CERTIF_DELETED);
             
             return json_encode(['message' => 'Certification deleted', 'id' => $item->id, 'error'=> false]);
             

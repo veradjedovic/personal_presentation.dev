@@ -4,6 +4,7 @@ namespace app\models;
 
 use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\PublicationAuthorsNotFoundException as PublicationAuthorsNotFoundException;
+use app\traits\SetStatusTrait as SetStatusTrait;
 
 /**
  * Description of PublicationAuthor
@@ -12,6 +13,8 @@ use app\exceptions\PublicationAuthorsNotFoundException as PublicationAuthorsNotF
  */
 class PublicationAuthor extends Model
 {
+    use SetStatusTrait;
+    
         /**
          *
          * @var string
@@ -89,5 +92,4 @@ class PublicationAuthor extends Model
             
             return $author_id;
         }
-
 }

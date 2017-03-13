@@ -173,7 +173,7 @@ class AdminEducationController extends AdminController
     {
         try {
             
-            $item = $this->education->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->education->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', EDUCATION_VISIBLE);
             
             return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
@@ -204,7 +204,7 @@ class AdminEducationController extends AdminController
     {
         try {
             
-            $item = $this->education->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->education->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', EDUCATION_NOT_VISIBLE);
             
             return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
@@ -235,7 +235,7 @@ class AdminEducationController extends AdminController
     {
         try {
             
-            $item = $this->education->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->education->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', EDUCATION_DELETED);
             
             return json_encode(['message' => 'Education deleted', 'id' => $item->id, 'error'=> false]);
             

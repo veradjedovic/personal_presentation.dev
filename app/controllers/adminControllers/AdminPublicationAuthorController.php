@@ -10,6 +10,7 @@ use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use app\exceptions\PublicationAuthorsNotFoundException as PublicationAuthorsNotFoundException;
 use app\exceptions\ValidatorException as ValidatorException;
 use app\exceptions\InsertNotExecutedException as InsertNotExecutedException;
+use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
 use Exception as Exception;
 
 /**
@@ -155,6 +156,27 @@ class AdminPublicationAuthorController extends AdminController
      */
     public function destroy()
     {
-        echo 'Delete method';
+        try {
+            
+            $item = $this->author->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', PUBL_AUTHOR_DELETED);
+            
+            return json_encode(['message' => 'Author deleted', 'id' => $item->id, 'error'=> false]);
+            
+        } catch (ItemNotFoundException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (UpdateNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Author not found', 'error'=> true]);
+        }
     }
 }

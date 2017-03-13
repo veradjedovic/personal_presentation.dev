@@ -195,7 +195,7 @@ class AdminArticleController extends AdminController
     {
         try {
             
-            $item = $this->article->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->article->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', ARTICLE_VISIBLE);
             
             return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
@@ -226,7 +226,7 @@ class AdminArticleController extends AdminController
     {
         try {
             
-            $item = $this->article->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->article->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', ARTICLE_NOT_VISIBLE);
             
             return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
@@ -255,7 +255,7 @@ class AdminArticleController extends AdminController
     {
         try {
             
-            $item = $this->article->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->article->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', ARTICLE_DELETED);
             
             return json_encode(['message' => 'Article deleted', 'id' => $item->id, 'error'=> false]);
             

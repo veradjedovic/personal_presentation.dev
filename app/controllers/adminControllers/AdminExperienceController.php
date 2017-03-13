@@ -189,7 +189,7 @@ class AdminExperienceController extends AdminController
     {
         try {
             
-            $item = $this->experience->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->experience->SetStatusVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', EXPERIENCE_VISIBLE);
             
             return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
@@ -220,7 +220,7 @@ class AdminExperienceController extends AdminController
     {
         try {
             
-            $item = $this->experience->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->experience->SetStatusNotVisible((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', EXPERIENCE_NOT_VISIBLE);
             
             return json_encode(['message' => 'Status updated', 'id' => $item->id, 'status' => $item->status, 'error'=> false]);
             
@@ -251,7 +251,7 @@ class AdminExperienceController extends AdminController
     {
         try {
             
-            $item = $this->experience->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
+            $item = $this->experience->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', EXPERIENCE_DELETED);
             
             return json_encode(['message' => 'Experience deleted', 'id' => $item->id, 'error'=> false]);
             

@@ -4,6 +4,7 @@ namespace app\models;
 
 use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\ValidatorException as ValidatorException;
+use app\traits\SetStatusTrait as SetStatusTrait;
 
 /**
  * Description of Experience
@@ -12,6 +13,8 @@ use app\exceptions\ValidatorException as ValidatorException;
  */
 class Experience extends Model
 {
+    use SetStatusTrait;
+    
         /**
          *
          * @var type 
@@ -91,52 +94,7 @@ class Experience extends Model
 
             return $experience;
         }
-        
-        /**
-         * 
-         * @param int $id
-         * @param int $status
-         * @return object
-         */
-        protected function SetStatus($id, $status)
-        {
-        $item = $this->GetById($this->validator->Numeric($id));     
-        $item->status = $status;
-        $item->Update();
 
-        return $item;
-        }
-        
-        /**
-         * 
-         * @param int $id
-         * @return object
-         */
-        public function SetStatusVisible($id)
-        {
-            return $this->SetStatus($id, EXPERIENCE_VISIBLE);
-        }
-        
-        /**
-         * 
-         * @param int $id
-         * @return object
-         */
-        public function SetStatusNotVisible($id)
-        {
-            return $this->SetStatus($id, EXPERIENCE_NOT_VISIBLE);
-        }
-        
-        /**
-         * 
-         * @param int $id
-         * @return object
-         */
-        public function SetStatusDeleted($id)
-        {
-            return $this->SetStatus($id, EXPERIENCE_DELETED);
-        }
-        
         /**
          * 
          * @throws ValidatorException

@@ -94,6 +94,16 @@ function aload_jobs($name) {
 
 /**
  * 
+ * @param $name
+ */
+function aload_traits($name) {
+    $parts = explode('\\', $name);
+    if(file_exists(APP_PATH.'app/traits/'.end($parts).'.php'))        
+    require_once APP_PATH.'app/traits/'.end($parts).'.php'; 
+}
+
+/**
+ * 
  * @para $name
  */
 function aload_admin_controllers($name) {
@@ -112,3 +122,4 @@ spl_autoload_register("aload_builders");
 spl_autoload_register("aload_classes");
 spl_autoload_register("aload_jobs");
 spl_autoload_register("aload_admin_controllers");
+spl_autoload_register("aload_traits");

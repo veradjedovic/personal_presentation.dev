@@ -76,7 +76,7 @@
                                                     } else {
                                                 ?>
                                                 <center>
-                                                    <a class="deleteBtn" href="admin-publications-authors-delete/<?php echo ($item->id) ? $item->id : 1; ?>">
+                                                    <a class="deleteBtn" data-id="<?=($item->id) ? $item->id : ''?>" href="">
                                                         <i class="submit icon-trash"></i>
                                                     </a>
                                                 </center>
@@ -122,7 +122,7 @@ $('#submit').click(function (e) {
 
                     $(".formInsert")[0].reset();
                     $("#message").html(response.message).addClass("alert alert-success alert-dismissable");
-                    $('#table_del').append('<tr id="row' + response.author.id + '"><td>' + response.author.author_name + ' ' + response.author.author_surname + '</td><td><center><a class="deleteBtn" href="admin-projects-members-delete/' + response.author.id + '"><i class="submit icon-trash"></i></a></center></td></tr>');
+                    $('#table_del').append('<tr id="row' + response.author.id + '"><td>' + response.author.author_name + ' ' + response.author.author_surname + '</td><td><center><a class="deleteBtn" data-id="' + response.author.id + '" href=""><i class="submit icon-trash"></i></a></center></td></tr>');
                 } else {
                     $("#message").html(response.message).addClass("alert alert-danger alert-dismissable");
                 }
@@ -131,36 +131,36 @@ $('#submit').click(function (e) {
         });
     });
 
-//var submitBtn = $('.insert');
-//this.submitBtn.click(function(e)
-//{           
-//        e.preventDefault(); 
-//        $("#message").html("").removeClass("alert alert-success alert-danger alert-dismissable");
-//        
-//        $.ajax({
-//            
-//            url: $('.insert').attr('href'),      
-//            type: 'post',         
-////            data: '',       
-//            dataType: 'json',
-//       
-//            success: function(response) {
-//                
-//                console.log(response.id);             
-//                if(response.error == false){
-//                    
-//                    $("#message").html(response.message ).addClass( "alert alert-success alert-dismissable" );
-//                    //$("#row"+response.id).remove(); ovo ispod je bezbednije, ali moze i ovako
-//                    $('tbody > tr#row'+response.id).remove();
-//                } else {
-//                    $("#message").append(response.message ).addClass( "alert alert-danger alert-dismissable" );
-//                }       
-//            },
-//            
-//            error: function() {
-//                console.log('Greska');
-//            }
-//        });       
-//    });
+$('body').on('click', '.deleteBtn', function(e){
+    
+    e.preventDefault();
+    $("#message").html("").removeClass("alert alert-success alert-danger alert-dismissable");
+    
+    var id =  $(this).attr('data-id');
+    
+    $.ajax({
+            
+            url: 'admin-publications-authors-delete/'+id,      
+            type: 'POST',        
+            dataType: 'json',
+       
+            success: function(response) {
+                
+                console.log(response);             
+                if(response.error == false){
+                    
+                    $("#message").html(response.message ).addClass( "alert alert-success alert-dismissable" );
+                    $('tbody > tr#row'+response.id).remove();
+                } else {
+                    $("#message").html(response.message ).addClass( "alert alert-danger alert-dismissable" );
+                }       
+            },
+            
+            error: function() {
+                console.log('Greska');
+            }
+        });      
+   
+});   
     
 </script>
