@@ -21,7 +21,7 @@ class PageController extends Controller
          *
          * @var string
          */
-	public $layout = 'default';
+	public $layout = 'lifestyle';
         
         /**
          *

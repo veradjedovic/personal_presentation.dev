@@ -40,3 +40,5 @@ ftpsync.settings
 
 /composer.lock
 /test.php
+
+tests/_output/*

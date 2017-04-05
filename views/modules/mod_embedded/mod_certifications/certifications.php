@@ -1,16 +1,16 @@
-<section class = 'section_of_modules'>
-<h1>Sertifikati</h1>
+<h3>Sertifikati</h3>
+<br />
     <?php 
     
         foreach ($data['certifications'] as $item) {
             
-            echo "<hr style='border-top: 1px solid #ccc;' />";
-            
             if($item->name)
-            echo "<h3>" . replace($item->name) . "</h3>";
+            echo "<h4>" . replace($item->name) . "</h4>";
+            
+            echo "<p>";
             
             if($item->authority)
-            echo "<p>" . replace($item->authority) . ", ";
+            echo replace($item->authority) . ", ";
             
             if($item->licence_number)
             echo "License" . replace($item->licence_number) . "<br />";
@@ -19,8 +19,9 @@
             echo "{$item->certif_url}<br />";
             
             if($item->certif_month || $item->certif_year)
-            echo "Starting {$item->certif_month} {$item->certif_year}</p>";                     
+            echo "Starting {$item->certif_month} {$item->certif_year}";    
+            
+            echo "</p>";
         }
-    ?>
-</section>
+        
 

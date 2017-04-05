@@ -88,4 +88,4 @@ require_once  __DIR__ . '/config_db.php';
 /**
  * Include helpers functions.
  */
-require_once APP_PATH . 'app/helpers.php';
+//require_once APP_PATH . 'app/helpers.php';

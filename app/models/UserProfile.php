@@ -85,6 +85,30 @@ class UserProfile extends Model
         
         /**
          * 
+         * @return object
+         * @throws ProfileNotFoundException
+         */
+        public function GetFirstProfile() 
+        {
+            $fields = static::$table . ".name, " . static::$table . ".surname, " . static::$table . ".address, " . static::$table . ".city, countries.country as country, countries.country_code as country_code, " . static::$table . ".profess_headline, industry.name as industry, " . static::$table . ".image";
+
+            $q = " LEFT JOIN countries ON " . static::$table . ".country_id = countries.id
+                  LEFT JOIN industry ON " . static::$table . ".industry_id = industry.id  
+                  LIMIT 1";
+            
+            
+            $item = $this->GetAll($fields, $q)[0];
+            
+            if(!$item) {
+                
+                throw new ProfileNotFoundException('Profile not found');
+            }
+            
+            return $item;
+        }
+        
+        /**
+         * 
          * UpdateUser method
          * @throws ValidatorException
          */

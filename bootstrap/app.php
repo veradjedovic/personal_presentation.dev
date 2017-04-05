@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Load Autoloader of Libraries.
+ * Autoload.
  */
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -13,7 +13,7 @@ require_once 'config/index.php';
 /**
  * Load Service Container.
  */
-require 'config/container/serviceContainer.php';
+//require 'config/container/serviceContainer.php';
 
 /**
  * Load The Application Routes.

@@ -1,17 +1,17 @@
-<section class = 'section_of_modules'>
-<h1>Izdanja</h1>
+<h3>Izdanja</h3>
+<br />
     <?php 
     
         foreach ($data['publications'] as $item) {
             
-            echo "<hr style='border-top: 1px solid #ccc;' />";
-            
             if($item->title){
-                echo "<h3>" . replace($item->title) . "</h3>";
+                echo "<h4 class='margin-bottom-10'>" . replace($item->title) . "</h4>";
             }
               
+            echo "<p>";
+            
             if($item->publisher){
-                echo "<p>Izdavac: " . replace($item->publisher) . "<br />";
+                echo "Izdavac: " . replace($item->publisher) . "<br />";
             }
             
             if($item->author){
@@ -19,7 +19,7 @@
             }
             
             if($item->publ_month || $item->publ_year){
-                echo "<p>" . ($item->publ_month ? $item->publ_month : '') . " " . ($item->publ_year ? $item->publ_year : '') . "<br />";  
+                echo ($item->publ_month ? $item->publ_month : '') . " " . ($item->publ_year ? $item->publ_year : '') . "<br />";  
             }
             
             if($item->description){
@@ -27,8 +27,9 @@
             }
             
             if($item->document_name){
-                echo '<a href="' . SITE_ROOT . '/resources/documents/publications_pdf/' . replace($item->document_name) . '" download>Preuzmi pdf</a></p>';
+                echo '<a href="' . SITE_ROOT . '/resources/documents/publications_pdf/' . replace($item->document_name) . '" download>Preuzmi pdf</a>';
             }
+            
+            echo "</p>";
         }
-    ?>
-</section>
+        

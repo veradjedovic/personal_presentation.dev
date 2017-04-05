@@ -2,6 +2,19 @@
     
     "require": {
         "phroute/phroute": "^2.1",
-        "orno/di": "^2.3"
+        "orno/di": "^2.3",
+        "codeception/codeception": "^2.2"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/"
+        },
+        "files": [
+            "config/index.php",
+            "app/helpers.php",
+            "config/container/serviceContainer.php"
+        ]
     }
 }

@@ -1,12 +1,9 @@
-<section class = 'section_of_modules'>
-<h1>Poznavanje jezika</h1>
- <hr style='border-top: 1px solid #ccc;' />
+<h3 class="margin-bottom-10">Poznavanje jezika</h3>
+<br />
     <?php 
         foreach ($data['languages'] as $item) {
                       
             if($item->name){
-                echo "<h3>" . replace($item->name) . ($item->prof_name ? " - " . $item->prof_name : '') . "</h3>";
+                echo "<p>" . replace($item->name) . ($item->prof_name ? " - " . $item->prof_name : '') . "</p>";
             }
         }
-    ?>
-</section>

@@ -1,17 +1,17 @@
-<section class = 'section_of_modules'>
-<h1>Projekti</h1>
+<h3>Projekti</h3>
+<br />
     <?php 
     
         foreach ($data['projects'] as $item) {
             
-            echo "<hr style='border-top: 1px solid #ccc;' />";
-            
             if($item->name){
-                echo "<h3>" . replace($item->name) . "</h3>";
+                echo "<h4>" . replace($item->name) . "</h4>";
             }
-                        
+                
+            echo "<p>";
+            
             if($item->author){
-                echo "<p>Clanovi tima: " . replace($item->author) . "<br />";
+                echo "Clanovi tima: " . replace($item->author) . "<br />";
             }
             
             if($item->project_url){
@@ -23,9 +23,10 @@
             }
             
             if($item->description){
-                echo replace($item->description) . "</p>";
+                echo replace($item->description);
             }
+            
+            echo "</p>";
         }
-    ?>
-</section>
+
 

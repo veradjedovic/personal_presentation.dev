@@ -4,6 +4,7 @@ namespace app\models;
 
 use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\ProjectMembersNotFoundException as ProjectMembersNotFoundException;
+use app\traits\SetStatusTrait as SetStatusTrait;
 
 /**
  * Description of ProjectMember
@@ -12,6 +13,8 @@ use app\exceptions\ProjectMembersNotFoundException as ProjectMembersNotFoundExce
  */
 class ProjectMember extends Model
 {
+    use SetStatusTrait;
+    
         /**
          *
          * @var string

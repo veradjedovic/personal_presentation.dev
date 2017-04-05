@@ -10,6 +10,7 @@ use app\exceptions\ProjectMembersNotFoundException as ProjectMembersNotFoundExce
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
 use app\exceptions\InsertNotExecutedException as InsertNotExecutedException;
 use app\exceptions\ValidatorException as ValidatorException;
+use app\exceptions\UpdateNotExecutedException as UpdateNotExecutedException;
 use Exception as Exception;
 
 /**
@@ -152,6 +153,27 @@ class AdminProjectMemberController extends AdminController
      */
     public function destroy()
     {
-        echo 'Delete method';
+        try {
+            
+            $item = $this->project_member->SetStatusDeleted((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '', PROJECT_MEMBER_DELETED);
+            
+            return json_encode(['message' => 'Member of project is deleted', 'id' => $item->id, 'error'=> false]);
+            
+        } catch (ItemNotFoundException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (UpdateNotExecutedException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (ValidatorException $ex) {
+            
+            return json_encode(['message' => $ex->getMessage(), 'error'=> true]);
+            
+        } catch (Exception $ex) {
+            
+            return json_encode(['message' => 'Member of project is not found', 'error'=> true]);
+        }
     }
 }
