@@ -7,19 +7,19 @@
             if($item->name)
             echo "<h4>" . replace($item->name) . "</h4>";
             
-            echo "<p>";
+            echo "<p style='text-align: justify;'>";
             
             if($item->authority)
             echo replace($item->authority) . ", ";
             
             if($item->licence_number)
-            echo "License" . replace($item->licence_number) . "<br />";
+            echo "Broj licence: " . replace($item->licence_number) . "<br />";
             
             if($item->certif_url)
-            echo "{$item->certif_url}<br />";
+            echo "Url sertifikata: <a href='" . $item->certif_url . "' target='_blank'>{$item->certif_url}</a><br />";
             
             if($item->certif_month || $item->certif_year)
-            echo "Starting {$item->certif_month} {$item->certif_year}";    
+            echo "Početak: {$item->certif_month} {$item->certif_year}";    
             
             echo "</p>";
         }

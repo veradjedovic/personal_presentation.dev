@@ -43,10 +43,25 @@ abstract class Controller
                     ob_start();
                             echo (isset($this->userDetails)) ? $this->userDetails->index() : '';
                     $contentUserDetails = ob_get_clean(); 
+                    
+                    ob_start();
+                            echo (isset($this->footerNav)) ? $this->footerNav->index() : '';
+                    $contentFooterNav = ob_get_clean();
+                    
+                    ob_start();
+                            echo (isset($this->footerLink)) ? $this->footerLink->linkToWebSites() : '';
+                    $contentFooterLink = ob_get_clean();
+                    
+                    ob_start();
+                            echo (isset($this->sidebar)) ? $this->sidebar->index() : '';
+                    $contentSidebar = ob_get_clean();
                 
 		$page = str_replace('[VIEW]', $contentSite, $content);
                 $page = str_replace('[MENU]', $contentMenu, $page);
                 $page = str_replace('[USERDETAILS]', $contentUserDetails, $page);
+                $page = str_replace('[FOOTERMENU]', $contentFooterNav, $page);
+                $page = str_replace('[FOOTERLINKS]', $contentFooterLink, $page);
+                $page = str_replace('[SIDEBAR]', $contentSidebar, $page);
                 
                 echo $page;
 	}

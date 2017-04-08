@@ -8,10 +8,10 @@
                 echo "<h4 class='margin-bottom-10'>" . replace($item->title) . "</h4>";
             }
               
-            echo "<p>";
+            echo "<p style='text-align: justify;'>";
             
             if($item->publisher){
-                echo "Izdavac: " . replace($item->publisher) . "<br />";
+                echo "Izdavač: " . replace($item->publisher) . "<br />";
             }
             
             if($item->author){

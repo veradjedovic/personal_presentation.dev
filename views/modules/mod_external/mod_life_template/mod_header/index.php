@@ -15,7 +15,7 @@
 </div>
 
 <!-- Top Menu -->
-<?php include APP_PATH . "views/modules/mod_external/mod_life_template/mod_menu/index.php"; ?>
+[MENU]
 <!-- End Top Menu -->
     
 <div id="post_header" class="container" style="height:40px">

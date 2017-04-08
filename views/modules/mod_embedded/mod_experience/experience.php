@@ -7,7 +7,7 @@
             if($item->title)
             echo "<h4>" . replace($item->title) . "</h4>";
             
-            echo "<p>";
+            echo "<p style='text-align: justify;'>";
             
             if($item->company || $item->city || $item->country)
             echo ($item->company ? replace($item->company) . ", " : '' ) . ($item->city ? replace($item->city) . ", " : '') . ($item->country ? $item->country : '') . "<br />";

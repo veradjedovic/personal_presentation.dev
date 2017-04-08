@@ -4,6 +4,6 @@
         foreach ($data['languages'] as $item) {
                       
             if($item->name){
-                echo "<p>" . replace($item->name) . ($item->prof_name ? " - " . $item->prof_name : '') . "</p>";
+                echo "<p style='text-align: justify;'>" . replace($item->name) . ($item->prof_name ? " - " . $item->prof_name : '') . "</p>";
             }
         }

@@ -4,7 +4,7 @@
                         <div id="footermenu" class="col-md-4">                           
                         </div>
                         <div id="copyright" class="col-md-4">
-                            <p class="text-center">&copy;  personalpresentation &nbsp;2017 &nbsp;</p>
+                            <p class="text-center">&copy;  vladimirdjedovicportfolio &nbsp;2017 &nbsp;</p>
                         </div>
                         <div id="footermenu" class="col-md-4">                           
                         </div>

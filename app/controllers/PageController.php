@@ -9,6 +9,9 @@ use app\exceptions\PagesNotFoundException as PagesNotFoundException;
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use app\models\ModulePage as ModulePage;
+use app\controllers\MenuController as MenuController;
+use app\controllers\FooterMenuController as FooterMenuController;
+use app\controllers\SidebarController as SidebarController;
 
 /**
  * Description of PageController
@@ -34,15 +37,43 @@ class PageController extends Controller
          * @var object
          */
         public $modulePage;
+        
+        /**
+         *
+         * @var object
+         */
+        protected $menuModule;
+        
+        /**
+         *
+         * @var object
+         */
+        protected $footerNav;
+        
+        /**
+         *
+         * @var object
+         */
+        protected $footerLink;
+        
+        /**
+         *
+         * @var object
+         */
+        protected $sidebar;
 
 
         /**
          * Construct
          */
-        public function __construct(Page $page, ModulePage $modulePage) 
+        public function __construct( Page $page, ModulePage $modulePage, MenuController $menuModule, FooterMenuController $footerNav, FooterMenuController $footerLink, SidebarController $sidebar ) 
         {
             $this->page = $page;  
             $this->modulePage = $modulePage;
+            $this->menuModule = $menuModule;
+            $this->footerNav = $footerNav;
+            $this->footerLink = $footerLink;
+            $this->sidebar = $sidebar;
         }
 
         /**
@@ -52,12 +83,11 @@ class PageController extends Controller
 	{
             try {   
                 
-		$pages = $this->page->GetWebPages();
                 $page = $this->page->GetById((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : 1);  
 
                 $modulesOfPage = $this->modulePage->GetVisibleModulesOfPage($page->id);
         
-		$this->view('index', array('pages' => $pages, 'page' => $page, 'modulesOfPage' => $modulesOfPage));
+		$this->view('index', array('page' => $page, 'modulesOfPage' => $modulesOfPage));
                 
             } catch (PagesNotFoundException $e) {
                 

@@ -7,7 +7,7 @@
             if($item->school)
             echo "<h4>" . replace($item->school) . "</h4>";
             
-            echo "<p>";
+            echo "<p style='text-align: justify;'>";
             
             if($item->degree || $item->field_of_study)
             echo replace($item->degree) . ", " . replace($item->field_of_study) . "<br />";     

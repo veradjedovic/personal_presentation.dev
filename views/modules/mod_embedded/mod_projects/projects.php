@@ -8,10 +8,10 @@
                 echo "<h4>" . replace($item->name) . "</h4>";
             }
                 
-            echo "<p>";
+            echo "<p style='text-align: justify;'>";
             
             if($item->author){
-                echo "Clanovi tima: " . replace($item->author) . "<br />";
+                echo "Članovi tima: " . replace($item->author) . "<br />";
             }
             
             if($item->project_url){

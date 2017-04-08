@@ -1,14 +1,11 @@
 <ul class="social-icons pull-right hidden-xs">
-                <li class="social-rss">
-                    <a href="#" target="_blank" title="RSS"></a>
-                </li>
-                <li class="social-twitter">
-                    <a href="#" target="_blank" title="Twitter"></a>
+                <li class="social-linkedin">
+                    <a href="https://www.linkedin.com/in/vladimirdjedovic/" target="_blank"></a>
                 </li>
                 <li class="social-facebook">
-                    <a href="#" target="_blank" title="Facebook"></a>
+                    <a href="https://www.facebook.com/vladimir.djedovic" target="_blank"></a>
                 </li>
                 <li class="social-googleplus">
-                    <a href="#" target="_blank" title="GooglePlus"></a>
+                    <a href="https://plus.google.com/u/0/105393037868890062358" target="_blank"></a>
                 </li>
 </ul>

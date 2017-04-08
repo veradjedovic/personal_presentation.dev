@@ -12,42 +12,17 @@
                                             <a href="<?php echo SITE_ROOT . "/kontakt/4"; ?>">Pošaljite poruku</a>
                                             <br>
                                             <span class="fa-link">Website:</span>
-                                            <a href="<?php echo SITE_ROOT; ?>/">www.p.com</a>
+                                            <a href="<?php echo SITE_ROOT; ?>/">www.vladimirdjedovicportfolio.com</a>
                                         </p>
                                         <p>Srbija, Beograd</p>
                                     </div>
                                      <!-- End Contact Details -->
                                      <!-- Sample Menu -->
-                                    <div class="col-md-3 margin-bottom-20 text-center">
-                                        <h3 class="margin-bottom-10">Meni</h3>
-                                        <ul class="menu"> 
-                                            <?php
-
-                                                foreach($data['pages'] as $item){
-
-                                                    echo "<li><a class='{$item->icon}' href='" . SITE_ROOT . "/{$item->route}/{$item->id}'>$item->name</a></li>";
-                                            }
-                                            ?>
-  
-                                        </ul>
-                                        <div class="clearfix"></div>
-                                    </div>
+                                        [FOOTERMENU]
                                      <!-- End Sample Menu -->
                                     <div class="col-md-1"></div>
                                      <!-- Disclaimer -->
-                                    <div class="col-md-3 margin-bottom-20 text-center">
-                                        <h3 class="margin-bottom-10">Zanimljivosti</h3>
-                                        <ul class="menu"> 
-                                            <?php
-
-                                                foreach($data['pages'] as $item){
-
-                                                    echo "<li><a class='{$item->icon}' href='" . SITE_ROOT . "/{$item->route}/{$item->id}'>$item->name</a></li>";
-                                            }
-                                            ?>
-  
-                                        </ul>
-                                    </div>
+                                        [FOOTERLINKS]
                                      <!-- End Disclaimer -->
                                     <div class="clearfix"></div>
                                 </div>

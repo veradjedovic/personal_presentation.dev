@@ -62,13 +62,13 @@
                                     <!-- Author Name -->
                                     <div class="blog-post-details-item blog-post-details-item-left">
                                         <i class="fa fa-user color-gray-light"></i>
-                                        <a href="#">By <?php echo ($item->author_name) ? $item->author_name : ''; ?> <?php echo ($item->author_surname) ? $item->author_surname : ''; ?></a>
+                                        <span>By <?php echo ($item->author_name) ? $item->author_name : ''; ?> <?php echo ($item->author_surname) ? $item->author_surname : ''; ?></span>
                                     </div>
                                     <!-- End Author Name -->
                                     <!-- Date -->
                                     <div class="blog-post-details-item blog-post-details-item-left">
                                         <i class="fa fa-calendar color-gray-light"></i>
-                                        <a href="#"><?php echo ($item->updated_at) ? date('d\.m\.Y', strtotime($item->updated_at)) : ''; ?></a>
+                                        <span><?php echo ($item->updated_at) ? date('d\.m\.Y', strtotime($item->updated_at)) : ''; ?></span>
                                     </div>
                                     <!-- End Date -->
                                     <!-- # of Comments -->
@@ -86,10 +86,10 @@
                                     <div class="clearfix"></div>
                                     <div class="blog-post-body row margin-top-15">
                                         <div class="col-md-5">
-                                            <?php echo ($item->image) ? '<img src = "resources/images/img_for_articles/' . replace($item->image) . '" class = "margin-bottom-20 img-responsive" alt="article" />' : ''; ?>
+                                            <?php echo ($item->image) ? '<img height="196" width="300" src="resources/images/img_for_articles/' . replace($item->image) . '" class="margin-bottom-20" alt="article" />' : ''; ?>
                                         </div>
-                                        <div class="col-md-7">
-                                            <p>
+                                        <div class="">
+                                            <p style="text-align: justify;">
                                                 <?php echo ($item->content) ? htmlspecialchars_decode((strlen($item->content)>500) ? (substr(replace($item->content), 0, 500) . '...') : replace($item->content)) : '' ?>
                                                 <!-- Read More -->
                                             </p>
