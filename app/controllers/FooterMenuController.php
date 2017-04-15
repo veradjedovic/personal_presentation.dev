@@ -72,7 +72,7 @@ class FooterMenuController extends Controller
      */
     public function linkToWebSites()
     {
-        $items = ['Wikipedia', 'Blic Online', 'Basta Balkana', 'Automobili', 'Ministarstvo Turizma'];
+        $items = ['http://www.bastabalkana.com/', 'https://www.polovniautomobili.com/', 'https://sh.wikipedia.org/wiki/Glavna_stranica', 'http://www.putovanja.info/', 'https://laracasts.com/'];
         
         $this->view('modules/mod_external/mod_life_template/mod_footer/footerLinks', ['items' => $items]);
     }

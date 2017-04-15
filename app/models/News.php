@@ -3,8 +3,6 @@
 namespace app\models;
 
 use app\exceptions\ItemNotFoundException as ItemNotFoundException;
-use app\factories\LoadObjectFactory as Factory;
-use app\exceptions\ValidatorException as ValidatorException;
 use SimpleXMLElement as SimpleXmlElement;
 
 /**
@@ -26,7 +24,7 @@ class News extends Model
          */
         public function __construct() 
         {
-           $this->validator = Factory::GetObject('app\classes\Validator'); 
+
         }
 
         /**
@@ -34,10 +32,22 @@ class News extends Model
          * @return array
          * @throws ItemNotFoundException
          */
-        public function GetMainNews($feed_url)
+        public function GetMainNews($feed_url = [])
         {
-            $content = file_get_contents($feed_url);
-            $news = new SimpleXmlElement($content);
+            $news = [];
+
+            foreach($feed_url as $url) {
+                
+                $this->validUrl($url); 
+                
+                if(strpos(file_get_contents($url),'<?xml')===false) {
+                    
+                    throw new ItemNotFoundException('Neispravan servis.');
+                }
+                
+                $content = file_get_contents($url);               
+                $news[] = new SimpleXmlElement($content);
+            } 
             
             if(!$news) {
                 
@@ -45,5 +55,23 @@ class News extends Model
             }
             
             return $news;
+        }
+        
+        /**
+         * 
+         * @param string $url
+         * @return boolean
+         * @throws ItemNotFoundException
+         */
+        protected function validUrl($url)
+        {
+            $file_headers = @get_headers($url);
+            
+            if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
+                
+                throw new ItemNotFoundException('Neispravna url adresa.');
+            }
+            
+            return true;
         }
 }

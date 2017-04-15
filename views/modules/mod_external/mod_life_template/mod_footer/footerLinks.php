@@ -8,7 +8,7 @@
                                                 
                                                 foreach($data['items'] as $item){
 
-                                                    echo "<li><a href='/'>$item</a></li>";
+                                                    echo "<li><a target='_blank' href='$item'>$item</a></li>";
                                                 }
                                             } else {
                                                 
