@@ -5,7 +5,7 @@
                                                     
                                                     foreach($data['itemsFirst'] as $items) {
                                             ?>
-                                                        <h3><?php echo $items->channel->title[0] ? $items->channel->title[0] : '' ?></h3>
+                                                        <h3><?php echo $items->channel->title ? $items->channel->title : '' ?></h3>
                                                         <ul class="posts-list margin-top-10">                                               
                                                             <li>
                                                                 <?php  
@@ -15,7 +15,7 @@
                                                                 ?>
                                                                         <div class="recent-post">
                                                                             <a href="<?php echo $item->link ? $item->link : '' ?>" target="_blank">
-                                                                                <img class="pull-left" height="54" width="60" src="<?php echo $item->image ? $item->image : ($items->channel->image[0]->url[0] ? $items->channel->image[0]->url[0] : ''); ?>" alt="<?php echo $items->channel->title[0] ? $items->channel->title[0] : '' ?>" />
+                                                                                <img class="pull-left" height="54" width="60" src="<?php echo $item->image ? $item->image : ($items->channel->image->url ? $items->channel->image->url : ''); ?>" alt="<?php echo $items->channel->title[0] ? $items->channel->title[0] : '' ?>" />
                                                                             </a>
                                                                             <a href="<?php echo $item->link ? $item->link : '' ?>" target="_blank" class="posts-list-title"><?php echo $item->title ? (strlen($item->title)>45 ? substr($item->title, 0, 45) . '...': $item->title) : '' ?></a>
                                                                             <br>

@@ -5,7 +5,7 @@ RewriteRule ^login$ /login [NC]
 RewriteRule ^admin$ modules/mod_embedded/mod_article/admin/index [NC]
 RewriteRule ^([a-zA-Z0-9_\-/]*)/([a-zA-Z0-9_]*)$ ./index.php?r=$1&id=$2 [NC]
 
-ErrorDocument 404 http://personal_presentation.dev/
+ErrorDocument 404 http://portfolio.dev/
 
 #RewriteRule ^([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)$ ./index.php?k=$1&m=$2 [NC]
 #RewriteRule ^([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([0-9]*)$ ./index.php?k=$1&m=$2&id=$3 [NC]
