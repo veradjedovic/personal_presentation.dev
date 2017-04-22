@@ -57,19 +57,19 @@ class AdminArticleController extends AdminController
 
             $articles = $this->article->GetAllArticles();
             
-            $this->view('modules/mod_embedded/mod_article/admin/index', ['articles' => $articles]);
+            $this->view('modules/mod_embedded/Article/admin/index', ['articles' => $articles]);
         
         } catch (ArticleNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_article/admin/index', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Article/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (CollectionNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_article/admin/index', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Article/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
 
-            $this->view('modules/mod_embedded/mod_article/admin/index', ['messageException' => 'Not found']);
+            $this->view('modules/mod_embedded/Article/admin/index', ['messageException' => 'Not found']);
         }
     }
     
@@ -82,13 +82,13 @@ class AdminArticleController extends AdminController
 
             $pages = $this->page->GetWebPagesVisibleAndNotVisible();
             
-            $this->view('modules/mod_embedded/mod_article/admin/addNew', ['pages' => $pages]);
+            $this->view('modules/mod_embedded/Article/admin/addNew', ['pages' => $pages]);
         
         } catch (Exception $ex) {
             
             $message = 'Nema podataka';
             
-            $this->view('modules/mod_embedded/mod_article/admin/addNew', ['messageException' => $message]);
+            $this->view('modules/mod_embedded/Article/admin/addNew', ['messageException' => $message]);
         }
     }
     
@@ -133,25 +133,25 @@ class AdminArticleController extends AdminController
             $article = $this->article->GetById((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
             $pages = $this->page->GetWebPagesVisibleAndNotVisible();
 
-            $this->view('modules/mod_embedded/mod_article/admin/edit', ['article' => $article, 'pages' => $pages]);
+            $this->view('modules/mod_embedded/Article/admin/edit', ['article' => $article, 'pages' => $pages]);
         
         } catch (ItemNotFoundException $ex) {           
             
-            $this->view('modules/mod_embedded/mod_article/admin/edit', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Article/admin/edit', ['messageException' => $ex->getMessage()]);
 
         } catch (PagesNotFoundException $ex) {           
             
-            $this->view('modules/mod_embedded/mod_article/admin/edit', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Article/admin/edit', ['messageException' => $ex->getMessage()]);
 
         } catch (CollectionNotFoundException $ex) {           
             
-            $this->view('modules/mod_embedded/mod_article/admin/edit', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Article/admin/edit', ['messageException' => $ex->getMessage()]);
 
         } catch (Exception $ex) {
             
             $message = 'Nema podataka';
             
-            $this->view('modules/mod_embedded/mod_article/admin/edit', ['messageException' => $message]);
+            $this->view('modules/mod_embedded/Article/admin/edit', ['messageException' => $message]);
         }
     }
     

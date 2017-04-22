@@ -63,19 +63,19 @@ class AdminPublicationController extends AdminController
             
             $publications = $this->publication->GetAllPublications();
 
-            $this->view('modules/mod_embedded/mod_publications/admin/index', ['publications' => $publications]);
+            $this->view('modules/mod_embedded/Publication/admin/index', ['publications' => $publications]);
         
         } catch (PublicationsNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_publications/admin/index', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Publication/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (CollectionNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_publications/admin/index', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Publication/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_publications/admin/index', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Publication/admin/index', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -90,11 +90,11 @@ class AdminPublicationController extends AdminController
             $year_end = $this->datetime->getYearEnd();
             $months = $this->datetime->getMonth();
             
-            $this->view('modules/mod_embedded/mod_publications/admin/addNew', ['year_begin' => $year_begin, 'year_end' => $year_end, 'months' => $months]);
+            $this->view('modules/mod_embedded/Publication/admin/addNew', ['year_begin' => $year_begin, 'year_end' => $year_end, 'months' => $months]);
         
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_publications/admin/addNew', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Publication/admin/addNew', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -142,15 +142,15 @@ class AdminPublicationController extends AdminController
             $year_end = $this->datetime->getYearEnd();
             $months = $this->datetime->getMonth();
             
-            $this->view('modules/mod_embedded/mod_publications/admin/edit', ['publication' => $publication, 'year_begin' => $year_begin, 'year_end' => $year_end, 'months' => $months]);
+            $this->view('modules/mod_embedded/Publication/admin/edit', ['publication' => $publication, 'year_begin' => $year_begin, 'year_end' => $year_end, 'months' => $months]);
         
         } catch (ItemNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_publications/admin/edit', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Publication/admin/edit', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_publications/admin/edit', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Publication/admin/edit', ['messageException' => 'Nema podataka']);
         }
     }
     

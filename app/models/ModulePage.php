@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\models\Model as Model;
+use app\exceptions\ItemNotFoundException as ItemNotFoundException;
 use app\exceptions\PagesNotFoundException as PagesNotFoundException;
 
 /**

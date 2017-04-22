@@ -45,19 +45,19 @@ class UserProfileController extends Controller
         
             $userProfile = $this->userProfile->GetFirstProfile();
 
-            $this->view('modules/mod_embedded/mod_user_profile/user', ['userProfile' => $userProfile]);
+            $this->view('modules/mod_embedded/UserProfile/user', ['userProfile' => $userProfile]);
             
         } catch (ProfileNotFoundException $ex) {
 
-            $this->view('modules/mod_embedded/mod_user_profile/user', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/UserProfile/user', ['messageException' => $ex->getMessage()]);
             
         } catch (CollectionNotFoundException $ex) {
 
-            $this->view('modules/mod_embedded/mod_user_profile/user', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/UserProfile/user', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_user_profile/user', ['messageException' => 'Linkovi nisu pronadjeni']);
+            $this->view('modules/mod_embedded/UserProfile/user', ['messageException' => 'Linkovi nisu pronadjeni']);
         }
     }
 }

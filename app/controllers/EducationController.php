@@ -42,7 +42,7 @@ class EducationController extends Controller
             
             $education = $this->education->GetEducationVisible();
 
-            $this->view('modules/mod_embedded/mod_education/education', ['education'=>$education]);
+            $this->view('modules/mod_embedded/Education/education', ['education'=>$education]);
         
         } catch (EducationNotFoundException $ex) {
             

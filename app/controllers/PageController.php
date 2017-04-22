@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace app\controllers;
 
@@ -12,6 +12,7 @@ use app\models\ModulePage as ModulePage;
 use app\controllers\MenuController as MenuController;
 use app\controllers\FooterMenuController as FooterMenuController;
 use app\controllers\SidebarController as SidebarController;
+use app\factories\LoadObjectFactory as Factory;
 
 /**
  * Description of PageController
@@ -25,37 +26,37 @@ class PageController extends Controller
          * @var string
          */
 	public $layout = 'lifestyle';
-        
+
         /**
          *
          * @var object
          */
         public $page;
-        
+
         /**
          *
          * @var object
          */
         public $modulePage;
-        
+
         /**
          *
          * @var object
          */
         protected $menuModule;
-        
+
         /**
          *
          * @var object
          */
         protected $footerNav;
-        
+
         /**
          *
          * @var object
          */
         protected $footerLink;
-        
+
         /**
          *
          * @var object
@@ -66,9 +67,9 @@ class PageController extends Controller
         /**
          * Construct
          */
-        public function __construct( Page $page, ModulePage $modulePage, MenuController $menuModule, FooterMenuController $footerNav, FooterMenuController $footerLink, SidebarController $sidebar ) 
+        public function __construct( Page $page, ModulePage $modulePage, MenuController $menuModule, FooterMenuController $footerNav, FooterMenuController $footerLink, SidebarController $sidebar )
         {
-            $this->page = $page;  
+            $this->page = $page;
             $this->modulePage = $modulePage;
             $this->menuModule = $menuModule;
             $this->footerNav = $footerNav;
@@ -79,31 +80,49 @@ class PageController extends Controller
         /**
          * Index method
          */
-	public function index()
-	{
-            try {   
-                
-                $page = $this->page->GetById((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : 1);  
+        public function index()
+        {
+                try {
 
-                $modulesOfPage = $this->modulePage->GetVisibleModulesOfPage($page->id);
-        
-		$this->view('index', array('page' => $page, 'modulesOfPage' => $modulesOfPage));
-                
-            } catch (PagesNotFoundException $e) {
-                
-                echo $e->getMessage();
-                
-            } catch (ItemNotFoundException $e) {
-                
-                header('Location: /');
-                
-            } catch (CollectionNotFoundException $e) {
-                
-                echo $e->getMessage();
-                
-            } catch (Exception $e) {
-               
-                echo 'Not found';
+                    $page = $this->page->GetById((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : 1);
+                    $modules= $this->modulePage->GetVisibleModulesOfPage($page->id);
+                    $modulesOfPage = $this->putObjectsIntoArray($modules);
+
+                    $this->view('index', array('page' => $page, 'modulesOfPage' => $modulesOfPage));
+
+                } catch (PagesNotFoundException $e) {
+
+                    echo $e->getMessage();
+
+                } catch (ItemNotFoundException $e) {
+
+                    header('Location: /');
+
+                } catch (CollectionNotFoundException $e) {
+
+                    echo $e->getMessage();
+
+                } catch (Exception $e) {
+
+                    echo 'Not found';
+                }
+        }
+
+        /**
+         * @param $modules
+         * @return array|string
+         */
+        protected function putObjectsIntoArray($modules)
+        {
+            foreach ($modules as $module) {
+                if ($module->name == 'mod_blank') {
+
+                    $modulesOfPage = 'mod_blank';
+                } else {
+
+                    $modulesOfPage[] = Factory::GetObject("app\\controllers\\" . $module->name . "Controller");
+                }
             }
-	}
+            return $modulesOfPage;
+        }
 }

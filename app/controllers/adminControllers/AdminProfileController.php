@@ -64,19 +64,19 @@ class AdminProfileController extends AdminController
             $country = $this->country->GetAll();
             $industry = $this->industry->GetAll();
 
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['userProfile' => $userProfile, 'country' =>$country, 'industry' => $industry]);
+            $this->view('modules/mod_embedded/UserProfile/admin/index', ['userProfile' => $userProfile, 'country' =>$country, 'industry' => $industry]);
             
         } catch (ProfileNotFoundException $ex) {
 
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/UserProfile/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (CollectionNotFoundException $ex) {
 
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/UserProfile/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_user_profile/admin/index', ['messageException' => 'Linkovi nisu pronadjeni']);
+            $this->view('modules/mod_embedded/UserProfile/admin/index', ['messageException' => 'Linkovi nisu pronadjeni']);
         }
     }
     

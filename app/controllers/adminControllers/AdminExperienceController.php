@@ -60,15 +60,15 @@ class AdminExperienceController extends AdminController
             
             $experience = $this->experience->GetAllExperience();       
             
-            $this->view('modules/mod_embedded/mod_experience/admin/index', ['experience' => $experience]);
+            $this->view('modules/mod_embedded/Experience/admin/index', ['experience' => $experience]);
             
         } catch (CollectionNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_experience/admin/index', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Experience/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_experience/admin/index', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Experience/admin/index', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -84,11 +84,11 @@ class AdminExperienceController extends AdminController
             $year_end = $this->datetime->getYearEnd();
             $month = $this->datetime->getMonth();
             
-            $this->view('modules/mod_embedded/mod_experience/admin/addNew', ['year_begin' => $year_begin, 'year_end' => $year_end, 'month' => $month, 'countries' => $countries]);
+            $this->view('modules/mod_embedded/Experience/admin/addNew', ['year_begin' => $year_begin, 'year_end' => $year_end, 'month' => $month, 'countries' => $countries]);
         
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_experience/admin/addNew', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Experience/admin/addNew', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -132,19 +132,19 @@ class AdminExperienceController extends AdminController
             $year_end = $this->datetime->getYearEnd();
             $month = $this->datetime->getMonth();
             
-            $this->view('modules/mod_embedded/mod_experience/admin/edit', ['experience' => $experience, 'year_begin' => $year_begin, 'year_end' => $year_end, 'month' => $month, 'countries' => $countries]);
+            $this->view('modules/mod_embedded/Experience/admin/edit', ['experience' => $experience, 'year_begin' => $year_begin, 'year_end' => $year_end, 'month' => $month, 'countries' => $countries]);
         
         } catch (ItemNotFoundException $ex) {           
             
-            $this->view('modules/mod_embedded/mod_experience/admin/edit', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Experience/admin/edit', ['messageException' => $ex->getMessage()]);
 
         } catch (CollectionNotFoundException $ex) {           
             
-            $this->view('modules/mod_embedded/mod_experience/admin/edit', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Experience/admin/edit', ['messageException' => $ex->getMessage()]);
 
         } catch (Exception $ex) {           
             
-            $this->view('modules/mod_embedded/mod_experience/admin/edit', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Experience/admin/edit', ['messageException' => 'Nema podataka']);
 
         }
     }

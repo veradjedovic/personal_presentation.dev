@@ -37,7 +37,7 @@ class LanguageController extends Controller
             
             $languages = $this->language->GetVisibleLanguages();
             
-            $this->view('modules/mod_embedded/mod_languages/languages', ['languages' => $languages]);
+            $this->view('modules/mod_embedded/Language/languages', ['languages' => $languages]);
             
         } catch (LanguagesNotFoundException $ex) {
             

@@ -54,23 +54,23 @@ class AdminProjectMemberController extends AdminController
             $project = $this->project->GetById((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
             $projectMembers = $this->project_member->GetAllVisibleMembers($project->id);
             
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers', ['projectMembers' => $projectMembers, 'project_id' => $project->id]);
+            $this->view('modules/mod_embedded/Project/admin/editProjectMembers', ['projectMembers' => $projectMembers, 'project_id' => $project->id]);
         
         } catch (ItemNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Project/admin/editProjectMembers', ['messageException' => $ex->getMessage()]);
             
         } catch (ProjectMembersNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Project/admin/editProjectMembers', ['messageException' => $ex->getMessage()]);
             
         } catch (CollectionNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Project/admin/editProjectMembers', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Project/admin/editProjectMembers', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -81,11 +81,11 @@ class AdminProjectMemberController extends AdminController
     {
         try {
 
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers');
+            $this->view('modules/mod_embedded/Project/admin/editProjectMembers');
         
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Project/admin/editProjectMembers', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -132,11 +132,11 @@ class AdminProjectMemberController extends AdminController
     {
         try {
 
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers');
+            $this->view('modules/mod_embedded/Project/admin/editProjectMembers');
         
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Project/admin/editProjectMembers', ['messageException' => 'Nema podataka']);
         }
     }
     

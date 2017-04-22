@@ -1,7 +1,7 @@
                         <div style = "clear:both;"></div>
                         <?php 
                         
-                        if(isset($data['modulesOfPage']) && $data['modulesOfPage'][0]->name !== 'mod_blank') {
+                        if(isset($data['modulesOfPage']) && $data['modulesOfPage'] !== 'mod_blank') {
                             
                         ?>
                         
@@ -17,15 +17,13 @@
 
                                             foreach($data['modulesOfPage'] as $item){
 
-                                                if($item->name !== 'mod_blank') { 
                                         ?>
-                                                        <div class="col-md-12">
-                                                        <?php include APP_PATH . "views/modules/mod_embedded/{$item->name}/index.php"; ?>
-                                                        <hr />
-                                                        </div>
-                                        <?php  
-                                                }         
-                                            } 
+                                                <div class="col-md-12">
+                                                    <?php echo $item->index(); ?>
+                                                    <hr />
+                                                </div>
+                                        <?php
+                                            }
                                         ?>
                                     </div>   
                                     
@@ -40,7 +38,7 @@
                         <!--  === END CONTENT ===  -->
 
                         <!--  === BEGIN FOOTER === -->
-                        <?php include APP_PATH . "views/modules/mod_external/mod_life_template/mod_footer/index.php"; 
+                        <?php include APP_PATH . "views/modules/mod_external/mod_life_template/mod_footer/index.php";
                         
                         }
                         

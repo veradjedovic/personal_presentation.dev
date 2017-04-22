@@ -46,7 +46,7 @@ class ContactController extends Controller
      */
     public function index()
     {          
-        $this->view('modules/mod_embedded/mod_contact/contact');      
+        $this->view('modules/mod_embedded/Contact/contact');
     }
     
     /**

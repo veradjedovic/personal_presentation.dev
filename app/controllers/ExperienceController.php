@@ -43,7 +43,7 @@ class ExperienceController extends Controller
             
             $experience = $this->experience->GetVisibleExperience();
 
-            $this->view('modules/mod_embedded/mod_experience/experience', ['experience' => $experience]);
+            $this->view('modules/mod_embedded/Experience/experience', ['experience' => $experience]);
             
         } catch (ExperienceNotFoundException $ex) {
             

@@ -52,15 +52,15 @@ class AdminCertificationController extends AdminController
             
             $certification = $this->certification->GetAll('*', 'where status = ' . CERTIF_VISIBLE . ' or status = ' . CERTIF_NOT_VISIBLE . ' ORDER BY certif_year DESC');
 
-            $this->view('modules/mod_embedded/mod_certifications/admin/index', ['certification' => $certification]);
+            $this->view('modules/mod_embedded/Certification/admin/index', ['certification' => $certification]);
         
         } catch (CollectionNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_certifications/admin/index', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Certification/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_certifications/admin/index', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Certification/admin/index', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -75,11 +75,11 @@ class AdminCertificationController extends AdminController
             $year_begin = $this->datetime->getYearBegin();
             $year_end = $this->datetime->getYearEnd();
             
-            $this->view('modules/mod_embedded/mod_certifications/admin/addNew', ['months' => $months, 'year_begin' => $year_begin, 'year_end' => $year_end]);
+            $this->view('modules/mod_embedded/Certification/admin/addNew', ['months' => $months, 'year_begin' => $year_begin, 'year_end' => $year_end]);
         
         } catch (Exception $ex) {
 
-            $this->view('modules/mod_embedded/mod_certifications/admin/addNew', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Certification/admin/addNew', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -120,15 +120,15 @@ class AdminCertificationController extends AdminController
             $year_begin = $this->datetime->getYearBegin();
             $year_end = $this->datetime->getYearEnd();
             
-            $this->view('modules/mod_embedded/mod_certifications/admin/edit', ['certification' => $certification, 'months' => $months, 'year_begin' => $year_begin, 'year_end' => $year_end]);
+            $this->view('modules/mod_embedded/Certification/admin/edit', ['certification' => $certification, 'months' => $months, 'year_begin' => $year_begin, 'year_end' => $year_end]);
         
         } catch (ItemNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_certifications/admin/edit', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Certification/admin/edit', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_certifications/admin/edit', ['messageException' => 'Certification not found']);
+            $this->view('modules/mod_embedded/Certification/admin/edit', ['messageException' => 'Certification not found']);
         }
     }
     

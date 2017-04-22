@@ -52,15 +52,15 @@ class AdminLanguageController extends AdminController
             
             $languages = $this->language->GetAllLanguages();
             
-            $this->view('modules/mod_embedded/mod_languages/admin/index', ['languages' => $languages]);
+            $this->view('modules/mod_embedded/Language/admin/index', ['languages' => $languages]);
         
         } catch (CollectionNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_experience/admin/index', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Experience/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_languages/admin/index', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Language/admin/index', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -73,11 +73,11 @@ class AdminLanguageController extends AdminController
 
             $proficiences = $this->proficiency->GetAll();
             
-            $this->view('modules/mod_embedded/mod_languages/admin/addNew', ['proficiences' => $proficiences]);
+            $this->view('modules/mod_embedded/Language/admin/addNew', ['proficiences' => $proficiences]);
         
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_languages/admin/addNew', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Language/admin/addNew', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -118,19 +118,19 @@ class AdminLanguageController extends AdminController
             $language = $this->language->GetById(isset($_GET['id']) && is_numeric($_GET['id']) ? $_GET['id'] : '');
             $proficiences = $this->proficiency->GetAll();
             
-            $this->view('modules/mod_embedded/mod_languages/admin/edit', ['language' => $language, 'proficiences' => $proficiences]);
+            $this->view('modules/mod_embedded/Language/admin/edit', ['language' => $language, 'proficiences' => $proficiences]);
         
         } catch (ItemNotFoundException $ex) {
                     
-            $this->view('modules/mod_embedded/mod_languages/admin/edit', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Language/admin/edit', ['messageException' => $ex->getMessage()]);
             
         } catch (CollectionNotFoundException $ex) {
                     
-            $this->view('modules/mod_embedded/mod_languages/admin/edit', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Language/admin/edit', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
                     
-            $this->view('modules/mod_embedded/mod_languages/admin/edit', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Language/admin/edit', ['messageException' => 'Nema podataka']);
         }
     }
     

@@ -45,19 +45,19 @@ class AdminSkillController extends AdminController
             
             $skills = $this->skill->GetAllSkills();
 
-            $this->view('modules/mod_embedded/mod_skills/admin/index', ['skills' => $skills]);
+            $this->view('modules/mod_embedded/Skill/admin/index', ['skills' => $skills]);
         
         } catch (SkillsNotFoundException $ex) {
 
-            $this->view('modules/mod_embedded/mod_skills/admin/index', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Skill/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (CollectionNotFoundException $ex) {
 
-            $this->view('modules/mod_embedded/mod_skills/admin/index', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Skill/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
 
-            $this->view('modules/mod_embedded/mod_skills/admin/index', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Skill/admin/index', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -68,11 +68,11 @@ class AdminSkillController extends AdminController
     {
         try {
 
-            $this->view('modules/mod_embedded/mod_skills/admin/addNew');
+            $this->view('modules/mod_embedded/Skill/admin/addNew');
         
         } catch (Exception $ex) {
 
-            $this->view('modules/mod_embedded/mod_skills/admin/addNew', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Skill/admin/addNew', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -112,11 +112,11 @@ class AdminSkillController extends AdminController
             
             $skill = $this->skill->GetById(isset($_GET['id']) && is_numeric($_GET['id']) ? $_GET['id'] : '');
 
-            $this->view('modules/mod_embedded/mod_skills/admin/edit', ['skill' => $skill]);
+            $this->view('modules/mod_embedded/Skill/admin/edit', ['skill' => $skill]);
         
         } catch (Exception $ex) {
 
-            $this->view('modules/mod_embedded/mod_skills/admin/edit', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Skill/admin/edit', ['messageException' => 'Nema podataka']);
         }
     }
     

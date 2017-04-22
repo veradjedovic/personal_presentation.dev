@@ -43,7 +43,7 @@ class SkillController extends Controller
             
             $skills = $this->skill->GetSkillsVisible();
             
-            $this->view('modules/mod_embedded/mod_skills/skills', ['skills' => $skills]);
+            $this->view('modules/mod_embedded/Skill/skills', ['skills' => $skills]);
             
         } catch (SkillsNotFoundException $ex) {
             

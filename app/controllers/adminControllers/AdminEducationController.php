@@ -52,15 +52,15 @@ class AdminEducationController extends AdminController
 
             $education = $this->education->GetAll('*', 'where status = ' . EDUCATION_VISIBLE . ' or status = ' . EDUCATION_NOT_VISIBLE . ' ORDER BY year_from DESC');
             
-            $this->view('modules/mod_embedded/mod_education/admin/index', ['education' => $education]);
+            $this->view('modules/mod_embedded/Education/admin/index', ['education' => $education]);
         
         } catch (CollectionNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_education/admin/index', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Education/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_education/admin/index', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Education/admin/index', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -74,11 +74,11 @@ class AdminEducationController extends AdminController
             $year_begin = $this->datetime->getYearBegin();
             $year_end = $this->datetime->getYearEnd();
 
-            $this->view('modules/mod_embedded/mod_education/admin/addNew', ['year_begin' => $year_begin, 'year_end' => $year_end]);
+            $this->view('modules/mod_embedded/Education/admin/addNew', ['year_begin' => $year_begin, 'year_end' => $year_end]);
         
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_education/admin/addNew', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Education/admin/addNew', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -120,15 +120,15 @@ class AdminEducationController extends AdminController
             $year_begin = $this->datetime->getYearBegin();
             $year_end = $this->datetime->getYearEnd();
             
-            $this->view('modules/mod_embedded/mod_education/admin/edit', ['education' => $education, 'year_begin' => $year_begin, 'year_end' => $year_end]);
+            $this->view('modules/mod_embedded/Education/admin/edit', ['education' => $education, 'year_begin' => $year_begin, 'year_end' => $year_end]);
         
         } catch (ItemNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_education/admin/edit', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Education/admin/edit', ['messageException' => $ex->getMessage()]);
             
         }catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_education/admin/edit', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Education/admin/edit', ['messageException' => 'Nema podataka']);
         }
     }
     

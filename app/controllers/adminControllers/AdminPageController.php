@@ -27,11 +27,11 @@ class AdminPageController extends AdminController
     {
         try {
 
-            $this->view('modules/mod_embedded/mod_pages/admin/index');
+            $this->view('modules/mod_embedded/Page/admin/index');
         
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_pages/admin/index', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Page/admin/index', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -42,11 +42,11 @@ class AdminPageController extends AdminController
     {
         try {
 
-            $this->view('modules/mod_embedded/mod_pages/admin/addNew');
+            $this->view('modules/mod_embedded/Page/admin/addNew');
         
         } catch (Exception $ex) {
 
-            $this->view('modules/mod_embedded/mod_pages/admin/addNew', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Page/admin/addNew', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -65,11 +65,11 @@ class AdminPageController extends AdminController
     {
         try {
 
-            $this->view('modules/mod_embedded/mod_pages/admin/edit');
+            $this->view('modules/mod_embedded/Page/admin/edit');
         
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_pages/admin/edit', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Page/admin/edit', ['messageException' => 'Nema podataka']);
         }
     }
     

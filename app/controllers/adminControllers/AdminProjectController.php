@@ -61,19 +61,19 @@ class AdminProjectController extends AdminController
             
             $projects = $this->project->GetAllProjects();
 
-            $this->view('modules/mod_embedded/mod_projects/admin/index', ['projects' => $projects]);
+            $this->view('modules/mod_embedded/Project/admin/index', ['projects' => $projects]);
         
         } catch (ProjectsNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_projects/admin/index', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Project/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (CollectionNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_projects/admin/index', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Project/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_projects/admin/index', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Project/admin/index', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -88,11 +88,11 @@ class AdminProjectController extends AdminController
             $year_end = $this->datetime->getYearEnd();
             $months = $this->datetime->getMonth();
             
-            $this->view('modules/mod_embedded/mod_projects/admin/addNew', ['year_begin' => $year_begin, 'year_end' => $year_end, 'months' => $months]);
+            $this->view('modules/mod_embedded/Project/admin/addNew', ['year_begin' => $year_begin, 'year_end' => $year_end, 'months' => $months]);
         
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_projects/admin/addNew', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Project/admin/addNew', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -136,15 +136,15 @@ class AdminProjectController extends AdminController
             $year_end = $this->datetime->getYearEnd();
             $months = $this->datetime->getMonth();
 
-            $this->view('modules/mod_embedded/mod_projects/admin/edit', ['project' => $project, 'year_begin' => $year_begin, 'year_end' => $year_end, 'months' => $months]);
+            $this->view('modules/mod_embedded/Project/admin/edit', ['project' => $project, 'year_begin' => $year_begin, 'year_end' => $year_end, 'months' => $months]);
         
         }  catch (ItemNotFoundException $ex) {           
             
-            $this->view('modules/mod_embedded/mod_projects/admin/edit', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Project/admin/edit', ['messageException' => $ex->getMessage()]);
 
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_projects/admin/edit', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Project/admin/edit', ['messageException' => 'Nema podataka']);
         }
     }
     

@@ -1,7 +1,7 @@
                                         <!-- Recent Posts -->
                                         <div class="recent-posts">
                                             <?php
-                                                if(isset($data['itemsFirst'])) {
+                                                if(isset($data['itemsFirst']) && $data['itemsFirst'] != false) {
                                                     
                                                     foreach($data['itemsFirst'] as $items) {
                                             ?>

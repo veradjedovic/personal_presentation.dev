@@ -52,7 +52,7 @@ class ArticleController extends Controller
             $page = $this->page->GetById((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : 1);
             $articles = $this->article->GetVisibleArticle($page->id);
            
-            $this->view('modules/mod_embedded/mod_article/article', ['articles'=>$articles]);
+            $this->view('modules/mod_embedded/Article/article', ['articles'=>$articles]);
             
         } catch (ArticleNotFoundException $ex) {
             

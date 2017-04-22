@@ -45,7 +45,7 @@ class SidebarController extends Controller
         try {
             
             $itemsFirst = $this->sidebarContent->GetMainNews(['http://mondo.rs/rss/2/Info', 'http://mondo.rs/rss/35/posao', 'http://www.b92.net/info/rss/automobili.xml', 'http://www.b92.net/info/rss/vesti.xml', 'http://www.b92.net/info/rss/zdravlje.xml']);
-        
+
             $this->view('modules/mod_external/mod_life_template/mod_sidebar/index', ['itemsFirst' => $itemsFirst]);
             
         } catch (ItemNotFoundException $ex) {

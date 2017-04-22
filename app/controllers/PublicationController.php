@@ -43,7 +43,7 @@ class PublicationController extends Controller
             
             $publications = $this->publication->GetVisiblePublications();
 
-            $this->view('modules/mod_embedded/mod_publications/publications', ['publications' => $publications]);
+            $this->view('modules/mod_embedded/Publication/publications', ['publications' => $publications]);
             
         } catch (PublicationsNotFoundException $ex) {
             

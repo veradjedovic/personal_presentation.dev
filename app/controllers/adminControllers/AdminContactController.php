@@ -43,25 +43,25 @@ class AdminContactController extends AdminController
 
             $messages = $this->contact->GetVisibleMessage();
         
-            $this->view('modules/mod_embedded/mod_contact/admin/index', ['messages' => $messages]);
+            $this->view('modules/mod_embedded/Contact/admin/index', ['messages' => $messages]);
         
         } catch (ContactNotFoundException $ex) {
             
             $message = $ex->getMessage();
             
-            $this->view('modules/mod_embedded/mod_contact/admin/index', ['messageException' => $message]);
+            $this->view('modules/mod_embedded/Contact/admin/index', ['messageException' => $message]);
             
         } catch (CollectionNotFoundException $ex) {
             
             $message = $ex->getMessage();
             
-            $this->view('modules/mod_embedded/mod_contact/admin/index', ['messageException' => $message]);
+            $this->view('modules/mod_embedded/Contact/admin/index', ['messageException' => $message]);
             
         } catch (Exception $ex) {
             
             $message = 'Linkovi nisu pronadjeni';
             
-            $this->view('modules/mod_embedded/mod_contact/admin/index', ['messageException' => $message]);
+            $this->view('modules/mod_embedded/Contact/admin/index', ['messageException' => $message]);
         }
     }
     
@@ -72,11 +72,11 @@ class AdminContactController extends AdminController
     {
         try{
             
-            $this->view('modules/mod_embedded/mod_contact/admin/newMessage');
+            $this->view('modules/mod_embedded/Contact/admin/newMessage');
         
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_contact/admin/newMessage', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Contact/admin/newMessage', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -97,15 +97,15 @@ class AdminContactController extends AdminController
 
             $message = $this->contact->SetStatusRead((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
 
-            $this->view('modules/mod_embedded/mod_contact/admin/show' , ['messageOne' => $message]);
+            $this->view('modules/mod_embedded/Contact/admin/show' , ['messageOne' => $message]);
         
         } catch (ItemNotFoundException $ex) {
 
-            $this->view('modules/mod_embedded/mod_contact/admin/show', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Contact/admin/show', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_contact/admin/show', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Contact/admin/show', ['messageException' => 'Nema podataka']);
         }
     }
     

@@ -54,23 +54,23 @@ class AdminPublicationAuthorController extends AdminController
             $publication = $this->publication->GetById((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : '');
             $authors = $this->author->GetAllVisibleAuthors($publication->id);
             
-            $this->view('modules/mod_embedded/mod_publications/admin/editPublicationAuthors', ['publication_id' => $publication->id, 'authors' => $authors]);
+            $this->view('modules/mod_embedded/Publication/admin/editPublicationAuthors', ['publication_id' => $publication->id, 'authors' => $authors]);
         
         } catch (ItemNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Project/admin/editProjectMembers', ['messageException' => $ex->getMessage()]);
             
         } catch (PublicationAuthorsNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Project/admin/editProjectMembers', ['messageException' => $ex->getMessage()]);
             
         } catch (CollectionNotFoundException $ex) {
             
-            $this->view('modules/mod_embedded/mod_projects/admin/editProjectMembers', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/Project/admin/editProjectMembers', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_publications/admin/editPublicationAuthors', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Publication/admin/editPublicationAuthors', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -81,11 +81,11 @@ class AdminPublicationAuthorController extends AdminController
     {
         try {
 
-            $this->view('modules/mod_embedded/mod_publications/admin/editPublicationAuthors');
+            $this->view('modules/mod_embedded/Publication/admin/editPublicationAuthors');
 
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_publications/admin/editPublicationAuthors', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Publication/admin/editPublicationAuthors', ['messageException' => 'Nema podataka']);
         }
     }
     
@@ -135,11 +135,11 @@ class AdminPublicationAuthorController extends AdminController
     {
         try {
 
-            $this->view('modules/mod_embedded/mod_publications/admin/editPublicationAuthors');
+            $this->view('modules/mod_embedded/Publication/admin/editPublicationAuthors');
         
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_publications/admin/editPublicationAuthors', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/Publication/admin/editPublicationAuthors', ['messageException' => 'Nema podataka']);
         }
     }
     

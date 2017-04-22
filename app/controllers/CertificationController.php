@@ -42,7 +42,7 @@ class CertificationController extends Controller
             
             $certifications = $this->certification->GetCertifVisible();
 
-            $this->view('modules/mod_embedded/mod_certifications/certifications', ['certifications'=> $certifications]);
+            $this->view('modules/mod_embedded/Certification/certifications', ['certifications'=> $certifications]);
             
         } catch (CertificationsNotFoundException $ex) {
 

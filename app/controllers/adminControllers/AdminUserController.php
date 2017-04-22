@@ -52,15 +52,15 @@ class AdminUserController extends AdminController
 
             $user = $this->user->GetById(Session::get('id') ? Session::get('id') : '');
             
-            $this->view('modules/mod_embedded/mod_user/admin/index', ['user' => $user]);
+            $this->view('modules/mod_embedded/User/admin/index', ['user' => $user]);
             
         } catch (ItemNotFoundException $ex) {
 
-            $this->view('modules/mod_embedded/mod_user/admin/index', ['messageException' => $ex->getMessage()]);
+            $this->view('modules/mod_embedded/User/admin/index', ['messageException' => $ex->getMessage()]);
             
         } catch (Exception $ex) {
             
-            $this->view('modules/mod_embedded/mod_user/admin/index', ['messageException' => 'Nema podataka']);
+            $this->view('modules/mod_embedded/User/admin/index', ['messageException' => 'Nema podataka']);
         }
     }
     

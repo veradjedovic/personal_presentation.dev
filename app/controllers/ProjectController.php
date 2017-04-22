@@ -44,7 +44,7 @@ class ProjectController extends Controller
             
             $projects = $this->project->GetVisibleProjects();
             
-            $this->view('modules/mod_embedded/mod_projects/projects', ['projects' => $projects]);
+            $this->view('modules/mod_embedded/Project/projects', ['projects' => $projects]);
             
         } catch (ProjectsNotFoundException $ex) {
             
