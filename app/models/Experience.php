@@ -61,7 +61,7 @@ class Experience extends Model
          */
         public function GetVisibleExperience()
         {
-            $fields = static::$table . ".title, " . static::$table . ".company, " . static::$table . ".city, " . static::$table . ".month_from, " . static::$table . ".month_to, " . static::$table . ".year_from, " . static::$table . ".year_to, " . static::$table . ".description, countries.country";        
+            $fields = static::$table . ".title, " . static::$table . ".company, " . static::$table . ".city, " . static::$table . ".month_from, " . static::$table . ".month_to, " . static::$table . ".year_from, " . static::$table . ".year_to, " . static::$table . ".description, countries.country_sr";
 
             $q = " LEFT JOIN countries
                   ON " . static::$table . ".country_id = countries.id
@@ -84,7 +84,7 @@ class Experience extends Model
          */
         public function GetAllExperience() 
         {
-            $fields = static::$table. ".id, " .static::$table. ".title, " . static::$table . ".company, " . static::$table . ".city, " . static::$table . ".month_from, " . static::$table . ".month_to, " . static::$table . ".year_from, " . static::$table . ".year_to, " . static::$table . ".description, " . static::$table . ".status, countries.country_code, countries.country" ;
+            $fields = static::$table. ".id, " .static::$table. ".title, " . static::$table . ".company, " . static::$table . ".city, " . static::$table . ".month_from, " . static::$table . ".month_to, " . static::$table . ".year_from, " . static::$table . ".year_to, " . static::$table . ".description, " . static::$table . ".status, countries.country_code, countries.country_sr" ;
             $query = "LEFT JOIN countries ON " . static::$table . ".country_id = countries.id
                     WHERE " . static::$table . ".status = " . EXPERIENCE_VISIBLE . "
                     OR " . static::$table . ".status = " . EXPERIENCE_NOT_VISIBLE . "

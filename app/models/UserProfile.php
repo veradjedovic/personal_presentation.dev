@@ -90,7 +90,7 @@ class UserProfile extends Model
          */
         public function GetFirstProfile() 
         {
-            $fields = static::$table . ".name, " . static::$table . ".surname, " . static::$table . ".address, " . static::$table . ".city, countries.country as country, countries.country_code as country_code, " . static::$table . ".profess_headline, industry.name as industry, " . static::$table . ".image";
+            $fields = static::$table . ".name, " . static::$table . ".surname, " . static::$table . ".address, " . static::$table . ".city, countries.country_sr as country_sr, countries.country_code as country_code, " . static::$table . ".profess_headline, industry.name as industry, " . static::$table . ".image";
 
             $q = " LEFT JOIN countries ON " . static::$table . ".country_id = countries.id
                   LEFT JOIN industry ON " . static::$table . ".industry_id = industry.id  

@@ -77,7 +77,7 @@
                                                     
                                                 <?php foreach($data['country'] as $country) { ?>
                                                     
-                                                    <option <?php echo ($data['userProfile']->country_id == $country->id) ? 'selected' : '' ?> value="<?php echo $country->id ? $country->id : 1; ?>"><?php echo $country->country? $country->country : ''; ?> (<?php echo $country->country_code? $country->country_code : ''; ?>)</option>
+                                                    <option <?php echo ($data['userProfile']->country_id == $country->id) ? 'selected' : '' ?> value="<?php echo $country->id ? $country->id : 1; ?>"><?php echo $country->country_sr ? $country->country_sr : ''; ?> (<?php echo $country->country_code? $country->country_code : ''; ?>)</option>
 
                                                 <?php } ?>
                                                     

@@ -9,8 +9,8 @@
             
             echo "<p style='text-align: justify;'>";
             
-            if($item->company || $item->city || $item->country)
-            echo ($item->company ? replace($item->company) . ", " : '' ) . ($item->city ? replace($item->city) . ", " : '') . ($item->country ? $item->country : '') . "<br />";
+            if($item->company || $item->city || $item->country_sr)
+            echo ($item->company ? replace($item->company) . ", " : '' ) . ($item->city ? replace($item->city) . ", " : '') . ($item->country_sr ? $item->country_sr : '') . "<br />";
             
             if(($item->month_from && $item->year_from) || ($item->month_to && $item->year_to))
             echo ($item->month_from ? $item->month_from : '') . " " . ($item->year_from ? $item->year_from : '') . " - " . (($item->month_to && $item->year_to) ? $item->month_to . ' ' . $item->year_to: 'I currently working here.') . "<br />";  

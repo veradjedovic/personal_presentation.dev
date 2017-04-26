@@ -45,7 +45,7 @@
                                             <td><?php echo ($item->title) ? replace($item->title) : '' ?></td> 
                                             <td><?php echo ($item->company) ? replace($item->company) : '' ?></td> 
                                             <td><?php echo ($item->city) ? replace($item->city) : '' ?></td>
-                                            <td><?php echo ($item->country) ? $item->country : '' ?>(<?php echo ($item->country_code) ? $item->country_code : '' ?>)</td>
+                                            <td><?php echo ($item->country_sr) ? $item->country_sr : '' ?>(<?php echo ($item->country_code) ? $item->country_code : '' ?>)</td>
                                             <td><?php echo ($item->description) ? (strlen($item->description) > 40 ? substr(replace($item->description), 0, 40). "..." : replace($item->description)) : '' ?></td>
                                             <td class="">
                                                 <center>

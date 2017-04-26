@@ -19,7 +19,7 @@ class Country extends Model
               *
               * @var array 
               */
-	public static $columns = array('country_code', 'country');
+	public static $columns = array('country_code', 'country', 'country_sr');
         
         /**
               *

@@ -45,7 +45,7 @@
                                                 
                                                     foreach($data['countries'] as $country) { ?>
 
-                                                        <option value="<?php echo $country->id ? $country->id : ''; ?>"><?php echo $country->country ? $country->country : ''; ?>(<?php echo $country->country_code ? $country->country_code : ''; ?>)</option>
+                                                        <option value="<?php echo $country->id ? $country->id : ''; ?>"><?php echo $country->country_sr ? $country->country_sr : ''; ?>(<?php echo $country->country_code ? $country->country_code : ''; ?>)</option>
 
                                                     <?php 
                                                     }

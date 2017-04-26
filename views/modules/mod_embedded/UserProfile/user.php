@@ -38,7 +38,7 @@
                                     </h3>
                                     <div class="clearfix"></div><br />
                                     <p><?php echo ($data['userProfile']->city) ? 'Grad - ' . $data['userProfile']->city : ''; ?></p>
-                                    <p><?php echo ($data['userProfile']->country) ? 'Država - ' . $data['userProfile']->country : ''; ?><?php echo ($data['userProfile']->country_code) ? '(' . $data['userProfile']->country_code . ')' : ''; ?></p>
+                                    <p><?php echo ($data['userProfile']->country_sr) ? 'Država - ' . $data['userProfile']->country_sr : ''; ?><?php echo ($data['userProfile']->country_code) ? '(' . $data['userProfile']->country_code . ')' : ''; ?></p>
                                     <p><?php echo ($data['userProfile']->industry) ? 'Oblast rada - ' . $data['userProfile']->industry : ''; ?></p>
                                     <h4>
                                         <em style='text-align: justify;'><?php echo ($data['userProfile']->profess_headline) ? $data['userProfile']->profess_headline : ''; ?></em>

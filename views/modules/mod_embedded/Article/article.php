@@ -1,44 +1,6 @@
 
-
-<!--            <div id="content-top-border" class="container">
-            </div>
-
-             === BEGIN CONTENT ===  
-            <div id="content">
-                <div class="container background-white">
-                    <div class="row margin-vert-30">-->
-                        <!--<div>-->
-                            <?php 
-//                                foreach ($data['articles'] as $item) {
-//
-//                                    echo "<article class = 'article_class'>";
-//
-//                                    if($item->image)
-//                                    echo '<img src = "resources/images/img_for_articles/' . replace($item->image) . '" class = "article_img" />';
-//
-//                                    if($item->title)
-//                                    echo "<h3>" . replace($item->title) . "- <small>" . date('d\. m\. Y', strtotime($item->updated_at)) . "</small></h3>";
-//
-//                                    if($item->content)
-//                                    echo "<p>" . htmlspecialchars_decode((strlen($item->content)>500) ? (substr(replace($item->content), 0, 500) . '...') : replace($item->content)) . "</p>";
-//
-//                                    echo "<br /><br /><p><small><a class ='button_small' href = '/'>Procitaj vise...</a></small><div style = 'clear:both'></div></p>";
-//                                    echo "<div style = 'clear:both'></div>";
-//                                    echo "</article>";              
-//                                    }
-                            ?>
-<!--                        </div>
-                    </div>
-                </div>
-            </div>
-              === END CONTENT ===  
-            
-            <div id="content-bottom-border" class="container">
-            </div>-->
-                     
 <h2>Blog</h2>
 <br />
-
                 <?php 
                     foreach ($data['articles'] as $item) {
                 ?>

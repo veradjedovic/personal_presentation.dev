@@ -50,7 +50,7 @@
                                                 
                                                     foreach($data['countries'] as $country) { ?>
 
-                                                        <option <?php echo ($data['experience']->country_id == $country->id) ? 'selected' : '' ?> value="<?php echo $country->id ? $country->id : ''; ?>"><?php echo $country->country ? $country->country : ''; ?>(<?php echo $country->country_code ? $country->country_code : ''; ?>)</option>
+                                                        <option <?php echo ($data['experience']->country_id == $country->id) ? 'selected' : '' ?> value="<?php echo $country->id ? $country->id : ''; ?>"><?php echo $country->country_sr ? $country->country_sr : ''; ?>(<?php echo $country->country_code ? $country->country_code : ''; ?>)</option>
 
                                                     <?php 
                                                     }
