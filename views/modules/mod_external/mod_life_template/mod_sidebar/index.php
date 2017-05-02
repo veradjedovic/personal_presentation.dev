@@ -6,9 +6,9 @@
                                                     foreach($data['itemsFirst'] as $items) {
                                             ?>
                                                         <h3><?php echo $items->channel->title ? $items->channel->title : '' ?></h3>
-                                                        <ul class="posts-list margin-top-10">                                               
+                                                        <ul class="posts-list margin-top-10">
                                                             <li>
-                                                                <?php  
+                                                                <?php
                                                                     $i = 0;
                                                                     foreach($items->channel->item as $item){
                                                                         if($i == 5) break;
@@ -24,17 +24,17 @@
                                                                             </span>
                                                                         </div>
                                                                         <div class="clearfix"></div>
-                                            <?php  
+                                                                <?php
                                                                     $i++;
                                                                     }
+                                                                ?>
+                                                            </li>
+                                                        </ul>
+                                            <?php
                                                     }
                                                 } else {
 
-                                                        echo "<li>{$data['message']}</li>";
-                                            ?>            
-                                                </li>
-                                            </ul>
-                                            <?php
+                                                        echo "<ul><li>{$data['message']}</li></ul>";
                                                 } 
                                             ?>
                                         </div>

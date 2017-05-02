@@ -130,7 +130,7 @@ class Comment extends Model
     {
         if(!isset($_POST['ta_content'])) {
 
-            throw new ValidatorException('Podaci ne postoje!');
+            throw new ValidatorException('Data not found!');
         }
 
         $item = $this->GetById($this->validator->Numeric($id));

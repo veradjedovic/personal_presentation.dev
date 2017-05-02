@@ -64,7 +64,7 @@ class AdminCommentController extends AdminController
 
         } catch (Exception $ex) {
 
-            $this->view('modules/mod_embedded/Comment/admin/index', ['messageException' => 'Nema komentara']);
+            $this->view('modules/mod_embedded/Comment/admin/index', ['messageException' => 'No comments']);
         }
     }
 
@@ -86,7 +86,7 @@ class AdminCommentController extends AdminController
 
         } catch (Exception $ex) {
 
-            $message = 'Nema podataka';
+            $message = 'Data not found!';
 
             $this->view('modules/mod_embedded/Comment/admin/show', ['messageException' => $message]);
         }
@@ -140,7 +140,7 @@ class AdminCommentController extends AdminController
 
         } catch (Exception $ex) {
 
-            $message = 'Nema podataka';
+            $message = 'Data not found!';
 
             $this->view('modules/mod_embedded/Comment/admin/readComment', ['messageException' => $message]);
         }

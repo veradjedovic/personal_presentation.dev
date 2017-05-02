@@ -44,8 +44,13 @@ class News extends Model
                     
                     throw new ItemNotFoundException('Neispravan servis.');
                 }
+
+                if(false == (file_get_contents($url))) {
+
+                    throw new ItemNotFoundException('Nisu pronadjene vesti.');
+                }
                 
-                $content = file_get_contents($url);               
+                $content = file_get_contents($url);
                 $news[] = new SimpleXmlElement($content);
             } 
             
