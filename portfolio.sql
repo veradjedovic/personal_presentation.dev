@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 02, 2017 at 04:05 PM
+-- Generation Time: May 02, 2017 at 04:10 PM
 -- Server version: 5.5.55-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.21
 
@@ -915,7 +915,7 @@ CREATE TABLE IF NOT EXISTS `user_profiles` (
 --
 
 INSERT INTO `user_profiles` (`id`, `name`, `surname`, `address`, `city`, `user_id`, `country_id`, `profess_headline`, `industry_id`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Vladimir', 'Äedovic', 'Trgovacka 15', 'Beograd', 1, 187, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 16, '58f3e32326fe6IMG_20140712_114939.jpg', '2017-01-05 18:52:35', '2017-01-05 18:53:12');
+(1, 'Test', 'Tset', 'Test 15', 'Beograd', 1, 187, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 16, '58f3e32326fe6IMG_20140712_114939.jpg', '2017-01-05 18:52:35', '2017-01-05 18:53:12');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
