@@ -1,17 +1,18 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\webModuleControllers;
 
 use Exception as Exception;
 use app\exceptions\CertificationsNotFoundException as CertificationsNotFoundException;
 use app\factories\LoadObjectFactory as Factory;
+use app\controllers\Controller as Controller;
 
 /**
- * Description of CertificationController
+ * Description of CertificationModuleController
  *
  * @author Vera
  */
-class CertificationController extends Controller
+class CertificationModuleController extends Controller
 {
     /**
      *

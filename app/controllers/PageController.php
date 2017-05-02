@@ -80,11 +80,11 @@ class PageController extends Controller
         /**
          * Index method
          */
-        public function index()
+        public function index($id = 1)
         {
                 try {
 
-                    $page = $this->page->GetById((isset($_GET['id']) && is_numeric($_GET['id'])) ? $_GET['id'] : 1);
+                    $page = $this->page->GetById((isset($id) && is_numeric($id)) ? $id : 1);
                     $modules= $this->modulePage->GetVisibleModulesOfPage($page->id);
                     $modulesOfPage = $this->putObjectsIntoArray($modules);
 
@@ -120,7 +120,7 @@ class PageController extends Controller
                     $modulesOfPage = 'mod_blank';
                 } else {
 
-                    $modulesOfPage[] = Factory::GetObject("app\\controllers\\" . $module->name . "Controller");
+                    $modulesOfPage[] = Factory::GetObject("app\\controllers\\webModuleControllers\\" . $module->name . "ModuleController");
                 }
             }
             return $modulesOfPage;

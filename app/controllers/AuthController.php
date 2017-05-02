@@ -8,7 +8,7 @@ use Exception as Exception;
 use app\factories\LoadObjectFactory as Factory;
 
 /**
- * Description of UserController
+ * Description of UserModuleController
  *
  * @author Vera
  */

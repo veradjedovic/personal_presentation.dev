@@ -1,18 +1,19 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\webModuleControllers;
 
 use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\ProjectsNotFoundException as ProjectsNotFoundException;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use Exception;
+use app\controllers\Controller as Controller;
 
 /**
- * Description of ProjectController
+ * Description of ProjectModuleController
  *
  * @author Vera
  */
-class ProjectController extends Controller
+class ProjectModuleController extends Controller
 {
     /**
      *

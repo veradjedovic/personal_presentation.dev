@@ -1,17 +1,18 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\webModuleControllers;
 
 use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\ExperienceNotFoundException as ExperienceNotFoundException;
 use Exception;
+use app\controllers\Controller as Controller;
 
 /**
- * Description of ExperienceController
+ * Description of ExperienceModuleController
  *
  * @author Vera
  */
-class ExperienceController extends Controller
+class ExperienceModuleController extends Controller
 {
     /**
      *

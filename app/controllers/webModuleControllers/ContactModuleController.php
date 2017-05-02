@@ -1,18 +1,19 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\webModuleControllers;
 
 use app\exceptions\ValidatorException as ValidatorException;
 use app\exceptions\InsertNotExecutedException as InsertNotExecutedException;
 use Exception as Exception;
 use app\factories\LoadObjectFactory as Factory;
+use app\controllers\Controller as Controller;
 
 /**
- * Description of ContactController
+ * Description of ContactModuleController
  *
  * @author Vera
  */
-class ContactController extends Controller
+class ContactModuleController extends Controller
 {
     /**
      *
@@ -60,19 +61,19 @@ class ContactController extends Controller
             
             $this->contact->InsertData();
             
-            return json_encode(['message' => 'Poruka je uspesno poslata']);
+            return json_encode(['message' => 'Poruka je uspesno poslata', 'error' => false]);
                   
         } catch (ValidatorException $ex) {
             
-            return json_encode(['message' => $ex->getMessage()]);
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
             
         } catch (InsertNotExecutedException $ex) {
             
-            return json_encode(['message' => $ex->getMessage()]);
+            return json_encode(['message' => $ex->getMessage(), 'error' => true]);
             
         } catch (Exception $ex) {
             
-            return json_encode(['message' => 'Neispravan email']);
+            return json_encode(['message' => 'Neispravan email', 'error' => true]);
         }
     }
 }

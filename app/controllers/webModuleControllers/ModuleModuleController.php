@@ -1,13 +1,15 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\webModuleControllers;
+
+use app\controllers\Controller as Controller;
 
 /**
- * Description of PublicationAuthorController
+ * Description of ModuleModuleController
  *
  * @author Vera
  */
-class PublicationAuthorController extends Controller
+class ModuleModuleController extends Controller
 {
     /**
      *

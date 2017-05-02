@@ -34,7 +34,7 @@
                                     </div>
                                 </div>
                                 <p>
-                                    <button class="submit button_small btn btn-primary" type="submit" name="btn_submit">Posalji</button>
+                                    <button class="submit button_small btn btn-primary" type="submit" name="btn_submit">Pošalji</button>
                                 </p>
                             </form>
                             <!-- End Contact Form -->
@@ -47,8 +47,8 @@
     
     $('.submit').click(function(e){
        
-        e.preventDefault();      
-        $(".message").html("");
+        e.preventDefault();
+        $(".message").html("").removeClass("alert alert-success alert-danger alert-dismissable");
         
         $.ajax({
             
@@ -58,11 +58,17 @@
             dataType: 'json',
             
             success: function(response) {
-                
-                $(".formInsert")[0].reset();
-                $(".message").append('<p>' + response.message + '</p>');
+
+                if(response.error == false){
+
+                    $(".formInsert")[0].reset();
+                    $(".message").html(response.message).addClass( "alert alert-success alert-dismissable" );
+                } else {
+                    $(".message").html(response.message).addClass( "alert alert-danger alert-dismissable" );
+                }
                 console.log(response.message);
             }
+
         });      
     });
     

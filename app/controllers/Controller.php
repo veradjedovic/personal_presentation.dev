@@ -56,12 +56,17 @@ abstract class Controller
                             echo (isset($this->sidebar)) ? $this->sidebar->index() : '';
                     $contentSidebar = ob_get_clean();
 
+                    ob_start();
+                            echo (isset($this->comment)) ? $this->comment->index() : '';
+                    $contentComment = ob_get_clean();
+
 		        $page = str_replace('[VIEW]', $contentSite, $content);
                 $page = str_replace('[MENU]', $contentMenu, $page);
                 $page = str_replace('[USERDETAILS]', $contentUserDetails, $page);
                 $page = str_replace('[FOOTERMENU]', $contentFooterNav, $page);
                 $page = str_replace('[FOOTERLINKS]', $contentFooterLink, $page);
                 $page = str_replace('[SIDEBAR]', $contentSidebar, $page);
+                $page = str_replace('[COMMENTS]', $contentComment, $page);
                 
                 echo $page;
 	}

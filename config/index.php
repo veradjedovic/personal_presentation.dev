@@ -71,6 +71,11 @@ require_once __DIR__ . '/config_modules.php';
 require_once __DIR__ . '/config_mod_messages.php';
 
 /**
+ * Constants of comments module.
+ */
+require_once __DIR__ . '/config_mod_comments.php';
+
+/**
  * Constants of pages status.
  */
 require_once __DIR__ . '/config_pages.php';

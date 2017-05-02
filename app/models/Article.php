@@ -78,7 +78,7 @@ class Article extends Model
          */
         public function GetVisibleArticle($id)
         {      
-            $fields = static::$table . ".title, " . static::$table . ".content, " . static::$table . ".image, " . static::$table . ".updated_at, user_profiles.name as author_name, user_profiles.surname as author_surname";        
+            $fields = static::$table . ".id, " . static::$table . ".title, " . static::$table . ".content, " . static::$table . ".image, " . static::$table . ".updated_at, user_profiles.name as author_name, user_profiles.surname as author_surname";
 
             $q = " LEFT JOIN user_profiles
                   ON " . static::$table . ".author_id = user_profiles.id

@@ -112,6 +112,17 @@ function aload_admin_controllers($name) {
     require_once APP_PATH.'app/controllers/adminControllers/'.end($parts).'.php'; 
 }
 
+/**
+ *
+ * @param $name
+ */
+function aload_web_module_controllers($name) {
+    $parts = explode('\\', $name);
+    if(file_exists(APP_PATH."app/controllers/webModuleControllers/" . end($parts) . ".php"))
+        require_once APP_PATH.'app/controllers/webModuleControllers/' . end($parts) . '.php';
+}
+
+
 spl_autoload_register("aload_controllers");
 spl_autoload_register("aload_models");
 spl_autoload_register("aload_exeptions");
@@ -122,4 +133,5 @@ spl_autoload_register("aload_builders");
 spl_autoload_register("aload_classes");
 spl_autoload_register("aload_jobs");
 spl_autoload_register("aload_admin_controllers");
+spl_autoload_register("aload_web_module_controllers");
 spl_autoload_register("aload_traits");

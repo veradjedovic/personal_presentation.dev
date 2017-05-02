@@ -1,17 +1,18 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\webModuleControllers;
 
 use app\exceptions\EducationNotFoundException as EducationNotFoundException;
 use Exception;
 use app\factories\LoadObjectFactory as Factory;
+use app\controllers\Controller as Controller;
 
 /**
- * Description of EducationController
+ * Description of EducationModuleController
  *
  * @author Vera
  */
-class EducationController extends Controller
+class EducationModuleController extends Controller
 {
     /**
      *

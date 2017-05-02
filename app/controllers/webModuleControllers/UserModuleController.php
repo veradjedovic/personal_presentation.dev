@@ -1,13 +1,15 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\webModuleControllers;
+
+use app\controllers\Controller as Controller;
 
 /**
- * Description of UserController
+ * Description of UserModuleController
  *
  * @author Vera
  */
-class UserController extends Controller
+class UserModuleController extends Controller
 {
     /**
      *

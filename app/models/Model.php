@@ -48,14 +48,14 @@ abstract class Model
                 
                 if(!$res) {
                     
-                    throw new ItemNotFoundException('Not found');
+                    throw new ItemNotFoundException('Objekat nije pronađen');
                 }
                 
                 $item = mysqli_fetch_object($res, get_called_class());
                 
                 if(!$item) {
                     
-                    throw new ItemNotFoundException('Item not found');
+                    throw new ItemNotFoundException('Objekat nije nađen');
                 }
                
 		return $item;
@@ -76,7 +76,7 @@ abstract class Model
 //                $res = null;
                 if(!$res) {
                     
-                    throw new CollectionNotFoundException('Objects not found.');
+                    throw new CollectionNotFoundException('Nije nađeno');
                 }                               
               
 		while($rw = mysqli_fetch_object($res, get_called_class())){
@@ -86,7 +86,7 @@ abstract class Model
 //              $ret_val=null;
                 if(!$ret_val) {
                     
-                    throw new CollectionNotFoundException('Collection not found.');
+                    throw new CollectionNotFoundException('Nije pronađeno');
                 }  
  
 		return $ret_val;
@@ -111,7 +111,7 @@ abstract class Model
 //                $res=null;
 		if(!$res) {
                     
-                    throw new InsertNotExecutedException('Item is not inserted.');
+                    throw new InsertNotExecutedException('Neuspelo, pokušajte ponovo');
                 }
 		// echo "insert into ".static::$table." ({$columns_string}) values ({$field_values_string})";   //proveriti da li ovo treba da se prikazuje
 		$this->id = mysqli_insert_id($db);

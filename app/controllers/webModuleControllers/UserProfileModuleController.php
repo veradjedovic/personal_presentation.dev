@@ -1,19 +1,19 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\webModuleControllers;
 
-use app\models\UserProfile as UserProfile;
+use app\controllers\Controller as Controller;
 use app\exceptions\ProfileNotFoundException as ProfileNotFoundException;
 use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\CollectionNotFoundException as CollectionNotFoundException;
 use Exception;
 
 /**
- * Description of UserProfileController
+ * Description of UserProfileModuleController
  *
  * @author Vera
  */
-class UserProfileController extends Controller
+class UserProfileModuleController extends Controller
 {
     /**
      *

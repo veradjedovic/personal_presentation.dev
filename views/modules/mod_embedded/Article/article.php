@@ -1,7 +1,8 @@
 
 <h2>Blog</h2>
 <br />
-                <?php 
+                <?php
+
                     foreach ($data['articles'] as $item) {
                 ?>
                             <!-- Blog Post -->
@@ -11,7 +12,7 @@
                                 <div class="blog-item-header">
                                     <!-- Title -->
                                     <h3>
-                                        <a href="#">
+                                        <a href="/blog_single/<?php echo ($item->id) ? $item->id : ''; ?>">
                                             <?php echo ($item->title) ? replace($item->title) : ''; ?>
                                         </a>
                                     </h3>
@@ -48,14 +49,16 @@
                                     <div class="clearfix"></div>
                                     <div class="blog-post-body row margin-top-15">
                                         <div class="col-md-5">
-                                            <?php echo ($item->image) ? '<img height="196" width="300" src="resources/images/img_for_articles/' . replace($item->image) . '" class="margin-bottom-20" alt="article" />' : ''; ?>
+                                            <a href="/blog_single/<?php echo ($item->id) ? $item->id : ''; ?>">
+                                                <?php echo ($item->image) ? '<img height="196" width="300" src="resources/images/img_for_articles/' . replace($item->image) . '" class="margin-bottom-20" alt="article" />' : ''; ?>
+                                            </a>
                                         </div>
                                         <div class="">
                                             <p style="text-align: justify;">
                                                 <?php echo ($item->content) ? htmlspecialchars_decode((strlen($item->content)>500) ? (substr(replace($item->content), 0, 500) . '...') : replace($item->content)) : '' ?>
                                                 <!-- Read More -->
                                             </p>
-                                            <a href="/" class="btn btn-primary">
+                                            <a href="/blog_single/<?php echo ($item->id) ? $item->id : ''; ?>" class="btn btn-primary">
                                                 Pročitaj više...
                                                 <i class="icon-chevron-right readmore-icon"></i>
                                             </a>
@@ -70,27 +73,27 @@
                     }
                 ?>  
                             <!-- Pagination -->
-                            <ul class="pagination">
-                                <li>
-                                    <a href="#">&laquo;</a>
-                                </li>
-                                <li class="active">
-                                    <a href="#">1</a>
-                                </li>
-                                <li>
-                                    <a href="#">2</a>
-                                </li>
-                                <li>
-                                    <a href="#">3</a>
-                                </li>
-                                <li class="disabled">
-                                    <a href="#">4</a>
-                                </li>
-                                <li>
-                                    <a href="#">5</a>
-                                </li>
-                                <li>
-                                    <a href="#">&raquo;</a>
-                                </li>
-                            </ul>
+<!--                            <ul class="pagination">-->
+<!--                                <li>-->
+<!--                                    <a href="#">&laquo;</a>-->
+<!--                                </li>-->
+<!--                                <li class="active">-->
+<!--                                    <a href="#">1</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#">2</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#">3</a>-->
+<!--                                </li>-->
+<!--                                <li class="disabled">-->
+<!--                                    <a href="#">4</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#">5</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#">&raquo;</a>-->
+<!--                                </li>-->
+<!--                            </ul>-->
                             <!-- End Pagination -->

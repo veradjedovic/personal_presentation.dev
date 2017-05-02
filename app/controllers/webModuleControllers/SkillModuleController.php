@@ -1,17 +1,18 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\webModuleControllers;
 
 use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\SkillsNotFoundException as SkillsNotFoundException;
 use Exception;
+use app\controllers\Controller as Controller;
 
 /**
- * Description of SkillController
+ * Description of SkillModuleController
  *
  * @author Vera
  */
-class SkillController extends Controller
+class SkillModuleController extends Controller
 {
     /**
      *

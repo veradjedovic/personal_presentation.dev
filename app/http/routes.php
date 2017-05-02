@@ -7,8 +7,11 @@ $collector->get('naslovna/{id}', ['app\controllers\PageController','index']);
 $collector->get('aktivnosti/{id}', ['app\controllers\PageController','index']);
 $collector->get('o_meni/{id}', ['app\controllers\PageController','index']);
 $collector->get('blog/{id}', ['app\controllers\PageController','index']);
+$collector->get('blog_single/{id}', ['app\controllers\ArticleController','show']);
 $collector->get('kontakt/{id}', ['app\controllers\PageController','index']);
-$collector->post('kontakt/{id}', ['app\controllers\ContactController','insert']);
+$collector->post('kontakt/{id}', ['app\controllers\webModuleControllers\ContactModuleController','insert']);
+$collector->post('comments/{id}', ['app\controllers\webModuleControllers\CommentModuleController','insert']);
+
 
 //admin-articles routes
 $collector->get('admin-articles-list', ['app\controllers\adminControllers\AdminArticleController','index']);
@@ -125,6 +128,17 @@ $collector->any('admin-skills-update/{id}', ['app\controllers\adminControllers\A
 $collector->any('admin-skills-delete/{id}', ['app\controllers\adminControllers\AdminSkillController','destroy']);
 $collector->any('admin-skills-visible/{id}', ['app\controllers\adminControllers\AdminSkillController','updateStatusVisible']);
 $collector->any('admin-skills-unvisible/{id}', ['app\controllers\adminControllers\AdminSkillController','updateStatusNotVisible']);
+
+//admin-comments routes
+$collector->get('admin-comments-list', ['app\controllers\adminControllers\AdminCommentController','index']);
+$collector->get('admin-comments', ['app\controllers\adminControllers\AdminCommentController','insert']);
+$collector->post('admin-comments', ['app\controllers\adminControllers\AdminCommentController','store']);
+$collector->get('admin-comments/{id}', ['app\controllers\adminControllers\AdminCommentController','show']);
+$collector->any('admin-comments-update/{id}', ['app\controllers\adminControllers\AdminCommentController','update']);
+$collector->any('admin-comments-delete/{id}', ['app\controllers\adminControllers\AdminCommentController','destroy']);
+$collector->any('admin-comments-visible/{id}', ['app\controllers\adminControllers\AdminCommentController','updateStatusVisible']);
+$collector->any('admin-comments-unvisible/{id}', ['app\controllers\adminControllers\AdminCommentController','updateStatusNotVisible']);
+$collector->any('admin-comments-read/{id}', ['app\controllers\adminControllers\AdminCommentController','readComment']);
 
 //admin-profile routes
 $collector->get('admin', ['app\controllers\adminControllers\AdminProfileController','index']);

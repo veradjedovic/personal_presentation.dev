@@ -1,17 +1,18 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\webModuleControllers;
 
 use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\PublicationsNotFoundException as PublicationsNotFoundException;
 use Exception;
+use app\controllers\Controller as Controller;
 
 /**
- * Description of PublicationController
+ * Description of PublicationModuleController
  *
  * @author Vera
  */
-class PublicationController extends Controller
+class PublicationModuleController extends Controller
 {
     /**
      *

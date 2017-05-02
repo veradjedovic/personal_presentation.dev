@@ -1,17 +1,18 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\webModuleControllers;
 
 use app\factories\LoadObjectFactory as Factory;
 use app\exceptions\LanguagesNotFoundException as LanguagesNotFoundException;
 use Exception;
+use app\controllers\Controller as Controller;
 
 /**
- * Description of LanguageController
+ * Description of LanguageModuleController
  *
  * @author Vera
  */
-class LanguageController extends Controller
+class LanguageModuleController extends Controller
 {
     /**
      *
