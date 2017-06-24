@@ -68,6 +68,20 @@ class AdminCommentController extends AdminController
         }
     }
 
+    /**
+     * Insert method
+     */
+    public function insert()
+    {
+        try{
+
+            $this->view('modules/mod_embedded/Comment/admin/addNew');
+
+        } catch (Exception $ex) {
+
+            $this->view('modules/mod_embedded/Comment/admin/addNew', ['messageException' => 'Nema podataka']);
+        }
+    }
     
     /**
      * Show method

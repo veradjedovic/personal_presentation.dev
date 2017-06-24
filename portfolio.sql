@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.5.3.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 02, 2017 at 04:10 PM
+-- Generation Time: Jun 24, 2017 at 03:43 PM
 -- Server version: 5.5.55-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.21
+-- PHP Version: 7.0.20-2~ubuntu14.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `portfolio`
@@ -26,18 +26,17 @@ SET time_zone = "+00:00";
 -- Table structure for table `articles`
 --
 
-CREATE TABLE IF NOT EXISTS `articles` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `articles` (
+  `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
   `content` text COLLATE utf8_unicode_ci NOT NULL,
   `image` varchar(1024) COLLATE utf8_unicode_ci NOT NULL,
-  `author_id` int(10) unsigned NOT NULL,
-  `page_id` int(10) unsigned NOT NULL,
+  `author_id` int(10) UNSIGNED NOT NULL,
+  `page_id` int(10) UNSIGNED NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=39 ;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `articles`
@@ -45,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
 
 INSERT INTO `articles` (`id`, `title`, `content`, `image`, `author_id`, `page_id`, `status`, `created_at`, `updated_at`) VALUES
 (22, 'Test Article 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.jkjkjk', '58f3e121436cdFotografija0629.jpg', 1, 29, 1, '2017-03-07 18:42:31', '2017-03-15 16:20:58'),
-(23, 'Test Article 2', '&lt;span&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/span&gt;', '58f3e1170569fFotografija0621.jpg', 1, 29, 1, '2017-03-07 18:42:47', '2017-03-07 18:42:47'),
+(23, 'Test Article 2', '&lt;span&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/span&gt;', '58f3e1170569fFotografija0621.jpg', 1, 29, 2, '2017-03-07 18:42:47', '2017-03-07 18:42:47'),
 (24, 'Test Article 3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '58f3e12fa933aFotografija0639.jpg', 1, 29, 1, '2017-03-07 18:43:01', '2017-03-15 16:07:28'),
 (25, 'Test Article 4', '&amp;lt;script&amp;gt;alert(#hello);&amp;lt;/script&amp;gt;&lt;br&gt;&amp;lt;&amp;gt;uyu#y&amp;lt;hghk&amp;gt;&amp;lt;/thyty&amp;gt;#tytytLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '58f3e10c0d184Fotografija0604.jpg', 1, 29, 1, '2017-03-07 18:43:13', '2017-04-28 15:18:41');
 
@@ -55,8 +54,8 @@ INSERT INTO `articles` (`id`, `title`, `content`, `image`, `author_id`, `page_id
 -- Table structure for table `certifications`
 --
 
-CREATE TABLE IF NOT EXISTS `certifications` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `certifications` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `authority` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `licence_number` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
@@ -65,9 +64,8 @@ CREATE TABLE IF NOT EXISTS `certifications` (
   `certif_year` smallint(4) NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `certifications`
@@ -86,17 +84,16 @@ INSERT INTO `certifications` (`id`, `name`, `authority`, `licence_number`, `cert
 -- Table structure for table `comments`
 --
 
-CREATE TABLE IF NOT EXISTS `comments` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `comments` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `content` text COLLATE utf8_unicode_ci NOT NULL,
-  `article_id` int(10) unsigned NOT NULL,
+  `article_id` int(10) UNSIGNED NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `comments`
@@ -104,8 +101,8 @@ CREATE TABLE IF NOT EXISTS `comments` (
 
 INSERT INTO `comments` (`id`, `name`, `email`, `content`, `article_id`, `status`, `created_at`, `updated_at`) VALUES
 (15, 'test1', 'test@test.com', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 22, 1, '2017-05-02 16:03:10', '2017-05-02 16:03:10'),
-(16, 'test2', 'test2@test.com', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 22, 1, '2017-05-02 16:03:24', '2017-05-02 16:03:24'),
-(17, 'test3', 't@t.com', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 22, 1, '2017-05-02 16:03:35', '2017-05-02 16:03:35');
+(16, 'test2', 'test2@test.com', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 22, 2, '2017-05-02 16:03:24', '2017-05-02 16:03:24'),
+(17, 'test3', 't@t.com', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 22, 2, '2017-05-02 16:03:35', '2017-05-02 16:03:35');
 
 -- --------------------------------------------------------
 
@@ -113,15 +110,12 @@ INSERT INTO `comments` (`id`, `name`, `email`, `content`, `article_id`, `status`
 -- Table structure for table `countries`
 --
 
-CREATE TABLE IF NOT EXISTS `countries` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Unique record ID. NOT IDENTITY AUTO INCREMENT',
+CREATE TABLE `countries` (
+  `id` int(10) UNSIGNED NOT NULL COMMENT 'Unique record ID. NOT IDENTITY AUTO INCREMENT',
   `country_code` varchar(2) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ISO 3166-2.  2 character country code',
   `country` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ISO 3166.  Long country description',
-  `country_sr` varchar(65) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `countries_country_code_index` (`country_code`),
-  KEY `countries_country_index` (`country`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=247 ;
+  `country_sr` varchar(65) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `countries`
@@ -170,7 +164,7 @@ INSERT INTO `countries` (`id`, `country_code`, `country`, `country_sr`) VALUES
 (40, 'CF', 'CENTRAL AFRICAN REPUBLIC', 'Centralna AfriÄka Republika'),
 (41, 'CG', 'CONGO', 'Kongo'),
 (42, 'CH', 'SWITZERLAND', 'Å vajcarska'),
-(43, 'CI', 'COTE D''IVOIRE', 'Obala SlonovaÄe'),
+(43, 'CI', 'COTE D\'IVOIRE', 'Obala SlonovaÄe'),
 (44, 'CK', 'COOK ISLANDS', 'Kukova Ostrva'),
 (45, 'CL', 'CHILE', 'ÄŒile'),
 (46, 'CM', 'CAMEROON', 'Kamerun'),
@@ -245,12 +239,12 @@ INSERT INTO `countries` (`id`, `country_code`, `country`, `country_sr`) VALUES
 (115, 'KI', 'KIRIBATI', 'Kiribati'),
 (116, 'KM', 'COMOROS', 'Komori'),
 (117, 'KN', 'SAINT KITTS AND NEVIS', 'Sveti Kristofor i Nevis'),
-(118, 'KP', 'KOREA, DEMOCRATIC PEOPLE''S REPUBLIC OF', 'Demokratska Republika Koreja'),
+(118, 'KP', 'KOREA, DEMOCRATIC PEOPLE\'S REPUBLIC OF', 'Demokratska Republika Koreja'),
 (119, 'KR', 'KOREA, REPUBLIC OF', 'Republika Koreja'),
 (120, 'KW', 'KUWAIT', 'Kuvajt'),
 (121, 'KY', 'CAYMAN ISLANDS', 'Kajmanska Ostrva'),
 (122, 'KZ', 'KAZAKHSTAN', 'Kazahstan'),
-(123, 'LA', 'LAO PEOPLE''S DEMOCRATIC REPUBLIC', 'Laoska Narodna Demokratska Republika'),
+(123, 'LA', 'LAO PEOPLE\'S DEMOCRATIC REPUBLIC', 'Laoska Narodna Demokratska Republika'),
 (124, 'LB', 'LEBANON', 'Lebanon'),
 (125, 'LC', 'SAINT LUCIA', 'Sveta Lucija'),
 (126, 'LI', 'LIECHTENSTEIN', 'LihenÅ¡tajn'),
@@ -381,8 +375,8 @@ INSERT INTO `countries` (`id`, `country_code`, `country`, `country_sr`) VALUES
 -- Table structure for table `education`
 --
 
-CREATE TABLE IF NOT EXISTS `education` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `education` (
+  `id` int(10) UNSIGNED NOT NULL,
   `school` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `year_from` smallint(4) NOT NULL,
   `year_to` smallint(4) NOT NULL,
@@ -391,9 +385,8 @@ CREATE TABLE IF NOT EXISTS `education` (
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `education`
@@ -412,12 +405,12 @@ INSERT INTO `education` (`id`, `school`, `year_from`, `year_to`, `degree`, `fiel
 -- Table structure for table `experience`
 --
 
-CREATE TABLE IF NOT EXISTS `experience` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `experience` (
+  `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
   `company` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
   `city` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
-  `country_id` int(10) unsigned NOT NULL,
+  `country_id` int(10) UNSIGNED NOT NULL,
   `month_from` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `month_to` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '-',
   `year_from` smallint(4) NOT NULL,
@@ -425,9 +418,8 @@ CREATE TABLE IF NOT EXISTS `experience` (
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `experience`
@@ -446,11 +438,10 @@ INSERT INTO `experience` (`id`, `title`, `company`, `city`, `country_id`, `month
 -- Table structure for table `industry`
 --
 
-CREATE TABLE IF NOT EXISTS `industry` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=56 ;
+CREATE TABLE `industry` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(70) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `industry`
@@ -518,15 +509,14 @@ INSERT INTO `industry` (`id`, `name`) VALUES
 -- Table structure for table `languages`
 --
 
-CREATE TABLE IF NOT EXISTS `languages` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `languages` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `proficiency_id` int(10) unsigned NOT NULL,
+  `proficiency_id` int(10) UNSIGNED NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `languages`
@@ -544,11 +534,10 @@ INSERT INTO `languages` (`id`, `name`, `proficiency_id`, `status`, `created_at`,
 -- Table structure for table `language_proficiences`
 --
 
-CREATE TABLE IF NOT EXISTS `language_proficiences` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+CREATE TABLE `language_proficiences` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(70) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `language_proficiences`
@@ -568,15 +557,14 @@ INSERT INTO `language_proficiences` (`id`, `name`) VALUES
 -- Table structure for table `messages`
 --
 
-CREATE TABLE IF NOT EXISTS `messages` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `messages` (
+  `id` int(10) UNSIGNED NOT NULL,
   `subject` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `content` text COLLATE utf8_unicode_ci NOT NULL,
   `email_from` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=161 ;
+  `created_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `messages`
@@ -594,14 +582,13 @@ INSERT INTO `messages` (`id`, `subject`, `content`, `email_from`, `status`, `cre
 -- Table structure for table `modules`
 --
 
-CREATE TABLE IF NOT EXISTS `modules` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `modules` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `modules`
@@ -630,13 +617,12 @@ INSERT INTO `modules` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUE
 -- Table structure for table `module_pages`
 --
 
-CREATE TABLE IF NOT EXISTS `module_pages` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `page_id` int(10) unsigned NOT NULL,
-  `module_id` int(10) unsigned NOT NULL,
-  `priority` smallint(3) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=40 ;
+CREATE TABLE `module_pages` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `page_id` int(10) UNSIGNED NOT NULL,
+  `module_id` int(10) UNSIGNED NOT NULL,
+  `priority` smallint(3) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `module_pages`
@@ -677,8 +663,8 @@ INSERT INTO `module_pages` (`id`, `page_id`, `module_id`, `priority`) VALUES
 -- Table structure for table `pages`
 --
 
-CREATE TABLE IF NOT EXISTS `pages` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `pages` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `name_controller` varchar(170) COLLATE utf8_unicode_ci NOT NULL,
   `name_method` varchar(170) COLLATE utf8_unicode_ci NOT NULL,
@@ -687,12 +673,11 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `menu` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
   `footer` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
   `icon` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `parent_id` int(10) unsigned NOT NULL,
+  `parent_id` int(10) UNSIGNED NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=31 ;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `pages`
@@ -725,8 +710,8 @@ INSERT INTO `pages` (`id`, `name`, `name_controller`, `name_method`, `route`, `t
 -- Table structure for table `projects`
 --
 
-CREATE TABLE IF NOT EXISTS `projects` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `projects` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `project_month` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `project_year` smallint(4) NOT NULL,
@@ -734,9 +719,8 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `projects`
@@ -755,16 +739,15 @@ INSERT INTO `projects` (`id`, `name`, `project_month`, `project_year`, `project_
 -- Table structure for table `project_members`
 --
 
-CREATE TABLE IF NOT EXISTS `project_members` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `project_members` (
+  `id` int(10) UNSIGNED NOT NULL,
   `author_name` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `author_surname` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `project_id` int(10) unsigned NOT NULL,
+  `project_id` int(10) UNSIGNED NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=39 ;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `project_members`
@@ -783,8 +766,8 @@ INSERT INTO `project_members` (`id`, `author_name`, `author_surname`, `project_i
 -- Table structure for table `publications`
 --
 
-CREATE TABLE IF NOT EXISTS `publications` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `publications` (
+  `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(170) COLLATE utf8_unicode_ci NOT NULL,
   `publisher` varchar(170) COLLATE utf8_unicode_ci NOT NULL,
   `publ_month` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -794,9 +777,8 @@ CREATE TABLE IF NOT EXISTS `publications` (
   `document_name` varchar(1024) COLLATE utf8_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=33 ;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `publications`
@@ -807,7 +789,9 @@ INSERT INTO `publications` (`id`, `title`, `publisher`, `publ_month`, `publ_year
 (21, 'Publ 2a', 'Test 2', 'January', 2005, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'http://project2.com', '58c95b9e71cbbJiddu_Krishnamurt_The_Book_of_Life.pdf', 1, '2017-03-07 21:07:11', '2017-03-12 22:45:31'),
 (22, 'Publ 3', 'Test 3', 'February', 2012, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '', '58c95b7333d87Novi_pristup_konstrukciji_web_aplikacija.pdf', 1, '2017-03-07 21:07:28', '2017-03-07 21:07:28'),
 (23, 'Publ 4', 'Test 4', 'April', 2014, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'http://project4.com', '', 0, '2017-03-07 21:07:59', '2017-03-07 21:07:59'),
-(24, 'Publ 5', 'Test 5', 'February', 2015, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '', '', 1, '2017-03-07 21:08:17', '2017-03-07 21:08:17');
+(24, 'Publ 5', 'Test 5', 'February', 2015, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '', '', 1, '2017-03-07 21:08:17', '2017-03-07 21:08:17'),
+(34, 'test', 'test', 'Februar', 2016, 'test', '', '', 1, '2017-05-02 16:14:14', '2017-05-02 16:14:14'),
+(33, 'Test6', 'Test6', 'Januar', 2014, 'test', '', '', 1, '2017-05-02 16:13:21', '2017-05-02 16:13:21');
 
 -- --------------------------------------------------------
 
@@ -815,16 +799,15 @@ INSERT INTO `publications` (`id`, `title`, `publisher`, `publ_month`, `publ_year
 -- Table structure for table `publication_authors`
 --
 
-CREATE TABLE IF NOT EXISTS `publication_authors` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `publication_authors` (
+  `id` int(10) UNSIGNED NOT NULL,
   `author_name` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `author_surname` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `publication_id` int(10) unsigned NOT NULL,
+  `publication_id` int(10) UNSIGNED NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=52 ;
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `publication_authors`
@@ -835,7 +818,8 @@ INSERT INTO `publication_authors` (`id`, `author_name`, `author_surname`, `publi
 (25, 'Test', 'Test', 21, 0, '2017-03-07 21:07:11', '2017-03-07 21:07:11'),
 (26, 'Test', 'Test', 22, 0, '2017-03-07 21:07:28', '2017-03-07 21:07:28'),
 (27, 'Test', 'Test', 23, 0, '2017-03-07 21:07:59', '2017-03-07 21:07:59'),
-(28, 'Test', 'Test', 24, 0, '2017-03-07 21:08:17', '2017-03-07 21:08:17');
+(28, 'Test', 'Test', 24, 0, '2017-03-07 21:08:17', '2017-03-07 21:08:17'),
+(54, 'Test', 'Tset', 20, 1, '2017-05-02 16:15:30', '2017-05-02 16:15:30');
 
 -- --------------------------------------------------------
 
@@ -843,13 +827,12 @@ INSERT INTO `publication_authors` (`id`, `author_name`, `author_surname`, `publi
 -- Table structure for table `skills`
 --
 
-CREATE TABLE IF NOT EXISTS `skills` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `skills` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `persentage` tinyint(3) NOT NULL,
-  `status` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=51 ;
+  `status` tinyint(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `skills`
@@ -872,14 +855,13 @@ INSERT INTO `skills` (`id`, `name`, `persentage`, `status`) VALUES
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
   `email` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `token` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
-  `status` tinyint(2) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+  `status` tinyint(2) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users`
@@ -894,29 +876,258 @@ INSERT INTO `users` (`id`, `email`, `password`, `token`, `status`) VALUES
 -- Table structure for table `user_profiles`
 --
 
-CREATE TABLE IF NOT EXISTS `user_profiles` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_profiles` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
   `surname` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(170) COLLATE utf8_unicode_ci NOT NULL,
   `city` varchar(170) COLLATE utf8_unicode_ci NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `country_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `country_id` int(10) UNSIGNED NOT NULL,
   `profess_headline` text COLLATE utf8_unicode_ci NOT NULL,
-  `industry_id` int(10) unsigned NOT NULL,
+  `industry_id` int(10) UNSIGNED NOT NULL,
   `image` varchar(1024) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `user_profiles`
 --
 
 INSERT INTO `user_profiles` (`id`, `name`, `surname`, `address`, `city`, `user_id`, `country_id`, `profess_headline`, `industry_id`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Test', 'Tset', 'Test 15', 'Beograd', 1, 187, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 16, '58f3e32326fe6IMG_20140712_114939.jpg', '2017-01-05 18:52:35', '2017-01-05 18:53:12');
+(1, 'Test', 'Tset', 'Test 15', 'Beograd', 1, 187, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 16, '5946e79b0f86cIMG_20170514_171053.jpg', '2017-01-05 18:52:35', '2017-01-05 18:53:12');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `articles`
+--
+ALTER TABLE `articles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `certifications`
+--
+ALTER TABLE `certifications`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `countries`
+--
+ALTER TABLE `countries`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `countries_country_code_index` (`country_code`),
+  ADD KEY `countries_country_index` (`country`);
+
+--
+-- Indexes for table `education`
+--
+ALTER TABLE `education`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `experience`
+--
+ALTER TABLE `experience`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `industry`
+--
+ALTER TABLE `industry`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `languages`
+--
+ALTER TABLE `languages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `language_proficiences`
+--
+ALTER TABLE `language_proficiences`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `modules`
+--
+ALTER TABLE `modules`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `module_pages`
+--
+ALTER TABLE `module_pages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pages`
+--
+ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `projects`
+--
+ALTER TABLE `projects`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `project_members`
+--
+ALTER TABLE `project_members`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `publications`
+--
+ALTER TABLE `publications`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `publication_authors`
+--
+ALTER TABLE `publication_authors`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `skills`
+--
+ALTER TABLE `skills`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_profiles`
+--
+ALTER TABLE `user_profiles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `articles`
+--
+ALTER TABLE `articles`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+--
+-- AUTO_INCREMENT for table `certifications`
+--
+ALTER TABLE `certifications`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `countries`
+--
+ALTER TABLE `countries`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique record ID. NOT IDENTITY AUTO INCREMENT', AUTO_INCREMENT=247;
+--
+-- AUTO_INCREMENT for table `education`
+--
+ALTER TABLE `education`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `experience`
+--
+ALTER TABLE `experience`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT for table `industry`
+--
+ALTER TABLE `industry`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+--
+-- AUTO_INCREMENT for table `languages`
+--
+ALTER TABLE `languages`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `language_proficiences`
+--
+ALTER TABLE `language_proficiences`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+--
+-- AUTO_INCREMENT for table `modules`
+--
+ALTER TABLE `modules`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT for table `module_pages`
+--
+ALTER TABLE `module_pages`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+--
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+--
+-- AUTO_INCREMENT for table `projects`
+--
+ALTER TABLE `projects`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `project_members`
+--
+ALTER TABLE `project_members`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+--
+-- AUTO_INCREMENT for table `publications`
+--
+ALTER TABLE `publications`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+--
+-- AUTO_INCREMENT for table `publication_authors`
+--
+ALTER TABLE `publication_authors`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+--
+-- AUTO_INCREMENT for table `skills`
+--
+ALTER TABLE `skills`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `user_profiles`
+--
+ALTER TABLE `user_profiles`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
