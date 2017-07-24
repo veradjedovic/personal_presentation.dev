@@ -69,11 +69,10 @@ class ArticleController extends Controller
      */
     protected $sidebar;
 
-
     /**
      * Construct
      */
-    public function __construct( Article $article, Comment $comment, MenuController $menuModule, FooterMenuController $footerNav, FooterMenuController $footerLink, SidebarController $sidebar,  UserProfile $userProfile, CommentModuleController $comment )
+    public function __construct( Article $article, MenuController $menuModule, FooterMenuController $footerNav, FooterMenuController $footerLink, SidebarController $sidebar,  UserProfile $userProfile, CommentModuleController $comment )
     {
         $this->article = $article;
         $this->userProfile = $userProfile;
@@ -87,7 +86,8 @@ class ArticleController extends Controller
     /**
      * @param $id
      */
-    public function show($id) {
+    public function show($id)
+    {
 
         try {
             $this->layout = 'lifestyle';
