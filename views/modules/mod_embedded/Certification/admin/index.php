@@ -102,10 +102,11 @@ $('.deleteBtn').click(function(e){
                 
                 console.log(response);             
                 if(response.error == false){
-                    
+
                     $("#message").html(response.message ).addClass( "alert alert-success alert-dismissable" );
                     //$("#row"+response.id).remove(); ovo ispod je bezbednije, ali moze i ovako
                     $('tbody > tr#row'+response.id).remove();
+                    setTimeout(function(){ location.reload(); }, 1500);
                 } else {
                     $("#message").html(response.message ).addClass( "alert alert-danger alert-dismissable" );
                 }       

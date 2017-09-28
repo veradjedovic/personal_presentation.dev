@@ -98,6 +98,7 @@ $('.deleteBtn').click(function(e){
                     
                     $("#message").html(response.message ).addClass( "alert alert-success alert-dismissable" );
                     $('tbody > tr#row'+response.id).remove();
+                    setTimeout(function(){ location.reload(); }, 1500);
                 } else {
                     $("#message").html(response.message ).addClass( "alert alert-danger alert-dismissable" );
                 }       
